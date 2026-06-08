@@ -19,38 +19,15 @@
   <img class="hero-logo" src="assets/plugin-logo-badge-transparent.png" alt="InstancedDungeons logo">
 </section>
 
-<div class="home-overview">
-  <aside class="resource-cards" aria-label="Project links">
-    <a href="https://modrinth.com/plugin/instanced-dungeon" target="_blank" rel="noopener">
-      <span>Download</span>
-      <strong>Modrinth</strong>
-    </a>
-    <a href="https://www.spigotmc.org/resources/instanced-dungeon.132724/" target="_blank" rel="noopener">
-      <span>Plugin Page</span>
-      <strong>SpigotMC</strong>
-    </a>
-    <a href="https://discord.com/invite/sD4HvQh8P4" target="_blank" rel="noopener">
-      <span>Community</span>
-      <strong>Discord</strong>
-    </a>
-    <a href="https://buymeacoffee.com/we_rt" target="_blank" rel="noopener">
-      <span>Support</span>
-      <strong>Buy Me a Coffee</strong>
-    </a>
-  </aside>
-  <section>
-    <h2>What It Does</h2>
-    <p>
-      InstancedDungeons copies a configured template world into a temporary instance world whenever a party starts a run.
-      Players get an isolated dungeon, while the original template stays clean for future runs.
-    </p>
-    <div class="status-row">
-      <div class="status-box"><strong>Instances</strong><span>One copied world per active run</span></div>
-      <div class="status-box"><strong>Parties</strong><span>Open, join, start, spectate, and leave flows</span></div>
-      <div class="status-box"><strong>Objectives</strong><span>Boss defeat or trigger activation</span></div>
-      <div class="status-box"><strong>Towers</strong><span>Chain dungeons into multi-stage runs</span></div>
-    </div>
-  </section>
+## What It Does
+
+InstancedDungeons copies a configured template world into a temporary instance world whenever a party starts a run. Players get an isolated dungeon, while the original template stays clean for future runs.
+
+<div class="status-row">
+  <div class="status-box"><strong>Instances</strong><span>One copied world per active run</span></div>
+  <div class="status-box"><strong>Parties</strong><span>Open, join, start, spectate, and leave flows</span></div>
+  <div class="status-box"><strong>Objectives</strong><span>Boss defeat or trigger activation</span></div>
+  <div class="status-box"><strong>Towers</strong><span>Chain dungeons into multi-stage runs</span></div>
 </div>
 
 ## Main Systems
