@@ -56,6 +56,7 @@ nav:
   - Home: index.md
   - Start:
       - Getting Started: getting-started.md
+      - Examples: examples.md
       - Commands: commands.md
       - Permissions: permissions.md
   - Configuration:
@@ -70,7 +71,7 @@ nav:
   - Help:
       - Troubleshooting: troubleshooting.md
       - Changelog: changelog.md
-      - Legacy 1.0.x Documentation: legacy-1-0-x.md
+  - Legacy 1.0.x Documentation: legacy-1-0-x.md
 
 extra:
   social:
