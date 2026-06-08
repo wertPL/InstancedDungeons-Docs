@@ -25,6 +25,9 @@ Optional integrations:
 5. Configure dungeons in `plugins/InstancedDungeons/dungeons/`.
 6. Run `/dungeon reload` after YAML edits.
 
+!!! warning "Config compatibility"
+    Current dungeons use the 2.0 config format. Older 1.0.x dungeons should be recreated or kept with the legacy documentation.
+
 ## Create a Boss Dungeon
 
 Create or load a template world first. Example:

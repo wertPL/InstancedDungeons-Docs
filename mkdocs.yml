@@ -4,8 +4,8 @@ site_author: we_rt
 
 theme:
   name: material
-  logo: assets/plugin-logo-badge-transparent.png
-  favicon: assets/plugin-logo-badge-transparent.png
+  logo: assets/logo.png
+  favicon: assets/logo.png
   language: en
   features:
     - navigation.tabs
@@ -17,21 +17,24 @@ theme:
     - content.code.copy
     - content.tabs.link
   palette:
-    - scheme: default
-      primary: deep orange
-      accent: amber
-      toggle:
-        icon: material/weather-night
-        name: Switch to dark mode
     - scheme: slate
       primary: deep orange
       accent: amber
       toggle:
         icon: material/weather-sunny
         name: Switch to light mode
+    - scheme: default
+      primary: deep orange
+      accent: amber
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
 
 extra_css:
   - stylesheets/extra.css
+
+extra_javascript:
+  - javascripts/support.js
 
 markdown_extensions:
   - admonition
@@ -59,18 +62,21 @@ nav:
       - Dungeon Config: configuration.md
       - Objectives: objectives.md
       - Towers: towers.md
+      - Complete 2.0 Reference: complete-2-0-reference.md
   - Systems:
       - Stages and Gates: stages.md
       - Loot and Rewards: loot-and-rewards.md
       - Event Commands: event-commands.md
+  - Legacy 1.0.x:
+      - Old Documentation: legacy-1-0-x.md
   - Help:
       - Troubleshooting: troubleshooting.md
-      - Release Notes: release-notes.md
+      - Changelog: changelog.md
 
 extra:
   social:
-    - icon: fontawesome/solid/cube
-      link: https://modrinth.com/
-      name: Modrinth
+    - icon: fontawesome/solid/mug-hot
+      link: https://buymeacoffee.com/we_rt
+      name: Buy Me a Coffee
 
 copyright: Copyright &copy; 2026 InstancedDungeons

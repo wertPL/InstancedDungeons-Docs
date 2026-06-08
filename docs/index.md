@@ -16,7 +16,7 @@
       <a class="md-button" href="commands/">Command Reference</a>
     </div>
   </div>
-  <img class="hero-logo" src="assets/plugin-logo-badge-transparent.png" alt="InstancedDungeons logo">
+  <img class="hero-logo" src="assets/logo.png" alt="InstancedDungeons logo">
 </section>
 
 ## What It Does
@@ -58,9 +58,6 @@ InstancedDungeons copies a configured template world into a temporary instance w
     <p>Block edits, control interactions, prevent external entry, and clean up temporary worlds automatically.</p>
   </div>
 </div>
-
-!!! warning "Version 2.0 compatibility"
-    InstancedDungeons 2.0 uses a new config format. Dungeons created before 2.0 must be recreated with `v: 2.0` configs.
 
 ## Fast Path
 
