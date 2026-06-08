@@ -69,9 +69,11 @@ nav:
       - Loot and Rewards: loot-and-rewards.md
       - Event Commands: event-commands.md
   - Help:
+      - Help Center: help.md
       - Troubleshooting: troubleshooting.md
       - Changelog: changelog.md
-  - Legacy 1.0.x Documentation: legacy-1-0-x.md
+  - Legacy 1.0.x Documentation:
+      - Legacy 1.0.x Documentation: legacy-1-0-x.md
 
 extra:
   social:

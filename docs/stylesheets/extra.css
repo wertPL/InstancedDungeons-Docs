@@ -18,6 +18,10 @@
   gap: 0.1rem;
 }
 
+.md-tabs__item {
+  flex-shrink: 0;
+}
+
 .md-tabs__item:last-child {
   margin-left: auto;
 }
@@ -26,6 +30,8 @@
   border: 1px solid rgba(245, 182, 66, 0.35);
   border-radius: 8px;
   color: #ffd27a;
+  font-size: 0.68rem;
+  font-weight: 800;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
 }
