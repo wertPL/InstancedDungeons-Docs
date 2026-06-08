@@ -16,7 +16,7 @@
       <a class="md-button" href="commands/">Command Reference</a>
     </div>
   </div>
-  <img class="hero-logo" src="assets/logo.png" alt="InstancedDungeons logo">
+  <img class="hero-logo" src="assets/plugin-logo-badge-transparent.png" alt="InstancedDungeons logo">
 </section>
 
 ## What It Does

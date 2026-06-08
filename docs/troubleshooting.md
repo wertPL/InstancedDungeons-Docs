@@ -15,7 +15,7 @@ Also check the server console. Validation warnings in chat are shorter than the 
 Check:
 
 - `dungeons/<id>/config.yml` exists.
-- The config has `v: 2.0`.
+- The config uses the current format marker.
 - The template world exists and is loaded.
 - Spawn and exit are set.
 - Min/max players are valid.

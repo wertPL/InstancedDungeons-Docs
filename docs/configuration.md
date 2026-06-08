@@ -17,8 +17,6 @@ Dungeons without this marker are blocked from opening.
 ## Core Fields
 
 ```yaml
-v: 2.0
-
 dungeon-type: single
 tower-stage-type: first
 next-dungeon: ""

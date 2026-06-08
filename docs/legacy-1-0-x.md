@@ -1,4 +1,4 @@
-# InstancedDungeons - Complete Documentation
+﻿# InstancedDungeons - Complete Documentation
 
 ## Overview
 
@@ -687,7 +687,7 @@ Set appropriate `max-instances` values based on your server hardware:
 - Large server (16+ GB RAM): 5-10 instances per dungeon
 
 Note that these parameters are only valid if you have only this plugin and its dependencies installed.
-If you have many other plugins, etc., these values ​​may differ significantly.
+If you have many other plugins, etc., these values may differ significantly.
 
 ### World Size
 
@@ -705,8 +705,9 @@ For issues, questions, or feature requests, please:
 1. Check this whole documentation
 2. Review example configuration files
 3. Check console for errors
-4. Only if you sure that somethin is broken send me message on discord nick: we_rt
+4. If you are sure something is broken, join the Discord: https://discord.com/invite/sD4HvQh8P4
 
 ---
 
 *Thank you for using InstancedDungeons!*
+

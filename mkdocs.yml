@@ -4,8 +4,8 @@ site_author: we_rt
 
 theme:
   name: material
-  logo: assets/logo.png
-  favicon: assets/logo.png
+  logo: assets/header-logo.png
+  favicon: assets/header-logo.png
   language: en
   features:
     - navigation.tabs
@@ -75,6 +75,9 @@ nav:
 
 extra:
   social:
+    - icon: fontawesome/brands/discord
+      link: https://discord.com/invite/sD4HvQh8P4
+      name: Discord
     - icon: fontawesome/solid/mug-hot
       link: https://buymeacoffee.com/we_rt
       name: Buy Me a Coffee
