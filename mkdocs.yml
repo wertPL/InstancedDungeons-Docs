@@ -1,0 +1,76 @@
+site_name: InstancedDungeons
+site_description: Documentation for the InstancedDungeons Paper plugin.
+site_author: we_rt
+
+theme:
+  name: material
+  logo: assets/plugin-logo-badge-transparent.png
+  favicon: assets/plugin-logo-badge-transparent.png
+  language: en
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.footer
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.tabs.link
+  palette:
+    - scheme: default
+      primary: deep orange
+      accent: amber
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - scheme: slate
+      primary: deep orange
+      accent: amber
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+extra_css:
+  - stylesheets/extra.css
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+
+nav:
+  - Home: index.md
+  - Start:
+      - Getting Started: getting-started.md
+      - Commands: commands.md
+      - Permissions: permissions.md
+  - Configuration:
+      - Dungeon Config: configuration.md
+      - Objectives: objectives.md
+      - Towers: towers.md
+  - Systems:
+      - Stages and Gates: stages.md
+      - Loot and Rewards: loot-and-rewards.md
+      - Event Commands: event-commands.md
+  - Help:
+      - Troubleshooting: troubleshooting.md
+      - Release Notes: release-notes.md
+
+extra:
+  social:
+    - icon: fontawesome/solid/cube
+      link: https://modrinth.com/
+      name: Modrinth
+
+copyright: Copyright &copy; 2026 InstancedDungeons
