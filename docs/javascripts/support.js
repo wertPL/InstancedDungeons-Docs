@@ -7,6 +7,14 @@
     var rail = document.createElement("aside");
     rail.className = "support-rail";
     rail.innerHTML = [
+      '<a href="https://modrinth.com/plugin/instanced-dungeon" target="_blank" rel="noopener" title="Download on Modrinth">',
+      '  <span class="support-rail__label">Download</span>',
+      '  <span class="support-rail__value">Modrinth</span>',
+      '</a>',
+      '<a href="https://www.spigotmc.org/resources/instanced-dungeon.132724/" target="_blank" rel="noopener" title="View on SpigotMC">',
+      '  <span class="support-rail__label">Plugin Page</span>',
+      '  <span class="support-rail__value">SpigotMC</span>',
+      '</a>',
       '<a href="https://discord.com/invite/sD4HvQh8P4" target="_blank" rel="noopener" title="Join the Discord">',
       '  <span class="support-rail__label">Discord</span>',
       '  <span class="support-rail__value">Join Server</span>',

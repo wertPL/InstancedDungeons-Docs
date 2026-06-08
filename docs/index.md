@@ -16,8 +16,15 @@
       <a class="md-button" href="commands/">Command Reference</a>
     </div>
   </div>
-  <img class="hero-logo" src="assets/plugin-logo-badge-transparent.png" alt="InstancedDungeons logo">
+  <img class="hero-logo" src="assets/logo-swords.png" alt="InstancedDungeons logo">
 </section>
+
+<div class="link-strip">
+  <a href="https://modrinth.com/plugin/instanced-dungeon" target="_blank" rel="noopener">Download on Modrinth</a>
+  <a href="https://www.spigotmc.org/resources/instanced-dungeon.132724/" target="_blank" rel="noopener">View on SpigotMC</a>
+  <a href="https://discord.com/invite/sD4HvQh8P4" target="_blank" rel="noopener">Join Discord</a>
+  <a href="https://buymeacoffee.com/we_rt" target="_blank" rel="noopener">Support Development</a>
+</div>
 
 ## What It Does
 

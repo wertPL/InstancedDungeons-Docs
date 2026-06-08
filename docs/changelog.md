@@ -1,6 +1,9 @@
-﻿# InstancedDungeons v2.0
+﻿# Changelog
 
-## Added
+## 2.0
+
+**Added**
+
 - New 2.0 dungeon config format with `v: 2.0` compatibility protection.
 - New dungeon creation syntax: `/dungeon create <id> <world> <boss|trigger>`.
 - Objective system with two objective types:
@@ -111,7 +114,8 @@
 - `/dungeon open` tab completion now hides tower middle/last stage dungeon IDs.
 - Custom item lookup tab completion now includes MythicMobs item IDs.
 
-## Bug Fixes
+**Bug Fixes**
+
 - Fixed unsafe spawner location handling in player movement checks.
 - Fixed party lifecycle so parties are not disbanded before dungeon entry and are closed after completion/failure/abandon cleanup.
 - Fixed active run cleanup so abandoned/completed parties do not remain tracked forever.
@@ -124,7 +128,8 @@
 - Fixed `/dungeon list` showing tower middle/last stage dungeons as normal openable dungeons.
 - Fixed tower stage completion announcements so intermediate stages do not broadcast global complete messages.
 
-## Improvements
+**Improvements**
+
 - Rebuilt the dungeon config layout to be cleaner, sectioned, and heavily commented.
 - Improved generated spawner, loot chest, boss, trigger, stage, and hologram config comments.
 - Stage mission YAML now saves only fields used by each mission type instead of writing irrelevant default fields.
@@ -159,7 +164,8 @@
 - Improved runtime performance by caching event command config per dungeon and keeping event execution disabled by default.
 - Cleaned old public docs and replaced them with a full 2.0 documentation set.
 
-## Notes
+**Notes**
+
 - **Breaking change:** older 1.x dungeon configs are not compatible with 2.0. Recreate dungeons with the new 2.0 format.
 - Dungeons without `v: 2.0` are blocked from opening to prevent broken legacy configs from damaging active servers.
 - **Paper 26.1 support is beta.**
@@ -168,3 +174,6 @@
 - The free version supports only two-step towers: `FIRST -> LAST`.
 - Tower global complete/fail announcements are controlled by the entry dungeon (`FIRST`) config, not by middle/last stage configs.
 - Middle tower stages, larger towers, and the future admin GUI are reserved for the Pro version.
+
+
+

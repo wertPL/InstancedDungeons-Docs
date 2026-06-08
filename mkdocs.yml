@@ -1,4 +1,4 @@
-site_name: InstancedDungeons
+site_name: InstancedDungeons Documentation
 site_description: Documentation for the InstancedDungeons Paper plugin.
 site_author: we_rt
 
@@ -67,14 +67,19 @@ nav:
       - Stages and Gates: stages.md
       - Loot and Rewards: loot-and-rewards.md
       - Event Commands: event-commands.md
-  - Legacy 1.0.x:
-      - Old Documentation: legacy-1-0-x.md
   - Help:
       - Troubleshooting: troubleshooting.md
       - Changelog: changelog.md
+      - Legacy 1.0.x Documentation: legacy-1-0-x.md
 
 extra:
   social:
+    - icon: fontawesome/solid/download
+      link: https://modrinth.com/plugin/instanced-dungeon
+      name: Modrinth
+    - icon: fontawesome/solid/server
+      link: https://www.spigotmc.org/resources/instanced-dungeon.132724/
+      name: SpigotMC
     - icon: fontawesome/brands/discord
       link: https://discord.com/invite/sD4HvQh8P4
       name: Discord
