@@ -9,6 +9,7 @@
     if (proIndex >= 0) {
       return path.slice(0, proIndex + 1);
     }
+
     var known = [
       "getting-started/",
       "examples/",
@@ -26,6 +27,7 @@
       "changelog/",
       "legacy-1-0-x/"
     ];
+
     for (var i = 0; i < known.length; i += 1) {
       var suffix = known[i];
       if (path.endsWith("/" + suffix)) {
@@ -56,10 +58,67 @@
     }
 
     return {
+      base: base,
       inPro: inPro,
       free: base + slug,
       pro: proPrefix + slug
     };
+  }
+
+  function topNavTarget(label) {
+    switch (label) {
+      case "Home":
+        return "";
+      case "Start":
+        return "getting-started/";
+      case "Configuration":
+        return "configuration/";
+      case "Systems":
+        return "stages/";
+      case "Help":
+        return "help/";
+      default:
+        return null;
+    }
+  }
+
+  function updateVersionNavigation() {
+    var links = versionLinks();
+    var path = currentPath();
+
+    document.querySelectorAll(".md-tabs__link").forEach(function (link) {
+      var label = link.textContent.trim();
+      var item = link.closest(".md-tabs__item");
+      if (!item) {
+        return;
+      }
+
+      item.classList.remove("is-hidden-by-version");
+
+      if (label === "Pro Version") {
+        item.classList.add("is-hidden-by-version");
+        return;
+      }
+
+      if (links.inPro && label.indexOf("Legacy") === 0) {
+        item.classList.add("is-hidden-by-version");
+        return;
+      }
+
+      var target = topNavTarget(label);
+      if (target === null) {
+        return;
+      }
+
+      var versionPrefix = links.inPro ? "pro/" : "";
+      var href = links.base + versionPrefix + target;
+      link.href = href;
+      link.classList.remove("md-tabs__link--active");
+
+      if ((target === "" && path === href) || (target !== "" && path.indexOf(href) === 0)) {
+        link.classList.add("md-tabs__link--active");
+      }
+    });
   }
 
   function mountVersionSwitch() {
@@ -78,7 +137,7 @@
     switcher.className = "version-switch";
     switcher.setAttribute("aria-label", "Documentation version");
     switcher.innerHTML = [
-      '<span class="version-switch__icon" aria-hidden="true">⚔</span>',
+      '<span class="version-switch__icon" aria-hidden="true">&#9876;</span>',
       '<a class="version-switch__link' + (!links.inPro ? " is-active" : "") + '" href="' + links.free + '">Free</a>',
       '<a class="version-switch__link' + (links.inPro ? " is-active" : "") + '" href="' + links.pro + '">Pro</a>'
     ].join("");
@@ -121,6 +180,7 @@
 
   function mountEnhancements() {
     mountVersionSwitch();
+    updateVersionNavigation();
     mountSupportRail();
   }
 
