@@ -72,6 +72,26 @@ nav:
       - Help Center: help.md
       - Troubleshooting: troubleshooting.md
       - Changelog: changelog.md
+  - Pro Version:
+      - Home: pro/index.md
+      - Start:
+          - Getting Started: pro/getting-started.md
+          - Examples: pro/examples.md
+          - Commands: pro/commands.md
+          - Permissions: pro/permissions.md
+      - Configuration:
+          - Dungeon Config: pro/configuration.md
+          - Objectives: pro/objectives.md
+          - Towers: pro/towers.md
+          - Complete 2.0 Reference: pro/complete-2-0-reference.md
+      - Systems:
+          - Stages and Gates: pro/stages.md
+          - Loot and Rewards: pro/loot-and-rewards.md
+          - Event Commands: pro/event-commands.md
+      - Help:
+          - Help Center: pro/help.md
+          - Troubleshooting: pro/troubleshooting.md
+          - Changelog: pro/changelog.md
   - Legacy 1.0.x Documentation:
       - Legacy 1.0.x Documentation: legacy-1-0-x.md
 
