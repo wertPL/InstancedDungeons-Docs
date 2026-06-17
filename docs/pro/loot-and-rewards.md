@@ -125,7 +125,7 @@ Pro supports enchanted vanilla items in:
 - Trigger rewards.
 - Entry costs.
 - Stage item payment missions.
-- Mob equipment.
+- Mob equipment, documented separately in [Spawners and Mobs](spawners-and-mobs.md).
 
 Example:
 
@@ -139,42 +139,3 @@ Example:
 ```
 
 The same `enchants` map can be used for armor, tools, weapons, and enchanted books.
-
-## Vanilla Mob Equipment
-
-Spawner mob pools can equip supported vanilla mobs:
-
-```yaml
-mob-pools:
-  - type: VANILLA
-    mob-id: SKELETON
-    count: 1
-    chance: 100.0
-    equipment:
-      helmet:
-        item: IRON_HELMET
-        drop-chance: 10.0
-      chestplate:
-        item: IRON_CHESTPLATE
-        drop-chance: 10.0
-      leggings:
-        item: IRON_LEGGINGS
-        drop-chance: 10.0
-      boots:
-        item: IRON_BOOTS
-        drop-chance: 10.0
-      main-hand:
-        item: IRON_SWORD
-        drop-chance: 5.0
-        enchants:
-          SHARPNESS: 1
-      off-hand:
-        item: SHIELD
-        drop-chance: 0.0
-```
-
-Drop chance is a percentage from `0.0` to `100.0`.
-
-Supported vanilla equipment mobs include zombies, zombie villagers, husks, drowned, skeletons, strays, wither skeletons, bogged, piglins, piglin brutes, zombified piglins, vindicators, pillagers, evokers, and illusioners.
-
-Mobs that cannot wear or hold equipment, such as ghasts or blazes, spawn normally without the configured equipment. Validation warns admins when equipment is assigned to an unsupported mob.

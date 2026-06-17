@@ -20,6 +20,7 @@
       "towers/",
       "complete-2-0-reference/",
       "stages/",
+      "spawners-and-mobs/",
       "loot-and-rewards/",
       "event-commands/",
       "help/",
@@ -57,10 +58,15 @@
       slug = "";
     }
 
+    var freeSlug = slug;
+    if (slug === "spawners-and-mobs/") {
+      freeSlug = "loot-and-rewards/";
+    }
+
     return {
       base: base,
       inPro: inPro,
-      free: base + slug,
+      free: base + freeSlug,
       pro: proPrefix + slug
     };
   }
@@ -112,6 +118,9 @@
 
       var versionPrefix = links.inPro ? "pro/" : "";
       var href = links.base + versionPrefix + target;
+      if (links.inPro && label === "Systems") {
+        href = links.base + "pro/spawners-and-mobs/";
+      }
       link.href = href;
       link.classList.remove("md-tabs__link--active");
 
