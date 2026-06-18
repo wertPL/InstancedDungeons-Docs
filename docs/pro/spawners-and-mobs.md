@@ -19,7 +19,7 @@ location:
   y: 64.0
   z: 200.5
 
-trigger: ON_START
+trigger: ON_PLAYER_NEAR
 trigger-distance: 20
 trigger-delay: 5
 lifetime-behavior: PERSIST
@@ -40,12 +40,12 @@ mob-pools:
 
 | Trigger | Behavior |
 | --- | --- |
-| `ON_START` | Spawns when the instance starts. |
+| `ON_START` | Spawns when the instance starts. Not recommended for regular spawners because it can spawn every configured mob immediately at dungeon startup. |
 | `ON_PLAYER_NEAR` | Spawns when a player enters `trigger-distance`. |
 | `ON_DELAY` | Spawns after `trigger-delay`. |
 | `ON_PLAYER_NEAR_ON_DELAY` | Starts `trigger-delay` after a player enters `trigger-distance`. |
 
-`trigger-distance` and `trigger-delay` are generated in new spawners even when the selected trigger does not use them.
+New generated spawners default to `ON_PLAYER_NEAR` with `trigger-distance: 20`. `trigger-distance` and `trigger-delay` are generated in new spawners even when the selected trigger does not use them.
 
 ## Mob Pools
 

@@ -416,7 +416,7 @@ location:
   y: 64.0
   z: 200.5
 
-trigger: ON_START
+trigger: ON_PLAYER_NEAR
 trigger-distance: 20
 trigger-delay: 5
 lifetime-behavior: PERSIST
@@ -434,12 +434,12 @@ mob-pools:
 
 Trigger modes:
 
-- `ON_START`: spawn when the instance starts.
+- `ON_START`: spawn when the instance starts. This mode is not recommended for regular spawners because it can spawn every configured mob immediately at dungeon startup; prefer `ON_PLAYER_NEAR` for normal gameplay.
 - `ON_PLAYER_NEAR`: spawn when a player enters `trigger-distance`.
 - `ON_DELAY`: spawn after `trigger-delay`.
 - `ON_PLAYER_NEAR_ON_DELAY`: start `trigger-delay` after a player enters `trigger-distance`.
 
-`trigger-distance` and `trigger-delay` are generated in new spawners even when unused. If the selected trigger does not need them, they do nothing.
+New generated spawners default to `ON_PLAYER_NEAR` with `trigger-distance: 20`. `trigger-distance` and `trigger-delay` are generated in new spawners even when unused. If the selected trigger does not need them, they do nothing.
 
 Mob pools can mix vanilla and MythicMobs entries in one spawner.
 
