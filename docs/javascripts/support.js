@@ -1,6 +1,7 @@
 (function () {
   var tocScrollBound = false;
   var navigationToken = 0;
+  var transitionDelay = 210;
 
   function currentPath() {
     return window.location.pathname.replace(/\/+$/, "/");
@@ -324,6 +325,17 @@
     return !!link.closest(".version-switch, .md-tabs, .md-sidebar, .md-content");
   }
 
+  function waitForTransitionPaint(startedAt) {
+    return new Promise(function (resolve) {
+      window.requestAnimationFrame(function () {
+        window.requestAnimationFrame(function () {
+          var remaining = transitionDelay - (Date.now() - startedAt);
+          window.setTimeout(resolve, Math.max(remaining, 0));
+        });
+      });
+    });
+  }
+
   function replaceMainContent(html, href, token, options) {
     if (token !== navigationToken) {
       return;
@@ -353,6 +365,7 @@
   function navigateTo(href, options) {
     var token = navigationToken + 1;
     navigationToken = token;
+    var startedAt = Date.now();
     document.documentElement.classList.add("is-page-transitioning");
 
     window.fetch(href, { credentials: "same-origin" })
@@ -361,6 +374,11 @@
           throw new Error("Unable to load documentation page.");
         }
         return response.text();
+      })
+      .then(function (html) {
+        return waitForTransitionPaint(startedAt).then(function () {
+          return html;
+        });
       })
       .then(function (html) {
         replaceMainContent(html, href, token, options || {});
@@ -400,6 +418,9 @@
     var switcher = link.closest(".version-switch");
     if (version && switcher) {
       switcher.dataset.active = version;
+      switcher.querySelectorAll(".version-switch__link").forEach(function (versionLink) {
+        versionLink.classList.toggle("is-active", versionLink.getAttribute("data-version") === version);
+      });
     }
 
     navigateTo(link.href);
