@@ -1,9 +1,10 @@
 <section class="hero">
   <div>
-    <h1>InstancedDungeons Pro</h1>
+    <h1><span class="accent">InstancedDungeons</span><span class="break">Pro</span></h1>
     <p>
-      Pro documentation for larger dungeon builds: unlimited global instances when configured,
-      longer tower chains, more stages and missions, enchanted vanilla gear, and mob equipment.
+      A clean dungeon system for Minecraft servers: <strong>private instances</strong>,
+      party runs, staged progression, rewards, mob encounters, and event automation
+      in one polished workflow.
     </p>
     <div class="hero-badges">
       <span class="hero-badge">Paper 1.21.x / 26.1.x</span>
@@ -54,7 +55,7 @@ Pro keeps the same dungeon format and workflow as Free, but removes the runtime 
   </div>
   <div class="doc-card">
     <h3>Tower Chains</h3>
-    <p>Use middle tower stages as normal chain links between the first and last dungeon.</p>
+    <p>Connect multiple dungeon templates into one continuous multi-stage adventure from start to finish.</p>
   </div>
   <div class="doc-card">
     <h3>Validation</h3>

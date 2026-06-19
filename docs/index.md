@@ -1,9 +1,10 @@
 <section class="hero">
   <div>
-    <h1>InstancedDungeons</h1>
+    <h1><span class="accent">InstancedDungeons</span></h1>
     <p>
-      A Paper plugin for isolated, template-based dungeon runs with parties, objectives,
-      tower progression, stages, gates, loot, rewards, validation, and admin automation.
+      A clean dungeon system for Minecraft servers: <strong>private instances</strong>,
+      party runs, staged progression, rewards, mob encounters, and event automation
+      in one polished workflow.
     </p>
     <div class="hero-badges">
       <span class="hero-badge">Paper 1.21.x / 26.1.x</span>
@@ -39,7 +40,7 @@ InstancedDungeons copies a configured template world into a temporary instance w
   </div>
   <div class="doc-card">
     <h3>Stages and Gates</h3>
-    <p>Add progression gates with missions like keys, kills, timers, payments, and sacrifice choices.</p>
+    <p>Add layered progression with locked paths, live objective tracking, and interactive mission mechanics.</p>
   </div>
   <div class="doc-card">
     <h3>Loot and Rewards</h3>

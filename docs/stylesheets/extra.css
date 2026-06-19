@@ -1,14 +1,16 @@
 :root {
-  --id-gold: #f5b642;
-  --id-ember: #d65a31;
-  --id-charcoal: #1f1712;
-  --id-stone: #f7f3ed;
+  --id-cyan: #77d7ff;
+  --id-lavender: #cfc5ff;
+  --id-violet: #5b3fc7;
+  --id-night: #080816;
+  --id-panel: #111026;
+  --id-border: rgba(174, 160, 255, 0.22);
 }
 
 .md-header,
 .md-tabs {
   background:
-    linear-gradient(90deg, rgba(18, 13, 10, 0.98) 0%, rgba(55, 25, 16, 0.98) 48%, rgba(126, 50, 27, 0.98) 100%);
+    linear-gradient(90deg, rgba(7, 8, 22, 0.98) 0%, rgba(25, 20, 62, 0.98) 52%, rgba(42, 38, 106, 0.98) 100%);
 }
 
 .md-header__inner {
@@ -25,9 +27,9 @@
   gap: 0.18rem;
   flex-shrink: 0;
   margin: 0 0.55rem 0 0.1rem;
-  border: 1px solid rgba(245, 182, 66, 0.5);
+  border: 1px solid rgba(119, 215, 255, 0.32);
   border-radius: 8px;
-  background: rgba(18, 13, 10, 0.62);
+  background: rgba(8, 8, 22, 0.62);
   box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.14);
   padding: 0.14rem;
 }
@@ -38,7 +40,7 @@
   justify-content: center;
   width: 1.45rem;
   height: 1.45rem;
-  color: #ffd27a;
+  color: var(--id-cyan);
   font-size: 0.9rem;
 }
 
@@ -59,9 +61,9 @@
 }
 
 .version-switch__link.is-active {
-  color: #1f1712;
-  background: #f5b642;
-  box-shadow: 0 5px 14px rgba(245, 182, 66, 0.18);
+  color: var(--id-night);
+  background: linear-gradient(135deg, #f3f0ff, var(--id-cyan));
+  box-shadow: 0 5px 18px rgba(119, 215, 255, 0.2);
 }
 
 .md-tabs__list {
@@ -78,69 +80,94 @@
 
 .md-main {
   background:
-    linear-gradient(180deg, rgba(255, 248, 236, 0.72), rgba(255, 255, 255, 0) 420px),
+    linear-gradient(180deg, rgba(240, 246, 255, 0.72), rgba(255, 255, 255, 0) 420px),
     var(--md-default-bg-color);
 }
 
 [data-md-color-scheme="slate"] .md-main {
   background:
-    radial-gradient(circle at 74% 12%, rgba(245, 182, 66, 0.12), transparent 28rem),
-    linear-gradient(180deg, rgba(77, 34, 20, 0.34), rgba(0, 0, 0, 0) 440px),
+    radial-gradient(circle at 74% 8%, rgba(119, 215, 255, 0.16), transparent 26rem),
+    radial-gradient(circle at 38% 0%, rgba(114, 82, 255, 0.18), transparent 28rem),
+    linear-gradient(180deg, rgba(12, 10, 34, 0.92), rgba(0, 0, 0, 0) 560px),
     var(--md-default-bg-color);
 }
 
 .hero {
-  display: grid;
-  grid-template-columns: minmax(0, 1.3fr) minmax(220px, 0.7fr);
-  gap: 2.5rem;
-  align-items: center;
-  padding: 2.4rem 0 1.4rem;
+  position: relative;
+  overflow: hidden;
+  display: block;
+  margin: 1.15rem 0 2rem;
+  border: 1px solid rgba(173, 159, 255, 0.16);
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at 74% 18%, rgba(110, 84, 255, 0.5), transparent 22rem),
+    radial-gradient(circle at 20% 25%, rgba(56, 122, 178, 0.22), transparent 18rem),
+    linear-gradient(180deg, #101127 0%, #090817 68%, #080711 100%);
+  box-shadow: 0 24px 72px rgba(0, 0, 0, 0.28);
+  padding: clamp(3.5rem, 8vw, 6.2rem) clamp(1.2rem, 5vw, 5.5rem);
+  text-align: center;
 }
 
 .hero h1 {
-  margin: 0;
-  font-size: clamp(2.2rem, 4vw, 4.2rem);
-  line-height: 1;
+  max-width: 58rem;
+  margin: 0 auto;
+  color: #f7f5ff;
+  font-size: clamp(2.45rem, 5vw, 3.35rem);
+  font-weight: 900;
+  line-height: 0.98;
   letter-spacing: 0;
 }
 
+.hero h1 .accent {
+  background: linear-gradient(90deg, #f7f5ff 0%, #cdc6ff 58%, var(--id-cyan) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero h1 .break {
+  display: block;
+}
+
 .hero p {
-  max-width: 46rem;
-  color: var(--md-default-fg-color--light);
-  font-size: 1.05rem;
+  max-width: 50rem;
+  margin: 1.75rem auto 0;
+  color: #d8d3ff;
+  font-size: clamp(1rem, 2.15vw, 1.35rem);
+  line-height: 1.7;
+}
+
+.hero p strong {
+  color: #fff;
 }
 
 .hero-badges {
-  display: flex;
+  display: none;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 0.55rem;
-  margin: 1rem 0 1.3rem;
+  margin: 1.4rem auto 1.5rem;
 }
 
 .hero-badge {
-  border: 1px solid rgba(214, 90, 49, 0.24);
+  border: 1px solid rgba(119, 215, 255, 0.2);
   border-radius: 999px;
-  background: rgba(245, 182, 66, 0.13);
-  color: var(--md-default-fg-color);
+  background: rgba(255, 255, 255, 0.06);
+  color: #ebe9ff;
   font-size: 0.78rem;
   font-weight: 700;
   padding: 0.28rem 0.68rem;
 }
 
 .hero-actions {
-  display: flex;
+  display: none;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 0.7rem;
 }
 
 .hero-logo {
-  justify-self: center;
-  max-width: 320px;
-  filter: drop-shadow(0 18px 36px rgba(57, 21, 12, 0.35));
-}
-
-[data-md-color-scheme="slate"] .hero-logo {
-  filter: drop-shadow(0 18px 40px rgba(245, 142, 42, 0.28));
+  display: none;
 }
 
 .grid {
@@ -151,14 +178,17 @@
 }
 
 .doc-card {
-  border: 1px solid var(--md-default-fg-color--lightest);
+  border: 1px solid var(--id-border);
   border-radius: 8px;
   padding: 1rem;
-  background: var(--md-default-bg-color);
+  background:
+    linear-gradient(180deg, rgba(119, 215, 255, 0.07), rgba(144, 121, 255, 0.04)),
+    var(--md-default-bg-color);
 }
 
 .doc-card h3 {
   margin-top: 0;
+  color: var(--id-cyan);
 }
 
 .doc-card p {
@@ -174,9 +204,9 @@
 }
 
 .status-box {
-  border-left: 4px solid var(--id-ember);
+  border-left: 4px solid var(--id-cyan);
   border-radius: 8px;
-  background: rgba(245, 182, 66, 0.12);
+  background: rgba(119, 215, 255, 0.08);
   padding: 0.85rem;
 }
 
@@ -195,8 +225,9 @@
 }
 
 .md-typeset .md-button--primary {
-  background-color: var(--id-ember);
-  border-color: var(--id-ember);
+  background-color: var(--id-cyan);
+  border-color: var(--id-cyan);
+  color: var(--id-night);
 }
 
 .support-rail {
@@ -213,9 +244,9 @@
 .support-rail a,
 .support-rail__item {
   display: block;
-  border: 1px solid rgba(245, 182, 66, 0.35);
+  border: 1px solid rgba(119, 215, 255, 0.3);
   border-radius: 8px;
-  background: rgba(31, 23, 18, 0.88);
+  background: rgba(12, 10, 34, 0.88);
   color: #fff;
   padding: 0.58rem 0.7rem;
   box-shadow: 0 12px 34px rgba(0, 0, 0, 0.28);
@@ -224,13 +255,13 @@
 }
 
 .support-rail a:hover {
-  border-color: var(--id-gold);
-  background: rgba(82, 38, 20, 0.96);
+  border-color: var(--id-cyan);
+  background: rgba(35, 31, 84, 0.96);
 }
 
 .support-rail__label {
   display: block;
-  color: var(--id-gold);
+  color: var(--id-cyan);
   font-size: 0.66rem;
   font-weight: 800;
   letter-spacing: 0;
@@ -246,12 +277,7 @@
 
 @media (max-width: 900px) {
   .hero {
-    grid-template-columns: 1fr;
-  }
-
-  .hero-logo {
-    max-width: 220px;
-    order: -1;
+    margin-top: 0.7rem;
   }
 
   .grid,
@@ -267,6 +293,14 @@
 }
 
 @media (max-width: 520px) {
+  .hero {
+    padding: 3rem 1rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.35rem, 14vw, 3.2rem);
+  }
+
   .version-switch {
     margin-right: 0.25rem;
   }
