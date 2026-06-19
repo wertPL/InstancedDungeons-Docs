@@ -71,7 +71,8 @@ mob-pools:
 | `count` | How many mobs this pool spawns when selected. |
 | `chance` | Percent chance from `0.0` to `100.0`. |
 | `drop-vanilla-loot` | Optional. `false` removes normal mob loot such as bones, arrows, rotten flesh, or totems. Generated spawners include this as `false`. |
-| `prevent-zombification` | Optional. `true` cancels vanilla transformation for spawned mobs such as piglins and hoglins in normal worlds. Add this manually only when needed. |
+| `prevent-zombification` | Optional. `true` prevents spawned mobs such as piglins and hoglins from zombifying in normal worlds. Add this manually only when needed. |
+| `prevent-baby-spawns` | Optional. `true` forces spawned ageable mobs into their adult form, preventing baby variants such as baby piglins or baby zombies from spawning from that pool. |
 
 ## Vanilla Mob Drops
 
@@ -106,6 +107,29 @@ mob-pools:
 ```
 
 Use this only for mobs that need it. It is supported in normal spawner files and in `boss.yml` mob pools.
+
+## Prevent Baby Spawns
+
+To stop a pool from producing baby variants, add:
+
+```yaml
+prevent-baby-spawns: true
+```
+
+Example:
+
+```yaml
+mob-pools:
+  - type: VANILLA
+    mob-id: PIGLIN
+    count: 3
+    chance: 100.0
+    drop-vanilla-loot: false
+    prevent-zombification: true
+    prevent-baby-spawns: true
+```
+
+This forces supported spawned mobs into adult form. It is useful for piglins, zombies, zombified piglins, hoglins, and other ageable mobs where baby variants should not appear in dungeon combat.
 
 ## Vanilla Mob Equipment
 

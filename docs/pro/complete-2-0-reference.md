@@ -458,6 +458,21 @@ mob-pools:
     prevent-zombification: true
 ```
 
+To stop baby variants from spawning from a pool, manually add `prevent-baby-spawns: true`:
+
+```yaml
+mob-pools:
+  - type: VANILLA
+    mob-id: PIGLIN
+    count: 3
+    chance: 100.0
+    drop-vanilla-loot: false
+    prevent-zombification: true
+    prevent-baby-spawns: true
+```
+
+This forces supported ageable mobs into adult form, such as piglins, zombies, zombified piglins, and hoglins.
+
 Pro vanilla mob equipment:
 
 ```yaml
