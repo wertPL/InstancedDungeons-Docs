@@ -1,4 +1,7 @@
 (function () {
+  var tocScrollBound = false;
+  var navigationToken = 0;
+
   function currentPath() {
     return window.location.pathname.replace(/\/+$/, "/");
   }
@@ -147,16 +150,11 @@
     switcher.dataset.active = links.inPro ? "pro" : "free";
     switcher.setAttribute("aria-label", "Documentation version");
     switcher.innerHTML = [
+      '<span class="version-switch__icon" aria-hidden="true">&#9876;</span>',
       '<span class="version-switch__thumb" aria-hidden="true"></span>',
       '<a class="version-switch__link' + (!links.inPro ? " is-active" : "") + '" data-version="free" href="' + links.free + '">Free</a>',
       '<a class="version-switch__link' + (links.inPro ? " is-active" : "") + '" data-version="pro" href="' + links.pro + '">Pro</a>'
     ].join("");
-
-    switcher.querySelectorAll(".version-switch__link").forEach(function (link) {
-      link.addEventListener("click", function (event) {
-        handleVersionSwitch(event, link, switcher);
-      });
-    });
 
     var title = header.querySelector(".md-header__title");
     if (title) {
@@ -166,7 +164,121 @@
     }
   }
 
-  function replaceMainContent(html, href) {
+  function mountSupportRail() {
+    document.querySelectorAll(".support-rail").forEach(function (rail) {
+      rail.remove();
+    });
+
+    var links = versionLinks();
+    var items = [];
+
+    if (!links.inPro) {
+      items.push({
+        href: "https://modrinth.com/plugin/instanced-dungeon",
+        label: "Download",
+        value: "Modrinth",
+        title: "Download on Modrinth"
+      });
+      items.push({
+        href: "https://www.spigotmc.org/resources/instanced-dungeon.132724/",
+        label: "Plugin Page",
+        value: "SpigotMC",
+        title: "View on SpigotMC"
+      });
+    }
+
+    items.push({
+      href: "https://discord.com/invite/sD4HvQh8P4",
+      label: "Discord",
+      value: "Join Server",
+      title: "Join the Discord"
+    });
+    items.push({
+      href: "https://buymeacoffee.com/we_rt",
+      label: "Support",
+      value: "Buy Me a Coffee",
+      title: "Support the project"
+    });
+
+    var rail = document.createElement("aside");
+    rail.className = "support-rail";
+    rail.innerHTML = items.map(function (item) {
+      return [
+        '<a href="' + item.href + '" target="_blank" rel="noopener" title="' + item.title + '">',
+        '  <span class="support-rail__label">' + item.label + '</span>',
+        '  <span class="support-rail__value">' + item.value + '</span>',
+        '</a>'
+      ].join("");
+    }).join("");
+    document.body.appendChild(rail);
+  }
+
+  function syncTocActive() {
+    var tocLinks = Array.prototype.slice.call(document.querySelectorAll(".md-nav--secondary .md-nav__link")).filter(function (link) {
+      var url = new URL(link.href, window.location.href);
+      return url.hash && url.pathname === window.location.pathname;
+    });
+    if (!tocLinks.length) {
+      return;
+    }
+
+    var activeLink = tocLinks[0];
+    tocLinks.forEach(function (link) {
+      var id = decodeURIComponent(new URL(link.href, window.location.href).hash.slice(1));
+      var target = document.getElementById(id);
+      if (target && target.getBoundingClientRect().top <= 120) {
+        activeLink = link;
+      }
+    });
+
+    tocLinks.forEach(function (link) {
+      link.classList.toggle("md-nav__link--active", link === activeLink);
+    });
+  }
+
+  function bindTocScroll() {
+    if (tocScrollBound) {
+      return;
+    }
+    tocScrollBound = true;
+    window.addEventListener("scroll", function () {
+      window.requestAnimationFrame(syncTocActive);
+    }, { passive: true });
+  }
+
+  function markClickedLink(link) {
+    var nav = link.closest(".md-nav");
+    if (!nav) {
+      return;
+    }
+    nav.querySelectorAll(".md-nav__link--active").forEach(function (active) {
+      active.classList.remove("md-nav__link--active");
+    });
+    link.classList.add("md-nav__link--active");
+  }
+
+  function shouldHandleLink(link) {
+    if (!link || !link.href || link.target || link.hasAttribute("download")) {
+      return false;
+    }
+
+    var url = new URL(link.href, window.location.href);
+    if (url.origin !== window.location.origin) {
+      return false;
+    }
+
+    if (url.pathname === window.location.pathname && url.search === window.location.search && url.hash) {
+      return false;
+    }
+
+    return !!link.closest(".version-switch, .md-tabs, .md-sidebar, .md-content");
+  }
+
+  function replaceMainContent(html, href, token) {
+    if (token !== navigationToken) {
+      return;
+    }
+
     var parsed = new DOMParser().parseFromString(html, "text/html");
     var nextMain = parsed.querySelector(".md-main");
     var currentMain = document.querySelector(".md-main");
@@ -178,22 +290,15 @@
 
     document.title = parsed.title || document.title;
     currentMain.replaceWith(document.importNode(nextMain, true));
-    window.history.pushState({ versionSwitch: true }, "", href);
+    window.history.pushState({ smoothDocs: true }, "", href);
     window.scrollTo({ top: 0, behavior: "auto" });
     mountEnhancements();
   }
 
-  function handleVersionSwitch(event, link, switcher) {
-    var version = link.getAttribute("data-version");
-    var href = link.href;
-
-    if (!version || !href || href === window.location.href) {
-      return;
-    }
-
-    event.preventDefault();
-    switcher.dataset.active = version;
-    document.documentElement.classList.add("is-version-transitioning");
+  function navigateTo(href) {
+    var token = navigationToken + 1;
+    navigationToken = token;
+    document.documentElement.classList.add("is-page-transitioning");
 
     window.fetch(href, { credentials: "same-origin" })
       .then(function (response) {
@@ -203,7 +308,7 @@
         return response.text();
       })
       .then(function (html) {
-        replaceMainContent(html, href);
+        replaceMainContent(html, href, token);
       })
       .catch(function () {
         window.location.href = href;
@@ -211,13 +316,31 @@
   }
 
   function mountEnhancements() {
-    document.documentElement.classList.remove("is-version-transitioning");
-    document.querySelectorAll(".support-rail").forEach(function (rail) {
-      rail.remove();
-    });
+    document.documentElement.classList.remove("is-page-transitioning");
     mountVersionSwitch();
     updateVersionNavigation();
+    mountSupportRail();
+    syncTocActive();
+    bindTocScroll();
   }
+
+  document.addEventListener("click", function (event) {
+    var link = event.target.closest("a");
+    if (!shouldHandleLink(link)) {
+      return;
+    }
+
+    event.preventDefault();
+    markClickedLink(link);
+
+    var version = link.getAttribute("data-version");
+    var switcher = link.closest(".version-switch");
+    if (version && switcher) {
+      switcher.dataset.active = version;
+    }
+
+    navigateTo(link.href);
+  });
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", mountEnhancements);
@@ -230,6 +353,6 @@
   }
 
   window.addEventListener("popstate", function () {
-    window.location.reload();
+    navigateTo(window.location.href);
   });
 })();

@@ -10,6 +10,11 @@
   --md-typeset-a-color: #77d7ff;
 }
 
+html,
+body {
+  overflow-x: hidden;
+}
+
 .md-header,
 .md-tabs {
   background:
@@ -50,17 +55,19 @@
 }
 
 .md-content {
-  transition: opacity 160ms ease;
+  transition: opacity 180ms ease, transform 180ms ease;
 }
 
-.is-version-transitioning .md-content {
-  opacity: 0.74;
+.is-page-transitioning .md-content {
+  opacity: 0.55;
+  transform: translateY(0.35rem);
 }
 
 .version-switch {
   position: relative;
   display: inline-flex;
   align-items: center;
+  gap: 0;
   flex-shrink: 0;
   margin: 0 0.55rem 0 0.1rem;
   border: 1px solid rgba(119, 215, 255, 0.32);
@@ -70,10 +77,22 @@
   padding: 0.14rem;
 }
 
+.version-switch__icon {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.45rem;
+  height: 1.45rem;
+  color: var(--id-cyan);
+  font-size: 0.9rem;
+}
+
 .version-switch__thumb {
   position: absolute;
-  inset: 0.14rem auto 0.14rem 0.14rem;
-  width: calc((100% - 0.28rem) / 2);
+  inset: 0.14rem auto 0.14rem calc(0.14rem + 1.45rem);
+  width: 3.1rem;
   border-radius: 6px;
   background: linear-gradient(135deg, #f3f0ff, var(--id-cyan));
   box-shadow: 0 5px 18px rgba(119, 215, 255, 0.2);
@@ -82,13 +101,14 @@
 }
 
 .version-switch[data-active="pro"] .version-switch__thumb {
-  transform: translateX(100%);
+  transform: translateX(3.1rem);
 }
 
 .version-switch__link {
   position: relative;
   z-index: 1;
-  min-width: 3.1rem;
+  box-sizing: border-box;
+  width: 3.1rem;
   border-radius: 6px;
   color: rgba(255, 255, 255, 0.78);
   font-size: 0.66rem;
@@ -135,17 +155,14 @@
 
 .hero {
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   display: block;
-  margin: 1.15rem 0 2rem;
-  border: 1px solid rgba(173, 159, 255, 0.16);
-  border-radius: 8px;
-  background:
-    radial-gradient(circle at 74% 18%, rgba(110, 84, 255, 0.5), transparent 22rem),
-    radial-gradient(circle at 20% 25%, rgba(56, 122, 178, 0.22), transparent 18rem),
-    linear-gradient(180deg, #101127 0%, #090817 68%, #080711 100%);
-  box-shadow: 0 24px 72px rgba(0, 0, 0, 0.28);
-  padding: clamp(4.5rem, 9vw, 8.6rem) clamp(1.2rem, 5vw, 5.5rem);
+  margin: 1.5rem 0 2.6rem;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  padding: clamp(2.4rem, 7vw, 5.2rem) 0 clamp(1.4rem, 4vw, 2.4rem);
   text-align: center;
 }
 
@@ -153,7 +170,7 @@
   max-width: 58rem;
   margin: 0 auto;
   color: #f7f5ff;
-  font-size: clamp(2.85rem, 5.6vw, 4.9rem);
+  font-size: clamp(2.8rem, 5vw, 4.25rem);
   font-weight: 900;
   line-height: 0.98;
   letter-spacing: 0;
@@ -200,6 +217,12 @@
 
 .md-nav__item .md-nav__link--active {
   background: rgba(119, 215, 255, 0.06);
+}
+
+.md-nav--secondary .md-nav__link--active,
+.md-nav--secondary .md-nav__link:is(:focus, :hover) {
+  color: var(--id-cyan) !important;
+  background: rgba(119, 215, 255, 0.08);
 }
 
 .hero p strong {
@@ -295,6 +318,52 @@
   color: var(--id-night);
 }
 
+.support-rail {
+  position: fixed;
+  right: 1rem;
+  top: 42%;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  width: 12rem;
+}
+
+.support-rail a {
+  display: block;
+  border: 1px solid rgba(119, 215, 255, 0.3);
+  border-radius: 8px;
+  background: rgba(12, 10, 34, 0.88);
+  color: #fff;
+  padding: 0.58rem 0.7rem;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.28);
+  text-decoration: none;
+  backdrop-filter: blur(8px);
+  transition: border-color 150ms ease, background-color 150ms ease, transform 150ms ease;
+}
+
+.support-rail a:hover {
+  border-color: var(--id-cyan);
+  background: rgba(35, 31, 84, 0.96);
+  transform: translateY(-1px);
+}
+
+.support-rail__label {
+  display: block;
+  color: var(--id-cyan);
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.support-rail__value {
+  display: block;
+  overflow-wrap: anywhere;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
 @media (max-width: 900px) {
   .hero {
     margin-top: 0.7rem;
@@ -306,6 +375,11 @@
     grid-template-columns: 1fr;
   }
 
+  .support-rail {
+    position: static;
+    width: auto;
+    margin: 1rem;
+  }
 }
 
 @media (max-width: 520px) {
@@ -314,7 +388,7 @@
   }
 
   .hero h1 {
-    font-size: clamp(2.35rem, 13vw, 3.35rem);
+    font-size: clamp(1.85rem, 8.5vw, 2.25rem);
   }
 
   .version-switch {
