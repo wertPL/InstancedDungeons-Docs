@@ -426,6 +426,7 @@ mob-pools:
     mob-id: ZOMBIE
     count: 5
     chance: 100.0
+    drop-vanilla-loot: false
   - type: MYTHIC
     mob-id: SkeletonKing
     count: 1
@@ -442,6 +443,20 @@ Trigger modes:
 New generated spawners default to `ON_PLAYER_NEAR` with `trigger-distance: 20`. `trigger-distance` and `trigger-delay` are generated in new spawners even when unused. If the selected trigger does not need them, they do nothing.
 
 Mob pools can mix vanilla and MythicMobs entries in one spawner.
+
+`drop-vanilla-loot: false` removes normal drops from spawned vanilla mobs, such as bones, arrows, rotten flesh, and evoker totems. If the same pool has configured equipment, armor and tool drop chances from the `equipment` section still work.
+
+To keep mobs such as piglins or hoglins from transforming into zombified variants outside their native dimension, manually add `prevent-zombification: true` to that mob pool:
+
+```yaml
+mob-pools:
+  - type: VANILLA
+    mob-id: PIGLIN
+    count: 1
+    chance: 100.0
+    drop-vanilla-loot: false
+    prevent-zombification: true
+```
 
 Pro vanilla mob equipment:
 

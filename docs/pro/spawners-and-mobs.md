@@ -30,6 +30,7 @@ mob-pools:
     mob-id: ZOMBIE
     count: 5
     chance: 100.0
+    drop-vanilla-loot: false
   - type: MYTHIC
     mob-id: SkeletonKing
     count: 1
@@ -69,6 +70,42 @@ mob-pools:
 | `mob-id` | Bukkit entity type for vanilla mobs, MythicMobs mob ID for Mythic mobs. |
 | `count` | How many mobs this pool spawns when selected. |
 | `chance` | Percent chance from `0.0` to `100.0`. |
+| `drop-vanilla-loot` | Optional. `false` removes normal mob loot such as bones, arrows, rotten flesh, or totems. Generated spawners include this as `false`. |
+| `prevent-zombification` | Optional. `true` cancels vanilla transformation for spawned mobs such as piglins and hoglins in normal worlds. Add this manually only when needed. |
+
+## Vanilla Mob Drops
+
+Generated spawners include:
+
+```yaml
+drop-vanilla-loot: false
+```
+
+When this is `false`, vanilla mob loot is removed from mobs spawned by that pool. For example:
+
+- skeletons do not drop bones or arrows,
+- zombies do not drop rotten flesh,
+- evokers do not drop totems or emeralds.
+
+This does not block configured equipment drop chances. If the pool has an `equipment` section, the configured armor, weapons, and tools still use their own `drop-chance` values.
+
+Set it to `true` if you want vanilla mob loot to remain enabled for that pool.
+
+## Prevent Zombification
+
+Some mobs transform outside their native dimension, such as piglins or hoglins becoming zombified in the overworld. To keep a spawned mob in its original form, add this manually to the related mob pool:
+
+```yaml
+mob-pools:
+  - type: VANILLA
+    mob-id: PIGLIN
+    count: 1
+    chance: 100.0
+    drop-vanilla-loot: false
+    prevent-zombification: true
+```
+
+Use this only for mobs that need it. It is supported in normal spawner files and in `boss.yml` mob pools.
 
 ## Vanilla Mob Equipment
 
