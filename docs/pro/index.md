@@ -10,7 +10,7 @@
       <span class="hero-badge">Paper 1.21.x / 26.1.x</span>
       <span class="hero-badge">Java 21+ / 25+</span>
       <span class="hero-badge">Multiverse-Core</span>
-      <span class="hero-badge">No Free Caps</span>
+      <span class="hero-badge">Production Scale</span>
       <span class="hero-badge">Advanced Mob Gear</span>
     </div>
     <div class="hero-actions">
@@ -21,15 +21,13 @@
   <img class="hero-logo" src="../assets/plugin-logo-badge-transparent.png" alt="InstancedDungeons logo">
 </section>
 
-## What Pro Adds
+## Pro Overview
 
-This section documents the Pro build. The Free documentation remains available through the Free / Pro switcher in the header.
-
-Pro keeps the same dungeon format and workflow as Free, but removes the runtime caps that limit large production dungeons.
+This section documents the production build for larger dungeon networks, tower routes, advanced rewards, mob encounters, and event automation.
 
 <div class="status-row">
-  <div class="status-box"><strong>Instances</strong><span><code>0</code> means unlimited global active instances</span></div>
-  <div class="status-box"><strong>Stages</strong><span>More stages and more missions per stage</span></div>
+  <div class="status-box"><strong>Instances</strong><span>Configurable global active instance handling</span></div>
+  <div class="status-box"><strong>Stages</strong><span>Large stage chains and mission layouts</span></div>
   <div class="status-box"><strong>Towers</strong><span><code>FIRST -> MIDDLE -> ... -> LAST</code></span></div>
   <div class="status-box"><strong>Items</strong><span>Enchanted vanilla gear in costs and rewards</span></div>
 </div>
@@ -39,11 +37,11 @@ Pro keeps the same dungeon format and workflow as Free, but removes the runtime 
 <div class="grid">
   <div class="doc-card">
     <h3>Large Dungeons</h3>
-    <p>Use more than two stages, more than two missions per stage, and larger mission block sets.</p>
+    <p>Build multi-stage dungeon routes with detailed mission layouts and larger mission block sets.</p>
   </div>
   <div class="doc-card">
     <h3>Stage Keys</h3>
-    <p>Require more than one key per stage and distribute keys across multiple loot chests.</p>
+    <p>Configure stage key requirements and distribute keys across multiple loot chests.</p>
   </div>
   <div class="doc-card">
     <h3>Loot and Rewards</h3>

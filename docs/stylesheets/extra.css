@@ -12,7 +12,7 @@
 
 html,
 body {
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 .md-header,
@@ -225,6 +225,10 @@ body {
   background: rgba(119, 215, 255, 0.08);
 }
 
+.md-typeset :is(h1, h2, h3, h4, h5, h6)[id] {
+  scroll-margin-top: 4.25rem;
+}
+
 .hero p strong {
   color: #fff;
 }
@@ -362,6 +366,37 @@ body {
   overflow-wrap: anywhere;
   font-size: 0.78rem;
   font-weight: 700;
+}
+
+@media (min-width: 76.25em) {
+  .md-sidebar {
+    position: sticky !important;
+    top: 3.65rem;
+    align-self: flex-start;
+    height: calc(100vh - 3.65rem);
+  }
+
+  .md-sidebar__scrollwrap {
+    max-height: calc(100vh - 3.65rem);
+    overflow-y: auto;
+  }
+
+  .md-sidebar--secondary .md-nav--secondary,
+  .md-sidebar--secondary .md-nav--secondary .md-nav__list,
+  .md-sidebar--secondary .md-nav--secondary .md-nav__item,
+  .md-sidebar--secondary .md-nav--secondary .md-nav__link {
+    visibility: visible !important;
+  }
+
+  .md-sidebar--secondary .md-nav--secondary {
+    display: block !important;
+    grid-template-rows: 1fr !important;
+    opacity: 1 !important;
+  }
+
+  .md-sidebar--secondary .md-nav--secondary .md-nav__list {
+    display: block !important;
+  }
 }
 
 @media (max-width: 900px) {

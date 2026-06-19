@@ -214,7 +214,7 @@ instances:
 
 `editor.teleport-to-template-on-edit` controls `/dungeon edit <id>` teleport behavior. When `true`, the admin is teleported to the dungeon spawn if it is configured, otherwise to the template world's spawn. When `false`, editor mode starts without moving the admin.
 
-In the Pro edition, `instances.max-active-global: 0` means unlimited global active instances. Positive values set the exact global active instance limit, including values above 16.
+For this build, `instances.max-active-global: 0` disables the global active-instance ceiling. Positive values set the exact global active instance maximum.
 
 Tower transitions reserve the current global instance slot while the next tower stage is being prepared. This prevents another party from taking the slot during the short handoff between tower stages.
 
@@ -897,7 +897,7 @@ In editor mode, stage holograms are also visible in the template world. Editor p
 
 ## Stage Missions
 
-Pro uses the full stage config at runtime. It does not trim the number of stages, missions, required keys, mission blocks, or item payment costs to Free limits.
+Stage runtime uses the configured stage file data directly, including stage order, mission lists, required key amounts, mission blocks, and item payment costs.
 
 Mission types:
 
@@ -1167,7 +1167,7 @@ Validation output:
 
 | Area | Pro behavior |
 | --- | --- |
-| Global active instances | `0` means unlimited. Positive values are used exactly, including values above 16. |
+| Global active instances | `0` disables the global active-instance ceiling. Positive values set the exact maximum. |
 | Tower length | Supports `FIRST -> LAST` and longer `FIRST -> MIDDLE -> ... -> LAST` chains. |
 | Tower middle stage | Fully supported. |
 | Stages per dungeon | Uses all configured stages. |
@@ -1176,16 +1176,15 @@ Validation output:
 | Button mission blocks | Uses all configured blocks. |
 | Pressure plate mission blocks | Uses all configured blocks. |
 | Required keys | Uses the configured `required` amount. |
-| Sacrifice missions | More than 1 per dungeon is supported. |
-| Money payment missions | More than 1 per dungeon is supported. |
-| Item payment missions | More than 1 per dungeon is supported. |
-| Item payment item types | More than 3 item types are supported. |
-| Free upgrade notices | Removed from the Pro build. |
+| Sacrifice missions | Multiple sacrifice mission entries are supported. |
+| Money payment missions | Multiple money payment mission entries are supported. |
+| Item payment missions | Multiple item payment mission entries are supported. |
+| Item payment item types | Multiple item payment item types are supported. |
 
 ## Compatibility Notes
 
 - Paper 26.1 support is beta.
-- The Pro build does not include the Free update checker.
+- No update checker is included in this build.
 - Public 2.0 documentation follows the current code behavior, not the old 1.x loot chest documentation.
 - Dungeons created before 2.0 should be rebuilt as 2.0 dungeons instead of migrated in place.
 

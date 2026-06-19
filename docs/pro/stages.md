@@ -1,6 +1,6 @@
 # Stages and Gates
 
-This page documents Pro stage behavior. Free keeps the smaller stage and mission caps shown in the Free documentation.
+This page documents stage behavior for Pro dungeon builds.
 
 Stages are optional progression gates inside a dungeon.
 
@@ -101,18 +101,15 @@ Runtime holograms show live mission progress. Locked higher-order holograms show
 !!! note "Clickable missions"
     `SACRIFICE`, `MONEY_PAYMENT`, and `ITEM_PAYMENT` are opened during a run by right-clicking a gate block.
 
-## Pro Limits
+## Stage Runtime Data
 
-The Pro build does not trim stage runtime data to Free limits. The runtime uses the full stage config:
+Stage runtime uses the configured stage file data directly:
 
-- More than 2 stages per dungeon.
-- More than 2 missions per stage.
-- More lever, button, and pressure plate blocks.
-- More than 1 required key per stage.
-- More than 1 sacrifice mission per dungeon.
-- More than 1 money payment mission per dungeon.
-- More than 1 item payment mission per dungeon.
-- More than 3 item payment item types.
+- Stage order and parallel stage groups.
+- Mission lists and mission block sets.
+- Required key amounts.
+- Sacrifice, money payment, and item payment missions.
+- Item payment cost entries.
 
 For `REQUIRED_KEY`, set the required amount directly:
 

@@ -1,6 +1,6 @@
 # Dungeon Config
 
-This page documents the Pro build. Free keeps its own limits in the Free documentation.
+This page documents the Pro dungeon configuration format.
 
 Every dungeon has a main config file:
 
@@ -87,30 +87,25 @@ Tower rule: only `FIRST` tower stages may have entry costs.
 
 ## Global Instance Limit
 
-The Pro build does not apply the Free global cap of 16 active instances.
+Configure how many dungeon instances may run globally.
 
 ```yaml
 instances:
   max-active-global: 0
 ```
 
-| Value | Pro behavior |
+| Value | Behavior |
 | --- | --- |
-| `0` | Unlimited global active instances. |
-| `1+` | Exact global active instance limit. Values above 16 work normally. |
+| `0` | No global active-instance ceiling. |
+| `1+` | Exact global active instance maximum. |
 
 Per-dungeon `max-instances` still controls the limit for that dungeon template.
 
-## Pro Dungeon Scale
+## Dungeon Scale
 
-Pro supports larger dungeon configs without Free trimming:
+The Pro build reads the configured stage, mission, key, sacrifice, money payment, and item payment data directly from the dungeon files.
 
-- More than 2 stages per dungeon.
-- More than 2 missions per stage.
-- More lever, button, and pressure plate mission blocks.
-- More than 1 required key per stage.
-- More than 1 sacrifice, money payment, and item payment mission per dungeon.
-- More than 3 item payment item types.
+Use this section for production dungeon layouts with multiple stages, richer mission groups, and larger item-payment setups.
 
 ## Protection
 

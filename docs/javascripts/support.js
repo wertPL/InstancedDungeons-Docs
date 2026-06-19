@@ -216,7 +216,8 @@
   function syncTocActive() {
     var tocLinks = Array.prototype.slice.call(document.querySelectorAll(".md-nav--secondary .md-nav__link")).filter(function (link) {
       var url = new URL(link.href, window.location.href);
-      return url.hash && url.pathname === window.location.pathname;
+      var rect = link.getBoundingClientRect();
+      return url.hash && url.pathname === window.location.pathname && rect.width > 0 && rect.height > 0 && window.getComputedStyle(link).visibility !== "collapse";
     });
     if (!tocLinks.length) {
       return;
@@ -257,6 +258,55 @@
     link.classList.add("md-nav__link--active");
   }
 
+  function targetFromHash(hash) {
+    if (!hash || hash === "#") {
+      return null;
+    }
+
+    return document.getElementById(decodeURIComponent(hash.slice(1)));
+  }
+
+  function scrollToHash(href, behavior) {
+    var url = new URL(href, window.location.href);
+    var target = targetFromHash(url.hash);
+    if (target) {
+      target.scrollIntoView({ behavior: behavior || "auto", block: "start" });
+      window.requestAnimationFrame(syncTocActive);
+      return;
+    }
+
+    if (!url.hash) {
+      window.scrollTo({ top: 0, behavior: behavior || "auto" });
+    }
+  }
+
+  function handleHashLink(link, event) {
+    if (!link || !link.href) {
+      return false;
+    }
+
+    var url = new URL(link.href, window.location.href);
+    if (url.origin !== window.location.origin || url.pathname !== window.location.pathname || url.search !== window.location.search || !url.hash) {
+      return false;
+    }
+
+    var target = targetFromHash(url.hash);
+    if (!target) {
+      return false;
+    }
+
+    event.preventDefault();
+    event.stopPropagation();
+    if (event.stopImmediatePropagation) {
+      event.stopImmediatePropagation();
+    }
+
+    markClickedLink(link);
+    window.history.pushState({ smoothDocs: true }, "", url.href);
+    scrollToHash(url.href, "smooth");
+    return true;
+  }
+
   function shouldHandleLink(link) {
     if (!link || !link.href || link.target || link.hasAttribute("download")) {
       return false;
@@ -274,7 +324,7 @@
     return !!link.closest(".version-switch, .md-tabs, .md-sidebar, .md-content");
   }
 
-  function replaceMainContent(html, href, token) {
+  function replaceMainContent(html, href, token, options) {
     if (token !== navigationToken) {
       return;
     }
@@ -290,12 +340,17 @@
 
     document.title = parsed.title || document.title;
     currentMain.replaceWith(document.importNode(nextMain, true));
-    window.history.pushState({ smoothDocs: true }, "", href);
-    window.scrollTo({ top: 0, behavior: "auto" });
+    if (options && options.replace) {
+      window.history.replaceState({ smoothDocs: true }, "", href);
+    } else {
+      window.history.pushState({ smoothDocs: true }, "", href);
+    }
     mountEnhancements();
+    scrollToHash(href, "auto");
+    syncTocActive();
   }
 
-  function navigateTo(href) {
+  function navigateTo(href, options) {
     var token = navigationToken + 1;
     navigationToken = token;
     document.documentElement.classList.add("is-page-transitioning");
@@ -308,7 +363,7 @@
         return response.text();
       })
       .then(function (html) {
-        replaceMainContent(html, href, token);
+        replaceMainContent(html, href, token, options || {});
       })
       .catch(function () {
         window.location.href = href;
@@ -326,11 +381,19 @@
 
   document.addEventListener("click", function (event) {
     var link = event.target.closest("a");
+    if (handleHashLink(link, event)) {
+      return;
+    }
+
     if (!shouldHandleLink(link)) {
       return;
     }
 
     event.preventDefault();
+    event.stopPropagation();
+    if (event.stopImmediatePropagation) {
+      event.stopImmediatePropagation();
+    }
     markClickedLink(link);
 
     var version = link.getAttribute("data-version");
@@ -340,7 +403,7 @@
     }
 
     navigateTo(link.href);
-  });
+  }, true);
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", mountEnhancements);
@@ -353,6 +416,6 @@
   }
 
   window.addEventListener("popstate", function () {
-    navigateTo(window.location.href);
+    navigateTo(window.location.href, { replace: true });
   });
 })();
