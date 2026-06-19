@@ -8,6 +8,8 @@ theme:
   favicon: assets/header-logo.png
   language: en
   features:
+    - navigation.instant
+    - navigation.instant.progress
     - navigation.tabs
     - navigation.sections
     - navigation.top
@@ -18,14 +20,14 @@ theme:
     - content.tabs.link
   palette:
     - scheme: slate
-      primary: deep orange
-      accent: amber
+      primary: indigo
+      accent: cyan
       toggle:
         icon: material/weather-sunny
         name: Switch to light mode
     - scheme: default
-      primary: deep orange
-      accent: amber
+      primary: indigo
+      accent: cyan
       toggle:
         icon: material/weather-night
         name: Switch to dark mode

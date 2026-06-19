@@ -144,12 +144,19 @@
     var links = versionLinks();
     var switcher = document.createElement("nav");
     switcher.className = "version-switch";
+    switcher.dataset.active = links.inPro ? "pro" : "free";
     switcher.setAttribute("aria-label", "Documentation version");
     switcher.innerHTML = [
-      '<span class="version-switch__icon" aria-hidden="true">&#9876;</span>',
-      '<a class="version-switch__link' + (!links.inPro ? " is-active" : "") + '" href="' + links.free + '">Free</a>',
-      '<a class="version-switch__link' + (links.inPro ? " is-active" : "") + '" href="' + links.pro + '">Pro</a>'
+      '<span class="version-switch__thumb" aria-hidden="true"></span>',
+      '<a class="version-switch__link' + (!links.inPro ? " is-active" : "") + '" data-version="free" href="' + links.free + '">Free</a>',
+      '<a class="version-switch__link' + (links.inPro ? " is-active" : "") + '" data-version="pro" href="' + links.pro + '">Pro</a>'
     ].join("");
+
+    switcher.querySelectorAll(".version-switch__link").forEach(function (link) {
+      link.addEventListener("click", function (event) {
+        handleVersionSwitch(event, link, switcher);
+      });
+    });
 
     var title = header.querySelector(".md-header__title");
     if (title) {
@@ -159,38 +166,57 @@
     }
   }
 
-  function mountSupportRail() {
-    if (document.querySelector(".support-rail")) {
+  function replaceMainContent(html, href) {
+    var parsed = new DOMParser().parseFromString(html, "text/html");
+    var nextMain = parsed.querySelector(".md-main");
+    var currentMain = document.querySelector(".md-main");
+
+    if (!nextMain || !currentMain) {
+      window.location.href = href;
       return;
     }
 
-    var rail = document.createElement("aside");
-    rail.className = "support-rail";
-    rail.innerHTML = [
-      '<a href="https://modrinth.com/plugin/instanced-dungeon" target="_blank" rel="noopener" title="Download on Modrinth">',
-      '  <span class="support-rail__label">Download</span>',
-      '  <span class="support-rail__value">Modrinth</span>',
-      '</a>',
-      '<a href="https://www.spigotmc.org/resources/instanced-dungeon.132724/" target="_blank" rel="noopener" title="View on SpigotMC">',
-      '  <span class="support-rail__label">Plugin Page</span>',
-      '  <span class="support-rail__value">SpigotMC</span>',
-      '</a>',
-      '<a href="https://discord.com/invite/sD4HvQh8P4" target="_blank" rel="noopener" title="Join the Discord">',
-      '  <span class="support-rail__label">Discord</span>',
-      '  <span class="support-rail__value">Join Server</span>',
-      '</a>',
-      '<a href="https://buymeacoffee.com/we_rt" target="_blank" rel="noopener" title="Support the project">',
-      '  <span class="support-rail__label">Support</span>',
-      '  <span class="support-rail__value">Buy Me a Coffee</span>',
-      '</a>'
-    ].join("");
-    document.body.appendChild(rail);
+    document.title = parsed.title || document.title;
+    currentMain.replaceWith(document.importNode(nextMain, true));
+    window.history.pushState({ versionSwitch: true }, "", href);
+    window.scrollTo({ top: 0, behavior: "auto" });
+    mountEnhancements();
+  }
+
+  function handleVersionSwitch(event, link, switcher) {
+    var version = link.getAttribute("data-version");
+    var href = link.href;
+
+    if (!version || !href || href === window.location.href) {
+      return;
+    }
+
+    event.preventDefault();
+    switcher.dataset.active = version;
+    document.documentElement.classList.add("is-version-transitioning");
+
+    window.fetch(href, { credentials: "same-origin" })
+      .then(function (response) {
+        if (!response.ok) {
+          throw new Error("Unable to load documentation page.");
+        }
+        return response.text();
+      })
+      .then(function (html) {
+        replaceMainContent(html, href);
+      })
+      .catch(function () {
+        window.location.href = href;
+      });
   }
 
   function mountEnhancements() {
+    document.documentElement.classList.remove("is-version-transitioning");
+    document.querySelectorAll(".support-rail").forEach(function (rail) {
+      rail.remove();
+    });
     mountVersionSwitch();
     updateVersionNavigation();
-    mountSupportRail();
   }
 
   if (document.readyState === "loading") {
@@ -202,4 +228,8 @@
   if (window.document$ && document$.subscribe) {
     document$.subscribe(mountEnhancements);
   }
+
+  window.addEventListener("popstate", function () {
+    window.location.reload();
+  });
 })();
