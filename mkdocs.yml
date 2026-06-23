@@ -65,6 +65,7 @@ nav:
       - Towers: towers.md
       - Complete 2.0 Reference: complete-2-0-reference.md
   - Systems:
+      - Spawners and Mobs: spawners-and-mobs.md
       - Stages and Gates: stages.md
       - Loot and Rewards: loot-and-rewards.md
       - Event Commands: event-commands.md
