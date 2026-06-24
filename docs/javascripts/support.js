@@ -8,38 +8,16 @@
   }
 
   function docsBase() {
-    var path = currentPath();
-    var proIndex = path.indexOf("/pro/");
-    if (proIndex >= 0) {
-      return path.slice(0, proIndex + 1);
-    }
-
-    var known = [
-      "getting-started/",
-      "examples/",
-      "commands/",
-      "permissions/",
-      "configuration/",
-      "objectives/",
-      "towers/",
-      "complete-2-0-reference/",
-      "stages/",
-      "spawners-and-mobs/",
-      "loot-and-rewards/",
-      "event-commands/",
-      "help/",
-      "troubleshooting/",
-      "changelog/",
-      "legacy-1-0-x/"
-    ];
-
-    for (var i = 0; i < known.length; i += 1) {
-      var suffix = known[i];
-      if (path.endsWith("/" + suffix)) {
-        return path.slice(0, path.length - suffix.length);
+    var scripts = document.getElementsByTagName("script");
+    for (var i = scripts.length - 1; i >= 0; i -= 1) {
+      var src = scripts[i].getAttribute("src");
+      if (!src || src.indexOf("javascripts/support.js") === -1) {
+        continue;
       }
+      var supportUrl = new URL(src, window.location.href);
+      return supportUrl.pathname.replace(/javascripts\/support\.js$/, "");
     }
-    return path;
+    return "/";
   }
 
   function versionLinks() {
@@ -65,6 +43,9 @@
     var freeSlug = slug;
     if (slug === "spawners-and-mobs/") {
       freeSlug = "loot-and-rewards/";
+    }
+    if (slug === "item-ids/enchant-ids/") {
+      freeSlug = "";
     }
 
     return {
