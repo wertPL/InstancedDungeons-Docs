@@ -69,6 +69,9 @@ nav:
       - Stages and Gates: stages.md
       - Loot and Rewards: loot-and-rewards.md
       - Event Commands: event-commands.md
+  - Item ID Reference:
+      - Potions and Arrows: item-ids/potions-and-arrows.md
+      - Enchanted Books: item-ids/enchanted-books.md
   - Help:
       - Help Center: help.md
       - Troubleshooting: troubleshooting.md
@@ -90,6 +93,10 @@ nav:
           - Stages and Gates: pro/stages.md
           - Loot and Rewards: pro/loot-and-rewards.md
           - Event Commands: pro/event-commands.md
+      - Item ID Reference:
+          - Potions and Arrows: pro/item-ids/potions-and-arrows.md
+          - Enchanted Books: pro/item-ids/enchanted-books.md
+          - Enchant IDs: pro/item-ids/enchant-ids.md
       - Help:
           - Help Center: pro/help.md
           - Troubleshooting: pro/troubleshooting.md
