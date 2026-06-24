@@ -66,6 +66,8 @@
         return "configuration/";
       case "Systems":
         return "stages/";
+      case "Item ID Reference":
+        return "item-ids/potions-and-arrows/";
       case "Help":
         return "help/";
       default:
