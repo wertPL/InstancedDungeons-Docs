@@ -37,4 +37,4 @@ ENCHANTED_BOOK_DENSITY_5
 
 The `<ENCHANTMENT>` part uses the same names documented in [Enchant IDs](enchant-ids.md).
 
-When an enchanted book drops with an amount above `1`, the plugin creates separate item stacks instead of one impossible stack.
+When an enchanted book drops with an amount above `1`, the plugin creates separate one-item stacks because enchanted books do not stack.

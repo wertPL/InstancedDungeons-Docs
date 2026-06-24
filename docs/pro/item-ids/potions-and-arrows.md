@@ -88,4 +88,4 @@ WEAVING
 WIND_CHARGED
 ```
 
-When a potion or tipped arrow drops with an amount above `1`, the plugin creates separate item stacks instead of one impossible stack.
+Special potion and arrow drops follow their vanilla stack limits. Potions, splash potions, and lingering potions are split into one-item stacks, while tipped arrows can stack normally up to their item stack limit.

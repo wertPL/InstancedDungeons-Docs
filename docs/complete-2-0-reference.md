@@ -730,7 +730,7 @@ SWIFT_SNEAK
 LUNGE
 ```
 
-When a potion, tipped arrow, or enchanted book drops with an amount above `1`, the plugin creates separate item stacks instead of one impossible stack.
+Special vanilla drops follow their vanilla stack limits. Potions, splash potions, lingering potions, and enchanted books are split into one-item stacks, while tipped arrows can stack normally up to their item stack limit.
 
 Enchanted armor, tools, and weapons are intentionally not stored in the free version. If an admin places an enchanted non-book item into the cost or reward editor, it is saved as the base vanilla material and the admin receives a Pro notice.
 
