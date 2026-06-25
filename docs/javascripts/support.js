@@ -287,17 +287,24 @@
   }
 
   function mountEnhancements() {
+    document.documentElement.classList.remove("is-page-transitioning");
+    document.documentElement.classList.remove("docs-nav-ready");
     mountVersionSwitch();
     updateVersionNavigation();
     mountSupportRail();
     syncTocActive();
     bindTocScroll();
+    document.documentElement.classList.add("docs-nav-ready");
   }
 
   document.addEventListener("click", function (event) {
     var link = event.target.closest("a");
     if (handleHashLink(link, event)) {
       return;
+    }
+    if (link && link.closest(".version-switch, .md-tabs, .md-sidebar, .md-content")) {
+      document.documentElement.classList.add("is-page-transitioning");
+      document.documentElement.classList.remove("docs-nav-ready");
     }
   }, true);
 

@@ -58,6 +58,14 @@ body {
   transition: opacity 180ms ease, transform 180ms ease;
 }
 
+.md-tabs {
+  visibility: hidden;
+}
+
+.docs-nav-ready .md-tabs {
+  visibility: visible;
+}
+
 .is-page-transitioning .md-content {
   opacity: 0.55;
   transform: translateY(0.35rem);
