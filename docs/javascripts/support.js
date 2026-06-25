@@ -1,7 +1,5 @@
 (function () {
   var tocScrollBound = false;
-  var navigationToken = 0;
-  var transitionDelay = 210;
 
   function currentPath() {
     return window.location.pathname.replace(/\/+$/, "/");
@@ -41,9 +39,6 @@
     }
 
     var freeSlug = slug;
-    if (slug === "spawners-and-mobs/") {
-      freeSlug = "loot-and-rewards/";
-    }
     if (slug === "item-ids/enchant-ids/") {
       freeSlug = "";
     }
@@ -291,88 +286,7 @@
     return true;
   }
 
-  function shouldHandleLink(link) {
-    if (!link || !link.href || link.target || link.hasAttribute("download")) {
-      return false;
-    }
-
-    var url = new URL(link.href, window.location.href);
-    if (url.origin !== window.location.origin) {
-      return false;
-    }
-
-    if (url.pathname === window.location.pathname && url.search === window.location.search && url.hash) {
-      return false;
-    }
-
-    return !!link.closest(".version-switch, .md-tabs, .md-sidebar, .md-content");
-  }
-
-  function waitForTransitionPaint(startedAt) {
-    return new Promise(function (resolve) {
-      window.requestAnimationFrame(function () {
-        window.requestAnimationFrame(function () {
-          var remaining = transitionDelay - (Date.now() - startedAt);
-          window.setTimeout(resolve, Math.max(remaining, 0));
-        });
-      });
-    });
-  }
-
-  function replaceMainContent(html, href, token, options) {
-    if (token !== navigationToken) {
-      return;
-    }
-
-    var parsed = new DOMParser().parseFromString(html, "text/html");
-    var nextMain = parsed.querySelector(".md-main");
-    var currentMain = document.querySelector(".md-main");
-
-    if (!nextMain || !currentMain) {
-      window.location.href = href;
-      return;
-    }
-
-    document.title = parsed.title || document.title;
-    currentMain.replaceWith(document.importNode(nextMain, true));
-    if (options && options.replace) {
-      window.history.replaceState({ smoothDocs: true }, "", href);
-    } else {
-      window.history.pushState({ smoothDocs: true }, "", href);
-    }
-    mountEnhancements();
-    scrollToHash(href, "auto");
-    syncTocActive();
-  }
-
-  function navigateTo(href, options) {
-    var token = navigationToken + 1;
-    navigationToken = token;
-    var startedAt = Date.now();
-    document.documentElement.classList.add("is-page-transitioning");
-
-    window.fetch(href, { credentials: "same-origin" })
-      .then(function (response) {
-        if (!response.ok) {
-          throw new Error("Unable to load documentation page.");
-        }
-        return response.text();
-      })
-      .then(function (html) {
-        return waitForTransitionPaint(startedAt).then(function () {
-          return html;
-        });
-      })
-      .then(function (html) {
-        replaceMainContent(html, href, token, options || {});
-      })
-      .catch(function () {
-        window.location.href = href;
-      });
-  }
-
   function mountEnhancements() {
-    document.documentElement.classList.remove("is-page-transitioning");
     mountVersionSwitch();
     updateVersionNavigation();
     mountSupportRail();
@@ -385,28 +299,6 @@
     if (handleHashLink(link, event)) {
       return;
     }
-
-    if (!shouldHandleLink(link)) {
-      return;
-    }
-
-    event.preventDefault();
-    event.stopPropagation();
-    if (event.stopImmediatePropagation) {
-      event.stopImmediatePropagation();
-    }
-    markClickedLink(link);
-
-    var version = link.getAttribute("data-version");
-    var switcher = link.closest(".version-switch");
-    if (version && switcher) {
-      switcher.dataset.active = version;
-      switcher.querySelectorAll(".version-switch__link").forEach(function (versionLink) {
-        versionLink.classList.toggle("is-active", versionLink.getAttribute("data-version") === version);
-      });
-    }
-
-    navigateTo(link.href);
   }, true);
 
   if (document.readyState === "loading") {
@@ -419,7 +311,4 @@
     document$.subscribe(mountEnhancements);
   }
 
-  window.addEventListener("popstate", function () {
-    navigateTo(window.location.href, { replace: true });
-  });
 })();
