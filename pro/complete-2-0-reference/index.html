@@ -1,0 +1,4000 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation for the InstancedDungeons Paper plugin.">
+      
+      
+        <meta name="author" content="we_rt">
+      
+      
+        <link rel="canonical" href="https://wertpl.github.io/InstancedDungeons-Docs/pro/complete-2-0-reference/">
+      
+      
+        <link rel="prev" href="../towers/">
+      
+      
+        <link rel="next" href="../spawners-and-mobs/">
+      
+      
+      <link rel="icon" href="../../assets/header-logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+    
+    
+      
+        <title>Complete 2.0 Reference - InstancedDungeons Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.a40c8224.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#instanceddungeons-20-documentation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="InstancedDungeons Documentation" class="md-header__button md-logo" aria-label="InstancedDungeons Documentation" data-md-component="logo">
+      
+  <img src="../../assets/header-logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            InstancedDungeons Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Complete 2.0 Reference
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../getting-started/" class="md-tabs__link">
+          
+  
+  Start
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../configuration/" class="md-tabs__link">
+          
+  
+  Configuration
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../spawners-and-mobs/" class="md-tabs__link">
+          
+  
+  Systems
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../item-ids/potions-and-arrows/" class="md-tabs__link">
+          
+  
+  Item ID Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../help/" class="md-tabs__link">
+          
+  
+  Help
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  Pro Version
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../legacy-1-0-x/" class="md-tabs__link">
+          
+  
+  Legacy 1.0.x Documentation
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="InstancedDungeons Documentation" class="md-nav__button md-logo" aria-label="InstancedDungeons Documentation" data-md-component="logo">
+      
+  <img src="../../assets/header-logo.png" alt="logo">
+
+    </a>
+    InstancedDungeons Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Start
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Start
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Examples
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../commands/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Commands
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../permissions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Permissions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Configuration
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Configuration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configuration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dungeon Config
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../objectives/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Objectives
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../towers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Towers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../complete-2-0-reference/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Complete 2.0 Reference
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Systems
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Systems
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../spawners-and-mobs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spawners and Mobs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../stages/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Stages and Gates
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../loot-and-rewards/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Loot and Rewards
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../event-commands/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Event Commands
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Item ID Reference
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Item ID Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../item-ids/potions-and-arrows/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Potions and Arrows
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../item-ids/enchanted-books/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enchanted Books
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Help
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Help
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../help/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Help Center
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../troubleshooting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Troubleshooting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../changelog/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Changelog
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Pro Version
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Pro Version
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Start
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            Start
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Examples
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../commands/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Commands
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../permissions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Permissions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7_3" id="__nav_7_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Configuration
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7_3">
+            <span class="md-nav__icon md-icon"></span>
+            Configuration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dungeon Config
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../objectives/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Objectives
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../towers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Towers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Complete 2.0 Reference
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Complete 2.0 Reference
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      Table of Contents
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Concepts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick Start
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Commands
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Permissions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#global-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      Global Config
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dungeon-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dungeon Config
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#boss-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Boss Objectives
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trigger-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Trigger Objectives
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#towers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Towers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spawners" class="md-nav__link">
+    <span class="md-ellipsis">
+      Spawners
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#loot-chests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Loot Chests
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#boss-rewards" class="md-nav__link">
+    <span class="md-ellipsis">
+      Boss Rewards
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trigger-rewards" class="md-nav__link">
+    <span class="md-ellipsis">
+      Trigger Rewards
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entry-costs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Entry Costs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#special-vanilla-item-ids" class="md-nav__link">
+    <span class="md-ellipsis">
+      Special Vanilla Item IDs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parties-and-instances" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parties and Instances
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lives-and-death-behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lives and Death Behavior
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stages-and-gates" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stages and Gates
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stage-missions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stage Missions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#event-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Event Commands
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#messages-and-placeholders" class="md-nav__link">
+    <span class="md-ellipsis">
+      Messages and Placeholders
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pro-version-behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pro Version Behavior
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compatibility-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Compatibility Notes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_4" id="__nav_7_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Systems
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_4">
+            <span class="md-nav__icon md-icon"></span>
+            Systems
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spawners-and-mobs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spawners and Mobs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stages/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Stages and Gates
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../loot-and-rewards/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Loot and Rewards
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../event-commands/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Event Commands
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_5" id="__nav_7_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Item ID Reference
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_5">
+            <span class="md-nav__icon md-icon"></span>
+            Item ID Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../item-ids/potions-and-arrows/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Potions and Arrows
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../item-ids/enchanted-books/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enchanted Books
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../item-ids/enchant-ids/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enchant IDs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_6" id="__nav_7_6_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Help
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_6">
+            <span class="md-nav__icon md-icon"></span>
+            Help
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../help/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Help Center
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../troubleshooting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Troubleshooting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../changelog/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Changelog
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Legacy 1.0.x Documentation
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Legacy 1.0.x Documentation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../legacy-1-0-x/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Legacy 1.0.x Documentation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      Table of Contents
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Concepts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick Start
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Commands
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Permissions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#global-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      Global Config
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dungeon-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dungeon Config
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#boss-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Boss Objectives
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trigger-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Trigger Objectives
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#towers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Towers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spawners" class="md-nav__link">
+    <span class="md-ellipsis">
+      Spawners
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#loot-chests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Loot Chests
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#boss-rewards" class="md-nav__link">
+    <span class="md-ellipsis">
+      Boss Rewards
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trigger-rewards" class="md-nav__link">
+    <span class="md-ellipsis">
+      Trigger Rewards
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entry-costs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Entry Costs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#special-vanilla-item-ids" class="md-nav__link">
+    <span class="md-ellipsis">
+      Special Vanilla Item IDs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parties-and-instances" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parties and Instances
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lives-and-death-behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lives and Death Behavior
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stages-and-gates" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stages and Gates
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stage-missions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stage Missions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#event-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Event Commands
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#messages-and-placeholders" class="md-nav__link">
+    <span class="md-ellipsis">
+      Messages and Placeholders
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pro-version-behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pro Version Behavior
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compatibility-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Compatibility Notes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="instanceddungeons-20-documentation">InstancedDungeons 2.0 Documentation<a class="headerlink" href="#instanceddungeons-20-documentation" title="Permanent link">&para;</a></h1>
+<p>InstancedDungeons is a Paper plugin for creating isolated dungeon runs from template worlds. Each party gets a copied instance world, independent mobs, loot, objectives, stages, timers, protection rules, and cleanup after the run ends.</p>
+<p>Version 2.0 is not backward-compatible with older dungeon configs. New dungeons include <code>v: 2.0</code> at the top of <code>dungeons/&lt;id&gt;/config.yml</code>. Dungeons without this version marker are blocked from opening so older 1.x configs cannot break during a 2.0 server update.</p>
+<h2 id="table-of-contents">Table of Contents<a class="headerlink" href="#table-of-contents" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Requirements</li>
+<li>Installation</li>
+<li>Core Concepts</li>
+<li>Quick Start</li>
+<li>Commands</li>
+<li>Permissions</li>
+<li>Dungeon Config</li>
+<li>Boss Objectives</li>
+<li>Trigger Objectives</li>
+<li>Towers</li>
+<li>Spawners</li>
+<li>Loot Chests</li>
+<li>Boss Rewards</li>
+<li>Entry Costs</li>
+<li>Parties and Instances</li>
+<li>Lives and Death Behavior</li>
+<li>Stages and Gates</li>
+<li>Stage Missions</li>
+<li>Event Commands</li>
+<li>Messages and Placeholders</li>
+<li>Validation</li>
+<li>Pro Version Behavior</li>
+<li>Compatibility Notes</li>
+<li>Troubleshooting</li>
+</ul>
+<h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Minecraft / Paper target</th>
+<th>Java</th>
+<th>Multiverse-Core</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Paper 1.21.x</td>
+<td>Java 21+</td>
+<td>Multiverse-Core 5.5.2+</td>
+</tr>
+<tr>
+<td>Paper 26.1.x</td>
+<td>Java 25+</td>
+<td>Multiverse-Core 5.6.0+</td>
+</tr>
+</tbody>
+</table>
+<p>Optional integrations:</p>
+<ul>
+<li>MythicMobs 5.0+ for custom mobs and bosses.</li>
+<li>MythicMobs item support through <code>MYTHIC_ITEM</code> entries.</li>
+<li>ItemsAdder 3.0+ for custom items.</li>
+<li>Oraxen custom item support.</li>
+<li>Nexo custom item support.</li>
+<li>Vault plus an economy plugin for money entry costs and stage money missions.</li>
+</ul>
+<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Stop the server.</li>
+<li>Install the required Multiverse-Core version.</li>
+<li>Place <code>InstancedDungeons.jar</code> in <code>plugins/</code>.</li>
+<li>Start the server once so configs are generated.</li>
+<li>Configure dungeons in <code>plugins/InstancedDungeons/dungeons/</code>.</li>
+<li>Use <code>/dungeon reload</code> after YAML edits.</li>
+</ol>
+<h2 id="core-concepts">Core Concepts<a class="headerlink" href="#core-concepts" title="Permanent link">&para;</a></h2>
+<p>Template world: the original world that admins build in. It is copied for every run.</p>
+<p>Instance world: the temporary copied world used by one active party.</p>
+<p>Dungeon ID: folder name under <code>dungeons/&lt;id&gt;</code>. This is used by commands, permissions, towers, and event commands.</p>
+<p>Party: players open or join a party before entering. In 2.0, parties stay tracked while the run is active and are closed only after completion, failure, or abandonment cleanup.</p>
+<p>Objective: the thing that completes a dungeon. 2.0 supports <code>BOSS</code> and <code>TRIGGER</code>.</p>
+<p>Stage: an optional progression gate inside a dungeon. A stage can require missions before its gate opens.</p>
+<p>Tower: a chain of dungeons. Pro supports <code>FIRST -&gt; LAST</code> and longer <code>FIRST -&gt; MIDDLE -&gt; ... -&gt; LAST</code> chains.</p>
+<h2 id="quick-start">Quick Start<a class="headerlink" href="#quick-start" title="Permanent link">&para;</a></h2>
+<p>Create a boss dungeon:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>/mv create dragon_template normal
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>/dungeon create dragon_lair dragon_template boss
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>/dungeon edit dragon_lair
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>/dungeon setspawn
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>/dungeon setexit
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>/dungeon setboss
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>/dungeon save
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>/dungeon reload
+</code></pre></div>
+<p>Create a trigger dungeon:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>/dungeon create puzzle_room puzzle_template trigger
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>/dungeon edit puzzle_room
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>/dungeon setspawn
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>/dungeon setexit
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>/dungeon settrigger STONE_BUTTON
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>/dungeon save
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>/dungeon reload
+</code></pre></div>
+<p>Start as a player:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>/dungeon open dragon_lair
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>/dungeon join &lt;code&gt;
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>/dungeon start
+</code></pre></div>
+<h2 id="commands">Commands<a class="headerlink" href="#commands" title="Permanent link">&para;</a></h2>
+<p>Player commands:</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/dungeon help</code></td>
+<td>Shows player and admin help.</td>
+</tr>
+<tr>
+<td><code>/dungeon list</code></td>
+<td>Lists available dungeons. Tower middle/last stage dungeons are hidden.</td>
+</tr>
+<tr>
+<td><code>/dungeon open &lt;id&gt;</code></td>
+<td>Creates a party for a dungeon. Only standalone dungeons and tower <code>FIRST</code> stages are suggested/openable directly.</td>
+</tr>
+<tr>
+<td><code>/dungeon join &lt;code&gt;</code></td>
+<td>Joins an open party.</td>
+</tr>
+<tr>
+<td><code>/dungeon leave</code></td>
+<td>Leaves an open party.</td>
+</tr>
+<tr>
+<td><code>/dungeon start</code></td>
+<td>Starts the party dungeon as the leader.</td>
+</tr>
+<tr>
+<td><code>/dungeon exit</code></td>
+<td>Leaves the current dungeon instance.</td>
+</tr>
+<tr>
+<td><code>/dungeon spectate &lt;leader&gt;</code></td>
+<td>Spectates the active dungeon led by that party leader.</td>
+</tr>
+<tr>
+<td><code>/dungeon spectator exit</code></td>
+<td>Leaves external spectator mode and restores inventory/gamemode.</td>
+</tr>
+</tbody>
+</table>
+<p>Admin commands:</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/dungeon create &lt;id&gt; &lt;template-world&gt; &lt;boss|trigger&gt;</code></td>
+<td>Creates a 2.0 dungeon.</td>
+</tr>
+<tr>
+<td><code>/dungeon edit &lt;id&gt;</code></td>
+<td>Enters editor mode. Template teleport is controlled by <code>editor.teleport-to-template-on-edit</code> in <code>config.yml</code>.</td>
+</tr>
+<tr>
+<td><code>/dungeon save</code></td>
+<td>Exits editor mode.</td>
+</tr>
+<tr>
+<td><code>/dungeon setspawn</code></td>
+<td>Sets the dungeon spawn in editor mode.</td>
+</tr>
+<tr>
+<td><code>/dungeon setexit</code></td>
+<td>Sets the exit location.</td>
+</tr>
+<tr>
+<td><code>/dungeon setboss</code></td>
+<td>Sets the boss spawn for boss-objective dungeons.</td>
+</tr>
+<tr>
+<td><code>/dungeon boss reward edit</code></td>
+<td>Opens the boss reward editor GUI.</td>
+</tr>
+<tr>
+<td><code>/dungeon settrigger &lt;button|pressure_plate&gt;</code></td>
+<td>Gives the trigger block item for trigger-objective dungeons.</td>
+</tr>
+<tr>
+<td><code>/dungeon trigger reward edit</code></td>
+<td>Opens the trigger reward editor GUI.</td>
+</tr>
+<tr>
+<td><code>/dungeon addspawner &lt;id&gt;</code></td>
+<td>Creates a spawner config at the admin location.</td>
+</tr>
+<tr>
+<td><code>/dungeon addlootchest &lt;id&gt;</code></td>
+<td>Creates a loot chest config.</td>
+</tr>
+<tr>
+<td><code>/dungeon lootchest give &lt;id&gt;</code></td>
+<td>Gives a placeable loot chest item.</td>
+</tr>
+<tr>
+<td><code>/dungeon lootchest loot &lt;id&gt; add</code></td>
+<td>Adds the item in your main hand to the loot chest config. Works only in editor mode.</td>
+</tr>
+<tr>
+<td><code>/dungeon addcost</code></td>
+<td>Opens the entry cost editor.</td>
+</tr>
+<tr>
+<td><code>/dungeon validate &lt;id&gt;</code></td>
+<td>Validates one dungeon and prints a summary.</td>
+</tr>
+<tr>
+<td><code>/dungeon validate all</code></td>
+<td>Validates every dungeon.</td>
+</tr>
+<tr>
+<td><code>/dungeon reload</code></td>
+<td>Reloads configs and validation.</td>
+</tr>
+<tr>
+<td><code>/dungeon instances</code></td>
+<td>Shows active parties and instances.</td>
+</tr>
+<tr>
+<td><code>/dg status</code></td>
+<td>Shows supported integration plugins, detected versions, and economy hook status.</td>
+</tr>
+<tr>
+<td><code>/dungeon gui</code></td>
+<td>Reserved for the admin GUI workflow.</td>
+</tr>
+<tr>
+<td><code>/dungeon mythicmob [mobId]</code></td>
+<td>Lists or checks MythicMobs mob IDs.</td>
+</tr>
+<tr>
+<td><code>/dungeon mythicitem [itemId]</code></td>
+<td>Lists or checks MythicMobs item IDs for <code>MYTHIC_ITEM</code> config entries.</td>
+</tr>
+<tr>
+<td><code>/dungeon itemsadder [itemId]</code></td>
+<td>Lists or checks ItemsAdder IDs.</td>
+</tr>
+<tr>
+<td><code>/dungeon oraxen [itemId]</code></td>
+<td>Lists or checks Oraxen IDs.</td>
+</tr>
+<tr>
+<td><code>/dungeon nexo [itemId]</code></td>
+<td>Lists or checks Nexo IDs.</td>
+</tr>
+<tr>
+<td><code>/dungeon delete &lt;id&gt;</code></td>
+<td>Deletes a dungeon after confirmation.</td>
+</tr>
+</tbody>
+</table>
+<p>Stage commands:</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/dungeon stage create &lt;stage_id&gt;</code></td>
+<td>Creates a stage file.</td>
+</tr>
+<tr>
+<td><code>/dungeon stage list</code></td>
+<td>Lists stages in the current editor dungeon with order, gate block count, and mission count.</td>
+</tr>
+<tr>
+<td><code>/dungeon stage &lt;stage_id&gt; order &lt;number&gt;</code></td>
+<td>Moves a stage to another order. Multiple stages may share the same order and run in parallel.</td>
+</tr>
+<tr>
+<td><code>/dungeon stage &lt;stage_id&gt; delete</code></td>
+<td>Deletes a stage after confirmation, including its missions, hologram config, gate blocks, and active gate edit session.</td>
+</tr>
+<tr>
+<td><code>/dungeon stage &lt;stage_id&gt; gate create</code></td>
+<td>Starts gate block creation mode.</td>
+</tr>
+<tr>
+<td><code>/dungeon stage &lt;stage_id&gt; gate edit</code></td>
+<td>Edits existing gate blocks.</td>
+</tr>
+<tr>
+<td><code>/dungeon stage &lt;stage_id&gt; gate delete</code></td>
+<td>Deletes a gate after confirmation.</td>
+</tr>
+<tr>
+<td><code>/dungeon stage &lt;stage_id&gt; gate stick</code></td>
+<td>Gives a gate edit stick during gate create/edit mode. Left-click adds one existing block, right-click removes one selected gate block, and sneak-click affects connected same-material blocks.</td>
+</tr>
+<tr>
+<td><code>/dungeon gate save</code></td>
+<td>Saves the active gate edit session.</td>
+</tr>
+<tr>
+<td><code>/dungeon stage &lt;stage_id&gt; gate hologram create</code></td>
+<td>Adds a stage hologram at your location in the dungeon template world.</td>
+</tr>
+<tr>
+<td><code>/dungeon stage &lt;stage_id&gt; gate hologram delete</code></td>
+<td>Removes the nearest hologram for that stage within 3 blocks.</td>
+</tr>
+<tr>
+<td><code>/dungeon stage &lt;stage_id&gt; mission lever</code></td>
+<td>Gives a mission lever.</td>
+</tr>
+<tr>
+<td><code>/dungeon stage &lt;stage_id&gt; mission button &lt;material&gt;</code></td>
+<td>Gives a mission button.</td>
+</tr>
+<tr>
+<td><code>/dungeon stage &lt;stage_id&gt; mission pressure_plate &lt;material&gt;</code></td>
+<td>Gives a mission pressure plate.</td>
+</tr>
+</tbody>
+</table>
+<p>All new commands should be tab-completed. Loot chest IDs, dungeon IDs, stage IDs, trigger materials, mission materials, and validation targets are completed where the command supports them. <code>/dungeon open</code> completion hides tower middle/last stage dungeon IDs because those stages are entered only through tower progression.</p>
+<h2 id="permissions">Permissions<a class="headerlink" href="#permissions" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Permission</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>instanceddungeons.admin</code></td>
+<td>op</td>
+<td>Admin/editor commands and admin-only warnings.</td>
+</tr>
+<tr>
+<td><code>instanceddungeons.open</code></td>
+<td>true</td>
+<td>Allows <code>/dungeon open</code>.</td>
+</tr>
+<tr>
+<td><code>instanceddungeons.join</code></td>
+<td>true</td>
+<td>Allows <code>/dungeon join</code>.</td>
+</tr>
+<tr>
+<td><code>instanceddungeons.open.&lt;dungeon_id&gt;</code></td>
+<td>true</td>
+<td>Allows opening a specific dungeon.</td>
+</tr>
+<tr>
+<td><code>instanceddungeons.join.&lt;dungeon_id&gt;</code></td>
+<td>true</td>
+<td>Allows joining a specific dungeon.</td>
+</tr>
+<tr>
+<td><code>instanceddungeons.spectate</code></td>
+<td>true</td>
+<td>Allows spectator commands.</td>
+</tr>
+<tr>
+<td><code>instanceddungeons.bypass.cost</code></td>
+<td>op</td>
+<td>Bypasses item and money entry costs.</td>
+</tr>
+<tr>
+<td><code>instanceddungeons.bypass.limit</code></td>
+<td>op</td>
+<td>Bypasses normal active-instance start checks.</td>
+</tr>
+</tbody>
+</table>
+<p>Both global and dungeon-specific open/join permissions must allow the action.</p>
+<h2 id="global-config">Global Config<a class="headerlink" href="#global-config" title="Permanent link">&para;</a></h2>
+<p>Main file:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>plugins/InstancedDungeons/config.yml
+</code></pre></div>
+<p>Useful global options:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nt">debug</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nt">editor</span><span class="p">:</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span><span class="nt">teleport-to-template-on-edit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="nt">instances</span><span class="p">:</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">  </span><span class="nt">max-active-global</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+</code></pre></div>
+<p><code>debug</code> enables additional console logging, including gate block add/remove messages while an admin is building gates.</p>
+<p><code>editor.teleport-to-template-on-edit</code> controls <code>/dungeon edit &lt;id&gt;</code> teleport behavior. When <code>true</code>, the admin is teleported to the dungeon spawn if it is configured, otherwise to the template world's spawn. When <code>false</code>, editor mode starts without moving the admin.</p>
+<p>For this build, <code>instances.max-active-global: 0</code> disables the global active-instance ceiling. Positive values set the exact global active instance maximum.</p>
+<p>Tower transitions reserve the current global instance slot while the next tower stage is being prepared. This prevents another party from taking the slot during the short handoff between tower stages.</p>
+<p>Instance world cleanup:</p>
+<ul>
+<li>Every dungeon run creates a temporary instance world copied from the template world.</li>
+<li>Normal completion, failure, abandon, and shutdown paths unload and delete the temporary world.</li>
+<li>Auto-cleanup also scans for orphaned instance worlds left behind after crashes or failed deletion attempts.</li>
+<li>New instance worlds contain an <code>.instanced-dungeons-instance</code> marker file.</li>
+<li>Legacy orphan worlds are detected by the generated <code>&lt;dungeon_id&gt;_&lt;8 hex chars&gt;</code> naming pattern.</li>
+<li>Loaded worlds with players inside are skipped instead of being force-deleted.</li>
+</ul>
+<h2 id="dungeon-config">Dungeon Config<a class="headerlink" href="#dungeon-config" title="Permanent link">&para;</a></h2>
+<p>Main file:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>plugins/InstancedDungeons/dungeons/&lt;id&gt;/config.yml
+</code></pre></div>
+<p>Important top-level fields:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nt">v</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.0</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nt">dungeon-type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">single</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nt">tower-stage-type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">first</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="nt">next-dungeon</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="nt">completion-objective</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BOSS</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="nt">display-name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;dragon_lair&quot;</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="nt">template-world</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;dragon_template&quot;</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="nt">max-players</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="nt">min-players</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="nt">time-limit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1800</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="nt">max-instances</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="nt">difficulty</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NORMAL</span>
+</code></pre></div>
+<p><code>dungeon-type</code> can be <code>single</code> or <code>tower</code>.</p>
+<p><code>tower-stage-type</code> can be <code>first</code>, <code>middle</code>, or <code>last</code>. Pro supports <code>MIDDLE</code> as a normal tower chain stage.</p>
+<p><code>completion-objective</code> can be <code>BOSS</code> or <code>TRIGGER</code>.</p>
+<p>Protection:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nt">allow-block-break</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nt">allow-block-place</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="nt">allow-fluid-place</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="nt">allow-fluid-take</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="nt">allow-interactions</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="nt">allow-party-pvp</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="nt">tnt-mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VANILLA</span>
+</code></pre></div>
+<p><code>tnt-mode</code> options:</p>
+<ul>
+<li><code>VANILLA</code>: normal TNT behavior.</li>
+<li><code>ONLY_DMG</code>: TNT deals damage but does not break blocks.</li>
+<li><code>DISABLED</code>: TNT is blocked.</li>
+</ul>
+<p>Timer:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nt">timer-bossbar</span><span class="p">:</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">  </span><span class="nt">color</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GREEN</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">  </span><span class="nt">style</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SOLID</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">  </span><span class="nt">show-time-left</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="nt">timer-alerts</span><span class="p">:</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="w">  </span><span class="nt">10-minutes</span><span class="p">:</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="w">    </span><span class="nt">sound</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BLOCK_NOTE_BLOCK_PLING</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="w">  </span><span class="nt">5-minutes</span><span class="p">:</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="w">    </span><span class="nt">sound</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BLOCK_NOTE_BLOCK_PLING</span>
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="w">  </span><span class="nt">1-minute</span><span class="p">:</span>
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="w">    </span><span class="nt">sound</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ENTITY_EXPERIENCE_ORB_PICKUP</span>
+</code></pre></div>
+<p>Validation warnings:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nt">validation-warnings</span><span class="p">:</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">  </span><span class="nt">chat</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<p>Console validation warnings are always logged. Chat validation warnings are sent only to admins and can be disabled per dungeon.</p>
+<h2 id="boss-objectives">Boss Objectives<a class="headerlink" href="#boss-objectives" title="Permanent link">&para;</a></h2>
+<p>Boss dungeons are created with:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>/dungeon create &lt;id&gt; &lt;template-world&gt; boss
+</code></pre></div>
+<p>They generate a boss objective flow. The boss is configured with <code>/dungeon setboss</code>, which creates or updates the boss spawner file.</p>
+<p>Boss completion behavior:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nt">boss</span><span class="p">:</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">  </span><span class="nt">must-die-to-complete</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">  </span><span class="nt">countdown-after-death</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span>
+</code></pre></div>
+<p><code>must-die-to-complete</code> defaults to <code>true</code> in new configs.</p>
+<p>Boss reward editing:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>/dungeon boss reward edit
+</code></pre></div>
+<p>The GUI stores every slot as an independent reward entry. For example, 4 diamonds in one slot and 2 diamonds in another slot become two separate rewards and can have different chances in config.</p>
+<h2 id="trigger-objectives">Trigger Objectives<a class="headerlink" href="#trigger-objectives" title="Permanent link">&para;</a></h2>
+<p>Trigger dungeons are created with:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>/dungeon create &lt;id&gt; &lt;template-world&gt; trigger
+</code></pre></div>
+<p>Trigger dungeons do not generate a boss file. Instead, they use:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>dungeons/&lt;id&gt;/trigger.yml
+</code></pre></div>
+<p>The trigger is placed with:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>/dungeon settrigger &lt;material&gt;
+</code></pre></div>
+<p>Supported trigger materials are Minecraft buttons and pressure plates. The trigger ignores dungeon interaction blocking so it can complete the run even when normal interactions are disabled.</p>
+<p>Only one trigger can exist per dungeon. Placing a new trigger replaces the previous one. After activation, the trigger is completed and further clicks do not run completion again.</p>
+<p>Trigger reward editing:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>/dungeon trigger reward edit
+</code></pre></div>
+<p>Trigger rewards are saved in <code>trigger.yml</code> under <code>rewards</code>.</p>
+<h2 id="towers">Towers<a class="headerlink" href="#towers" title="Permanent link">&para;</a></h2>
+<p>Tower dungeons chain multiple dungeon templates.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="nt">dungeon-type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tower</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="nt">tower-stage-type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">first</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="nt">next-dungeon</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;tower_final&quot;</span>
+</code></pre></div>
+<p>Stage types:</p>
+<ul>
+<li><code>first</code>: entry point. Can be opened by command and may have entry costs.</li>
+<li><code>middle</code>: normal Pro chain stage between the first and last dungeon.</li>
+<li><code>last</code>: final tower dungeon. Completing it finishes the tower.</li>
+</ul>
+<p>Pro tower chains:</p>
+<ul>
+<li><code>FIRST -&gt; LAST</code></li>
+<li><code>FIRST -&gt; MIDDLE -&gt; LAST</code></li>
+<li><code>FIRST -&gt; MIDDLE -&gt; MIDDLE -&gt; ... -&gt; LAST</code></li>
+<li><code>FIRST</code> and every <code>MIDDLE</code> stage must define <code>next-dungeon</code>.</li>
+<li><code>LAST</code> completes the tower and ignores <code>next-dungeon</code>.</li>
+</ul>
+<p>Tower behavior:</p>
+<ul>
+<li>Completing <code>FIRST</code> teleports the same party to <code>next-dungeon</code>.</li>
+<li><code>FIRST</code> and <code>MIDDLE</code> use tower transition messages, not normal dungeon completion messages.</li>
+<li>Global tower completion/failure announcements use the <code>announce-*</code> settings from the tower entry dungeon (<code>FIRST</code>) only. <code>announce-complete</code> is broadcast only after the final tower stage completes, and the announcement uses the final stage dungeon name.</li>
+<li>Dungeon players who became spectators through death or sacrifice stay spectators when the party moves to the next tower stage.</li>
+<li>Entry costs are allowed only on <code>FIRST</code>.</li>
+<li>Failure in any tower stage fails the whole tower and teleports players to that stage's exit.</li>
+</ul>
+<h2 id="spawners">Spawners<a class="headerlink" href="#spawners" title="Permanent link">&para;</a></h2>
+<p>Spawner files live in:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>dungeons/&lt;id&gt;/spawners/&lt;spawner_id&gt;.yml
+</code></pre></div>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="nt">location</span><span class="p">:</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="w">  </span><span class="nt">world</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dragon_template</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="w">  </span><span class="nt">x</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100.5</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="w">  </span><span class="nt">y</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">64.0</span>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="w">  </span><span class="nt">z</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">200.5</span>
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="nt">trigger</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ON_PLAYER_NEAR</span>
+<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="nt">trigger-distance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span>
+<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a><span class="nt">trigger-delay</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
+<a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a><span class="nt">lifetime-behavior</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PERSIST</span>
+<a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a>
+<a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a><span class="nt">mob-pools</span><span class="p">:</span>
+<a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VANILLA</span>
+<a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a><span class="w">    </span><span class="nt">mob-id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ZOMBIE</span>
+<a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a><span class="w">    </span><span class="nt">count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
+<a id="__codelineno-19-16" name="__codelineno-19-16" href="#__codelineno-19-16"></a><span class="w">    </span><span class="nt">chance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100.0</span>
+<a id="__codelineno-19-17" name="__codelineno-19-17" href="#__codelineno-19-17"></a><span class="w">    </span><span class="nt">drop-vanilla-loot</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-19-18" name="__codelineno-19-18" href="#__codelineno-19-18"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MYTHIC</span>
+<a id="__codelineno-19-19" name="__codelineno-19-19" href="#__codelineno-19-19"></a><span class="w">    </span><span class="nt">mob-id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SkeletonKing</span>
+<a id="__codelineno-19-20" name="__codelineno-19-20" href="#__codelineno-19-20"></a><span class="w">    </span><span class="nt">count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<a id="__codelineno-19-21" name="__codelineno-19-21" href="#__codelineno-19-21"></a><span class="w">    </span><span class="nt">chance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">35.0</span>
+</code></pre></div>
+<p>Trigger modes:</p>
+<ul>
+<li><code>ON_START</code>: spawn when the instance starts. This mode is not recommended for regular spawners because it can spawn every configured mob immediately at dungeon startup; prefer <code>ON_PLAYER_NEAR</code> for normal gameplay.</li>
+<li><code>ON_PLAYER_NEAR</code>: spawn when a player enters <code>trigger-distance</code>.</li>
+<li><code>ON_DELAY</code>: spawn after <code>trigger-delay</code>.</li>
+<li><code>ON_PLAYER_NEAR_ON_DELAY</code>: start <code>trigger-delay</code> after a player enters <code>trigger-distance</code>.</li>
+</ul>
+<p>New generated spawners default to <code>ON_PLAYER_NEAR</code> with <code>trigger-distance: 20</code>. <code>trigger-distance</code> and <code>trigger-delay</code> are generated in new spawners even when unused. If the selected trigger does not need them, they do nothing.</p>
+<p>Mob pools can mix vanilla and MythicMobs entries in one spawner.</p>
+<p><code>drop-vanilla-loot: false</code> removes normal drops from spawned vanilla mobs, such as bones, arrows, rotten flesh, and evoker totems. If the same pool has configured equipment, armor and tool drop chances from the <code>equipment</code> section still work.</p>
+<p>To keep mobs such as piglins or hoglins from transforming into zombified variants outside their native dimension, manually add <code>prevent-zombification: true</code> to that mob pool:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="nt">mob-pools</span><span class="p">:</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VANILLA</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="w">    </span><span class="nt">mob-id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PIGLIN</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="w">    </span><span class="nt">count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="w">    </span><span class="nt">chance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100.0</span>
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="w">    </span><span class="nt">drop-vanilla-loot</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="w">    </span><span class="nt">prevent-zombification</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<p>To stop baby variants from spawning from a pool, manually add <code>prevent-baby-spawns: true</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="nt">mob-pools</span><span class="p">:</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VANILLA</span>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="w">    </span><span class="nt">mob-id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PIGLIN</span>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="w">    </span><span class="nt">count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="w">    </span><span class="nt">chance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100.0</span>
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="w">    </span><span class="nt">drop-vanilla-loot</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a><span class="w">    </span><span class="nt">prevent-zombification</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a><span class="w">    </span><span class="nt">prevent-baby-spawns</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<p>This forces supported ageable mobs into adult form, such as piglins, zombies, zombified piglins, and hoglins.</p>
+<p>Pro vanilla mob equipment:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="nt">mob-pools</span><span class="p">:</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VANILLA</span>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="w">    </span><span class="nt">mob-id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SKELETON</span>
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="w">    </span><span class="nt">count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="w">    </span><span class="nt">chance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100.0</span>
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a><span class="w">    </span><span class="nt">equipment</span><span class="p">:</span>
+<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="w">      </span><span class="nt">helmet</span><span class="p">:</span>
+<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a><span class="w">        </span><span class="nt">item</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IRON_HELMET</span>
+<a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a><span class="w">        </span><span class="nt">drop-chance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.0</span>
+<a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a><span class="w">      </span><span class="nt">chestplate</span><span class="p">:</span>
+<a id="__codelineno-22-11" name="__codelineno-22-11" href="#__codelineno-22-11"></a><span class="w">        </span><span class="nt">item</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IRON_CHESTPLATE</span>
+<a id="__codelineno-22-12" name="__codelineno-22-12" href="#__codelineno-22-12"></a><span class="w">        </span><span class="nt">drop-chance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.0</span>
+<a id="__codelineno-22-13" name="__codelineno-22-13" href="#__codelineno-22-13"></a><span class="w">      </span><span class="nt">leggings</span><span class="p">:</span>
+<a id="__codelineno-22-14" name="__codelineno-22-14" href="#__codelineno-22-14"></a><span class="w">        </span><span class="nt">item</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IRON_LEGGINGS</span>
+<a id="__codelineno-22-15" name="__codelineno-22-15" href="#__codelineno-22-15"></a><span class="w">        </span><span class="nt">drop-chance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.0</span>
+<a id="__codelineno-22-16" name="__codelineno-22-16" href="#__codelineno-22-16"></a><span class="w">      </span><span class="nt">boots</span><span class="p">:</span>
+<a id="__codelineno-22-17" name="__codelineno-22-17" href="#__codelineno-22-17"></a><span class="w">        </span><span class="nt">item</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IRON_BOOTS</span>
+<a id="__codelineno-22-18" name="__codelineno-22-18" href="#__codelineno-22-18"></a><span class="w">        </span><span class="nt">drop-chance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.0</span>
+<a id="__codelineno-22-19" name="__codelineno-22-19" href="#__codelineno-22-19"></a><span class="w">      </span><span class="nt">main-hand</span><span class="p">:</span>
+<a id="__codelineno-22-20" name="__codelineno-22-20" href="#__codelineno-22-20"></a><span class="w">        </span><span class="nt">item</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IRON_SWORD</span>
+<a id="__codelineno-22-21" name="__codelineno-22-21" href="#__codelineno-22-21"></a><span class="w">        </span><span class="nt">drop-chance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5.0</span>
+<a id="__codelineno-22-22" name="__codelineno-22-22" href="#__codelineno-22-22"></a><span class="w">        </span><span class="nt">enchants</span><span class="p">:</span>
+<a id="__codelineno-22-23" name="__codelineno-22-23" href="#__codelineno-22-23"></a><span class="w">          </span><span class="nt">SHARPNESS</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<a id="__codelineno-22-24" name="__codelineno-22-24" href="#__codelineno-22-24"></a><span class="w">      </span><span class="nt">off-hand</span><span class="p">:</span>
+<a id="__codelineno-22-25" name="__codelineno-22-25" href="#__codelineno-22-25"></a><span class="w">        </span><span class="nt">item</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SHIELD</span>
+<a id="__codelineno-22-26" name="__codelineno-22-26" href="#__codelineno-22-26"></a><span class="w">        </span><span class="nt">drop-chance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span>
+</code></pre></div>
+<p>Supported vanilla equipment mobs include zombies, zombie villagers, husks, drowned, skeletons, strays, wither skeletons, bogged, piglins, piglin brutes, zombified piglins, vindicators, pillagers, evokers, and illusioners. Unsupported mobs spawn without configured equipment and validation warns admins.</p>
+<h2 id="loot-chests">Loot Chests<a class="headerlink" href="#loot-chests" title="Permanent link">&para;</a></h2>
+<p>Loot chest files live in:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>dungeons/&lt;id&gt;/loot-chests/&lt;loot_id&gt;.yml
+</code></pre></div>
+<p>Use:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>/dungeon addlootchest treasure_room
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>/dungeon lootchest give treasure_room
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>/dungeon lootchest loot treasure_room add
+</code></pre></div>
+<p><code>/dungeon lootchest loot &lt;id&gt; add</code> reads the item currently held in the admin's main hand and appends a new loot entry to the bottom of the loot table, above the commented notes. It detects vanilla items, supported custom item providers, potions, tipped arrows, and enchanted books. The new entry uses <code>min-amount: 1</code>, <code>max-amount: 1</code>, and <code>chance: 100.0</code>.</p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="nt">min-items-per-drop</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="nt">max-items-per-drop</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="nt">loot-table</span><span class="p">:</span>
+<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VANILLA</span>
+<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="w">    </span><span class="nt">item</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DIAMOND</span>
+<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a><span class="w">    </span><span class="nt">min-amount</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a><span class="w">    </span><span class="nt">max-amount</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a><span class="w">    </span><span class="nt">chance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">75.0</span>
+<a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ITEMSADDER</span>
+<a id="__codelineno-25-11" name="__codelineno-25-11" href="#__codelineno-25-11"></a><span class="w">    </span><span class="nt">item</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">coins:bronze_coin</span>
+<a id="__codelineno-25-12" name="__codelineno-25-12" href="#__codelineno-25-12"></a><span class="w">    </span><span class="nt">min-amount</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<a id="__codelineno-25-13" name="__codelineno-25-13" href="#__codelineno-25-13"></a><span class="w">    </span><span class="nt">max-amount</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<a id="__codelineno-25-14" name="__codelineno-25-14" href="#__codelineno-25-14"></a><span class="w">    </span><span class="nt">chance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">25.0</span>
+</code></pre></div>
+<p>Supported item providers:</p>
+<ul>
+<li><code>VANILLA</code></li>
+<li><code>ITEMSADDER</code></li>
+<li><code>ORAXEN</code></li>
+<li><code>NEXO</code></li>
+<li><code>MYTHIC_ITEM</code></li>
+<li><code>MISSION</code>, for stage keys</li>
+</ul>
+<p>Mission key loot entry:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="c1"># - type: MISSION</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="c1">#   item: KEY</span>
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="c1">#   stage: 1</span>
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="c1">#   quantity: 1</span>
+<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="c1">#   lore:</span>
+<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a><span class="c1">#     - &quot;&amp;7A key used to unlock a dungeon stage.&quot;</span>
+</code></pre></div>
+<p><code>MISSION KEY</code> entries are guaranteed key supply entries, not random loot rolls. They ignore <code>chance</code> and do not count toward <code>min-items-per-drop</code> or <code>max-items-per-drop</code>.</p>
+<p><code>quantity</code> means how many keys this loot chest definition should provide per dungeon instance. When an instance starts, the plugin chooses random physical loot chests of that loot chest ID and assigns the keys to those chests. If chunks are not loaded yet, the assignment is refreshed shortly after start and can fall back to the opened chest of the matching loot chest ID. If <code>quantity</code> is higher than the number of physical chests of that ID, selected chests can contain more than one key.</p>
+<p>Example: if a <code>REQUIRED_KEY</code> mission needs 3 keys, configure the stage mission with <code>required: 3</code>, then put <code>quantity: 2</code> in the Bronze loot chest config and <code>quantity: 1</code> in the Silver loot chest config.</p>
+<p>Mission key loot entries should normally be in loot chests reachable before the related gate. Mission keys are bound to the instance where they dropped and are removed when the player leaves that instance.</p>
+<h2 id="boss-rewards">Boss Rewards<a class="headerlink" href="#boss-rewards" title="Permanent link">&para;</a></h2>
+<p>Boss rewards are configured per dungeon and support custom items from the same providers as loot where available.</p>
+<p>Reward entries are independent. Stacked items in separate GUI slots stay separate reward entries and can have separate chance values in the config.</p>
+<p>When the boss dies, rolled boss rewards spawn in the dungeon world at the boss spawn location, one block above the spawn point and scattered up to 2 blocks sideways. Rewards are not inserted directly into player inventories.</p>
+<p>Edit boss rewards while editing a boss-objective dungeon:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>/dungeon boss reward edit
+</code></pre></div>
+<p>Common fields:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="nt">boss-rewards</span><span class="p">:</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="w">  </span><span class="nt">rewards</span><span class="p">:</span>
+<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VANILLA</span>
+<a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a><span class="w">      </span><span class="nt">item</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DIAMOND</span>
+<a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a><span class="w">      </span><span class="nt">amount</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
+<a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a><span class="w">      </span><span class="nt">chance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100.0</span>
+</code></pre></div>
+<h2 id="trigger-rewards">Trigger Rewards<a class="headerlink" href="#trigger-rewards" title="Permanent link">&para;</a></h2>
+<p>Trigger rewards are configured in <code>dungeons/&lt;id&gt;/trigger.yml</code> and are given when the configured trigger completes the dungeon.</p>
+<p>Edit trigger rewards while editing a trigger-objective dungeon:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>/dungeon trigger reward edit
+</code></pre></div>
+<p>The trigger reward GUI follows the same independent-entry behavior as boss rewards: separate inventory slots become separate reward entries with separate chances in config.</p>
+<h2 id="entry-costs">Entry Costs<a class="headerlink" href="#entry-costs" title="Permanent link">&para;</a></h2>
+<p>Entry costs are stored in the dungeon config:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="nt">costs</span><span class="p">:</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="w">  </span><span class="nt">money</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="w">  </span><span class="nt">items</span><span class="p">:</span>
+<a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VANILLA</span>
+<a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a><span class="w">      </span><span class="nt">item</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DIAMOND</span>
+<a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a><span class="w">      </span><span class="nt">amount</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+</code></pre></div>
+<p>If <code>require-all-players-pay</code> is <code>false</code>, the leader pays. If it is <code>true</code>, every party member must meet the cost.</p>
+<p>Tower rule: only <code>FIRST</code> tower dungeons may have entry costs.</p>
+<h2 id="special-vanilla-item-ids">Special Vanilla Item IDs<a class="headerlink" href="#special-vanilla-item-ids" title="Permanent link">&para;</a></h2>
+<p>Special vanilla item IDs work in loot chests, entry costs, stage item payment missions, boss rewards, and trigger rewards. They can also be captured automatically from the cost editor GUI, reward editor GUI, and <code>/dungeon lootchest loot &lt;id&gt; add</code>.</p>
+<p>Potions, splash potions, lingering potions, and tipped arrows use:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VANILLA</span>
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="w">  </span><span class="nt">item</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">POTION_LONG_POISON</span>
+<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="w">  </span><span class="nt">min-amount</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="w">  </span><span class="nt">max-amount</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a><span class="w">  </span><span class="nt">chance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100.0</span>
+</code></pre></div>
+<p>The first part is one of:</p>
+<ul>
+<li><code>POTION</code></li>
+<li><code>SPLASH_POTION</code></li>
+<li><code>LINGERING_POTION</code></li>
+<li><code>TIPPED_ARROW</code></li>
+</ul>
+<p>The effect part is one of:</p>
+<p><code>LONG_</code> variants use Minecraft's extended-duration potion type. <code>STRONG_</code> variants use Minecraft's upgraded stronger potion type where vanilla provides one.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>NIGHT_VISION
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>LONG_NIGHT_VISION
+<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>INVISIBILITY
+<a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a>LONG_INVISIBILITY
+<a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a>LEAPING
+<a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a>LONG_LEAPING
+<a id="__codelineno-32-7" name="__codelineno-32-7" href="#__codelineno-32-7"></a>STRONG_LEAPING
+<a id="__codelineno-32-8" name="__codelineno-32-8" href="#__codelineno-32-8"></a>FIRE_RESISTANCE
+<a id="__codelineno-32-9" name="__codelineno-32-9" href="#__codelineno-32-9"></a>LONG_FIRE_RESISTANCE
+<a id="__codelineno-32-10" name="__codelineno-32-10" href="#__codelineno-32-10"></a>SWIFTNESS
+<a id="__codelineno-32-11" name="__codelineno-32-11" href="#__codelineno-32-11"></a>LONG_SWIFTNESS
+<a id="__codelineno-32-12" name="__codelineno-32-12" href="#__codelineno-32-12"></a>STRONG_SWIFTNESS
+<a id="__codelineno-32-13" name="__codelineno-32-13" href="#__codelineno-32-13"></a>SLOWNESS
+<a id="__codelineno-32-14" name="__codelineno-32-14" href="#__codelineno-32-14"></a>LONG_SLOWNESS
+<a id="__codelineno-32-15" name="__codelineno-32-15" href="#__codelineno-32-15"></a>STRONG_SLOWNESS
+<a id="__codelineno-32-16" name="__codelineno-32-16" href="#__codelineno-32-16"></a>WATER_BREATHING
+<a id="__codelineno-32-17" name="__codelineno-32-17" href="#__codelineno-32-17"></a>LONG_WATER_BREATHING
+<a id="__codelineno-32-18" name="__codelineno-32-18" href="#__codelineno-32-18"></a>HEALING
+<a id="__codelineno-32-19" name="__codelineno-32-19" href="#__codelineno-32-19"></a>STRONG_HEALING
+<a id="__codelineno-32-20" name="__codelineno-32-20" href="#__codelineno-32-20"></a>HARMING
+<a id="__codelineno-32-21" name="__codelineno-32-21" href="#__codelineno-32-21"></a>STRONG_HARMING
+<a id="__codelineno-32-22" name="__codelineno-32-22" href="#__codelineno-32-22"></a>POISON
+<a id="__codelineno-32-23" name="__codelineno-32-23" href="#__codelineno-32-23"></a>LONG_POISON
+<a id="__codelineno-32-24" name="__codelineno-32-24" href="#__codelineno-32-24"></a>STRONG_POISON
+<a id="__codelineno-32-25" name="__codelineno-32-25" href="#__codelineno-32-25"></a>REGENERATION
+<a id="__codelineno-32-26" name="__codelineno-32-26" href="#__codelineno-32-26"></a>LONG_REGENERATION
+<a id="__codelineno-32-27" name="__codelineno-32-27" href="#__codelineno-32-27"></a>STRONG_REGENERATION
+<a id="__codelineno-32-28" name="__codelineno-32-28" href="#__codelineno-32-28"></a>STRENGTH
+<a id="__codelineno-32-29" name="__codelineno-32-29" href="#__codelineno-32-29"></a>LONG_STRENGTH
+<a id="__codelineno-32-30" name="__codelineno-32-30" href="#__codelineno-32-30"></a>STRONG_STRENGTH
+<a id="__codelineno-32-31" name="__codelineno-32-31" href="#__codelineno-32-31"></a>WEAKNESS
+<a id="__codelineno-32-32" name="__codelineno-32-32" href="#__codelineno-32-32"></a>LONG_WEAKNESS
+<a id="__codelineno-32-33" name="__codelineno-32-33" href="#__codelineno-32-33"></a>LUCK
+<a id="__codelineno-32-34" name="__codelineno-32-34" href="#__codelineno-32-34"></a>SLOW_FALLING
+<a id="__codelineno-32-35" name="__codelineno-32-35" href="#__codelineno-32-35"></a>LONG_SLOW_FALLING
+<a id="__codelineno-32-36" name="__codelineno-32-36" href="#__codelineno-32-36"></a>TURTLE_MASTER
+<a id="__codelineno-32-37" name="__codelineno-32-37" href="#__codelineno-32-37"></a>LONG_TURTLE_MASTER
+<a id="__codelineno-32-38" name="__codelineno-32-38" href="#__codelineno-32-38"></a>STRONG_TURTLE_MASTER
+<a id="__codelineno-32-39" name="__codelineno-32-39" href="#__codelineno-32-39"></a>INFESTED
+<a id="__codelineno-32-40" name="__codelineno-32-40" href="#__codelineno-32-40"></a>OOZING
+<a id="__codelineno-32-41" name="__codelineno-32-41" href="#__codelineno-32-41"></a>WEAVING
+<a id="__codelineno-32-42" name="__codelineno-32-42" href="#__codelineno-32-42"></a>WIND_CHARGED
+</code></pre></div>
+<p>Examples:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VANILLA</span>
+<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a><span class="w">  </span><span class="nt">item</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SPLASH_POTION_STRONG_HEALING</span>
+<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a><span class="w">  </span><span class="nt">min-amount</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a><span class="w">  </span><span class="nt">max-amount</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a><span class="w">  </span><span class="nt">chance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100.0</span>
+<a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a>
+<a id="__codelineno-33-7" name="__codelineno-33-7" href="#__codelineno-33-7"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VANILLA</span>
+<a id="__codelineno-33-8" name="__codelineno-33-8" href="#__codelineno-33-8"></a><span class="w">  </span><span class="nt">item</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TIPPED_ARROW_SLOW_FALLING</span>
+<a id="__codelineno-33-9" name="__codelineno-33-9" href="#__codelineno-33-9"></a><span class="w">  </span><span class="nt">min-amount</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
+<a id="__codelineno-33-10" name="__codelineno-33-10" href="#__codelineno-33-10"></a><span class="w">  </span><span class="nt">max-amount</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8</span>
+<a id="__codelineno-33-11" name="__codelineno-33-11" href="#__codelineno-33-11"></a><span class="w">  </span><span class="nt">chance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50.0</span>
+</code></pre></div>
+<p>Enchanted books use:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>ENCHANTED_BOOK_&lt;ENCHANTMENT&gt;_&lt;LEVEL&gt;
+</code></pre></div>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VANILLA</span>
+<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a><span class="w">  </span><span class="nt">item</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ENCHANTED_BOOK_SHARPNESS_4</span>
+<a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a><span class="w">  </span><span class="nt">min-amount</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a><span class="w">  </span><span class="nt">max-amount</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a><span class="w">  </span><span class="nt">chance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100.0</span>
+</code></pre></div>
+<p>The level cannot be higher than the vanilla max level of that enchantment. For example, <code>ENCHANTED_BOOK_SHARPNESS_5</code> is valid, but <code>ENCHANTED_BOOK_SHARPNESS_6</code> is rejected by validation.</p>
+<p>Common enchanted book IDs:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>ENCHANTED_BOOK_SHARPNESS_5
+<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>ENCHANTED_BOOK_PROTECTION_4
+<a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a>ENCHANTED_BOOK_EFFICIENCY_5
+<a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a>ENCHANTED_BOOK_UNBREAKING_3
+<a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a>ENCHANTED_BOOK_MENDING_1
+<a id="__codelineno-36-6" name="__codelineno-36-6" href="#__codelineno-36-6"></a>ENCHANTED_BOOK_FORTUNE_3
+<a id="__codelineno-36-7" name="__codelineno-36-7" href="#__codelineno-36-7"></a>ENCHANTED_BOOK_LOOTING_3
+<a id="__codelineno-36-8" name="__codelineno-36-8" href="#__codelineno-36-8"></a>ENCHANTED_BOOK_POWER_5
+<a id="__codelineno-36-9" name="__codelineno-36-9" href="#__codelineno-36-9"></a>ENCHANTED_BOOK_PIERCING_4
+<a id="__codelineno-36-10" name="__codelineno-36-10" href="#__codelineno-36-10"></a>ENCHANTED_BOOK_DENSITY_5
+</code></pre></div>
+<p>Supported enchantment names are taken from the server enchantment registry. On the Paper 26.1 build line this includes:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>PROTECTION
+<a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a>FIRE_PROTECTION
+<a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a>FEATHER_FALLING
+<a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a>BLAST_PROTECTION
+<a id="__codelineno-37-5" name="__codelineno-37-5" href="#__codelineno-37-5"></a>PROJECTILE_PROTECTION
+<a id="__codelineno-37-6" name="__codelineno-37-6" href="#__codelineno-37-6"></a>RESPIRATION
+<a id="__codelineno-37-7" name="__codelineno-37-7" href="#__codelineno-37-7"></a>AQUA_AFFINITY
+<a id="__codelineno-37-8" name="__codelineno-37-8" href="#__codelineno-37-8"></a>THORNS
+<a id="__codelineno-37-9" name="__codelineno-37-9" href="#__codelineno-37-9"></a>DEPTH_STRIDER
+<a id="__codelineno-37-10" name="__codelineno-37-10" href="#__codelineno-37-10"></a>FROST_WALKER
+<a id="__codelineno-37-11" name="__codelineno-37-11" href="#__codelineno-37-11"></a>BINDING_CURSE
+<a id="__codelineno-37-12" name="__codelineno-37-12" href="#__codelineno-37-12"></a>SHARPNESS
+<a id="__codelineno-37-13" name="__codelineno-37-13" href="#__codelineno-37-13"></a>SMITE
+<a id="__codelineno-37-14" name="__codelineno-37-14" href="#__codelineno-37-14"></a>BANE_OF_ARTHROPODS
+<a id="__codelineno-37-15" name="__codelineno-37-15" href="#__codelineno-37-15"></a>KNOCKBACK
+<a id="__codelineno-37-16" name="__codelineno-37-16" href="#__codelineno-37-16"></a>FIRE_ASPECT
+<a id="__codelineno-37-17" name="__codelineno-37-17" href="#__codelineno-37-17"></a>LOOTING
+<a id="__codelineno-37-18" name="__codelineno-37-18" href="#__codelineno-37-18"></a>SWEEPING_EDGE
+<a id="__codelineno-37-19" name="__codelineno-37-19" href="#__codelineno-37-19"></a>EFFICIENCY
+<a id="__codelineno-37-20" name="__codelineno-37-20" href="#__codelineno-37-20"></a>SILK_TOUCH
+<a id="__codelineno-37-21" name="__codelineno-37-21" href="#__codelineno-37-21"></a>UNBREAKING
+<a id="__codelineno-37-22" name="__codelineno-37-22" href="#__codelineno-37-22"></a>FORTUNE
+<a id="__codelineno-37-23" name="__codelineno-37-23" href="#__codelineno-37-23"></a>POWER
+<a id="__codelineno-37-24" name="__codelineno-37-24" href="#__codelineno-37-24"></a>PUNCH
+<a id="__codelineno-37-25" name="__codelineno-37-25" href="#__codelineno-37-25"></a>FLAME
+<a id="__codelineno-37-26" name="__codelineno-37-26" href="#__codelineno-37-26"></a>INFINITY
+<a id="__codelineno-37-27" name="__codelineno-37-27" href="#__codelineno-37-27"></a>LUCK_OF_THE_SEA
+<a id="__codelineno-37-28" name="__codelineno-37-28" href="#__codelineno-37-28"></a>LURE
+<a id="__codelineno-37-29" name="__codelineno-37-29" href="#__codelineno-37-29"></a>LOYALTY
+<a id="__codelineno-37-30" name="__codelineno-37-30" href="#__codelineno-37-30"></a>IMPALING
+<a id="__codelineno-37-31" name="__codelineno-37-31" href="#__codelineno-37-31"></a>RIPTIDE
+<a id="__codelineno-37-32" name="__codelineno-37-32" href="#__codelineno-37-32"></a>CHANNELING
+<a id="__codelineno-37-33" name="__codelineno-37-33" href="#__codelineno-37-33"></a>MULTISHOT
+<a id="__codelineno-37-34" name="__codelineno-37-34" href="#__codelineno-37-34"></a>QUICK_CHARGE
+<a id="__codelineno-37-35" name="__codelineno-37-35" href="#__codelineno-37-35"></a>PIERCING
+<a id="__codelineno-37-36" name="__codelineno-37-36" href="#__codelineno-37-36"></a>DENSITY
+<a id="__codelineno-37-37" name="__codelineno-37-37" href="#__codelineno-37-37"></a>BREACH
+<a id="__codelineno-37-38" name="__codelineno-37-38" href="#__codelineno-37-38"></a>WIND_BURST
+<a id="__codelineno-37-39" name="__codelineno-37-39" href="#__codelineno-37-39"></a>MENDING
+<a id="__codelineno-37-40" name="__codelineno-37-40" href="#__codelineno-37-40"></a>VANISHING_CURSE
+<a id="__codelineno-37-41" name="__codelineno-37-41" href="#__codelineno-37-41"></a>SOUL_SPEED
+<a id="__codelineno-37-42" name="__codelineno-37-42" href="#__codelineno-37-42"></a>SWIFT_SNEAK
+<a id="__codelineno-37-43" name="__codelineno-37-43" href="#__codelineno-37-43"></a>LUNGE
+</code></pre></div>
+<p>Special vanilla drops follow their vanilla stack limits. Potions, splash potions, lingering potions, and enchanted books are split into one-item stacks, while tipped arrows can stack normally up to their item stack limit.</p>
+<p>Pro stores enchanted armor, tools, and weapons as vanilla items with an <code>enchants</code> map. The same format works in loot chests, boss rewards, trigger rewards, entry costs, item payment missions, and mob equipment.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VANILLA</span>
+<a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a><span class="w">  </span><span class="nt">item</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DIAMOND_CHESTPLATE</span>
+<a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a><span class="w">  </span><span class="nt">amount</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<a id="__codelineno-38-4" name="__codelineno-38-4" href="#__codelineno-38-4"></a><span class="w">  </span><span class="nt">enchants</span><span class="p">:</span>
+<a id="__codelineno-38-5" name="__codelineno-38-5" href="#__codelineno-38-5"></a><span class="w">    </span><span class="nt">PROTECTION</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
+<a id="__codelineno-38-6" name="__codelineno-38-6" href="#__codelineno-38-6"></a><span class="w">    </span><span class="nt">UNBREAKING</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+</code></pre></div>
+<h2 id="parties-and-instances">Parties and Instances<a class="headerlink" href="#parties-and-instances" title="Permanent link">&para;</a></h2>
+<p>Party states in 2.0:</p>
+<ul>
+<li><code>OPEN</code>: players can join and the leader can start.</li>
+<li><code>PREPARING_START</code>: instance world is being prepared and countdown is running.</li>
+<li><code>IN_DUNGEON</code>: players are inside an active run.</li>
+<li><code>COMPLETED</code>: run completed and party is closing.</li>
+<li><code>ABANDONED</code>: run failed or was abandoned and party is closing.</li>
+</ul>
+<p>Parties are not left in memory forever. Completion, failure, timeout, shutdown, or disband paths close them and remove player-party mappings.</p>
+<p>Players who are not part of the active instance are removed if they enter an instance world through external plugins, vehicles, teleports, or other non-dungeon mechanics.</p>
+<h2 id="lives-and-death-behavior">Lives and Death Behavior<a class="headerlink" href="#lives-and-death-behavior" title="Permanent link">&para;</a></h2>
+<p>Lives config:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="nt">lives</span><span class="p">:</span>
+<a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a><span class="w">  </span><span class="nt">scope</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PLAYER</span>
+<a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a><span class="w">  </span><span class="nt">amount</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+</code></pre></div>
+<p><code>amount: 0</code> means unlimited lives.</p>
+<p><code>scope: PLAYER</code> means each player has their own death counter.</p>
+<p><code>scope: TEAM</code> means deaths are shared by the whole party.</p>
+<p>Death behavior:</p>
+<ul>
+<li><code>INFINITE_RESPAWN</code>: respawn at the dungeon start when lives are unlimited.</li>
+<li><code>ELIMINATE_AS_SPECTATOR</code>: after the configured player/team lives run out, eliminated players become dungeon spectators.</li>
+<li><code>ELIMINATE_TO_EXIT</code>: after the configured player/team lives run out, eliminated players are sent to the dungeon exit.</li>
+</ul>
+<p>Legacy values <code>ONE_LIFE_SPECTATOR</code> and <code>ONE_LIFE_KICK</code> are still read for compatibility, but new 2.0 configs should use the names above.</p>
+<p>Death announcements follow the configured lives scope. With <code>scope: PLAYER</code>, the party sees the dead player's remaining lives. With <code>scope: TEAM</code>, the party sees the remaining shared team lives. When lives reach zero, the message also reflects whether the player became a spectator or was sent to the exit.</p>
+<p>Death spectators and external spectators are different systems:</p>
+<ul>
+<li>Death spectators are still dungeon participants, but they are marked as eliminated and are excluded from alive-player checks and sacrifice mission target lists.</li>
+<li>If all real dungeon players are eliminated and <code>fail-if-all-players-dead: true</code>, the dungeon or tower fails.</li>
+<li>Death spectators do not receive an inventory snapshot restore when the run ends. They keep items only when the dungeon/world death rules keep their inventory.</li>
+<li>Death spectators and sacrificed players who were original dungeon players are sent to the dungeon exit when they leave the run or when the run ends.</li>
+<li>External spectators who joined with <code>/dungeon spectate &lt;leader&gt;</code> are not participants, cannot progress missions, and receive their saved inventory/gamemode back when they exit or the run ends.</li>
+</ul>
+<h2 id="stages-and-gates">Stages and Gates<a class="headerlink" href="#stages-and-gates" title="Permanent link">&para;</a></h2>
+<p>Stages live in:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>dungeons/&lt;id&gt;/stages/&lt;stage_id&gt;.yml
+<a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a>dungeons/&lt;id&gt;/stages/&lt;stage_id&gt;-hologram.yml
+</code></pre></div>
+<p>Every stage has an order:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="nt">stage-id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">entrance</span>
+<a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a><span class="nt">stage-order</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<a id="__codelineno-41-3" name="__codelineno-41-3" href="#__codelineno-41-3"></a><span class="nt">gate</span><span class="p">:</span>
+<a id="__codelineno-41-4" name="__codelineno-41-4" href="#__codelineno-41-4"></a><span class="w">  </span><span class="nt">disappear-seconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">6</span>
+<a id="__codelineno-41-5" name="__codelineno-41-5" href="#__codelineno-41-5"></a>
+<a id="__codelineno-41-6" name="__codelineno-41-6" href="#__codelineno-41-6"></a><span class="nt">missions</span><span class="p">:</span>
+<a id="__codelineno-41-7" name="__codelineno-41-7" href="#__codelineno-41-7"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LEVER</span>
+<a id="__codelineno-41-8" name="__codelineno-41-8" href="#__codelineno-41-8"></a><span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<a id="__codelineno-41-9" name="__codelineno-41-9" href="#__codelineno-41-9"></a>
+<a id="__codelineno-41-10" name="__codelineno-41-10" href="#__codelineno-41-10"></a><span class="c1"># Saved at the bottom because large gates can contain many coordinates.</span>
+<a id="__codelineno-41-11" name="__codelineno-41-11" href="#__codelineno-41-11"></a><span class="nt">gate-blocks</span><span class="p">:</span>
+<a id="__codelineno-41-12" name="__codelineno-41-12" href="#__codelineno-41-12"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">x</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+<a id="__codelineno-41-13" name="__codelineno-41-13" href="#__codelineno-41-13"></a><span class="w">    </span><span class="nt">y</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">64</span>
+<a id="__codelineno-41-14" name="__codelineno-41-14" href="#__codelineno-41-14"></a><span class="w">    </span><span class="nt">z</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span>
+</code></pre></div>
+<p>Stage orders are progression priorities. Order <code>1</code> is the lowest and unlocks first. Multiple stages may share the same order, which means they can be progressed in parallel. Higher order stages unlock only after every lower-order stage has opened. Used order groups must still be continuous: <code>1</code>, <code>2</code>, <code>3</code>, and so on. For example, using orders <code>1</code> and <code>3</code> without any order <code>2</code> is invalid.</p>
+<p>Admin stage commands use the stage file ID, not <code>stage-order</code>. This keeps commands unambiguous when several stages share the same order. For example:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>/dungeon stage entrance gate create
+</code></pre></div>
+<p>Use <code>/dungeon stage list</code> in editor mode to see the current order. New stages get the next order automatically based on creation order. To change order without editing YAML, use:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a>/dungeon stage &lt;stage_id&gt; order &lt;number&gt;
+</code></pre></div>
+<p>If the target order is already used, the moved stage joins that order group instead of swapping. Stages with the same order can be completed in any order, but every stage in that order must open before the next order unlocks.</p>
+<p>Gate editing:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a>/dungeon stage entrance gate create
+<a id="__codelineno-44-2" name="__codelineno-44-2" href="#__codelineno-44-2"></a>place gate blocks
+<a id="__codelineno-44-3" name="__codelineno-44-3" href="#__codelineno-44-3"></a>/dungeon gate save
+</code></pre></div>
+<p>While gate edit mode is active, the action bar turns purple and selected gate blocks show subtle purple dust particles to admins editing that dungeon. Multiple admins can join the same stage gate edit session and work on the same gate together.</p>
+<p>During an active gate create/edit session, <code>/dungeon stage &lt;stage_id&gt; gate stick</code> gives an enchanted gate edit stick. Left-click adds the clicked existing block to the active gate without placing a new block. Right-click removes the clicked block from the active gate selection without breaking it. Sneak-left-click adds connected same-material blocks, and sneak-right-click removes connected same-material blocks from the selection. The connected-block mode is capped to avoid accidental server-heavy scans. The final selection is still saved with <code>/dungeon gate save</code>.</p>
+<p>Manual block placement and breaking are tracked immediately. WorldEdit <code>//set</code> is also supported during active gate create/edit mode: after the command runs, the plugin reads the admin's current WorldEdit selection and adds every non-air block in that selection to the active gate selection. The sync is capped for safety, so very large selections should be split into smaller operations. Vanilla <code>/setblock</code> and <code>/fill</code> are detected by comparing the nearby template world with the gate session snapshot. Replacing existing blocks with the same material through commands is still best handled by WorldEdit <code>//set</code> selection sync or the gate stick.</p>
+<p>Gate holograms:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a>/dungeon stage entrance gate hologram create
+</code></pre></div>
+<p>The hologram shows live mission progress. Completed missions turn green and receive the configured completed prefix. Clickable missions such as <code>SACRIFICE</code>, <code>MONEY_PAYMENT</code>, and <code>ITEM_PAYMENT</code> add an instruction line that explains who should right-click a gate block, for example <code>Leader must right-click a gate block for Sacrifice.</code> or per-mission action lines when multiple clickable missions are active.
+You can create multiple holograms for the same stage by running the create command again at another location. The delete command removes the nearest hologram for that stage within 3 blocks. Locked higher-order holograms show the missing previous stage names, for example <code>Complete Entrance first.</code></p>
+<p>The create command must be run while standing in the dungeon template world. If editor mode is configured not to teleport admins automatically, move to the template world first before creating stage holograms. The saved hologram anchor is placed above the admin's eye position so the text appears above the player instead of inside the player's body.</p>
+<p>In editor mode, stage holograms are also visible in the template world. Editor previews use the same armor-stand hologram renderer as runtime instances, show the configured title and every mission currently defined in that stage, and refresh immediately after hologram or mission changes. If the stage has no missions yet, only the hologram title is shown.</p>
+<h2 id="stage-missions">Stage Missions<a class="headerlink" href="#stage-missions" title="Permanent link">&para;</a></h2>
+<p>Stage runtime uses the configured stage file data directly, including stage order, mission lists, required key amounts, mission blocks, and item payment costs.</p>
+<p>Mission types:</p>
+<table>
+<thead>
+<tr>
+<th>Mission</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>KILL_MOBS</code></td>
+<td>Party must kill a configured number of mobs.</td>
+</tr>
+<tr>
+<td><code>LEVER</code></td>
+<td>Party must pull all placed mission levers.</td>
+</tr>
+<tr>
+<td><code>BUTTON</code></td>
+<td>Party must press all mission buttons at the same time.</td>
+</tr>
+<tr>
+<td><code>PRESSURE_PLATE</code></td>
+<td>Party must activate all mission plates at the same time.</td>
+</tr>
+<tr>
+<td><code>REQUIRED_KEY</code></td>
+<td>Players must submit mission keys by right-clicking any block of the gate with the key in hand. <code>required</code> is the number of keys needed to unlock the gate.</td>
+</tr>
+<tr>
+<td><code>TIME</code></td>
+<td>Waits a configured number of seconds after the active stage starts.</td>
+</tr>
+<tr>
+<td><code>SACRIFICE</code></td>
+<td>Requires selecting players to eliminate through the mission GUI. Open it by right-clicking any block of the stage gate. <code>sacrifice-outcome</code> controls whether the sacrificed player becomes a spectator or is kicked out of the dungeon, independently from dungeon death behavior. <code>sacrifice-drop-items: false</code> keeps the player's inventory; <code>true</code> drops storage, armor, and offhand items on the ground.</td>
+</tr>
+<tr>
+<td><code>MONEY_PAYMENT</code></td>
+<td>Requires a Vault money payment. Open it by right-clicking any block of the stage gate. Cannot be added unless Vault and an economy provider are detected.</td>
+</tr>
+<tr>
+<td><code>ITEM_PAYMENT</code></td>
+<td>Requires configured items. Open it by right-clicking any block of the stage gate during a run. Configure required items with <code>/dungeon stage &lt;stage_id&gt; mission item_payment</code>, which opens an editor GUI and saves the inserted supported items into the stage config.</td>
+</tr>
+</tbody>
+</table>
+<p>Mission creation commands:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a>/dungeon stage &lt;stage_id&gt; mission kill_mobs &lt;amount&gt;
+<a id="__codelineno-46-2" name="__codelineno-46-2" href="#__codelineno-46-2"></a>/dungeon stage &lt;stage_id&gt; mission lever
+<a id="__codelineno-46-3" name="__codelineno-46-3" href="#__codelineno-46-3"></a>/dungeon stage &lt;stage_id&gt; mission button &lt;button_material&gt;
+<a id="__codelineno-46-4" name="__codelineno-46-4" href="#__codelineno-46-4"></a>/dungeon stage &lt;stage_id&gt; mission pressure_plate &lt;plate_material&gt;
+<a id="__codelineno-46-5" name="__codelineno-46-5" href="#__codelineno-46-5"></a>/dungeon stage &lt;stage_id&gt; mission required_key &lt;amount&gt;
+<a id="__codelineno-46-6" name="__codelineno-46-6" href="#__codelineno-46-6"></a>/dungeon stage &lt;stage_id&gt; mission time &lt;seconds&gt;
+<a id="__codelineno-46-7" name="__codelineno-46-7" href="#__codelineno-46-7"></a>/dungeon stage &lt;stage_id&gt; mission sacrifice [LEADER_SELECTS|PARTY_VOTE|FIRST_PLAYER_DECISION] [drop_items]
+<a id="__codelineno-46-8" name="__codelineno-46-8" href="#__codelineno-46-8"></a>/dungeon stage &lt;stage_id&gt; mission money_payment &lt;amount&gt; [ANY_PLAYER|LEADER_ONLY]
+<a id="__codelineno-46-9" name="__codelineno-46-9" href="#__codelineno-46-9"></a>/dungeon stage &lt;stage_id&gt; mission item_payment
+<a id="__codelineno-46-10" name="__codelineno-46-10" href="#__codelineno-46-10"></a>/dungeon stage &lt;stage_id&gt; mission &lt;type&gt; delete
+</code></pre></div>
+<p><code>ITEM_PAYMENT</code> does not take item provider, item id, amount, or payment mode in the command. The command opens a 27-slot editor GUI. Put vanilla, ItemsAdder, Oraxen, Nexo, or MythicMobs items into the GUI and close it to save them. Re-running the command opens the GUI populated with the currently configured items. <code>payment-mode</code> remains a stage config field (<code>ANY_PLAYER</code> or <code>LEADER_ONLY</code>).</p>
+<p>Mission lever/button/pressure-plate blocks can be moved while in editor mode. Break the mission block to remove it from the stage, then place a new mission block where you want it. If the last block for that mission is removed, the mission is removed from the stage file too.</p>
+<p>Mission YAML is saved with only the fields that apply to that mission type:</p>
+<table>
+<thead>
+<tr>
+<th>Mission</th>
+<th>Saved fields</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>KILL_MOBS</code></td>
+<td><code>type</code>, <code>required</code></td>
+</tr>
+<tr>
+<td><code>LEVER</code></td>
+<td><code>type</code>, <code>required</code>, <code>blocks</code></td>
+</tr>
+<tr>
+<td><code>BUTTON</code></td>
+<td><code>type</code>, <code>required</code>, <code>blocks</code></td>
+</tr>
+<tr>
+<td><code>PRESSURE_PLATE</code></td>
+<td><code>type</code>, <code>required</code>, <code>blocks</code></td>
+</tr>
+<tr>
+<td><code>REQUIRED_KEY</code></td>
+<td><code>type</code>, <code>required</code></td>
+</tr>
+<tr>
+<td><code>TIME</code></td>
+<td><code>type</code>, <code>duration-seconds</code></td>
+</tr>
+<tr>
+<td><code>SACRIFICE</code></td>
+<td><code>type</code>, <code>required</code>, <code>sacrifice-mode</code>, <code>sacrifice-outcome</code>, <code>sacrifice-drop-items</code>, optional <code>lore</code></td>
+</tr>
+<tr>
+<td><code>MONEY_PAYMENT</code></td>
+<td><code>type</code>, <code>payment-mode</code>, <code>money-amount</code>, optional <code>lore</code></td>
+</tr>
+<tr>
+<td><code>ITEM_PAYMENT</code></td>
+<td><code>type</code>, <code>payment-mode</code>, <code>items</code>, optional <code>lore</code></td>
+</tr>
+</tbody>
+</table>
+<p>Mission GUI:</p>
+<ul>
+<li>The mission GUI has 3 rows.</li>
+<li>Mission items are centered in the middle row.</li>
+<li>Empty slots are filled with black glass.</li>
+<li>Mission items cannot be moved.</li>
+<li>Sacrifice selection opens a second GUI with player heads.</li>
+<li>Sacrifice announces the chosen player. If the sacrificed player is the current leader, a random alive dungeon player becomes the new leader and the party is notified. The same leader reassignment is used when the leader loses all lives.</li>
+<li>Player-facing mission names come from <code>messages.yml</code> under <code>mission-names</code>. Config files and commands still use internal mission IDs such as <code>REQUIRED_KEY</code>.</li>
+<li>Each mission can define custom GUI icon lore with a <code>lore:</code> list in the stage file.</li>
+<li>Mission lore placeholders: <code>%mission%</code>, <code>%current%</code>, <code>%required%</code>, <code>%money%</code>, <code>%items%</code>.</li>
+<li>For <code>REQUIRED_KEY</code>, configure how many keys must be found in each loot chest type with <code>MISSION KEY</code> entries in the related loot chest configs.</li>
+</ul>
+<p>Example mission lore:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a><span class="nt">missions</span><span class="p">:</span>
+<a id="__codelineno-47-2" name="__codelineno-47-2" href="#__codelineno-47-2"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MONEY_PAYMENT</span>
+<a id="__codelineno-47-3" name="__codelineno-47-3" href="#__codelineno-47-3"></a><span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<a id="__codelineno-47-4" name="__codelineno-47-4" href="#__codelineno-47-4"></a><span class="w">    </span><span class="nt">payment-mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ANY_PLAYER</span>
+<a id="__codelineno-47-5" name="__codelineno-47-5" href="#__codelineno-47-5"></a><span class="w">    </span><span class="nt">money-amount</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">500</span>
+<a id="__codelineno-47-6" name="__codelineno-47-6" href="#__codelineno-47-6"></a><span class="w">    </span><span class="nt">lore</span><span class="p">:</span>
+<a id="__codelineno-47-7" name="__codelineno-47-7" href="#__codelineno-47-7"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;&amp;7Pay</span><span class="nv"> </span><span class="s">&amp;6500</span><span class="nv"> </span><span class="s">&amp;7coins</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">unlock</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">gate.&quot;</span>
+<a id="__codelineno-47-8" name="__codelineno-47-8" href="#__codelineno-47-8"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;&amp;8Progress:</span><span class="nv"> </span><span class="s">%current%/%required%&quot;</span>
+</code></pre></div>
+<p>Stage progress isolation:</p>
+<ul>
+<li>Only unlocked stages receive kill/time/payment progress.</li>
+<li>Stages with the same order can receive progress at the same time.</li>
+<li>Later stage holograms stay locked until every lower-order stage opens and show the missing previous stage names.</li>
+<li>If a player bypasses a gate, later holograms show the locked previous-stage message.</li>
+</ul>
+<h2 id="event-commands">Event Commands<a class="headerlink" href="#event-commands" title="Permanent link">&para;</a></h2>
+<p>Event commands let server owners run commands when dungeon events happen. They are per dungeon and disabled by default.</p>
+<p>Admins configure them in each dungeon's command file:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a>plugins/InstancedDungeons/dungeons/&lt;dungeon_id&gt;/commands.yml
+</code></pre></div>
+<p>Default file:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-49-2" name="__codelineno-49-2" href="#__codelineno-49-2"></a><span class="nt">default-executor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CONSOLE</span>
+<a id="__codelineno-49-3" name="__codelineno-49-3" href="#__codelineno-49-3"></a><span class="nt">commands</span><span class="p">:</span>
+<a id="__codelineno-49-4" name="__codelineno-49-4" href="#__codelineno-49-4"></a><span class="w">  </span><span class="c1"># - event: on-player-death-command</span>
+<a id="__codelineno-49-5" name="__codelineno-49-5" href="#__codelineno-49-5"></a><span class="w">  </span><span class="c1">#   executor: CONSOLE</span>
+<a id="__codelineno-49-6" name="__codelineno-49-6" href="#__codelineno-49-6"></a><span class="w">  </span><span class="c1">#   audience: NONE</span>
+<a id="__codelineno-49-7" name="__codelineno-49-7" href="#__codelineno-49-7"></a><span class="w">  </span><span class="c1">#   run:</span>
+<a id="__codelineno-49-8" name="__codelineno-49-8" href="#__codelineno-49-8"></a><span class="w">  </span><span class="c1">#     - &quot;say &lt;player&gt; died in &lt;dungeon_name&gt;&quot;</span>
+<a id="__codelineno-49-9" name="__codelineno-49-9" href="#__codelineno-49-9"></a><span class="w">  </span><span class="c1">#</span>
+<a id="__codelineno-49-10" name="__codelineno-49-10" href="#__codelineno-49-10"></a><span class="w">  </span><span class="c1"># - event: on-player-death-command</span>
+<a id="__codelineno-49-11" name="__codelineno-49-11" href="#__codelineno-49-11"></a><span class="w">  </span><span class="c1">#   executor: CONSOLE</span>
+<a id="__codelineno-49-12" name="__codelineno-49-12" href="#__codelineno-49-12"></a><span class="w">  </span><span class="c1">#   audience: PARTY</span>
+<a id="__codelineno-49-13" name="__codelineno-49-13" href="#__codelineno-49-13"></a><span class="w">  </span><span class="c1">#   run:</span>
+<a id="__codelineno-49-14" name="__codelineno-49-14" href="#__codelineno-49-14"></a><span class="w">  </span><span class="c1">#     - &quot;tell &lt;target&gt; &lt;player&gt; died in &lt;dungeon_name&gt;&quot;</span>
+<a id="__codelineno-49-15" name="__codelineno-49-15" href="#__codelineno-49-15"></a><span class="w">  </span><span class="c1">#</span>
+<a id="__codelineno-49-16" name="__codelineno-49-16" href="#__codelineno-49-16"></a><span class="w">  </span><span class="c1"># - event: on-player-death-command</span>
+<a id="__codelineno-49-17" name="__codelineno-49-17" href="#__codelineno-49-17"></a><span class="w">  </span><span class="c1">#   executor: CONSOLE</span>
+<a id="__codelineno-49-18" name="__codelineno-49-18" href="#__codelineno-49-18"></a><span class="w">  </span><span class="c1">#   audience: ALIVE_PARTY</span>
+<a id="__codelineno-49-19" name="__codelineno-49-19" href="#__codelineno-49-19"></a><span class="w">  </span><span class="c1">#   run:</span>
+<a id="__codelineno-49-20" name="__codelineno-49-20" href="#__codelineno-49-20"></a><span class="w">  </span><span class="c1">#     - &quot;msg &lt;target&gt; &lt;player&gt; has died.&quot;</span>
+<a id="__codelineno-49-21" name="__codelineno-49-21" href="#__codelineno-49-21"></a><span class="w">  </span><span class="c1">#</span>
+<a id="__codelineno-49-22" name="__codelineno-49-22" href="#__codelineno-49-22"></a><span class="w">  </span><span class="c1"># - event: on-party-complete-dungeon-command</span>
+<a id="__codelineno-49-23" name="__codelineno-49-23" href="#__codelineno-49-23"></a><span class="w">  </span><span class="c1">#   executor: CONSOLE</span>
+<a id="__codelineno-49-24" name="__codelineno-49-24" href="#__codelineno-49-24"></a><span class="w">  </span><span class="c1">#   audience: NONE</span>
+<a id="__codelineno-49-25" name="__codelineno-49-25" href="#__codelineno-49-25"></a><span class="w">  </span><span class="c1">#   run:</span>
+<a id="__codelineno-49-26" name="__codelineno-49-26" href="#__codelineno-49-26"></a><span class="w">  </span><span class="c1">#     - &quot;broadcast &lt;party_leader&gt;&#39;s party completed &lt;dungeon_name&gt;&quot;</span>
+</code></pre></div>
+<p>Set <code>enabled: true</code> and uncomment entries you want to use. Entries stay commented in the generated file so no command can run until an admin explicitly enables it.</p>
+<p>Executor:</p>
+<ul>
+<li><code>CONSOLE</code>: runs command as console.</li>
+<li><code>PLAYER</code>: runs command as the event player. Party events use the online party leader when available.</li>
+</ul>
+<p>Audience:</p>
+<ul>
+<li><code>NONE</code>: no plugin targeting. The command runs once. Example: <code>executor: CONSOLE</code>, <code>audience: NONE</code>, and <code>say ...</code> broadcasts globally because Minecraft's <code>say</code> command is global.</li>
+<li><code>PLAYER</code>: targets the event player and fills <code>&lt;target&gt;</code> with that player.</li>
+<li><code>PARTY</code>: runs once per online dungeon party member and fills <code>&lt;target&gt;</code> for each member. External spectators are not included.</li>
+<li><code>ALIVE_PARTY</code>: runs once per online non-eliminated dungeon player.</li>
+<li><code>DEAD_PARTY</code>: runs once per online eliminated death spectator.</li>
+<li><code>LEADER</code>: targets the party leader.</li>
+</ul>
+<p>Command format:</p>
+<ul>
+<li>Leading <code>/</code> is optional.</li>
+<li>Commands are skipped when the event is not configured.</li>
+<li>Event command config is cached on <code>/dungeon reload</code>.</li>
+<li>The <code>commands:</code> list may contain the same <code>event</code> more than once. This is the recommended way to run separate command groups or run the same trigger with different executor/audience combinations.</li>
+<li>Each entry can use its own <code>executor</code>; otherwise it uses <code>default-executor</code>.</li>
+<li>If <code>audience</code> is omitted, it defaults to <code>NONE</code>.</li>
+<li>If an audience other than <code>NONE</code> has no online targets, that command entry is skipped.</li>
+<li>Audience does not change how Minecraft commands behave. <code>say</code> is still global. Use commands such as <code>msg &lt;target&gt; ...</code> or <code>tell &lt;target&gt; ...</code> when you want only the selected audience to see a message.</li>
+</ul>
+<p>Player event keys:</p>
+<table>
+<thead>
+<tr>
+<th>Event key</th>
+<th>When it runs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>on-player-create-party-command</code></td>
+<td>Once for the player who creates a party with <code>/dungeon open &lt;id&gt;</code>.</td>
+</tr>
+<tr>
+<td><code>on-player-join-party-command</code></td>
+<td>Once for the player who joins a party with <code>/dungeon join &lt;code&gt;</code>.</td>
+</tr>
+<tr>
+<td><code>on-player-start-dungeon-command</code></td>
+<td>For each dungeon player when the instance starts and players enter the dungeon.</td>
+</tr>
+<tr>
+<td><code>on-player-complete-dungeon-command</code></td>
+<td>For each active dungeon player when a single dungeon completes, or when the last tower dungeon completes.</td>
+</tr>
+<tr>
+<td><code>on-player-abandon-dungeon-command</code></td>
+<td>For a player who leaves through an external/abandon flow before completion.</td>
+</tr>
+<tr>
+<td><code>on-player-exit-dungeon-command</code></td>
+<td>For a player who intentionally exits with <code>/dungeon exit</code>.</td>
+</tr>
+<tr>
+<td><code>on-player-death-command</code></td>
+<td>When a dungeon player dies inside an active instance.</td>
+</tr>
+<tr>
+<td><code>on-player-kill-mob-command</code></td>
+<td>When a dungeon player kills a regular dungeon mob.</td>
+</tr>
+<tr>
+<td><code>on-player-kill-boss-command</code></td>
+<td>When a dungeon player kills the boss and Bukkit can resolve the killer.</td>
+</tr>
+<tr>
+<td><code>on-player-complete-stage-command</code></td>
+<td>For each active dungeon player when the active stage is completed.</td>
+</tr>
+<tr>
+<td><code>on-player-open-gate-command</code></td>
+<td>For each active dungeon player when a stage gate opens.</td>
+</tr>
+<tr>
+<td><code>on-player-fail-dungeon-command</code></td>
+<td>For each active dungeon player when the dungeon or tower fails.</td>
+</tr>
+</tbody>
+</table>
+<p>Party event keys:</p>
+<table>
+<thead>
+<tr>
+<th>Event key</th>
+<th>When it runs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>on-party-create-command</code></td>
+<td>Once when a party is created.</td>
+</tr>
+<tr>
+<td><code>on-party-player-join-command</code></td>
+<td>Once when any player joins the party. Use this for party-wide scripts.</td>
+</tr>
+<tr>
+<td><code>on-party-start-dungeon-command</code></td>
+<td>Once when the party enters the dungeon instance.</td>
+</tr>
+<tr>
+<td><code>on-party-complete-dungeon-command</code></td>
+<td>Once when a single dungeon completes. In towers, this runs on the final dungeon only.</td>
+</tr>
+<tr>
+<td><code>on-party-abandon-dungeon-command</code></td>
+<td>Reserved for full-party abandon flows before completion.</td>
+</tr>
+<tr>
+<td><code>on-party-fail-dungeon-command</code></td>
+<td>Once when the dungeon or whole tower fails.</td>
+</tr>
+<tr>
+<td><code>on-party-complete-stage-command</code></td>
+<td>Once when a stage is completed.</td>
+</tr>
+<tr>
+<td><code>on-party-open-gate-command</code></td>
+<td>Once when a stage gate opens.</td>
+</tr>
+<tr>
+<td><code>on-party-enter-tower-stage-command</code></td>
+<td>Once when the party enters the next tower dungeon after a transition.</td>
+</tr>
+<tr>
+<td><code>on-party-complete-tower-command</code></td>
+<td>Once when the final tower dungeon completes.</td>
+</tr>
+</tbody>
+</table>
+<p>Event placeholder reference:</p>
+<table>
+<thead>
+<tr>
+<th>Placeholder</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;player&gt;</code></td>
+<td>Event player name.</td>
+</tr>
+<tr>
+<td><code>&lt;player_uuid&gt;</code></td>
+<td>Event player UUID.</td>
+</tr>
+<tr>
+<td><code>&lt;executor&gt;</code></td>
+<td>Configured command executor, <code>CONSOLE</code> or <code>PLAYER</code>.</td>
+</tr>
+<tr>
+<td><code>&lt;executor_player&gt;</code></td>
+<td>Player executing the command when using <code>PLAYER</code>.</td>
+</tr>
+<tr>
+<td><code>&lt;executor_uuid&gt;</code></td>
+<td>Executor player UUID when using <code>PLAYER</code>.</td>
+</tr>
+<tr>
+<td><code>&lt;audience&gt;</code></td>
+<td>Configured audience.</td>
+</tr>
+<tr>
+<td><code>&lt;target&gt;</code></td>
+<td>Current audience target player name. Empty when <code>audience: NONE</code>.</td>
+</tr>
+<tr>
+<td><code>&lt;target_uuid&gt;</code></td>
+<td>Current audience target player UUID. Empty when <code>audience: NONE</code>.</td>
+</tr>
+<tr>
+<td><code>&lt;party_leader&gt;</code></td>
+<td>Party leader name.</td>
+</tr>
+<tr>
+<td><code>&lt;party_code&gt;</code></td>
+<td>Party code.</td>
+</tr>
+<tr>
+<td><code>&lt;party_size&gt;</code></td>
+<td>Number of players in the party or active instance.</td>
+</tr>
+<tr>
+<td><code>&lt;dungeon_id&gt;</code></td>
+<td>Dungeon folder ID.</td>
+</tr>
+<tr>
+<td><code>&lt;dungeon_name&gt;</code></td>
+<td>Dungeon display name.</td>
+</tr>
+<tr>
+<td><code>&lt;template_id&gt;</code></td>
+<td>Template world name.</td>
+</tr>
+<tr>
+<td><code>&lt;stage_id&gt;</code></td>
+<td>Stage ID when the event is stage-related.</td>
+</tr>
+<tr>
+<td><code>&lt;stage_order&gt;</code></td>
+<td>Stage order when available.</td>
+</tr>
+<tr>
+<td><code>&lt;tower_id&gt;</code></td>
+<td>Tower context ID.</td>
+</tr>
+<tr>
+<td><code>&lt;mob_id&gt;</code></td>
+<td>Killed mob type or ID when available.</td>
+</tr>
+<tr>
+<td><code>&lt;boss_id&gt;</code></td>
+<td>Boss ID placeholder when available.</td>
+</tr>
+<tr>
+<td><code>&lt;world&gt;</code></td>
+<td>Event player's current world.</td>
+</tr>
+<tr>
+<td><code>&lt;instance_world&gt;</code></td>
+<td>Active instance world name when available.</td>
+</tr>
+<tr>
+<td><code>&lt;x&gt;</code>, <code>&lt;y&gt;</code>, <code>&lt;z&gt;</code></td>
+<td>Event player's block coordinates.</td>
+</tr>
+</tbody>
+</table>
+<p>Duplicate rules:</p>
+<ul>
+<li>Player events run once per affected player.</li>
+<li>Party events run once per party/run.</li>
+<li><code>/dungeon exit</code> fires the exit event, not the abandon event.</li>
+<li>External teleports/leaves can fire abandon events.</li>
+<li>Stage gate open and stage complete are separate hooks so admins can script either moment.</li>
+</ul>
+<h2 id="messages-and-placeholders">Messages and Placeholders<a class="headerlink" href="#messages-and-placeholders" title="Permanent link">&para;</a></h2>
+<p>Main messages file:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a>plugins/InstancedDungeons/messages.yml
+</code></pre></div>
+<p>Important placeholder styles:</p>
+<ul>
+<li>Messages use <code>%placeholder%</code>.</li>
+<li>Event commands use <code>&lt;placeholder&gt;</code>.</li>
+<li>Hardcoded admin validation notices are intentionally not in <code>messages.yml</code>.</li>
+</ul>
+<p>The <code>mission-names</code> section controls player-facing mission labels used in mission completion messages, mission GUI names, hologram mission hints, and mission lore placeholders. Internal enum names in stage configs are not changed by this section.</p>
+<p><code>messages.yml</code> includes a placeholder reference comment at the bottom. Add new message keys there when extending messages.</p>
+<h2 id="validation">Validation<a class="headerlink" href="#validation" title="Permanent link">&para;</a></h2>
+<p>Use:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a>/dungeon validate &lt;id&gt;
+<a id="__codelineno-51-2" name="__codelineno-51-2" href="#__codelineno-51-2"></a>/dungeon validate all
+<a id="__codelineno-51-3" name="__codelineno-51-3" href="#__codelineno-51-3"></a>/dungeon reload
+</code></pre></div>
+<p>Validation checks include:</p>
+<ul>
+<li>Config version compatibility.</li>
+<li>Missing spawn/exit locations.</li>
+<li>Invalid objective files.</li>
+<li>Invalid tower chain setup.</li>
+<li>Unsupported costs on middle/last tower stages.</li>
+<li>Invalid spawner locations.</li>
+<li>Unknown mob IDs where they can be resolved.</li>
+<li>Unknown or unavailable custom item provider entries.</li>
+<li>Stage ordering and Pro feature validation warnings.</li>
+<li>Loot chest and boss reward item definitions.</li>
+<li><code>commands.yml</code> syntax, event keys, executors, audiences, command lists, and risky audience/global command combinations.</li>
+</ul>
+<p>Validation output:</p>
+<ul>
+<li>Console always receives validation output.</li>
+<li>Online admins receive chat validation warnings unless disabled per dungeon.</li>
+<li>Normal players do not receive validation warnings.</li>
+<li>If chat output is shortened, check the console because it may contain more validation details.</li>
+</ul>
+<h2 id="pro-version-behavior">Pro Version Behavior<a class="headerlink" href="#pro-version-behavior" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Pro behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Global active instances</td>
+<td><code>0</code> disables the global active-instance ceiling. Positive values set the exact maximum.</td>
+</tr>
+<tr>
+<td>Tower length</td>
+<td>Supports <code>FIRST -&gt; LAST</code> and longer <code>FIRST -&gt; MIDDLE -&gt; ... -&gt; LAST</code> chains.</td>
+</tr>
+<tr>
+<td>Tower middle stage</td>
+<td>Fully supported.</td>
+</tr>
+<tr>
+<td>Stages per dungeon</td>
+<td>Uses all configured stages.</td>
+</tr>
+<tr>
+<td>Missions per stage</td>
+<td>Uses all configured missions.</td>
+</tr>
+<tr>
+<td>Lever mission blocks</td>
+<td>Uses all configured blocks.</td>
+</tr>
+<tr>
+<td>Button mission blocks</td>
+<td>Uses all configured blocks.</td>
+</tr>
+<tr>
+<td>Pressure plate mission blocks</td>
+<td>Uses all configured blocks.</td>
+</tr>
+<tr>
+<td>Required keys</td>
+<td>Uses the configured <code>required</code> amount.</td>
+</tr>
+<tr>
+<td>Sacrifice missions</td>
+<td>Multiple sacrifice mission entries are supported.</td>
+</tr>
+<tr>
+<td>Money payment missions</td>
+<td>Multiple money payment mission entries are supported.</td>
+</tr>
+<tr>
+<td>Item payment missions</td>
+<td>Multiple item payment mission entries are supported.</td>
+</tr>
+<tr>
+<td>Item payment item types</td>
+<td>Multiple item payment item types are supported.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="compatibility-notes">Compatibility Notes<a class="headerlink" href="#compatibility-notes" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Paper 26.1 support is beta.</li>
+<li>No update checker is included in this build.</li>
+<li>Public 2.0 documentation follows the current code behavior, not the old 1.x loot chest documentation.</li>
+<li>Dungeons created before 2.0 should be rebuilt as 2.0 dungeons instead of migrated in place.</li>
+</ul>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<p>Mobs do not spawn:</p>
+<ul>
+<li>Run <code>/dungeon validate &lt;id&gt;</code>.</li>
+<li>Check spawner location and trigger.</li>
+<li>Verify MythicMobs IDs if using <code>MYTHIC</code>.</li>
+<li>Ensure the template world is loaded.</li>
+</ul>
+<p>Loot chests are empty:</p>
+<ul>
+<li>Check <code>min-items-per-drop</code> and <code>max-items-per-drop</code>.</li>
+<li>Verify item provider and item IDs.</li>
+<li>Check chance values.</li>
+<li>Run <code>/dungeon reload</code> after edits.</li>
+</ul>
+<p>Dungeon will not start:</p>
+<ul>
+<li>Run <code>/dungeon validate &lt;id&gt;</code>.</li>
+<li>Check <code>v: 2.0</code>.</li>
+<li>Check spawn and exit locations.</li>
+<li>Check max instance limits.</li>
+<li>Check party size and offline members.</li>
+</ul>
+<p>Tower does not transition:</p>
+<ul>
+<li>Confirm <code>dungeon-type: tower</code>.</li>
+<li>Confirm <code>tower-stage-type</code>.</li>
+<li>Confirm <code>next-dungeon</code> points to a loaded dungeon.</li>
+<li>In Pro, <code>FIRST</code> can point to <code>MIDDLE</code>, and <code>MIDDLE</code> can point to another <code>MIDDLE</code> or <code>LAST</code>.</li>
+</ul>
+<p>Stage gate does not open:</p>
+<ul>
+<li>Confirm stage order is valid.</li>
+<li>Confirm all missions are complete.</li>
+<li>Confirm the hologram belongs to the same stage.</li>
+<li>Check that the gate was saved with <code>/dungeon gate save</code>.</li>
+</ul>
+<p>Custom items fail validation:</p>
+<ul>
+<li>Confirm the provider plugin is installed and enabled.</li>
+<li>Confirm the item ID exactly matches the provider ID.</li>
+<li>For potions and enchanted books, confirm the ID follows the special vanilla formats above.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../towers/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Towers">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Towers
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../spawners-and-mobs/" class="md-footer__link md-footer__link--next" aria-label="Next: Spawners and Mobs">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Spawners and Mobs
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 InstancedDungeons
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://modrinth.com/plugin/instanced-dungeon" target="_blank" rel="noopener" title="Modrinth" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32v242.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64v-32c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://www.spigotmc.org/resources/instanced-dungeon.132724/" target="_blank" rel="noopener" title="SpigotMC" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M64 32C28.7 32 0 60.7 0 96v64c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64zm280 72a24 24 0 1 1 0 48 24 24 0 1 1 0-48m48 24a24 24 0 1 1 48 0 24 24 0 1 1-48 0M64 288c-35.3 0-64 28.7-64 64v64c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64v-64c0-35.3-28.7-64-64-64zm280 72a24 24 0 1 1 0 48 24 24 0 1 1 0-48m56 24a24 24 0 1 1 48 0 24 24 0 1 1-48 0"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://discord.com/invite/sD4HvQh8P4" target="_blank" rel="noopener" title="Discord" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M524.531 69.836a1.5 1.5 0 0 0-.764-.7A485 485 0 0 0 404.081 32.03a1.82 1.82 0 0 0-1.923.91 338 338 0 0 0-14.9 30.6 447.9 447.9 0 0 0-134.426 0 310 310 0 0 0-15.135-30.6 1.89 1.89 0 0 0-1.924-.91 483.7 483.7 0 0 0-119.688 37.107 1.7 1.7 0 0 0-.788.676C39.068 183.651 18.186 294.69 28.43 404.354a2.02 2.02 0 0 0 .765 1.375 487.7 487.7 0 0 0 146.825 74.189 1.9 1.9 0 0 0 2.063-.676A348 348 0 0 0 208.12 430.4a1.86 1.86 0 0 0-1.019-2.588 321 321 0 0 1-45.868-21.853 1.885 1.885 0 0 1-.185-3.126 251 251 0 0 0 9.109-7.137 1.82 1.82 0 0 1 1.9-.256c96.229 43.917 200.41 43.917 295.5 0a1.81 1.81 0 0 1 1.924.233 235 235 0 0 0 9.132 7.16 1.884 1.884 0 0 1-.162 3.126 301.4 301.4 0 0 1-45.89 21.83 1.875 1.875 0 0 0-1 2.611 391 391 0 0 0 30.014 48.815 1.86 1.86 0 0 0 2.063.7A486 486 0 0 0 610.7 405.729a1.88 1.88 0 0 0 .765-1.352c12.264-126.783-20.532-236.912-86.934-334.541M222.491 337.58c-28.972 0-52.844-26.587-52.844-59.239s23.409-59.241 52.844-59.241c29.665 0 53.306 26.82 52.843 59.239 0 32.654-23.41 59.241-52.843 59.241m195.38 0c-28.971 0-52.843-26.587-52.843-59.239s23.409-59.241 52.843-59.241c29.667 0 53.307 26.82 52.844 59.239 0 32.654-23.177 59.241-52.844 59.241"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://buymeacoffee.com/we_rt" target="_blank" rel="noopener" title="Buy Me a Coffee" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M88 0C74.7 0 64 10.7 64 24c0 38.9 23.4 59.4 39.1 73.1l1.1 1c16.3 14.2 23.8 21.8 23.8 37.9 0 13.3 10.7 24 24 24s24-10.7 24-24c0-38.9-23.4-59.4-39.1-73.1l-1.1-1C119.5 47.7 112 40.1 112 24c0-13.3-10.7-24-24-24M32 192c-17.7 0-32 14.3-32 32v192c0 53 43 96 96 96h192c53 0 96-43 96-96h16c61.9 0 112-50.1 112-112s-50.1-112-112-112H32m352 64h16c26.5 0 48 21.5 48 48s-21.5 48-48 48h-16zM224 24c0-13.3-10.7-24-24-24s-24 10.7-24 24c0 38.9 23.4 59.4 39.1 73.1l1.1 1c16.3 14.2 23.8 21.8 23.8 37.9 0 13.3 10.7 24 24 24s24-10.7 24-24c0-38.9-23.4-59.4-39.1-73.1l-1.1-1C231.5 47.7 224 40.1 224 24"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.60a45f97.min.js"></script>
+      
+        <script src="../../javascripts/support.js"></script>
+      
+    
+  </body>
+</html>
