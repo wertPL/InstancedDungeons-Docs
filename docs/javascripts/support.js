@@ -6,14 +6,11 @@
   }
 
   function docsBase() {
-    var scripts = document.getElementsByTagName("script");
-    for (var i = scripts.length - 1; i >= 0; i -= 1) {
-      var src = scripts[i].getAttribute("src");
-      if (!src || src.indexOf("javascripts/support.js") === -1) {
-        continue;
-      }
-      var supportUrl = new URL(src, window.location.href);
-      return supportUrl.pathname.replace(/javascripts\/support\.js$/, "");
+    var path = currentPath();
+    var githubPagesBase = "/InstancedDungeons-Docs/";
+    var githubPagesIndex = path.indexOf(githubPagesBase);
+    if (githubPagesIndex >= 0) {
+      return path.slice(0, githubPagesIndex + githubPagesBase.length);
     }
     return "/";
   }
