@@ -1,5 +1,26 @@
 # Pro Changelog
 
+## 2.0.1 Pro
+
+**Added**
+
+- Added per-dungeon item restrictions for elytra, ender pearls, chorus fruit, enchanted golden apples, wind charges, and firework rockets.
+- Added an **Item Restrictions** category to the dungeon settings GUI.
+- Added update-safe `messages.yml` migration and the configurable `item-use-blocked-in-dungeon` message.
+- Added marker files to newly created instance worlds so automatic cleanup can verify world ownership before deletion.
+
+**Fixed**
+
+- Fixed Item Restrictions GUI saves so older dungeon configs do not reset unrelated settings.
+- Fixed orphan-world scanning so directory discovery runs asynchronously and no longer recursively walks full world trees on the server thread.
+- Fixed bStats packaging and Pro service ID initialization.
+
+**Improvements**
+
+- Item restriction changes use a targeted atomic config update instead of rewriting the full dungeon config.
+- Automatic orphan cleanup requires a valid marker or exact plugin world registration and serializes lifecycle operations.
+- Missing update messages are appended atomically without overwriting existing translations or custom messages.
+
 ## 2.0 Pro
 
 **Added**

@@ -86,13 +86,17 @@ Tower rule: only `FIRST` tower stages may have entry costs.
 ## Protection
 
 ```yaml
-allow-block-breaking: false
-allow-block-placing: false
+allow-block-break: false
+allow-block-place: false
+allow-fluid-place: false
+allow-fluid-take: false
 allow-interactions: true
 allow-party-pvp: true
 ```
 
 Trigger objectives and mission blocks can still work when normal interactions are blocked.
+
+Item restrictions are a Pro-only feature and are not read by the Free edition.
 
 ## Death Behavior
 

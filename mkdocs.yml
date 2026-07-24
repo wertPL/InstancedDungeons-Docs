@@ -64,6 +64,7 @@ nav:
       - Permissions: permissions.md
   - Configuration:
       - Dungeon Config: configuration.md
+      - Messages: messages.md
       - Objectives: objectives.md
       - Towers: towers.md
       - Complete 2.0 Reference: complete-2-0-reference.md
@@ -88,6 +89,7 @@ nav:
           - Permissions: pro/permissions.md
       - Configuration:
           - Dungeon Config: pro/configuration.md
+          - Messages: pro/messages.md
           - Objectives: pro/objectives.md
           - Towers: pro/towers.md
           - Complete 2.0 Reference: pro/complete-2-0-reference.md

@@ -110,13 +110,46 @@ Use this section for production dungeon layouts with multiple stages, richer mis
 ## Protection
 
 ```yaml
-allow-block-breaking: false
-allow-block-placing: false
+allow-block-break: false
+allow-block-place: false
+allow-fluid-place: false
+allow-fluid-take: false
 allow-interactions: true
 allow-party-pvp: true
 ```
 
 Trigger objectives and mission blocks can still work when normal interactions are blocked.
+
+## Item Restrictions
+
+Pro dungeons can block movement, teleport, combat, and consumable items inside their active instance:
+
+```yaml
+item-restrictions:
+  block-elytra: false
+  block-ender-pearls: false
+  block-chorus-fruit: false
+  block-enchanted-golden-apples: false
+  block-wind-charges: false
+  block-firework-rockets: false
+```
+
+All restrictions default to `false`, which keeps vanilla behavior.
+
+| Setting | Blocked behavior |
+| --- | --- |
+| `block-elytra` | Starting or continuing elytra flight. |
+| `block-ender-pearls` | Throwing an ender pearl and the resulting teleport. |
+| `block-chorus-fruit` | Eating chorus fruit and the resulting teleport. |
+| `block-enchanted-golden-apples` | Consuming enchanted golden apples. |
+| `block-wind-charges` | Using or launching wind charges. |
+| `block-firework-rockets` | Using, launching, or firing firework rockets from a crossbow. |
+
+Restrictions apply only while the player belongs to an active dungeon instance and is physically inside that instance world.
+
+They can be edited from the dungeon settings GUI under **Item Restrictions**. New dungeons generate the complete section automatically.
+
+For older 2.0 dungeon configs, missing values load as `false`. The first change made in the Item Restrictions GUI appends or updates only this section through an atomic targeted write; unrelated settings such as `announce-start` and `allow-interactions` are not reserialized or reset.
 
 ## Death Behavior
 

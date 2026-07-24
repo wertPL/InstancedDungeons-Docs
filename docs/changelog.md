@@ -1,5 +1,23 @@
 ﻿# Changelog
 
+## 2.0.1
+
+**Added**
+
+- Added update-safe `messages.yml` migration infrastructure for future Free-edition messages.
+- Added marker files to newly created instance worlds so automatic cleanup can verify world ownership before deletion.
+
+**Bug Fixes**
+
+- Fixed orphan-world scanning so directory discovery runs asynchronously and no longer recursively walks full world trees on the server thread.
+- Fixed bStats packaging and initialization for the Free editions.
+
+**Improvements**
+
+- Automatic orphan cleanup now requires a valid instance marker or an exact plugin world registration; folder names alone are never deleted.
+- World unload, Multiverse removal, and deletion operations are serialized to prevent overlapping cleanup work.
+- Future missing messages can be appended atomically without overwriting existing translations or other custom messages.
+
 ## 2.0
 
 **Added**

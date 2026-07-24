@@ -222,9 +222,11 @@ Instance world cleanup:
 
 - Every dungeon run creates a temporary instance world copied from the template world.
 - Normal completion, failure, abandon, and shutdown paths unload and delete the temporary world.
-- Auto-cleanup also scans for orphaned instance worlds left behind after crashes or failed deletion attempts.
-- New instance worlds contain an `.instanced-dungeons-instance` marker file.
-- Legacy orphan worlds are detected by the generated `<dungeon_id>_<8 hex chars>` naming pattern.
+- New instance worlds contain an `.instanced-dungeons-instance` marker file with the instance ID, dungeon ID, creation time, and marker format version.
+- Auto-cleanup scans the direct children of approved world roots asynchronously instead of recursively walking complete directory trees on the server thread.
+- Automatic deletion requires a valid marker or an exact world registration created by the plugin. A folder name by itself is never sufficient authorization.
+- Unmarked legacy folders are not automatically deleted.
+- Unload, Multiverse removal, and deletion steps are serialized so world lifecycle operations do not overlap.
 - Loaded worlds with players inside are skipped instead of being force-deleted.
 
 ## Dungeon Config
@@ -1094,7 +1096,15 @@ Important placeholder styles:
 
 The `mission-names` section controls player-facing mission labels used in mission completion messages, mission GUI names, hologram mission hints, and mission lore placeholders. Internal enum names in stage configs are not changed by this section.
 
-`messages.yml` includes a placeholder reference comment at the bottom. Add new message keys there when extending messages.
+Fresh installations receive the complete bundled file. When a plugin update introduces a new message, only missing update-introduced keys are appended to an existing file under:
+
+```yaml
+# Messages added by plugin updates will appear below. Existing messages are never overwritten.
+```
+
+Existing values, comments, order, and translations are preserved. The update uses a temporary file and atomic replacement where supported, then reloads `messages.yml`. See [Messages](messages.md) for the complete behavior.
+
+`messages.yml` also includes a placeholder reference comment at the bottom.
 
 ## Validation
 
