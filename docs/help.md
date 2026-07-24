@@ -11,7 +11,7 @@ Use this section when something needs checking after setup.
 ```
 
 2. Check the troubleshooting page.
-3. Check the changelog for changed behavior.
+3. Check the current configuration and complete reference pages.
 4. Join Discord if the issue still looks like a plugin bug.
 
 ## Support Links

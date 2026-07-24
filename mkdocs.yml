@@ -79,7 +79,6 @@ nav:
   - Help:
       - Help Center: help.md
       - Troubleshooting: troubleshooting.md
-      - Changelog: changelog.md
   - Pro Version:
       - Home: pro/index.md
       - Start:
@@ -105,7 +104,6 @@ nav:
       - Help:
           - Help Center: pro/help.md
           - Troubleshooting: pro/troubleshooting.md
-          - Changelog: pro/changelog.md
   - Legacy 1.0.x Documentation:
       - Legacy 1.0.x Documentation: legacy-1-0-x.md
 
