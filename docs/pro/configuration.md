@@ -116,7 +116,12 @@ allow-fluid-place: false
 allow-fluid-take: false
 allow-interactions: true
 allow-party-pvp: true
+allow-fly: false
 ```
+
+`allow-fly: true` leaves flight already granted by a game mode, permission, or another plugin untouched. It never grants flight by itself. `false` forces flight off for active non-Creative dungeon players and restores their previous flight state when they leave the dungeon. Creative mode is exempt. This setting is also available under **Gameplay Rules** in the admin GUI.
+
+When an existing dungeon is loaded after updating, the missing `allow-fly: false` setting is appended automatically without overwriting or reformatting the player's existing configuration.
 
 Trigger objectives and mission blocks can still work when normal interactions are blocked.
 

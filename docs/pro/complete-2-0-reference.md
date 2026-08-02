@@ -269,8 +269,11 @@ allow-fluid-place: false
 allow-fluid-take: false
 allow-interactions: true
 allow-party-pvp: true
+allow-fly: false
 tnt-mode: VANILLA
 ```
+
+`allow-fly: true` leaves flight already granted by a game mode, permission, or another plugin untouched. It never grants flight by itself. `false` forces flight off for active non-Creative dungeon players and restores their previous flight state when they leave the dungeon. Creative mode is exempt. Existing dungeon files receive the missing `allow-fly: false` setting automatically without changing their existing values or formatting. In Pro this setting is also available under **Gameplay Rules** in the admin GUI.
 
 `tnt-mode` options:
 
