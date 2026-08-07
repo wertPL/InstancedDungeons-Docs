@@ -211,9 +211,11 @@ settings:
   max-stored-reports: 144
 ```
 
-Each period records the exact average/maximum JVM server heap snapshots, estimated average/maximum plugin-core retained state, total instance launches, launches grouped by dungeon ID, and estimated average/maximum instance-world footprint by dungeon. Newest reports are first.
+Each period records only memory associated with InstancedDungeons: the estimated plugin core, active dungeon instances, their combined estimate, total instance launches, launches grouped by dungeon ID, and estimated instance-world footprint grouped by dungeon. It does not report the whole server/JVM heap. Newest reports are first.
 
-Per-plugin and per-dungeon values are estimates, because the JVM does not assign shared Paper world, chunk, entity, and mob objects to a plugin. The estimator uses only already available counters for active instances, loaded chunks, entities, players, and plugin runtime state. It never forces garbage collection, walks the heap, starts JFR, or scans world blocks. Sampling defaults to once per 30 seconds to keep its server cost negligible.
+Report times use the server's local time zone and a readable format, for example `2026-08-07 12:58:40 CEST`. Reports are grouped into `period`, `plugin-core-estimate`, `active-instances-estimate`, `plugin-and-instances-estimate`, and `instances` sections. Legacy flat reports are normalized and their old `server-heap` fields are removed the next time the analysis file is opened by the plugin.
+
+All memory values are estimates, because the JVM does not assign shared Paper world, chunk, entity, and mob objects to a plugin. The estimator uses only already available counters for active instances, loaded chunks, entities, players, and plugin runtime state. It never forces garbage collection, walks the heap, starts JFR, or scans world blocks. Sampling defaults to once per 30 seconds to keep its server cost negligible.
 
 ## Safe update migration
 

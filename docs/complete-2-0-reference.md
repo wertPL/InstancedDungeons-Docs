@@ -1163,7 +1163,7 @@ Free-version limit notices are hardcoded in English and visible only to admins.
 
 ## Optional RAM Analysis (2.1.0)
 
-`/dungeon ram analysis` is a hidden, admin-only toggle available in Free and Pro. It is intentionally absent from help and tab completion. When enabled it creates `ram-analysis.yml`, samples lightweight server/plugin/instance counters every 30 seconds by default, and writes newest-first reports every 10 minutes. JVM heap snapshots are exact; plugin-core and per-dungeon world footprints are explicitly labeled estimates. No GC, heap walk, JFR, or block scan is performed. See the [full 2.1 reference](version-2.1.md#optional-lightweight-ram-analysis).
+`/dungeon ram analysis` is a hidden, admin-only toggle available in Free and Pro. It is intentionally absent from help and tab completion. When enabled it creates `ram-analysis.yml`, samples lightweight plugin/instance counters every 30 seconds by default, and writes newest-first reports every 10 minutes. Reports cover only estimated plugin-core, active-instance, combined plugin-and-instance, and per-dungeon instance memory; the whole server/JVM heap is not included. Times use the server's local zone in a readable format. No GC, heap walk, JFR, or block scan is performed. See the [full 2.1 reference](version-2.1.md#optional-lightweight-ram-analysis).
 
 ## Compatibility Notes
 

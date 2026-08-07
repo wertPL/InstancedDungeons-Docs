@@ -1244,9 +1244,9 @@ Validation output:
 
 ## Pro GUI Additions and Optional RAM Analysis (2.1.0)
 
-The Pro editor includes reward-logic menus with preview/real-roll actions, full checkpoint editing, advanced after-open and emergency-return gate menus, and admin-only sound previews. Advanced checkpoint/gate event commands and contextual placeholders are listed in the [event command reference](event-commands.md).
+The Pro editor uses a four-row main screen grouped by workflow: dungeon content, progression, testing/administration, and save/delete/close actions. Its **Boss & Trigger** screen uses separate, symmetrical boss and trigger groups. It also includes reward-logic menus with preview/real-roll actions, full checkpoint editing, advanced after-open and emergency-return gate menus, and admin-only sound previews. Advanced checkpoint/gate event commands and contextual placeholders are listed in the [event command reference](event-commands.md).
 
-`/dungeon ram analysis` is a hidden, admin-only toggle available in every edition. It creates `ram-analysis.yml` only when first enabled, uses lightweight periodic counters, and stores newest reports first. JVM heap samples are exact; plugin-core and per-dungeon instance-world figures are estimates. See the [full 2.1 reference](../version-2.1.md#optional-lightweight-ram-analysis).
+`/dungeon ram analysis` is a hidden, admin-only toggle available in every edition. It creates `ram-analysis.yml` only when first enabled, uses lightweight periodic counters, and stores newest reports first. It reports only estimated plugin-core and dungeon-instance memory, including their combined value; it does not report the whole server/JVM heap. Times are written in the server's local zone using a readable format. See the [full 2.1 reference](../version-2.1.md#optional-lightweight-ram-analysis).
 
 ## Compatibility Notes
 
