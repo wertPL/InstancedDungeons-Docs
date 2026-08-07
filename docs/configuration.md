@@ -14,6 +14,8 @@ v: 2.0
 
 Dungeons without this marker are blocked from opening.
 
+The optional `ram-analysis.yml` is a plugin-level diagnostic file, not a dungeon config. It is created only after an administrator runs `/dungeon ram analysis`; see the [2.1 RAM analysis reference](version-2.1.md#optional-lightweight-ram-analysis).
+
 ## Core Fields
 
 ```yaml
@@ -99,7 +101,7 @@ allow-fly: false
 
 Trigger objectives and mission blocks can still work when normal interactions are blocked.
 
-Item restrictions are a Pro-only feature and are not read by the Free edition.
+Item restrictions work in both Free and Pro. Version 2.1.0 also supports `block-mace` and `block-trident`; see [Version 2.1.0](version-2.1.md#item-restrictions-in-free-and-pro).
 
 ## Death Behavior
 

@@ -57,6 +57,7 @@ markdown_extensions:
 
 nav:
   - Home: index.md
+  - Version 2.1.0: version-2.1.md
   - Start:
       - Getting Started: getting-started.md
       - Examples: examples.md

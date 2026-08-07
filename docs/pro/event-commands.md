@@ -34,7 +34,9 @@ commands:
 | `NONE` | Runs once with no player target. |
 | `PLAYER` | Runs for the event player. |
 | `PARTY` | Runs for each party member. |
-| `GLOBAL` | Runs for all online players. |
+| `ALIVE_PARTY` | Runs for each alive party member. |
+| `DEAD_PARTY` | Runs for each dead party member. |
+| `LEADER` | Runs for the party leader. |
 
 ## Player Events
 
@@ -52,6 +54,11 @@ commands:
 | `on-player-complete-stage-command` | Active stage completes. |
 | `on-player-open-gate-command` | Stage gate opens. |
 | `on-player-fail-dungeon-command` | Dungeon or tower fails. |
+| `on-player-checkpoint-activate-command` | A checkpoint becomes the newest active checkpoint. |
+| `on-player-checkpoint-teleport-command` | A checkpoint teleports the alive party. |
+| `on-player-gate-close-command` | A configured gate closes. |
+| `on-player-gate-after-open-teleport-command` | A gate's after-open action teleports the alive party. |
+| `on-player-emergency-return-command` | One player uses an emergency-return plate. |
 
 ## Party Events
 
@@ -67,6 +74,10 @@ commands:
 | `on-party-open-gate-command` | Stage gate opens. |
 | `on-party-enter-tower-stage-command` | Party enters the next tower dungeon. |
 | `on-party-complete-tower-command` | Final tower dungeon completes. |
+| `on-party-checkpoint-activate-command` | A checkpoint becomes active. |
+| `on-party-checkpoint-teleport-command` | A checkpoint teleports the alive party. |
+| `on-party-gate-close-command` | A configured gate closes. |
+| `on-party-gate-after-open-teleport-command` | A gate's after-open action teleports the alive party. |
 
 ## Common Placeholders
 
@@ -81,6 +92,16 @@ commands:
 | `<stage_order>` | Stage order where available. |
 | `<tower_id>` | Tower context ID. |
 | `<reason>` | Failure reason where available. |
+| `<instance_id>` | Active instance ID. |
+| `<instance_world>` | Active instance world. |
+| `<alive_players>` | Current alive-player count. |
+| `<checkpoint_id>` | Checkpoint ID for checkpoint events. |
+| `<checkpoint_order>` | Checkpoint order for checkpoint events. |
+| `<gate_id>` | Source/current gate ID. |
+| `<closed_gate_id>` | Gate that was closed. |
+| `<destination_x>`, `<destination_y>`, `<destination_z>` | Teleport destination block coordinates. |
+
+Existing `commands.yml` files are migrated by appending commented examples and the new placeholder reference only. Active entries, `enabled`, executors, audiences, and administrator commands are not rewritten.
 
 !!! warning
-    Be careful with `GLOBAL` audiences and commands that give items, money, or permissions. Validation warns about risky combinations.
+    Be careful with broad party audiences and commands that give items, money, or permissions. One command entry runs once per selected audience target.

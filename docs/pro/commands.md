@@ -1,5 +1,9 @@
 # Commands
 
+## Hidden diagnostics
+
+`/dungeon ram analysis` toggles the optional lightweight RAM report. It requires the admin permission and intentionally does not appear in in-game help or tab completion. See [Version 2.1.0](../version-2.1.md#optional-lightweight-ram-analysis).
+
 The main command is `/dungeon`. `/dg` may also be available depending on your plugin configuration.
 
 ## Player Commands

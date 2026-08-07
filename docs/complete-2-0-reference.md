@@ -519,7 +519,7 @@ Boss rewards are configured per dungeon and support custom items from the same p
 
 Reward entries are independent. Stacked items in separate GUI slots stay separate reward entries and can have separate chance values in the config.
 
-When the boss dies, rolled boss rewards spawn in the dungeon world at the boss spawn location, one block above the spawn point and scattered up to 2 blocks sideways. Rewards are not inserted directly into player inventories.
+Since 2.1.0, `reward-logic` controls whether rolled boss rewards go to inventories or form a public pile at the boss spawn. Recipient and delivery combinations are validated before the dungeon can open.
 
 Edit boss rewards while editing a boss-objective dungeon:
 
@@ -541,7 +541,7 @@ boss-rewards:
 
 ## Trigger Rewards
 
-Trigger rewards are configured in `dungeons/<id>/trigger.yml` and are given when the configured trigger completes the dungeon.
+Trigger rewards are configured in `dungeons/<id>/trigger.yml` and are distributed according to its 2.1.0 `reward-logic` when the trigger completes the dungeon.
 
 Edit trigger rewards while editing a trigger-objective dungeon:
 
@@ -1160,6 +1160,10 @@ Validation output:
 | Admin GUI | Pro-only notice in free version. |
 
 Free-version limit notices are hardcoded in English and visible only to admins.
+
+## Optional RAM Analysis (2.1.0)
+
+`/dungeon ram analysis` is a hidden, admin-only toggle available in Free and Pro. It is intentionally absent from help and tab completion. When enabled it creates `ram-analysis.yml`, samples lightweight server/plugin/instance counters every 30 seconds by default, and writes newest-first reports every 10 minutes. JVM heap snapshots are exact; plugin-core and per-dungeon world footprints are explicitly labeled estimates. No GC, heap walk, JFR, or block scan is performed. See the [full 2.1 reference](version-2.1.md#optional-lightweight-ram-analysis).
 
 ## Compatibility Notes
 

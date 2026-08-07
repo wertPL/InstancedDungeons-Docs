@@ -1,6 +1,10 @@
 # Stages and Gates
 
+Version 2.1.0 adds ordered checkpoints, after-open party teleports, gate-closing actions, and per-gate emergency returns. See the [2.1.0 feature reference](../version-2.1.md#pro-checkpoints).
+
 This page documents stage behavior for Pro dungeon builds.
+
+The Pro admin GUI includes a checkpoint list and detail editor. Stage detail pages also link to separate **After-Open Logic** and **Emergency Return** menus, so all 2.1 gate/checkpoint options can be configured without commands.
 
 Stages are optional progression gates inside a dungeon.
 
@@ -68,6 +72,8 @@ Gate stick controls:
 You can create multiple holograms for the same stage. Delete removes the nearest hologram for that stage within 3 blocks.
 
 Runtime holograms show live mission progress. Locked higher-order holograms show which earlier stages still need to open.
+
+Checkpoint and emergency-return holograms support contextual placeholders documented in the [2.1.0 feature reference](../version-2.1.md#pro-emergency-return), including dungeon, instance, party, gate/stage, checkpoint, and destination coordinates.
 
 ## Mission Types
 

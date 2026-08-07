@@ -59,7 +59,7 @@ Open the boss reward editor:
 /dungeon boss reward edit
 ```
 
-Boss rewards spawn in the dungeon world at the boss spawn location after the boss dies.
+Boss and trigger delivery is controlled by `reward-logic`. Rewards can go to inventories or the objective location and can target the leader, killer/activator, every alive player, or one shared public ground roll. Invalid combinations block dungeon start. See [Version 2.1.0](version-2.1.md#reward-logic).
 
 Reward entries are independent. If you place 4 diamonds in one GUI slot and 2 diamonds in another slot, the plugin saves two separate reward entries.
 

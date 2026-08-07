@@ -16,6 +16,8 @@ v: 2.0
 
 Dungeons without this marker are blocked from opening.
 
+The optional `ram-analysis.yml` is a plugin-level diagnostic file, not a dungeon config. It is created only after an administrator runs `/dungeon ram analysis`; see the [2.1 RAM analysis reference](../version-2.1.md#optional-lightweight-ram-analysis).
+
 ## Core Fields
 
 ```yaml
@@ -183,6 +185,9 @@ timer-bossbar:
 ```
 
 ## Timer Alerts
+
+!!! note "Version 2.1.0"
+    In Pro, runtime timer alert messages and sounds are now controlled by the dungeon's `sounds.yml`. The legacy section below remains in existing configs but no longer affects runtime behavior after migration.
 
 ```yaml
 timer-alerts:

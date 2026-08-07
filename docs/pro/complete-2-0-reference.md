@@ -598,7 +598,7 @@ Boss rewards are configured per dungeon and support custom items from the same p
 
 Reward entries are independent. Stacked items in separate GUI slots stay separate reward entries and can have separate chance values in the config.
 
-When the boss dies, rolled boss rewards spawn in the dungeon world at the boss spawn location, one block above the spawn point and scattered up to 2 blocks sideways. Rewards are not inserted directly into player inventories.
+Since 2.1.0, `reward-logic` controls whether rolled boss rewards go to inventories or form a public pile at the boss spawn. Recipient and delivery combinations are validated before the dungeon can open.
 
 Edit boss rewards while editing a boss-objective dungeon:
 
@@ -620,7 +620,7 @@ boss-rewards:
 
 ## Trigger Rewards
 
-Trigger rewards are configured in `dungeons/<id>/trigger.yml` and are given when the configured trigger completes the dungeon.
+Trigger rewards are configured in `dungeons/<id>/trigger.yml` and are distributed according to its 2.1.0 `reward-logic` when the trigger completes the dungeon.
 
 Edit trigger rewards while editing a trigger-objective dungeon:
 
@@ -1241,6 +1241,12 @@ Validation output:
 | Money payment missions | Multiple money payment mission entries are supported. |
 | Item payment missions | Multiple item payment mission entries are supported. |
 | Item payment item types | Multiple item payment item types are supported. |
+
+## Pro GUI Additions and Optional RAM Analysis (2.1.0)
+
+The Pro editor includes reward-logic menus with preview/real-roll actions, full checkpoint editing, advanced after-open and emergency-return gate menus, and admin-only sound previews. Advanced checkpoint/gate event commands and contextual placeholders are listed in the [event command reference](event-commands.md).
+
+`/dungeon ram analysis` is a hidden, admin-only toggle available in every edition. It creates `ram-analysis.yml` only when first enabled, uses lightweight periodic counters, and stores newest reports first. JVM heap samples are exact; plugin-core and per-dungeon instance-world figures are estimates. See the [full 2.1 reference](../version-2.1.md#optional-lightweight-ram-analysis).
 
 ## Compatibility Notes
 
