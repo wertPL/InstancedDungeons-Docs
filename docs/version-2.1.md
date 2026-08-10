@@ -167,12 +167,13 @@ Commands:
 /dungeon stage <stage_id> gate emergency enable|disable
 /dungeon stage <stage_id> gate emergency plate set [pressure_plate_material]
 /dungeon stage <stage_id> gate emergency destination set
-/dungeon stage <stage_id> gate emergency hologram on|off
 ```
 
 The editor GUI has independent particle toggles for checkpoint locations, checkpoint triggers, gate teleport destinations, and emergency-return locations.
 
-The stage detail GUI uses four rows grouped into stage settings, gate editing, advanced gate logic, and navigation. It contains dedicated **After-Open Logic** and **Emergency Return** menus. They cover the teleport destination, allowed close-gate list, pressure-plate material/location, emergency destination, and hologram settings.
+The stage detail GUI uses four rows grouped into stage settings, gate editing, advanced gate logic, and navigation. It contains dedicated **After-Open Logic** and **Emergency Return** menus. They cover the teleport destination, allowed close-gate list, pressure-plate material/location, and emergency destination.
+
+Emergency-return holograms are intentionally configured only in the stage YAML under `gate.emergency-return.hologram`. They cannot be enabled, disabled, or edited from the GUI or an in-game command. Existing YAML values are preserved.
 
 Configured gameplay blocks remain protected even when normal block breaking, block placement, or fluid placement is enabled. This includes stage gates, mission blocks, completion/checkpoint triggers, loot chests, and emergency-return plates. Water and lava flow is also stopped before it can replace one of these blocks.
 
