@@ -97,7 +97,7 @@ allow-party-pvp: true
 allow-fly: false
 ```
 
-`allow-fly: true` leaves flight already granted by a game mode, permission, or another plugin untouched. It never grants flight by itself. `false` forces flight off for active non-Creative dungeon players and restores their previous flight state when they leave the dungeon. Creative mode is exempt.
+`allow-fly: true` leaves flight already granted by a game mode, permission, or another plugin untouched. It never grants flight by itself. `false` forces flight off for active Survival and Adventure dungeon players and restores their previous flight state when they leave the dungeon. Creative and Spectator modes are exempt.
 
 Trigger objectives and mission blocks can still work when normal interactions are blocked.
 

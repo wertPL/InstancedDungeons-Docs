@@ -275,7 +275,7 @@ tnt-mode: VANILLA
 
 Allowing block breaking, block placement, or fluid placement does not remove protection from dungeon-owned gameplay blocks. Gates, mission blocks, completion triggers, and loot chests cannot be broken or replaced, and fluid flow is cancelled before reaching them.
 
-`allow-fly: true` leaves flight already granted by a game mode, permission, or another plugin untouched. It never grants flight by itself. `false` forces flight off for active non-Creative dungeon players and restores their previous flight state when they leave the dungeon. Creative mode is exempt.
+`allow-fly: true` leaves flight already granted by a game mode, permission, or another plugin untouched. It never grants flight by itself. `false` forces flight off for active Survival and Adventure dungeon players and restores their previous flight state when they leave the dungeon. Creative and Spectator modes are exempt.
 
 `tnt-mode` options:
 
