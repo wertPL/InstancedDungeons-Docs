@@ -135,6 +135,8 @@ Commands:
 
 Each gate may define an optional emergency pressure plate in the section that can become trapped after that gate closes. The plate and its hologram appear only while the gate is closed. It teleports only the player who steps on it.
 
+The plate location is configured with a placement item, like a mission button or pressure plate. Enable Emergency Return, choose the material, then use **Get Emergency Plate** in the GUI or `/dungeon stage <stage_id> gate emergency plate set [pressure_plate_material]`. Place the tagged item in the dungeon template. Each gate can have only one emergency plate: placing another removes the previous plate and moves/removes its editor hologram. A tagged plate cannot be placed while Emergency Return is disabled.
+
 ```yaml
 gate:
   emergency-return:
@@ -170,7 +172,9 @@ Commands:
 
 The editor GUI has independent particle toggles for checkpoint locations, checkpoint triggers, gate teleport destinations, and emergency-return locations.
 
-The stage detail GUI contains dedicated **After-Open Logic** and **Emergency Return** menus. They cover the teleport destination, allowed close-gate list, pressure-plate material/location, emergency destination, and hologram settings.
+The stage detail GUI uses four rows grouped into stage settings, gate editing, advanced gate logic, and navigation. It contains dedicated **After-Open Logic** and **Emergency Return** menus. They cover the teleport destination, allowed close-gate list, pressure-plate material/location, emergency destination, and hologram settings.
+
+Configured gameplay blocks remain protected even when normal block breaking, block placement, or fluid placement is enabled. This includes stage gates, mission blocks, completion/checkpoint triggers, loot chests, and emergency-return plates. Water and lava flow is also stopped before it can replace one of these blocks.
 
 Checkpoint and emergency holograms support `%dungeon%`, `%dungeon_name%`, `%instance%`, `%party_leader%`, `%party_size%`, `%alive_players%`, `%gate%`, `%stage%`, `%destination_x%`, `%destination_y%`, and `%destination_z%`. Checkpoints additionally support `%checkpoint%` and `%checkpoint_order%`; emergency returns support `%stage_order%`.
 

@@ -4,7 +4,11 @@ Version 2.1.0 adds ordered checkpoints, after-open party teleports, gate-closing
 
 This page documents stage behavior for Pro dungeon builds.
 
-The Pro admin GUI includes a checkpoint list and detail editor. Stage detail pages also link to separate **After-Open Logic** and **Emergency Return** menus, so all 2.1 gate/checkpoint options can be configured without commands.
+The Pro admin GUI includes a checkpoint list and detail editor. The four-row stage detail page groups stage settings, gate editing, advanced logic, and navigation. It also links to separate **After-Open Logic** and **Emergency Return** menus, so all gate/checkpoint options can be configured without commands.
+
+Emergency Return locations are placed with a tagged pressure-plate item obtained from the GUI or the `gate emergency plate set` command. The feature must be enabled before the item can be placed. One gate can have only one plate; placing a replacement removes the old plate and moves its editor hologram.
+
+Runtime gate blocks, mission blocks, triggers, loot chests, and emergency plates are protected from player breaking/replacement and water or lava, even when the dungeon otherwise allows those actions.
 
 Stages are optional progression gates inside a dungeon.
 
