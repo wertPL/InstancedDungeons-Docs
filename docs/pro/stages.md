@@ -83,6 +83,8 @@ Checkpoint and emergency-return holograms support contextual placeholders docume
 
 Checkpoint holograms are configured only in `checkpoints/<checkpoint_id>.yml` under `hologram`. Their visibility, height, and lines are not editable from the GUI or an in-game command.
 
+Breaking a configured checkpoint button or pressure plate in the template while editing automatically clears its saved `trigger.location`. The checkpoint must be assigned a new trigger before the dungeon can pass validation again.
+
 ## Mission Types
 
 | Mission | Description |

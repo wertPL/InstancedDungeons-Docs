@@ -99,6 +99,8 @@ Editor commands:
 
 For a block trigger, look at the configured button or pressure plate before running the command.
 
+When an administrator destroys a configured checkpoint button or pressure plate while editing its dungeon template, the plugin immediately removes `trigger.location` from that checkpoint YAML. The checkpoint remains in place and keeps its trigger type, but validation blocks dungeon start until a new trigger block is configured.
+
 The Pro admin GUI also provides a complete checkpoint workflow: list/create checkpoints, set location and order, select the trigger type, bind a gate or targeted button/plate, toggle party teleport, maintain closed gates, and delete checkpoints. The **Closed Gates** entry explains that listed gates close immediately without an animation when the checkpoint activates. Targets must have an equal or lower stage order and cannot be the gate that triggered the checkpoint.
 
 Checkpoint hologram visibility, height, and lines are configured only in the checkpoint YAML under `hologram`. They cannot be enabled, disabled, or edited from the GUI or an in-game command. Existing YAML values are preserved.
