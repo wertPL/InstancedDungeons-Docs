@@ -81,6 +81,8 @@ Runtime holograms show live mission progress. Locked higher-order holograms show
 
 Checkpoint and emergency-return holograms support contextual placeholders documented in the [2.1.0 feature reference](../version-2.1.md#pro-emergency-return), including dungeon, instance, party, gate/stage, checkpoint, and destination coordinates.
 
+Checkpoint holograms are configured only in `checkpoints/<checkpoint_id>.yml` under `hologram`. Their visibility, height, and lines are not editable from the GUI or an in-game command.
+
 ## Mission Types
 
 | Mission | Description |
