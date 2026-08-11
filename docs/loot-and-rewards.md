@@ -59,7 +59,29 @@ Open the boss reward editor:
 /dungeon boss reward edit
 ```
 
-Boss and trigger delivery is controlled by `reward-logic`. Rewards can go to inventories or the objective location and can target the leader, killer/activator, every alive player, or one shared public ground roll. Invalid combinations block dungeon start. See [Version 2.1.0](version-2.1.md#reward-logic).
+Boss and trigger delivery is controlled by `reward-logic`:
+
+```yaml
+reward-logic:
+  delivery: INVENTORY
+  recipients: EVERY_ALIVE
+```
+
+`delivery` accepts `INVENTORY` or `GROUND`.
+
+| Recipient | Objective | Allowed delivery |
+| --- | --- | --- |
+| `PARTY_SHARED` | Boss or trigger | `GROUND` only |
+| `LEADER` | Boss or trigger | `INVENTORY` only |
+| `KILLER` | Boss only | `INVENTORY` only |
+| `ACTIVATOR` | Trigger only | `INVENTORY` only |
+| `EVERY_ALIVE` | Boss or trigger | `INVENTORY` or `GROUND` |
+
+Invalid combinations block the dungeon from opening and are reported by validation. `GROUND + EVERY_ALIVE` makes one independent reward roll for every eligible player and creates one public pile at the boss or trigger location. Inventory overflow drops safely at the recipient's location.
+
+Only online, alive party members inside the instance world count for `EVERY_ALIVE`. Supported custom items follow the same delivery rules as vanilla items.
+
+For existing dungeons, boss rewards keep `GROUND + PARTY_SHARED` and trigger rewards keep `INVENTORY + EVERY_ALIVE` unless an administrator changes them.
 
 Reward entries are independent. If you place 4 diamonds in one GUI slot and 2 diamonds in another slot, the plugin saves two separate reward entries.
 

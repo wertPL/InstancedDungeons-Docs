@@ -6,7 +6,7 @@ Every dungeon has a main config file:
 plugins/InstancedDungeons/dungeons/<dungeon_id>/config.yml
 ```
 
-InstancedDungeons 2.0 requires:
+The current dungeon format requires:
 
 ```yaml
 v: 2.0
@@ -14,7 +14,7 @@ v: 2.0
 
 Dungeons without this marker are blocked from opening.
 
-The optional `ram-analysis.yml` is a plugin-level diagnostic file, not a dungeon config. It is created only after an administrator runs `/dungeon ram analysis`; see the [2.1 RAM analysis reference](version-2.1.md#optional-lightweight-ram-analysis).
+The optional `ram-analysis.yml` is a plugin-level diagnostic file, not a dungeon config. It is created only after an administrator runs `/dungeon ram analysis`; see [RAM Analysis](ram-analysis.md).
 
 ## Core Fields
 
@@ -101,7 +101,38 @@ allow-fly: false
 
 Trigger objectives and mission blocks can still work when normal interactions are blocked.
 
-Item restrictions work in both Free and Pro. Version 2.1.0 also supports `block-mace` and `block-trident`; see [Version 2.1.0](version-2.1.md#item-restrictions-in-free-and-pro).
+## Item Restrictions
+
+Free and Pro dungeons can block movement, teleport, combat, and consumable items inside an active instance:
+
+```yaml
+item-restrictions:
+  block-elytra: false
+  block-ender-pearls: false
+  block-chorus-fruit: false
+  block-enchanted-golden-apples: false
+  block-wind-charges: false
+  block-firework-rockets: false
+  block-mace: false
+  block-trident: false
+```
+
+All restrictions default to `false`.
+
+| Setting | Blocked behavior |
+| --- | --- |
+| `block-elytra` | Starting or continuing elytra flight. |
+| `block-ender-pearls` | Throwing an ender pearl and the resulting teleport. |
+| `block-chorus-fruit` | Eating chorus fruit and the resulting teleport. |
+| `block-enchanted-golden-apples` | Consuming enchanted golden apples. |
+| `block-wind-charges` | Using or launching wind charges. |
+| `block-firework-rockets` | Using, launching, or firing firework rockets from a crossbow. |
+| `block-mace` | Using a mace in melee combat. |
+| `block-trident` | Using a trident in melee combat or throwing it. |
+
+Restrictions apply only while the player belongs to an active dungeon instance and is physically inside its world. In Free they are configured in the dungeon YAML; Pro also provides the **Item Restrictions** GUI category.
+
+Missing restriction keys are appended with `false` without replacing existing dungeon settings.
 
 ## Death Behavior
 

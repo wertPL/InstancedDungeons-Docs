@@ -2,7 +2,7 @@
 
 ## Hidden diagnostics
 
-`/dungeon ram analysis` toggles the optional lightweight RAM report. It requires the admin permission and intentionally does not appear in in-game help or tab completion. See [Version 2.1.0](../version-2.1.md#optional-lightweight-ram-analysis).
+`/dungeon ram analysis` toggles the optional lightweight RAM report. It requires the admin permission and intentionally does not appear in in-game help or tab completion. See [RAM Analysis](../ram-analysis.md).
 
 The main command is `/dungeon`. `/dg` may also be available depending on your plugin configuration.
 
@@ -24,7 +24,7 @@ The main command is `/dungeon`. `/dg` may also be available depending on your pl
 
 | Command | Description |
 | --- | --- |
-| `/dungeon create <id> <template-world> <boss|trigger>` | Creates a 2.0 dungeon. |
+| `/dungeon create <id> <template-world> <boss|trigger>` | Creates a dungeon using the current config format. |
 | `/dungeon edit <id>` | Enters editor mode. |
 | `/dungeon save` | Exits editor mode. |
 | `/dungeon reload` | Reloads configs and validation. |
@@ -68,6 +68,33 @@ The main command is `/dungeon`. `/dg` may also be available depending on your pl
 | `/dungeon gate save` | Saves the active gate edit session. |
 | `/dungeon stage <stage_id> gate hologram create` | Adds a stage hologram. |
 | `/dungeon stage <stage_id> gate hologram delete` | Removes the nearest hologram within 3 blocks. |
+
+## Advanced Gate Commands
+
+| Command | Description |
+| --- | --- |
+| `/dungeon stage <stage_id> gate afteropen teleport set` | Sets and enables the after-open party teleport. |
+| `/dungeon stage <stage_id> gate afteropen teleport clear` | Clears the after-open teleport. |
+| `/dungeon stage <stage_id> gate afteropen close add <target_stage_id>` | Adds a gate to close after this gate opens. |
+| `/dungeon stage <stage_id> gate afteropen close remove <target_stage_id>` | Removes a gate from the after-open close list. |
+| `/dungeon stage <stage_id> gate emergency enable` | Enables Emergency Return for the gate. |
+| `/dungeon stage <stage_id> gate emergency disable` | Disables Emergency Return. |
+| `/dungeon stage <stage_id> gate emergency plate set [material]` | Gives the configured emergency plate for placement. |
+| `/dungeon stage <stage_id> gate emergency destination set` | Sets its return destination to your location. |
+
+## Checkpoint Commands
+
+| Command | Description |
+| --- | --- |
+| `/dungeon checkpoint create <id>` | Creates a checkpoint. |
+| `/dungeon checkpoint list` | Lists checkpoints in the edited dungeon. |
+| `/dungeon checkpoint <id> setlocation` | Sets the checkpoint respawn location. |
+| `/dungeon checkpoint <id> order <number>` | Sets checkpoint progression order. |
+| `/dungeon checkpoint <id> trigger gate <stage_id>` | Activates the checkpoint when a gate opens. |
+| `/dungeon checkpoint <id> trigger block` | Uses the targeted button or pressure plate as its trigger. |
+| `/dungeon checkpoint <id> teleport <true|false>` | Toggles teleporting the alive party after activation. |
+| `/dungeon checkpoint <id> closegate add|remove <stage_id>` | Changes the gates closed after activation. |
+| `/dungeon checkpoint <id> delete` | Deletes the checkpoint. |
 
 ## Stage Mission Commands
 

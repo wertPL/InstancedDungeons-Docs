@@ -1,18 +1,14 @@
 # Stages and Gates
 
-Version 2.1.0 adds ordered checkpoints, after-open party teleports, gate-closing actions, and per-gate emergency returns. See the [2.1.0 feature reference](../version-2.1.md#pro-checkpoints).
-
 This page documents stage behavior for Pro dungeon builds.
 
-The Pro admin GUI includes a checkpoint list and detail editor. The four-row stage detail page groups stage settings, gate editing, advanced logic, and navigation. It also links to separate **After-Open Logic** and **Emergency Return** menus for their placement and action settings.
-
-Emergency Return locations are placed with a tagged pressure-plate item obtained from the GUI or the `gate emergency plate set` command. The feature must be enabled before the item can be placed. One gate can have only one plate; placing a replacement removes the old plate and moves its editor hologram.
-
-Emergency-return hologram visibility, height, and lines are configured only in the stage YAML under `gate.emergency-return.hologram`. These settings are not exposed in the GUI or through in-game commands.
-
-Runtime gate blocks, mission blocks, triggers, loot chests, and emergency plates are protected from player breaking/replacement and water or lava, even when the dungeon otherwise allows those actions.
-
 Stages are optional progression gates inside a dungeon.
+
+The four-row stage detail GUI groups stage settings, gate editing, advanced logic, and navigation. Dedicated **After-Open Logic** and **Emergency Return** menus handle their locations and actions.
+
+Runtime gate blocks, mission blocks, triggers, loot chests, and emergency plates are protected from player breaking, replacement, water, and lava even when the dungeon otherwise allows those actions.
+
+Ordered respawn points are documented separately under [Checkpoints](checkpoints.md).
 
 Stage files live in:
 
@@ -68,6 +64,75 @@ Gate stick controls:
 | Sneak-left-click | Adds connected same-material blocks. |
 | Sneak-right-click | Removes connected same-material blocks. |
 
+## After-Open Logic
+
+A gate can teleport the alive party after it finishes opening and can close earlier gates without a closing animation:
+
+```yaml
+gate:
+  after-open:
+    teleport:
+      enabled: false
+      location:
+        world: dungeon_template
+        x: 20.5
+        y: 70.0
+        z: 12.5
+        yaw: 0.0
+        pitch: 0.0
+    close-gates:
+      - entrance_gate
+```
+
+Only online, alive party members inside the instance world are teleported. A gate cannot close itself, and every target in `close-gates` must have an equal or lower `stage-order`.
+
+Configuring both an after-open teleport and a teleporting checkpoint triggered by the same gate is a validation error.
+
+```text
+/dungeon stage <stage_id> gate afteropen teleport set|clear
+/dungeon stage <stage_id> gate afteropen close add|remove <target_stage_id>
+```
+
+## Emergency Return
+
+Emergency Return provides a way out for a player who remains behind a gate after it closes. Its pressure plate and hologram appear only while that gate is closed, and the plate teleports only the player who steps on it.
+
+Enable the feature, choose the pressure-plate material, and use **Get Emergency Plate** in the GUI. The tagged item is placed in the template like a mission plate. One gate can have only one emergency plate; placing another removes the previous plate and moves the editor hologram. The item cannot be placed while Emergency Return is disabled.
+
+```yaml
+gate:
+  emergency-return:
+    enabled: true
+    plate-material: STONE_PRESSURE_PLATE
+    plate-location:
+      x: 10
+      y: 69
+      z: 5
+    destination:
+      world: dungeon_template
+      x: 22.5
+      y: 70.0
+      z: 12.5
+      yaw: 0.0
+      pitch: 0.0
+    hologram:
+      enabled: true
+      height-offset: 1.8
+      lines:
+        - "&c&lRETURN"
+        - "&7Step on the plate to leave the closed section."
+```
+
+```text
+/dungeon stage <stage_id> gate emergency enable|disable
+/dungeon stage <stage_id> gate emergency plate set [pressure_plate_material]
+/dungeon stage <stage_id> gate emergency destination set
+```
+
+Emergency-return hologram visibility, height, and lines are configured only under `gate.emergency-return.hologram` in the stage YAML. They cannot be edited in the GUI or through an in-game command.
+
+The editor has independent particle toggles for gate teleport destinations and emergency-return locations.
+
 ## Holograms
 
 ```text
@@ -79,11 +144,7 @@ You can create multiple holograms for the same stage. Delete removes the nearest
 
 Runtime holograms show live mission progress. Locked higher-order holograms show which earlier stages still need to open.
 
-Checkpoint and emergency-return holograms support contextual placeholders documented in the [2.1.0 feature reference](../version-2.1.md#pro-emergency-return), including dungeon, instance, party, gate/stage, checkpoint, and destination coordinates.
-
-Checkpoint holograms are configured only in `checkpoints/<checkpoint_id>.yml` under `hologram`. Their visibility, height, and lines are not editable from the GUI or an in-game command.
-
-Breaking a configured checkpoint button or pressure plate in the template while editing automatically clears its saved `trigger.location`. The checkpoint must be assigned a new trigger before the dungeon can pass validation again.
+Emergency-return holograms support `%dungeon%`, `%dungeon_name%`, `%instance%`, `%party_leader%`, `%party_size%`, `%alive_players%`, `%gate%`, `%stage%`, `%stage_order%`, `%destination_x%`, `%destination_y%`, and `%destination_z%`.
 
 ## Mission Types
 

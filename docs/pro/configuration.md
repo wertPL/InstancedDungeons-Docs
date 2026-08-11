@@ -8,7 +8,7 @@ Every dungeon has a main config file:
 plugins/InstancedDungeons/dungeons/<dungeon_id>/config.yml
 ```
 
-InstancedDungeons 2.0 requires:
+The current dungeon format requires:
 
 ```yaml
 v: 2.0
@@ -16,7 +16,7 @@ v: 2.0
 
 Dungeons without this marker are blocked from opening.
 
-The optional `ram-analysis.yml` is a plugin-level diagnostic file, not a dungeon config. It is created only after an administrator runs `/dungeon ram analysis`; see the [2.1 RAM analysis reference](../version-2.1.md#optional-lightweight-ram-analysis).
+The optional `ram-analysis.yml` is a plugin-level diagnostic file, not a dungeon config. It is created only after an administrator runs `/dungeon ram analysis`; see [RAM Analysis](../ram-analysis.md).
 
 ## Core Fields
 
@@ -137,6 +137,8 @@ item-restrictions:
   block-enchanted-golden-apples: false
   block-wind-charges: false
   block-firework-rockets: false
+  block-mace: false
+  block-trident: false
 ```
 
 All restrictions default to `false`, which keeps vanilla behavior.
@@ -149,12 +151,14 @@ All restrictions default to `false`, which keeps vanilla behavior.
 | `block-enchanted-golden-apples` | Consuming enchanted golden apples. |
 | `block-wind-charges` | Using or launching wind charges. |
 | `block-firework-rockets` | Using, launching, or firing firework rockets from a crossbow. |
+| `block-mace` | Using a mace in melee combat. |
+| `block-trident` | Using a trident in melee combat or throwing it. |
 
 Restrictions apply only while the player belongs to an active dungeon instance and is physically inside that instance world.
 
 They can be edited from the dungeon settings GUI under **Item Restrictions**. New dungeons generate the complete section automatically.
 
-For older 2.0 dungeon configs, missing values load as `false`. The first change made in the Item Restrictions GUI appends or updates only this section through an atomic targeted write; unrelated settings such as `announce-start` and `allow-interactions` are not reserialized or reset.
+For existing dungeon configs, missing values load as `false`. The first change made in the Item Restrictions GUI appends or updates only this section through an atomic targeted write; unrelated settings such as `announce-start` and `allow-interactions` are not reserialized or reset.
 
 ## Death Behavior
 
@@ -186,8 +190,8 @@ timer-bossbar:
 
 ## Timer Alerts
 
-!!! note "Version 2.1.0"
-    In Pro, runtime timer alert messages and sounds are now controlled by the dungeon's `sounds.yml`. The legacy section below remains in existing configs but no longer affects runtime behavior after migration.
+!!! note "Pro sound profiles"
+    In Pro, runtime timer alert messages and sounds are controlled by the dungeon's `sounds.yml`. The legacy section below remains in existing configs but no longer affects runtime behavior after migration. See [Dungeon Sounds](sounds.md).
 
 ```yaml
 timer-alerts:

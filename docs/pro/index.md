@@ -56,8 +56,16 @@ This section documents the production build for larger dungeon networks, tower r
     <p>Connect multiple dungeon templates into one continuous multi-stage adventure from start to finish.</p>
   </div>
   <div class="doc-card">
+    <h3>Checkpoints</h3>
+    <p>Use gate or block triggers for ordered respawns, party teleports, and closing earlier gates.</p>
+  </div>
+  <div class="doc-card">
+    <h3>Dungeon Sounds</h3>
+    <p>Configure and preview each dungeon sound through a dedicated per-dungeon sound profile.</p>
+  </div>
+  <div class="doc-card">
     <h3>Validation</h3>
-    <p>Validation checks Pro tower chains, mob equipment compatibility, enchantments, and item formats.</p>
+    <p>Validation checks tower chains, checkpoint triggers, gate actions, mob equipment, enchantments, and item formats.</p>
   </div>
 </div>
 

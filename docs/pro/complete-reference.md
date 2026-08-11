@@ -1,8 +1,8 @@
-# InstancedDungeons 2.0 Documentation
+# Complete Reference
 
 InstancedDungeons is a Paper plugin for creating isolated dungeon runs from template worlds. Each party gets a copied instance world, independent mobs, loot, objectives, stages, timers, protection rules, and cleanup after the run ends.
 
-Version 2.0 is not backward-compatible with older dungeon configs. New dungeons include `v: 2.0` at the top of `dungeons/<id>/config.yml`. Dungeons without this version marker are blocked from opening so older 1.x configs cannot break during a 2.0 server update.
+The current dungeon config format uses `v: 2.0` at the top of `dungeons/<id>/config.yml`. Dungeons without this marker are blocked from opening so incompatible 1.x configs cannot be loaded accidentally.
 
 ## Table of Contents
 
@@ -27,7 +27,7 @@ Version 2.0 is not backward-compatible with older dungeon configs. New dungeons 
 - Event Commands
 - Messages and Placeholders
 - Validation
-- Free Version Limits
+- Pro Version Behavior
 - Compatibility Notes
 - Troubleshooting
 
@@ -64,13 +64,13 @@ Instance world: the temporary copied world used by one active party.
 
 Dungeon ID: folder name under `dungeons/<id>`. This is used by commands, permissions, towers, and event commands.
 
-Party: players open or join a party before entering. In 2.0, parties stay tracked while the run is active and are closed only after completion, failure, or abandonment cleanup.
+Party: players open or join a party before entering. Parties stay tracked while the run is active and close only after completion, failure, or abandonment cleanup.
 
-Objective: the thing that completes a dungeon. 2.0 supports `BOSS` and `TRIGGER`.
+Objective: the thing that completes a dungeon. Supported objective types are `BOSS` and `TRIGGER`.
 
 Stage: an optional progression gate inside a dungeon. A stage can require missions before its gate opens.
 
-Tower: a chain of dungeons. The free version supports a two-step tower: `FIRST -> LAST`.
+Tower: a chain of dungeons. Pro supports `FIRST -> LAST` and longer `FIRST -> MIDDLE -> ... -> LAST` chains.
 
 ## Quick Start
 
@@ -127,7 +127,7 @@ Admin commands:
 
 | Command | Description |
 | --- | --- |
-| `/dungeon create <id> <template-world> <boss|trigger>` | Creates a 2.0 dungeon. |
+| `/dungeon create <id> <template-world> <boss|trigger>` | Creates a dungeon using the current config format. |
 | `/dungeon edit <id>` | Enters editor mode. Template teleport is controlled by `editor.teleport-to-template-on-edit` in `config.yml`. |
 | `/dungeon save` | Exits editor mode. |
 | `/dungeon setspawn` | Sets the dungeon spawn in editor mode. |
@@ -146,7 +146,7 @@ Admin commands:
 | `/dungeon reload` | Reloads configs and validation. |
 | `/dungeon instances` | Shows active parties and instances. |
 | `/dg status` | Shows supported integration plugins, detected versions, and economy hook status. |
-| `/dungeon gui` | Free version notice for a Pro-only future GUI. |
+| `/dungeon gui` | Reserved for the admin GUI workflow. |
 | `/dungeon mythicmob [mobId]` | Lists or checks MythicMobs mob IDs. |
 | `/dungeon mythicitem [itemId]` | Lists or checks MythicMobs item IDs for `MYTHIC_ITEM` config entries. |
 | `/dungeon itemsadder [itemId]` | Lists or checks ItemsAdder IDs. |
@@ -214,7 +214,7 @@ instances:
 
 `editor.teleport-to-template-on-edit` controls `/dungeon edit <id>` teleport behavior. When `true`, the admin is teleported to the dungeon spawn if it is configured, otherwise to the template world's spawn. When `false`, editor mode starts without moving the admin.
 
-In the free edition, `instances.max-active-global` is always capped at 16. A value of `0` means "use the free-edition cap", not unlimited. Values below 16 can lower the server limit, but values above 16 are reduced to 16.
+For this build, `instances.max-active-global: 0` disables the global active-instance ceiling. Positive values set the exact global active instance maximum.
 
 Tower transitions reserve the current global instance slot while the next tower stage is being prepared. This prevents another party from taking the slot during the short handoff between tower stages.
 
@@ -256,7 +256,7 @@ difficulty: NORMAL
 
 `dungeon-type` can be `single` or `tower`.
 
-`tower-stage-type` can be `first`, `middle`, or `last`. `middle` is Pro-only in the free version.
+`tower-stage-type` can be `first`, `middle`, or `last`. Pro supports `MIDDLE` as a normal tower chain stage.
 
 `completion-objective` can be `BOSS` or `TRIGGER`.
 
@@ -273,15 +273,33 @@ allow-fly: false
 tnt-mode: VANILLA
 ```
 
-Allowing block breaking, block placement, or fluid placement does not remove protection from dungeon-owned gameplay blocks. Gates, mission blocks, completion triggers, and loot chests cannot be broken or replaced, and fluid flow is cancelled before reaching them.
+Allowing block breaking, block placement, or fluid placement does not remove protection from dungeon-owned gameplay blocks. Gates, mission blocks, completion/checkpoint triggers, loot chests, and emergency-return plates cannot be broken or replaced, and fluid flow is cancelled before reaching them.
 
-`allow-fly: true` leaves flight already granted by a game mode, permission, or another plugin untouched. It never grants flight by itself. `false` forces flight off for active Survival and Adventure dungeon players and restores their previous flight state when they leave the dungeon. Creative and Spectator modes are exempt.
+`allow-fly: true` leaves flight already granted by a game mode, permission, or another plugin untouched. It never grants flight by itself. `false` forces flight off for active Survival and Adventure dungeon players and restores their previous flight state when they leave the dungeon. Creative and Spectator modes are exempt. In Pro this setting is also available under **Gameplay Rules** in the admin GUI.
 
 `tnt-mode` options:
 
 - `VANILLA`: normal TNT behavior.
 - `ONLY_DMG`: TNT deals damage but does not break blocks.
 - `DISABLED`: TNT is blocked.
+
+Item restrictions:
+
+```yaml
+item-restrictions:
+  block-elytra: false
+  block-ender-pearls: false
+  block-chorus-fruit: false
+  block-enchanted-golden-apples: false
+  block-wind-charges: false
+  block-firework-rockets: false
+  block-mace: false
+  block-trident: false
+```
+
+All values default to `false`. Set a value to `true` to block that item or action while players are inside this dungeon's active instance. The same settings are available in the Pro dungeon settings GUI under **Item Restrictions**.
+
+Existing dungeon configs do not need manual migration. Missing restriction values load as `false`, and changing a restriction in the GUI writes only this section without resetting unrelated dungeon settings.
 
 Timer:
 
@@ -386,14 +404,16 @@ next-dungeon: "tower_final"
 Stage types:
 
 - `first`: entry point. Can be opened by command and may have entry costs.
-- `middle`: optional Pro-only stage. Disabled by free-version limits.
+- `middle`: normal Pro chain stage between the first and last dungeon.
 - `last`: final tower dungeon. Completing it finishes the tower.
 
-Free version tower limit:
+Pro tower chains:
 
-- Only two tower dungeons are supported: `FIRST -> LAST`.
-- `MIDDLE` can exist in code/config for future Pro compatibility, but it is not usable in the free version.
-- Free-limit warnings are sent only to admins.
+- `FIRST -> LAST`
+- `FIRST -> MIDDLE -> LAST`
+- `FIRST -> MIDDLE -> MIDDLE -> ... -> LAST`
+- `FIRST` and every `MIDDLE` stage must define `next-dungeon`.
+- `LAST` completes the tower and ignores `next-dungeon`.
 
 Tower behavior:
 
@@ -431,6 +451,7 @@ mob-pools:
     mob-id: ZOMBIE
     count: 5
     chance: 100.0
+    drop-vanilla-loot: false
   - type: MYTHIC
     mob-id: SkeletonKing
     count: 1
@@ -447,6 +468,68 @@ Trigger modes:
 New generated spawners default to `ON_PLAYER_NEAR` with `trigger-distance: 20`. `trigger-distance` and `trigger-delay` are generated in new spawners even when unused. If the selected trigger does not need them, they do nothing.
 
 Mob pools can mix vanilla and MythicMobs entries in one spawner.
+
+`drop-vanilla-loot: false` removes normal drops from spawned vanilla mobs, such as bones, arrows, rotten flesh, and evoker totems. If the same pool has configured equipment, armor and tool drop chances from the `equipment` section still work.
+
+To keep mobs such as piglins or hoglins from transforming into zombified variants outside their native dimension, manually add `prevent-zombification: true` to that mob pool:
+
+```yaml
+mob-pools:
+  - type: VANILLA
+    mob-id: PIGLIN
+    count: 1
+    chance: 100.0
+    drop-vanilla-loot: false
+    prevent-zombification: true
+```
+
+To stop baby variants from spawning from a pool, manually add `prevent-baby-spawns: true`:
+
+```yaml
+mob-pools:
+  - type: VANILLA
+    mob-id: PIGLIN
+    count: 3
+    chance: 100.0
+    drop-vanilla-loot: false
+    prevent-zombification: true
+    prevent-baby-spawns: true
+```
+
+This forces supported ageable mobs into adult form, such as piglins, zombies, zombified piglins, and hoglins.
+
+Pro vanilla mob equipment:
+
+```yaml
+mob-pools:
+  - type: VANILLA
+    mob-id: SKELETON
+    count: 1
+    chance: 100.0
+    equipment:
+      helmet:
+        item: IRON_HELMET
+        drop-chance: 10.0
+      chestplate:
+        item: IRON_CHESTPLATE
+        drop-chance: 10.0
+      leggings:
+        item: IRON_LEGGINGS
+        drop-chance: 10.0
+      boots:
+        item: IRON_BOOTS
+        drop-chance: 10.0
+      main-hand:
+        item: IRON_SWORD
+        drop-chance: 5.0
+        enchants:
+          SHARPNESS: 1
+      off-hand:
+        item: SHIELD
+        drop-chance: 0.0
+```
+
+Supported vanilla equipment mobs include zombies, zombie villagers, husks, drowned, skeletons, strays, wither skeletons, bogged, piglins, piglin brutes, zombified piglins, vindicators, pillagers, evokers, and illusioners. Unsupported mobs spawn without configured equipment and validation warns admins.
 
 ## Loot Chests
 
@@ -509,9 +592,7 @@ Mission key loot entry:
 
 `quantity` means how many keys this loot chest definition should provide per dungeon instance. When an instance starts, the plugin chooses random physical loot chests of that loot chest ID and assigns the keys to those chests. If chunks are not loaded yet, the assignment is refreshed shortly after start and can fall back to the opened chest of the matching loot chest ID. If `quantity` is higher than the number of physical chests of that ID, selected chests can contain more than one key.
 
-Free version example: if a `REQUIRED_KEY` mission needs 1 key, configure the stage mission with `required: 1`, then put `quantity: 1` in the loot chest config that should provide the key.
-
-Pro example: if a `REQUIRED_KEY` mission needs 3 keys, configure the stage mission with `required: 3`, then put `quantity: 2` in the Bronze loot chest config and `quantity: 1` in the Silver loot chest config.
+Example: if a `REQUIRED_KEY` mission needs 3 keys, configure the stage mission with `required: 3`, then put `quantity: 2` in the Bronze loot chest config and `quantity: 1` in the Silver loot chest config.
 
 Mission key loot entries should normally be in loot chests reachable before the related gate. Mission keys are bound to the instance where they dropped and are removed when the player leaves that instance.
 
@@ -521,7 +602,7 @@ Boss rewards are configured per dungeon and support custom items from the same p
 
 Reward entries are independent. Stacked items in separate GUI slots stay separate reward entries and can have separate chance values in the config.
 
-Since 2.1.0, `reward-logic` controls whether rolled boss rewards go to inventories or form a public pile at the boss spawn. Recipient and delivery combinations are validated before the dungeon can open.
+`reward-logic` controls whether rolled boss rewards go to inventories or form a public pile at the boss spawn. Recipient and delivery combinations are validated before the dungeon can open. See [Loot and Rewards](loot-and-rewards.md#boss-rewards).
 
 Edit boss rewards while editing a boss-objective dungeon:
 
@@ -543,7 +624,7 @@ boss-rewards:
 
 ## Trigger Rewards
 
-Trigger rewards are configured in `dungeons/<id>/trigger.yml` and are distributed according to its 2.1.0 `reward-logic` when the trigger completes the dungeon.
+Trigger rewards are configured in `dungeons/<id>/trigger.yml` and are distributed according to its `reward-logic` when the trigger completes the dungeon.
 
 Edit trigger rewards while editing a trigger-objective dungeon:
 
@@ -739,7 +820,16 @@ LUNGE
 
 Special vanilla drops follow their vanilla stack limits. Potions, splash potions, lingering potions, and enchanted books are split into one-item stacks, while tipped arrows can stack normally up to their item stack limit.
 
-Enchanted armor, tools, and weapons are intentionally not stored in the free version. If an admin places an enchanted non-book item into the cost or reward editor, it is saved as the base vanilla material and the admin receives a Pro notice.
+Pro stores enchanted armor, tools, and weapons as vanilla items with an `enchants` map. The same format works in loot chests, boss rewards, trigger rewards, entry costs, item payment missions, and mob equipment.
+
+```yaml
+- type: VANILLA
+  item: DIAMOND_CHESTPLATE
+  amount: 1
+  enchants:
+    PROTECTION: 4
+    UNBREAKING: 3
+```
 
 ## Parties and Instances
 
@@ -777,7 +867,7 @@ Death behavior:
 - `ELIMINATE_AS_SPECTATOR`: after the configured player/team lives run out, eliminated players become dungeon spectators.
 - `ELIMINATE_TO_EXIT`: after the configured player/team lives run out, eliminated players are sent to the dungeon exit.
 
-Legacy values `ONE_LIFE_SPECTATOR` and `ONE_LIFE_KICK` are still read for compatibility, but new 2.0 configs should use the names above.
+Legacy values `ONE_LIFE_SPECTATOR` and `ONE_LIFE_KICK` are still read for compatibility, but current configs should use the names above.
 
 Death announcements follow the configured lives scope. With `scope: PLAYER`, the party sees the dead player's remaining lives. With `scope: TEAM`, the party sees the remaining shared team lives. When lives reach zero, the message also reflects whether the player became a spectator or was sent to the exit.
 
@@ -862,27 +952,21 @@ In editor mode, stage holograms are also visible in the template world. Editor p
 
 ## Stage Missions
 
-Free version limits:
-
-- Maximum 2 stages per dungeon.
-- Maximum 2 missions per stage.
-- Maximum 1 sacrifice mission per dungeon.
-- Maximum 1 money payment mission per dungeon.
-- Maximum 1 item payment mission per dungeon.
+Stage runtime uses the configured stage file data directly, including stage order, mission lists, required key amounts, mission blocks, and item payment costs.
 
 Mission types:
 
 | Mission | Description |
 | --- | --- |
 | `KILL_MOBS` | Party must kill a configured number of mobs. |
-| `LEVER` | Party must pull all placed mission levers. Free limit: 3 per stage. |
-| `BUTTON` | Party must press all mission buttons at the same time. Free limit: 3 per stage. |
-| `PRESSURE_PLATE` | Party must activate all mission plates at the same time. Free limit: 2 per stage. |
-| `REQUIRED_KEY` | Players must submit mission keys by right-clicking any block of the gate with the key in hand. `required` is the number of keys needed to unlock the gate. Free limit: 1 key required per stage. |
+| `LEVER` | Party must pull all placed mission levers. |
+| `BUTTON` | Party must press all mission buttons at the same time. |
+| `PRESSURE_PLATE` | Party must activate all mission plates at the same time. |
+| `REQUIRED_KEY` | Players must submit mission keys by right-clicking any block of the gate with the key in hand. `required` is the number of keys needed to unlock the gate. |
 | `TIME` | Waits a configured number of seconds after the active stage starts. |
 | `SACRIFICE` | Requires selecting players to eliminate through the mission GUI. Open it by right-clicking any block of the stage gate. `sacrifice-outcome` controls whether the sacrificed player becomes a spectator or is kicked out of the dungeon, independently from dungeon death behavior. `sacrifice-drop-items: false` keeps the player's inventory; `true` drops storage, armor, and offhand items on the ground. |
 | `MONEY_PAYMENT` | Requires a Vault money payment. Open it by right-clicking any block of the stage gate. Cannot be added unless Vault and an economy provider are detected. |
-| `ITEM_PAYMENT` | Requires configured items. Open it by right-clicking any block of the stage gate during a run. Configure required items with `/dungeon stage <stage_id> mission item_payment`, which opens an editor GUI and saves the inserted supported items into the stage config. Free limit: max 3 item types and max 1 item payment mission per dungeon. |
+| `ITEM_PAYMENT` | Requires configured items. Open it by right-clicking any block of the stage gate during a run. Configure required items with `/dungeon stage <stage_id> mission item_payment`, which opens an editor GUI and saves the inserted supported items into the stage config. |
 
 Mission creation commands:
 
@@ -1097,7 +1181,7 @@ Important placeholder styles:
 
 - Messages use `%placeholder%`.
 - Event commands use `<placeholder>`.
-- Hardcoded admin validation and free-limit notices are intentionally not in `messages.yml`.
+- Hardcoded admin validation notices are intentionally not in `messages.yml`.
 
 The `mission-names` section controls player-facing mission labels used in mission completion messages, mission GUI names, hologram mission hints, and mission lore placeholders. Internal enum names in stage configs are not changed by this section.
 
@@ -1107,7 +1191,9 @@ Fresh installations receive the complete bundled file. When a plugin update intr
 # Messages added by plugin updates will appear below. Existing messages are never overwritten.
 ```
 
-Existing values, comments, order, and translations are preserved. The update uses a temporary file and atomic replacement where supported, then reloads `messages.yml`. See [Messages](messages.md) for the complete behavior.
+Existing values, comments, order, and translations are preserved. The update uses a temporary file and atomic replacement where supported, then reloads `messages.yml`.
+
+Pro 2.0.1 adds `item-use-blocked-in-dungeon`, using `%item%` for the blocked item name. See [Messages](messages.md) for the complete behavior.
 
 `messages.yml` also includes a placeholder reference comment at the bottom.
 
@@ -1131,7 +1217,7 @@ Validation checks include:
 - Invalid spawner locations.
 - Unknown mob IDs where they can be resolved.
 - Unknown or unavailable custom item provider entries.
-- Stage ordering and free-limit warnings.
+- Stage ordering and Pro feature validation warnings.
 - Loot chest and boss reward item definitions.
 - `commands.yml` syntax, event keys, executors, audiences, command lists, and risky audience/global command combinations.
 
@@ -1139,40 +1225,39 @@ Validation output:
 
 - Console always receives validation output.
 - Online admins receive chat validation warnings unless disabled per dungeon.
-- Normal players do not receive free-version limit or validation warnings.
+- Normal players do not receive validation warnings.
 - If chat output is shortened, check the console because it may contain more validation details.
 
-## Free Version Limits
+## Pro Version Behavior
 
-| Area | Free limit |
+| Area | Pro behavior |
 | --- | --- |
-| Global active instances | 16 maximum, even if config is higher. |
-| Tower length | 2 dungeons: `FIRST -> LAST`. |
-| Tower middle stage | Pro-only. |
-| Stages per dungeon | 2. |
-| Missions per stage | 2. |
-| Lever mission blocks | 3 per stage. |
-| Button mission blocks | 3 per stage. |
-| Pressure plate mission blocks | 2 per stage. |
-| Required keys | 1 per stage. |
-| Sacrifice missions | 1 per dungeon. |
-| Money payment missions | 1 per dungeon. |
-| Item payment missions | 1 per dungeon. |
-| Item payment item types | 3 per mission. |
-| Admin GUI | Pro-only notice in free version. |
+| Global active instances | `0` disables the global active-instance ceiling. Positive values set the exact maximum. |
+| Tower length | Supports `FIRST -> LAST` and longer `FIRST -> MIDDLE -> ... -> LAST` chains. |
+| Tower middle stage | Fully supported. |
+| Stages per dungeon | Uses all configured stages. |
+| Missions per stage | Uses all configured missions. |
+| Lever mission blocks | Uses all configured blocks. |
+| Button mission blocks | Uses all configured blocks. |
+| Pressure plate mission blocks | Uses all configured blocks. |
+| Required keys | Uses the configured `required` amount. |
+| Sacrifice missions | Multiple sacrifice mission entries are supported. |
+| Money payment missions | Multiple money payment mission entries are supported. |
+| Item payment missions | Multiple item payment mission entries are supported. |
+| Item payment item types | Multiple item payment item types are supported. |
 
-Free-version limit notices are hardcoded in English and visible only to admins.
+## Pro GUI and Optional RAM Analysis
 
-## Optional RAM Analysis (2.1.0)
+The Pro editor uses a four-row main screen grouped by workflow: dungeon content, progression, testing/administration, and save/delete/close actions. Its **Boss & Trigger** screen uses separate, symmetrical boss and trigger groups. It also includes reward-logic menus with preview/real-roll actions, full checkpoint editing, advanced after-open and emergency-return gate menus, and admin-only sound previews. Advanced checkpoint/gate event commands and contextual placeholders are listed in the [event command reference](event-commands.md).
 
-`/dungeon ram analysis` is a hidden, admin-only toggle available in Free and Pro. It is intentionally absent from help and tab completion. When enabled it creates `ram-analysis.yml`, samples lightweight plugin/instance counters every 30 seconds by default, and writes newest-first reports every 10 minutes. Reports cover only estimated plugin-core, active-instance, combined plugin-and-instance, and per-dungeon instance memory; the whole server/JVM heap is not included. Times use the server's local zone in a readable format. No GC, heap walk, JFR, or block scan is performed. See the [full 2.1 reference](version-2.1.md#optional-lightweight-ram-analysis).
+`/dungeon ram analysis` is a hidden, admin-only toggle available in every edition. It creates `ram-analysis.yml` only when first enabled, uses lightweight periodic counters, and stores newest reports first. It reports only estimated plugin-core and dungeon-instance memory, including their combined value; it does not report the whole server/JVM heap. Times are written in the server's local zone using a readable format. See [RAM Analysis](../ram-analysis.md).
 
 ## Compatibility Notes
 
 - Paper 26.1 support is beta.
-- The update checker ignores Modrinth releases that do not list this server/API target in their game versions.
-- Public 2.0 documentation follows the current code behavior, not the old 1.x loot chest documentation.
-- Dungeons created before 2.0 should be rebuilt as 2.0 dungeons instead of migrated in place.
+- No update checker is included in this build.
+- The current documentation follows current plugin behavior, not the old 1.x loot chest documentation.
+- Dungeons using the 1.x format should be rebuilt with the current format instead of migrated in place.
 
 ## Troubleshooting
 
@@ -1203,7 +1288,7 @@ Tower does not transition:
 - Confirm `dungeon-type: tower`.
 - Confirm `tower-stage-type`.
 - Confirm `next-dungeon` points to a loaded dungeon.
-- In the free version, use only `FIRST -> LAST`.
+- In Pro, `FIRST` can point to `MIDDLE`, and `MIDDLE` can point to another `MIDDLE` or `LAST`.
 
 Stage gate does not open:
 

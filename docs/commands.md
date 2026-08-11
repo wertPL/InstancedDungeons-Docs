@@ -2,7 +2,7 @@
 
 ## Hidden diagnostics
 
-`/dungeon ram analysis` toggles the optional lightweight RAM report in every edition. It requires the admin permission and intentionally does not appear in in-game help or tab completion. See [Version 2.1.0](version-2.1.md#optional-lightweight-ram-analysis).
+`/dungeon ram analysis` toggles the optional lightweight RAM report in every edition. It requires the admin permission and intentionally does not appear in in-game help or tab completion. See [RAM Analysis](ram-analysis.md).
 
 The main command is `/dungeon`. `/dg` may also be available depending on your plugin configuration.
 
@@ -24,7 +24,7 @@ The main command is `/dungeon`. `/dg` may also be available depending on your pl
 
 | Command | Description |
 | --- | --- |
-| `/dungeon create <id> <template-world> <boss|trigger>` | Creates a 2.0 dungeon. |
+| `/dungeon create <id> <template-world> <boss|trigger>` | Creates a dungeon using the current config format. |
 | `/dungeon edit <id>` | Enters editor mode. |
 | `/dungeon save` | Exits editor mode. |
 | `/dungeon reload` | Reloads configs and validation. |
