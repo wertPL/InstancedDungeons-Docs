@@ -237,4 +237,4 @@ In the Free edition, checkpoint and advanced-gate commands remain visible but ex
 
 ## Free upgrade links
 
-Free-edition `[GET PRO]` buttons do not open an external page immediately. Clicking one first shows the administrator a private confirmation message with the discount code `436583-UPGRADE` for 15% off and an `[OPEN OFFICIAL PRO PAGE]` button. Only the second button opens the official BuiltByBit page. The intermediate action is intentionally omitted from command help and tab completion.
+Free-edition `[GET PRO]` buttons do not open an external page immediately. Clicking one first shows the administrator a private confirmation message with the discount code `436583-UPGRADE` for 15% off and an `[OPEN OFFICIAL PRO PAGE]` button. Only the second button opens the official BuiltByBit page. The discount notice and button text are intentionally hardcoded. The intermediate action is omitted from command help and tab completion.
