@@ -25,7 +25,16 @@ When an update introduces a new message, an existing file is handled differently
 - The file is written through a temporary file and replaced atomically when the operating system supports it.
 - The updated file is reloaded immediately, so the newly added defaults can be used without regenerating the whole file.
 
-The Free edition has this migration system ready for future messages. Item restriction messages and item restriction gameplay are Pro-only.
+The Free edition uses this migration system for update messages, including item-restriction feedback and the Pro upgrade confirmation.
+
+The Free upgrade confirmation uses:
+
+```yaml
+pro-upgrade-discount: "&eUse code &f436583-UPGRADE &efor &f15% off InstancedDungeons Pro."
+pro-upgrade-open-button: "&b&l[OPEN OFFICIAL PRO PAGE]"
+```
+
+These values control the private message displayed after an administrator clicks `[GET PRO]`. The external page opens only after the administrator clicks the second button.
 
 ## Existing Custom Messages
 

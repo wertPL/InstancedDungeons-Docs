@@ -234,3 +234,7 @@ installation:
 When this field contains an older version, admins joining during the first five minutes receive a one-time reminder to verify the migrated configs. A first installation, restart, or reload with the current version does not show the update reminder.
 
 In the Free edition, checkpoint and advanced-gate commands remain visible but explain that those mechanics require Pro.
+
+## Free upgrade links
+
+Free-edition `[GET PRO]` buttons do not open an external page immediately. Clicking one first shows the administrator a private confirmation message with the discount code `436583-UPGRADE` for 15% off and an `[OPEN OFFICIAL PRO PAGE]` button. Only the second button opens the official BuiltByBit page. The intermediate action is intentionally omitted from command help and tab completion.
