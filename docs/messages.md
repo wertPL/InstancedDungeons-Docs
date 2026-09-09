@@ -38,3 +38,7 @@ If a newly introduced key is missing, its default is appended once. Later reload
 The `mission-names` section controls player-facing mission labels used by mission completion messages, mission GUIs, hologram hints, and mission lore placeholders. Internal mission IDs in dungeon files are not changed.
 
 The placeholder reference comments at the bottom of the bundled file describe the values available to each message.
+
+## Party Kick Messages (2.2.0)
+
+`not-in-party`, `party-kicked`, `party-member-kicked`, `party-kick-locked`, `party-kick-usage`, `party-kick-self`, and `party-kick-not-member` are added automatically when missing. `party-member-kicked` supports `%player%`.

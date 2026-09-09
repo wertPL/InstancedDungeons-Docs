@@ -29,7 +29,7 @@ location:
 
 trigger: ON_PLAYER_NEAR
 trigger-distance: 20
-trigger-delay: 5
+trigger-time: 5
 lifetime-behavior: PERSIST
 
 mob-pools:
@@ -49,10 +49,10 @@ mob-pools:
 | --- | --- |
 | `ON_START` | Spawns when the instance starts. This is usually not recommended for regular spawners because every configured mob can spawn immediately at dungeon startup. |
 | `ON_PLAYER_NEAR` | Spawns when a player enters `trigger-distance`. |
-| `ON_DELAY` | Spawns after `trigger-delay`. |
-| `ON_PLAYER_NEAR_ON_DELAY` | Starts `trigger-delay` after a player enters `trigger-distance`. |
+| `ON_DELAY` | Spawns after `trigger-time`. |
+| `ON_PLAYER_NEAR_ON_DELAY` | Starts `trigger-time` after a player enters `trigger-distance`. |
 
-New generated spawners default to `ON_PLAYER_NEAR` with `trigger-distance: 20`. `trigger-distance` and `trigger-delay` are generated in new spawner files even when the selected trigger does not use them.
+New generated spawners default to `ON_PLAYER_NEAR` with `trigger-distance: 20`. `trigger-distance` and `trigger-time` are generated in new spawner files even when the selected trigger does not use them.
 
 ## Mob Pools
 
@@ -108,6 +108,6 @@ If mobs do not spawn:
 
 - Run `/dungeon validate <dungeon_id>`.
 - Check that the spawner location is inside the template world.
-- Check `trigger`, `trigger-distance`, and `trigger-delay`.
+- Check `trigger`, `trigger-distance`, and `trigger-time`.
 - Verify MythicMobs IDs if the pool uses `type: MYTHIC`.
 - Make sure the template world is loaded.

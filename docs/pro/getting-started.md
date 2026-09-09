@@ -7,7 +7,7 @@ This guide creates a working dungeon from a template world.
 | Target | Java | Multiverse-Core |
 | --- | --- | --- |
 | Paper 1.21.x | 21+ | 5.5.2+ |
-| Paper 26.1.x | 25+ | 5.6.0+ |
+| Paper 26.1.x | 25+ | 5.8.1+ |
 
 Optional integrations:
 

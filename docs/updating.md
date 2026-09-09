@@ -1,5 +1,17 @@
 # Updating
 
+## Updating to 2.2.0
+
+Stop the server and back up `dungeons/`, `config.yml`, and `messages.yml` before replacing the plugin JAR. Use the matching FREE/PRO and Minecraft build.
+
+- Minecraft 26.x builds now require Multiverse-Core **5.8.1+**. Minecraft 1.21.x builds retain **5.5.2+** as their minimum.
+- Existing kill missions use `only-dungeon-spawner-mobs: true` and `count-baby-variants: true` when those options are absent. If a mission intentionally counts natural mobs, template mobs, or mobs summoned by another plugin, add `only-dungeon-spawner-mobs: false` to that mission before reopening the dungeon.
+- Existing PRO bosses keep their normal spawning behavior until a stage requirement is enabled.
+- New party-kick messages are appended without replacing existing translations.
+- The dungeon configuration format remains `v: "2.0"`; do not change it to the plugin release number.
+
+After restarting, check `/dg status`, run `/dg validate all`, and test a dungeon's kill mission and boss trigger.
+
 ## Before updating
 
 1. Stop the server.
@@ -25,7 +37,7 @@ The general plugin config keeps a separate installation field:
 
 ```yaml
 installation:
-  installed-plugin-version: "2.1.0"
+  installed-plugin-version: "2.2.0"
 ```
 
 The plugin updates this field when a different plugin version is installed. Administrators joining during the first five minutes after an update receive a one-time reminder to verify the migrated configs. Fresh installations, ordinary restarts, and reloads with the same version do not show that reminder.

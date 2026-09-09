@@ -113,3 +113,9 @@ The main command is `/dungeon`. `/dg` may also be available depending on your pl
 
 !!! note "Tab completion"
     Dungeon IDs, stage IDs, loot chest IDs, trigger materials, mission materials, validation targets, and integration item IDs are tab-completed where supported.
+
+## Remove a Party Member (2.2.0)
+
+`/dg kick <player>` removes a member from the leader's open party. Tab completion suggests only other members of that party. The leader cannot kick themselves, players outside the party, or anyone after dungeon preparation has begun. The removed player and the remaining party receive configurable messages. No extra permission is required beyond being that party's leader.
+
+Kicking removes the current membership; it does not ban the player from joining an open party again.

@@ -36,7 +36,7 @@ The current dungeon config format uses `v: 2.0` at the top of `dungeons/<id>/con
 | Minecraft / Paper target | Java | Multiverse-Core |
 | --- | --- | --- |
 | Paper 1.21.x | Java 21+ | Multiverse-Core 5.5.2+ |
-| Paper 26.1.x | Java 25+ | Multiverse-Core 5.6.0+ |
+| Paper 26.1.x | Java 25+ | Multiverse-Core 5.8.1+ |
 
 Optional integrations:
 
@@ -443,7 +443,7 @@ location:
 
 trigger: ON_PLAYER_NEAR
 trigger-distance: 20
-trigger-delay: 5
+trigger-time: 5
 lifetime-behavior: PERSIST
 
 mob-pools:
@@ -462,10 +462,10 @@ Trigger modes:
 
 - `ON_START`: spawn when the instance starts. This mode is not recommended for regular spawners because it can spawn every configured mob immediately at dungeon startup; prefer `ON_PLAYER_NEAR` for normal gameplay.
 - `ON_PLAYER_NEAR`: spawn when a player enters `trigger-distance`.
-- `ON_DELAY`: spawn after `trigger-delay`.
-- `ON_PLAYER_NEAR_ON_DELAY`: start `trigger-delay` after a player enters `trigger-distance`.
+- `ON_DELAY`: spawn after `trigger-time`.
+- `ON_PLAYER_NEAR_ON_DELAY`: start `trigger-time` after a player enters `trigger-distance`.
 
-New generated spawners default to `ON_PLAYER_NEAR` with `trigger-distance: 20`. `trigger-distance` and `trigger-delay` are generated in new spawners even when unused. If the selected trigger does not need them, they do nothing.
+New generated spawners default to `ON_PLAYER_NEAR` with `trigger-distance: 20`. `trigger-distance` and `trigger-time` are generated in new spawners even when unused. If the selected trigger does not need them, they do nothing.
 
 Mob pools can mix vanilla and MythicMobs entries in one spawner.
 
@@ -991,7 +991,7 @@ Mission YAML is saved with only the fields that apply to that mission type:
 
 | Mission | Saved fields |
 | --- | --- |
-| `KILL_MOBS` | `type`, `required` |
+| `KILL_MOBS` | `type`, `required`, `only-dungeon-spawner-mobs`, `count-baby-variants` |
 | `LEVER` | `type`, `required`, `blocks` |
 | `BUTTON` | `type`, `required`, `blocks` |
 | `PRESSURE_PLATE` | `type`, `required`, `blocks` |
@@ -1302,3 +1302,75 @@ Custom items fail validation:
 - Confirm the provider plugin is installed and enabled.
 - Confirm the item ID exactly matches the provider ID.
 - For potions and enchanted books, confirm the ID follows the special vanilla formats above.
+
+
+## Kill Mobs Filters (2.2.0)
+
+New `KILL_MOBS` missions include both options:
+
+```yaml
+missions:
+  - type: KILL_MOBS
+    required: 20
+    only-dungeon-spawner-mobs: true
+    count-baby-variants: true
+```
+
+`only-dungeon-spawner-mobs` counts only mobs spawned by this dungeon instance's configured spawners, including vanilla and MythicMobs pools. Friendly summons from enchantments or other plugins, natural mobs, and mobs already stored in the template do not count. Bosses remain excluded from stage kill missions. The origin marker survives entity transformations, such as a zombie turning into a drowned.
+
+Set `only-dungeon-spawner-mobs: false` to allow other mobs in the instance to count again. A qualifying kill still needs to be credited to a player, as before. Mobs summoned separately by a Mythic skill are not automatically treated as dungeon spawner mobs.
+
+`count-baby-variants` includes baby versions of eligible mobs, including zombies, drowned, piglins, and other ageable mobs. Set it to `false` to exclude babies. It does not change what the spawner creates and does not override the spawner-origin filter.
+
+Both options default to `true` when omitted, including in existing missions. Changing the required amount through a command or the editor preserves these filters. Save the mission to write the fields, or add them manually and reload.
+
+PRO also provides **Dungeon Spawner Mobs Only** and **Count Baby Variants** switches in the stage mission editor. Create the kill mission before using these switches.
+
+
+## Boss Stage Requirement (PRO, 2.2.0)
+
+New `boss.yml` files include:
+
+```yaml
+stage-requirement:
+  mode: DISABLED
+  stage-id: ''
+```
+
+| Mode | Requirement |
+| --- | --- |
+| `DISABLED` | Uses the normal boss trigger without a stage requirement. This is also the default for existing files. |
+| `STAGE` | Requires the stage named by `stage-id` to be completed. |
+| `ALL` | Requires every stage in the current dungeon to be completed. With no stages configured, there is nothing to wait for. |
+
+A stage counts as completed when all its missions are complete and its gate has been marked open. Becoming available in the stage order is not enough. Gate closing after completion does not reset that completion.
+
+For example, require the `courtyard` stage before allowing the proximity trigger:
+
+```yaml
+trigger: ON_PLAYER_NEAR
+trigger-distance: 20
+trigger-time: 0
+stage-requirement:
+  mode: STAGE
+  stage-id: courtyard
+```
+
+The stage requirement is an additional condition for every boss trigger:
+
+- `ON_START`: waits until the stage requirement is met.
+- `ON_DELAY`: starts its `trigger-time` delay after the requirement is met.
+- `ON_PLAYER_NEAR`: requires an alive party member within range and the stage requirement to be met.
+- `ON_PLAYER_NEAR_ON_DELAY`: starts its delay only once both conditions are met.
+
+Approaching early does not consume the trigger. A player already standing in range is detected once the requirement is met, without needing to move again. Spectators cannot trigger the boss. An invalid mode or missing stage ID in `STAGE` mode blocks spawning; `/dg validate <id>` reports the configuration error.
+
+In the admin GUI, open **Boss & Trigger**. **Boss Stage Requirement** cycles the mode; **Required Stage ID** accepts an existing stage and selects `STAGE` mode. Both settings are saved to `boss.yml`. Moving the boss spawn preserves them. **Test Boss Spawn** remains an editor preview and does not simulate progression requirements.
+
+This feature is available only in PRO.
+
+## Remove a Party Member (2.2.0)
+
+`/dg kick <player>` removes a member from the leader's open party. Tab completion suggests only other members of that party. The leader cannot kick themselves, players outside the party, or anyone after dungeon preparation has begun. The removed player and the remaining party receive configurable messages. No extra permission is required beyond being that party's leader.
+
+Kicking removes the current membership; it does not ban the player from joining an open party again.

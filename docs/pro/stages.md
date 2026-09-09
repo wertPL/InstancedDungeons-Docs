@@ -195,3 +195,26 @@ missions:
   - type: REQUIRED_KEY
     required: 3
 ```
+
+
+## Kill Mobs Filters (2.2.0)
+
+New `KILL_MOBS` missions include both options:
+
+```yaml
+missions:
+  - type: KILL_MOBS
+    required: 20
+    only-dungeon-spawner-mobs: true
+    count-baby-variants: true
+```
+
+`only-dungeon-spawner-mobs` counts only mobs spawned by this dungeon instance's configured spawners, including vanilla and MythicMobs pools. Friendly summons from enchantments or other plugins, natural mobs, and mobs already stored in the template do not count. Bosses remain excluded from stage kill missions. The origin marker survives entity transformations, such as a zombie turning into a drowned.
+
+Set `only-dungeon-spawner-mobs: false` to allow other mobs in the instance to count again. A qualifying kill still needs to be credited to a player, as before. Mobs summoned separately by a Mythic skill are not automatically treated as dungeon spawner mobs.
+
+`count-baby-variants` includes baby versions of eligible mobs, including zombies, drowned, piglins, and other ageable mobs. Set it to `false` to exclude babies. It does not change what the spawner creates and does not override the spawner-origin filter.
+
+Both options default to `true` when omitted, including in existing missions. Changing the required amount through a command or the editor preserves these filters. Save the mission to write the fields, or add them manually and reload.
+
+PRO also provides **Dungeon Spawner Mobs Only** and **Count Baby Variants** switches in the stage mission editor. Create the kill mission before using these switches.
