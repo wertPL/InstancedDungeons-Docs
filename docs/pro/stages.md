@@ -217,4 +217,31 @@ Set `only-dungeon-spawner-mobs: false` to allow other mobs in the instance to co
 
 Both options default to `true` when omitted, including in existing missions. Changing the required amount through a command or the editor preserves these filters. Save the mission to write the fields, or add them manually and reload.
 
-PRO also provides **Dungeon Spawner Mobs Only** and **Count Baby Variants** switches in the stage mission editor. Create the kill mission before using these switches.
+PRO provides both switches in the dedicated **Kill Mobs Mission** settings menu.
+
+## Specific Kill Mobs Targets (PRO, 2.2.0)
+
+Open **Stages > stage > Missions > Kill Mobs Mission** to reach the mission settings. The menu contains the required amount, **Dungeon Spawner Mobs Only**, and **Count Baby Variants**. Clicking the mission no longer immediately opens a chat prompt. The source filter uses an iron-bars icon; it does not configure a spawner or a spawn egg.
+
+Use **Specific Mob Targets** to show the configuration path in chat:
+`plugins/InstancedDungeons/dungeons/<dungeon-id>/stages/<stage-id>.yml`.
+Edit `mob-targets` inside that file's `KILL_MOBS` entry, then reload the dungeon configuration before starting a new instance:
+
+```yaml
+missions:
+  - type: KILL_MOBS
+    required: 10
+    only-dungeon-spawner-mobs: true
+    count-baby-variants: true
+    mob-targets:
+      vanilla:
+        ZOMBIE: 6
+        PIG: 2
+      mythic:
+        Kings: 1
+        Barbarian: 1
+```
+
+With targets configured, the mission requires every listed count. Their sum replaces `required`; extra zombies cannot replace a missing pig or MythicMob. Use Bukkit entity names for vanilla targets and exact, case-sensitive MythicMobs internal IDs for Mythic targets. A Mythic zombie counts toward its Mythic ID, not the vanilla `ZOMBIE` target. Both source and baby filters still apply.
+
+The hologram shows each target's progress and remaining count. Invalid target definitions block progress and are reported by validation and in the server log. An empty `mob-targets: {}` or an omitted section keeps the ordinary total-count mission. The amount button is disabled while specific targets control the total; editing the filters preserves those targets.

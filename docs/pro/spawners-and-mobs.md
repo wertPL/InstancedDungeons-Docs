@@ -257,6 +257,6 @@ The stage requirement is an additional condition for every boss trigger:
 
 Approaching early does not consume the trigger. A player already standing in range is detected once the requirement is met, without needing to move again. Spectators cannot trigger the boss. An invalid mode or missing stage ID in `STAGE` mode blocks spawning; `/dg validate <id>` reports the configuration error.
 
-In the admin GUI, open **Boss & Trigger**. **Boss Stage Requirement** cycles the mode; **Required Stage ID** accepts an existing stage and selects `STAGE` mode. Both settings are saved to `boss.yml`. Moving the boss spawn preserves them. **Test Boss Spawn** remains an editor preview and does not simulate progression requirements.
+In the admin GUI, open **Boss & Trigger**. **Boss Stage Requirement** cycles the mode; **Required Stage ID** accepts an existing stage only while `STAGE` mode is selected; it is inactive in `DISABLED` and `ALL`. Both settings are saved to `boss.yml`. Moving the boss spawn preserves them. **Test Boss Spawn** remains an editor preview and does not simulate progression requirements.
 
 This feature is available only in PRO.

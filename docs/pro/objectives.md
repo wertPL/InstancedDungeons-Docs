@@ -118,6 +118,24 @@ The stage requirement is an additional condition for every boss trigger:
 
 Approaching early does not consume the trigger. A player already standing in range is detected once the requirement is met, without needing to move again. Spectators cannot trigger the boss. An invalid mode or missing stage ID in `STAGE` mode blocks spawning; `/dg validate <id>` reports the configuration error.
 
-In the admin GUI, open **Boss & Trigger**. **Boss Stage Requirement** cycles the mode; **Required Stage ID** accepts an existing stage and selects `STAGE` mode. Both settings are saved to `boss.yml`. Moving the boss spawn preserves them. **Test Boss Spawn** remains an editor preview and does not simulate progression requirements.
+In the admin GUI, open **Boss & Trigger**. **Boss Stage Requirement** cycles the mode; **Required Stage ID** accepts an existing stage only while `STAGE` mode is selected; it is inactive in `DISABLED` and `ALL`. Both settings are saved to `boss.yml`. Moving the boss spawn preserves them. **Test Boss Spawn** remains an editor preview and does not simulate progression requirements.
 
 This feature is available only in PRO.
+
+## Trigger Stage Requirement (PRO, 2.2.0)
+
+Trigger objectives support the same completed-stage requirements as bosses. Add this to `trigger.yml`, or use **Trigger Stage Requirement** in the admin GUI:
+
+```yaml
+stage-requirement:
+  mode: STAGE
+  stage-id: entrance
+```
+
+- `DISABLED`: the configured button or pressure plate works as before. This is the default for new and existing trigger configs.
+- `STAGE`: the named stage must be completed.
+- `ALL`: every configured stage must be completed. With no stages configured, this requirement is satisfied.
+
+Before the requirement is met, interacting with the trigger does not complete the dungeon or give rewards. Use it again after completing the required stages. Unknown modes or missing stage IDs do not bypass the requirement; the validator reports configuration errors.
+
+The **Boss & Trigger** editor entry opens only the controls matching the dungeon's completion objective. **Required Stage ID** accepts input only in `STAGE` mode, for both objectives. Switching to `DISABLED` or `ALL` preserves the saved ID but ignores it.

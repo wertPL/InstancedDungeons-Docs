@@ -1248,7 +1248,7 @@ Validation output:
 
 ## Pro GUI and Optional RAM Analysis
 
-The Pro editor uses a four-row main screen grouped by workflow: dungeon content, progression, testing/administration, and save/delete/close actions. Its **Boss & Trigger** screen uses separate, symmetrical boss and trigger groups. It also includes reward-logic menus with preview/real-roll actions, full checkpoint editing, advanced after-open and emergency-return gate menus, and admin-only sound previews. Advanced checkpoint/gate event commands and contextual placeholders are listed in the [event command reference](event-commands.md).
+The Pro editor uses a four-row main screen grouped by workflow: dungeon content, progression, testing/administration, and save/delete/close actions. Its **Boss & Trigger** entry opens only the controls for the selected completion objective. It also includes reward-logic menus with preview/real-roll actions, full checkpoint editing, advanced after-open and emergency-return gate menus, and admin-only sound previews. Advanced checkpoint/gate event commands and contextual placeholders are listed in the [event command reference](event-commands.md).
 
 `/dungeon ram analysis` is a hidden, admin-only toggle available in every edition. It creates `ram-analysis.yml` only when first enabled, uses lightweight periodic counters, and stores newest reports first. It reports only estimated plugin-core and dungeon-instance memory, including their combined value; it does not report the whole server/JVM heap. Times are written in the server's local zone using a readable format. See [RAM Analysis](../ram-analysis.md).
 
@@ -1324,7 +1324,7 @@ Set `only-dungeon-spawner-mobs: false` to allow other mobs in the instance to co
 
 Both options default to `true` when omitted, including in existing missions. Changing the required amount through a command or the editor preserves these filters. Save the mission to write the fields, or add them manually and reload.
 
-PRO also provides **Dungeon Spawner Mobs Only** and **Count Baby Variants** switches in the stage mission editor. Create the kill mission before using these switches.
+PRO provides both switches in the dedicated **Kill Mobs Mission** settings menu.
 
 
 ## Boss Stage Requirement (PRO, 2.2.0)
@@ -1365,7 +1365,7 @@ The stage requirement is an additional condition for every boss trigger:
 
 Approaching early does not consume the trigger. A player already standing in range is detected once the requirement is met, without needing to move again. Spectators cannot trigger the boss. An invalid mode or missing stage ID in `STAGE` mode blocks spawning; `/dg validate <id>` reports the configuration error.
 
-In the admin GUI, open **Boss & Trigger**. **Boss Stage Requirement** cycles the mode; **Required Stage ID** accepts an existing stage and selects `STAGE` mode. Both settings are saved to `boss.yml`. Moving the boss spawn preserves them. **Test Boss Spawn** remains an editor preview and does not simulate progression requirements.
+In the admin GUI, open **Boss & Trigger**. **Boss Stage Requirement** cycles the mode; **Required Stage ID** accepts an existing stage only while `STAGE` mode is selected; it is inactive in `DISABLED` and `ALL`. Both settings are saved to `boss.yml`. Moving the boss spawn preserves them. **Test Boss Spawn** remains an editor preview and does not simulate progression requirements.
 
 This feature is available only in PRO.
 
@@ -1374,3 +1374,48 @@ This feature is available only in PRO.
 `/dg kick <player>` removes a member from the leader's open party. Tab completion suggests only other members of that party. The leader cannot kick themselves, players outside the party, or anyone after dungeon preparation has begun. The removed player and the remaining party receive configurable messages. No extra permission is required beyond being that party's leader.
 
 Kicking removes the current membership; it does not ban the player from joining an open party again.
+
+## Specific Kill Mobs Targets (PRO, 2.2.0)
+
+Open **Stages > stage > Missions > Kill Mobs Mission** to reach the mission settings. The menu contains the required amount, **Dungeon Spawner Mobs Only**, and **Count Baby Variants**. Clicking the mission no longer immediately opens a chat prompt. The source filter uses an iron-bars icon; it does not configure a spawner or a spawn egg.
+
+Use **Specific Mob Targets** to show the configuration path in chat:
+`plugins/InstancedDungeons/dungeons/<dungeon-id>/stages/<stage-id>.yml`.
+Edit `mob-targets` inside that file's `KILL_MOBS` entry, then reload the dungeon configuration before starting a new instance:
+
+```yaml
+missions:
+  - type: KILL_MOBS
+    required: 10
+    only-dungeon-spawner-mobs: true
+    count-baby-variants: true
+    mob-targets:
+      vanilla:
+        ZOMBIE: 6
+        PIG: 2
+      mythic:
+        Kings: 1
+        Barbarian: 1
+```
+
+With targets configured, the mission requires every listed count. Their sum replaces `required`; extra zombies cannot replace a missing pig or MythicMob. Use Bukkit entity names for vanilla targets and exact, case-sensitive MythicMobs internal IDs for Mythic targets. A Mythic zombie counts toward its Mythic ID, not the vanilla `ZOMBIE` target. Both source and baby filters still apply.
+
+The hologram shows each target's progress and remaining count. Invalid target definitions block progress and are reported by validation and in the server log. An empty `mob-targets: {}` or an omitted section keeps the ordinary total-count mission. The amount button is disabled while specific targets control the total; editing the filters preserves those targets.
+
+## Trigger Stage Requirement (PRO, 2.2.0)
+
+Trigger objectives support the same completed-stage requirements as bosses. Add this to `trigger.yml`, or use **Trigger Stage Requirement** in the admin GUI:
+
+```yaml
+stage-requirement:
+  mode: STAGE
+  stage-id: entrance
+```
+
+- `DISABLED`: the configured button or pressure plate works as before. This is the default for new and existing trigger configs.
+- `STAGE`: the named stage must be completed.
+- `ALL`: every configured stage must be completed. With no stages configured, this requirement is satisfied.
+
+Before the requirement is met, interacting with the trigger does not complete the dungeon or give rewards. Use it again after completing the required stages. Unknown modes or missing stage IDs do not bypass the requirement; the validator reports configuration errors.
+
+The **Boss & Trigger** editor entry opens only the controls matching the dungeon's completion objective. **Required Stage ID** accepts input only in `STAGE` mode, for both objectives. Switching to `DISABLED` or `ALL` preserves the saved ID but ignores it.
