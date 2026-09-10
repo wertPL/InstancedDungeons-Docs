@@ -36,7 +36,7 @@ The current dungeon config format uses `v: 2.0` at the top of `dungeons/<id>/con
 | Minecraft / Paper target | Java | Multiverse-Core |
 | --- | --- | --- |
 | Paper 1.21.x | Java 21+ | Multiverse-Core 5.5.2+ |
-| Paper 26.1.x | Java 25+ | Multiverse-Core 5.8.1+ |
+| Paper 26.1.x / 26.2 | Java 25+ | Multiverse-Core 5.8.1+ |
 
 Optional integrations:
 
@@ -1254,7 +1254,7 @@ The Pro editor uses a four-row main screen grouped by workflow: dungeon content,
 
 ## Compatibility Notes
 
-- Paper 26.1 support is beta.
+- Paper 26.1.x / 26.2 support is beta.
 - No update checker is included in this build.
 - The current documentation follows current plugin behavior, not the old 1.x loot chest documentation.
 - Dungeons using the 1.x format should be rebuilt with the current format instead of migrated in place.

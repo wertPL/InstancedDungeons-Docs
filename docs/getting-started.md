@@ -7,7 +7,7 @@ This guide creates a working dungeon from a template world.
 | Target | Java | Multiverse-Core |
 | --- | --- | --- |
 | Paper 1.21.x | 21+ | 5.5.2+ |
-| Paper 26.1.x | 25+ | 5.8.1+ |
+| Paper 26.1.x / 26.2 | 25+ | 5.8.1+ |
 
 Optional integrations:
 
@@ -79,3 +79,5 @@ Trigger dungeons complete when players activate one configured button or pressur
 
 !!! tip "Openable tower stages"
     `/dungeon open` only suggests standalone dungeons and tower `FIRST` stages. Middle and last tower stage IDs are entered through tower progression.
+
+The same **26.x JAR** supports Paper **26.1.x and 26.2**. FREE and PRO each provide one 26.x build, available plain or obfuscated. Use the separate 1.21.x build for older servers.
