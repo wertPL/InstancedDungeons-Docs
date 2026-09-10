@@ -1370,7 +1370,7 @@ Kicking removes the current membership; it does not ban the player from joining 
 
 Open **Stages > stage > Missions > Kill Mobs Mission** to reach the mission settings. The menu contains the required amount, **Dungeon Spawner Mobs Only**, and **Count Baby Variants**. Click **Required Amount** to enter the mob count in chat.
 
-Use **Specific Mob Targets** to show the configuration path in chat:
+Click **Specific Mob Targets** to add a one-Zombie example when the mission has no targets and show the configuration path in chat:
 `plugins/InstancedDungeons/dungeons/<dungeon-id>/stages/<stage-id>.yml`.
 Edit `mob-targets` inside that file's `KILL_MOBS` entry, then reload the dungeon configuration before starting a new instance:
 
