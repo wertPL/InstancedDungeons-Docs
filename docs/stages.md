@@ -99,7 +99,7 @@ Runtime holograms show live mission progress. Locked higher-order holograms show
 !!! note "Clickable missions"
     `SACRIFICE`, `MONEY_PAYMENT`, and `ITEM_PAYMENT` are opened during a run by right-clicking a gate block.
 
-## Kill Mobs Filters (2.2.0)
+## Kill Mobs Filters
 
 New `KILL_MOBS` missions include both options:
 

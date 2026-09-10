@@ -79,7 +79,7 @@ Only one trigger can exist per dungeon. Placing a new trigger replaces the previ
 !!! tip
     Trigger blocks ignore normal dungeon interaction blocking. They can still complete the run when regular interactions are disabled.
 
-## Boss Stage Requirement (PRO, 2.2.0)
+## Boss Stage Requirement
 
 New `boss.yml` files include:
 
@@ -119,9 +119,7 @@ If a player is already in range, the boss can activate as soon as the stage requ
 
 In the admin GUI, open **Boss & Trigger**. **Boss Stage Requirement** cycles the mode; **Required Stage ID** accepts an existing stage only while `STAGE` mode is selected; it is inactive in `DISABLED` and `ALL`. Both settings are saved to `boss.yml`. Moving the boss spawn preserves them. **Test Boss Spawn** previews the boss without applying stage requirements.
 
-This feature is available only in PRO.
-
-## Trigger Stage Requirement (PRO, 2.2.0)
+## Trigger Stage Requirement
 
 Trigger objectives support the same completed-stage requirements as bosses. Add this to `trigger.yml`, or use **Trigger Stage Requirement** in the admin GUI:
 

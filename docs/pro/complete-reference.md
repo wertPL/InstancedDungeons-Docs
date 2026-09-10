@@ -1188,7 +1188,7 @@ New installations receive the default messages. Updates append missing new messa
 
 Existing messages, comments, order, and translations are preserved.
 
-`item-use-blocked-in-dungeon` uses `%item%` for the blocked item name. See [Messages](messages.md) for the complete behavior.
+`item-use-blocked-in-dungeon` uses `%item%` for the blocked item name.
 
 `messages.yml` also includes a placeholder reference comment at the bottom.
 
@@ -1298,7 +1298,7 @@ Custom items fail validation:
 - Confirm the item ID exactly matches the provider ID.
 - For potions and enchanted books, confirm the ID follows the special vanilla formats above.
 
-## Kill Mobs Filters (2.2.0)
+## Kill Mobs Filters
 
 New `KILL_MOBS` missions include both options:
 
@@ -1318,9 +1318,9 @@ Set `only-dungeon-spawner-mobs: false` to count mobs from other sources inside t
 
 Both options default to `true` when omitted, including in existing missions. Changing the required amount through a command or the editor preserves these filters. Save the mission to write the fields, or add them manually and reload.
 
-PRO provides both switches in the dedicated **Kill Mobs Mission** settings menu.
+Both switches are available in the dedicated **Kill Mobs Mission** settings menu.
 
-## Boss Stage Requirement (PRO, 2.2.0)
+## Boss Stage Requirement
 
 New `boss.yml` files include:
 
@@ -1360,15 +1360,13 @@ If a player is already in range, the boss can activate as soon as the stage requ
 
 In the admin GUI, open **Boss & Trigger**. **Boss Stage Requirement** cycles the mode; **Required Stage ID** accepts an existing stage only while `STAGE` mode is selected; it is inactive in `DISABLED` and `ALL`. Both settings are saved to `boss.yml`. Moving the boss spawn preserves them. **Test Boss Spawn** previews the boss without applying stage requirements.
 
-This feature is available only in PRO.
-
-## Remove a Party Member (2.2.0)
+## Remove a Party Member
 
 `/dg kick <player>` removes a member from the leader's open party. Tab completion suggests only other members of that party. The leader cannot kick themselves, players outside the party, or anyone after dungeon preparation has begun. The removed player and the remaining party receive configurable messages. No extra permission is required beyond being that party's leader.
 
 Kicking removes the current membership; it does not ban the player from joining an open party again.
 
-## Specific Kill Mobs Targets (PRO, 2.2.0)
+## Specific Kill Mobs Targets
 
 Open **Stages > stage > Missions > Kill Mobs Mission** to reach the mission settings. The menu contains the required amount, **Dungeon Spawner Mobs Only**, and **Count Baby Variants**. Click **Required Amount** to enter the mob count in chat.
 
@@ -1383,19 +1381,25 @@ missions:
     only-dungeon-spawner-mobs: true
     count-baby-variants: true
     mob-targets:
-      vanilla:
-        ZOMBIE: 6
-        PIG: 2
-      mythic:
-        Kings: 1
-        Barbarian: 1
+      - type: VANILLA
+        mob-id: ZOMBIE
+        count: 6
+      - type: VANILLA
+        mob-id: PIG
+        count: 2
+      - type: MYTHIC
+        mob-id: Kings
+        count: 1
+      - type: MYTHIC
+        mob-id: Barbarian
+        count: 1
 ```
 
 With targets configured, the mission requires every listed count. Their sum replaces `required`; extra zombies cannot replace a missing pig or MythicMob. Use Bukkit entity names for vanilla targets and exact, case-sensitive MythicMobs internal IDs for Mythic targets. A Mythic zombie counts toward its Mythic ID, not the vanilla `ZOMBIE` target. Both source and baby filters still apply.
 
-The hologram shows each target's progress and remaining count. Invalid target definitions block progress and are reported by validation and in the server log. An empty `mob-targets: {}` or an omitted section keeps the ordinary total-count mission. The amount button is disabled while specific targets control the total; editing the filters preserves those targets.
+The hologram shows each target's progress and remaining count. Invalid target definitions block progress and are reported by validation and in the server log. Omit `mob-targets` to use the ordinary total-count mission. The amount button is disabled while specific targets control the total; editing the filters preserves those targets.
 
-## Trigger Stage Requirement (PRO, 2.2.0)
+## Trigger Stage Requirement
 
 Trigger objectives support the same completed-stage requirements as bosses. Add this to `trigger.yml`, or use **Trigger Stage Requirement** in the admin GUI:
 

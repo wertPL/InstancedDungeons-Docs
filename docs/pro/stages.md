@@ -186,7 +186,7 @@ missions:
     required: 3
 ```
 
-## Kill Mobs Filters (2.2.0)
+## Kill Mobs Filters
 
 New `KILL_MOBS` missions include both options:
 
@@ -206,9 +206,9 @@ Set `only-dungeon-spawner-mobs: false` to count mobs from other sources inside t
 
 Both options default to `true` when omitted, including in existing missions. Changing the required amount through a command or the editor preserves these filters. Save the mission to write the fields, or add them manually and reload.
 
-PRO provides both switches in the dedicated **Kill Mobs Mission** settings menu.
+Both switches are available in the dedicated **Kill Mobs Mission** settings menu.
 
-## Specific Kill Mobs Targets (PRO, 2.2.0)
+## Specific Kill Mobs Targets
 
 Open **Stages > stage > Missions > Kill Mobs Mission** to reach the mission settings. The menu contains the required amount, **Dungeon Spawner Mobs Only**, and **Count Baby Variants**. Click **Required Amount** to enter the mob count in chat.
 
@@ -223,14 +223,20 @@ missions:
     only-dungeon-spawner-mobs: true
     count-baby-variants: true
     mob-targets:
-      vanilla:
-        ZOMBIE: 6
-        PIG: 2
-      mythic:
-        Kings: 1
-        Barbarian: 1
+      - type: VANILLA
+        mob-id: ZOMBIE
+        count: 6
+      - type: VANILLA
+        mob-id: PIG
+        count: 2
+      - type: MYTHIC
+        mob-id: Kings
+        count: 1
+      - type: MYTHIC
+        mob-id: Barbarian
+        count: 1
 ```
 
 With targets configured, the mission requires every listed count. Their sum replaces `required`; extra zombies cannot replace a missing pig or MythicMob. Use Bukkit entity names for vanilla targets and exact, case-sensitive MythicMobs internal IDs for Mythic targets. A Mythic zombie counts toward its Mythic ID, not the vanilla `ZOMBIE` target. Both source and baby filters still apply.
 
-The hologram shows each target's progress and remaining count. Invalid target definitions block progress and are reported by validation and in the server log. An empty `mob-targets: {}` or an omitted section keeps the ordinary total-count mission. The amount button is disabled while specific targets control the total; editing the filters preserves those targets.
+The hologram shows each target's progress and remaining count. Invalid target definitions block progress and are reported by validation and in the server log. Omit `mob-targets` to use the ordinary total-count mission. The amount button is disabled while specific targets control the total; editing the filters preserves those targets.

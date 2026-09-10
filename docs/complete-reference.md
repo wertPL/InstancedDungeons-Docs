@@ -1118,7 +1118,7 @@ New installations receive the default messages. Updates append missing new messa
 # Messages added by plugin updates will appear below. Existing messages are never overwritten.
 ```
 
-Existing messages, comments, order, and translations are preserved. See [Messages](messages.md) for the complete behavior.
+Existing messages, comments, order, and translations are preserved.
 
 `messages.yml` also includes a placeholder reference comment at the bottom.
 
@@ -1229,7 +1229,7 @@ Custom items fail validation:
 - Confirm the item ID exactly matches the provider ID.
 - For potions and enchanted books, confirm the ID follows the special vanilla formats above.
 
-## Kill Mobs Filters (2.2.0)
+## Kill Mobs Filters
 
 New `KILL_MOBS` missions include both options:
 
@@ -1249,7 +1249,7 @@ Set `only-dungeon-spawner-mobs: false` to count mobs from other sources inside t
 
 Both options default to `true` when omitted, including in existing missions. Changing the required amount through a command or the editor preserves these filters. Save the mission to write the fields, or add them manually and reload.
 
-## Remove a Party Member (2.2.0)
+## Remove a Party Member
 
 `/dg kick <player>` removes a member from the leader's open party. Tab completion suggests only other members of that party. The leader cannot kick themselves, players outside the party, or anyone after dungeon preparation has begun. The removed player and the remaining party receive configurable messages. No extra permission is required beyond being that party's leader.
 

@@ -1,6 +1,5 @@
 <section class="hero">
 
-**2.2.0:** party kicks before starting, dungeon-spawner kill filters, and configurable baby counting. PRO adds specific mob targets and stage requirements for bosses and completion triggers. See [Updating](../updating.md).
   <div>
     <h1><span class="accent">InstancedDungeons</span><span class="break">Pro</span></h1>
     <p>

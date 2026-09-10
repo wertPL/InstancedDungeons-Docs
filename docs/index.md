@@ -1,6 +1,5 @@
 <section class="hero">
 
-**2.2.0:** party kicks before starting, dungeon-spawner kill filters, and configurable baby counting. See [Updating](updating.md).
   <div>
     <h1><span class="accent">InstancedDungeons</span></h1>
     <p>

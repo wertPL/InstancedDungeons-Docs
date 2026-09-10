@@ -218,7 +218,7 @@ main-hand:
 
 This works for armor, tools, weapons, shields, and enchanted books.
 
-## Boss Stage Requirement (PRO, 2.2.0)
+## Boss Stage Requirement
 
 New `boss.yml` files include:
 
@@ -257,5 +257,3 @@ The stage requirement is an additional condition for every boss trigger:
 If a player is already in range, the boss can activate as soon as the stage requirement is met. Spectators cannot trigger the boss. An invalid mode or missing stage ID in `STAGE` mode blocks spawning; `/dg validate <id>` reports the configuration error.
 
 In the admin GUI, open **Boss & Trigger**. **Boss Stage Requirement** cycles the mode; **Required Stage ID** accepts an existing stage only while `STAGE` mode is selected; it is inactive in `DISABLED` and `ALL`. Both settings are saved to `boss.yml`. Moving the boss spawn preserves them. **Test Boss Spawn** previews the boss without applying stage requirements.
-
-This feature is available only in PRO.
