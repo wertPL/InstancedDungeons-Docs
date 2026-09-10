@@ -1,8 +1,6 @@
 # Help Center
 
-Use this section when something needs checking after setup.
-
-## Recommended Order
+## Troubleshooting Steps
 
 1. Run validation:
 
@@ -18,9 +16,7 @@ For plugin updates and config migration, follow the [Updating guide](updating.md
 
 ## Pro feature buttons
 
-Free-edition `[GET PRO]` buttons do not open an external page immediately. They first send the administrator a private message containing the discount code `436583-UPGRADE` for 15% off and an `[OPEN OFFICIAL PRO PAGE]` button. Only that second button opens the official BuiltByBit page.
-
-The intermediate action is intentionally omitted from command help and tab completion. The discount text and button label are hardcoded.
+Click `[GET PRO]` to see the 15% discount code `436583-UPGRADE`. Then click `[OPEN OFFICIAL PRO PAGE]` to open the BuiltByBit page.
 
 ## Support Links
 

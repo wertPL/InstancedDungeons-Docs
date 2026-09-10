@@ -1,12 +1,12 @@
 # RAM Analysis
 
-InstancedDungeons includes an optional lightweight memory diagnostic in both Free and Pro:
+Use this command in Free or Pro to turn memory reports on or off:
 
 ```text
 /dungeon ram analysis
 ```
 
-The command requires `instanceddungeons.admin` and toggles analysis on or off. It is intentionally omitted from command help and tab completion. Its enable and disable confirmations are hardcoded in English.
+Requires `instanceddungeons.admin`.
 
 Analysis is disabled by default. The file `plugins/InstancedDungeons/ram-analysis.yml` is created only after the command is enabled for the first time.
 
@@ -20,7 +20,14 @@ settings:
   max-stored-reports: 144
 ```
 
-Reports are stored newest first. Timestamps use the server's local time zone and a readable format such as `2026-08-07 12:58:40 CEST`.
+Reports are stored newest first, with timestamps in the server's local time zone.
+
+| Setting | Description |
+| --- | --- |
+| `enabled` | Turns analysis on or off. |
+| `report-interval-minutes` | Minutes between saved reports. |
+| `sample-interval-seconds` | Seconds between memory samples. |
+| `max-stored-reports` | Maximum number of reports to keep. |
 
 ## Reported memory
 
@@ -32,11 +39,4 @@ Each period contains:
 - Total instance launches and launches grouped by dungeon ID.
 - Estimated instance-world usage grouped by dungeon.
 
-The report does not include the whole server or JVM heap. Legacy flat reports are normalized and old `server-heap` fields are removed when the file is next opened by the plugin.
-
-!!! note "Memory estimates"
-    The JVM does not assign shared Paper world, chunk, entity, and mob objects to one plugin. Instance values are therefore estimates based on counters that Paper and InstancedDungeons already maintain.
-
-## Performance cost
-
-The analyzer does not force garbage collection, walk the heap, start JFR, or scan world blocks. It samples existing counters once every 30 seconds by default, keeping its server impact negligible.
+These are estimates for the plugin and its instances, not measurements of total server RAM.

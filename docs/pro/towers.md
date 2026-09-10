@@ -51,14 +51,14 @@ announce-fail: true
 `announce-complete` is broadcast only after the final tower stage completes. The broadcast uses the final stage dungeon name.
 
 !!! important
-    Do not enable `announce-complete` on middle or last tower stage configs expecting them to control global tower announcements. The entry dungeon is the source of truth.
+    Set `announce-complete` in the FIRST dungeon. The same setting in MIDDLE or LAST does not control tower announcements.
 
 ## Spectators During Tower Transitions
 
 Players who become dungeon spectators through death or sacrifice stay with the party as spectators when the tower moves to the next stage.
 
-External spectators from `/dungeon spectate <leader>` are also moved to the next stage and keep their spectator snapshot until they leave spectator mode or the run ends.
+External spectators from `/dungeon spectate <leader>` move to the next stage with the party. Their original inventory and game mode are restored when they stop spectating or the run ends.
 
 ## Visibility
 
-`/dungeon list` and `/dungeon open` tab completion hide tower middle/last stage dungeon IDs. Those dungeons are technical stage templates, not public dungeon entries.
+`/dungeon list` and `/dungeon open` tab completion hide tower middle/last stage dungeon IDs. Players reach those dungeons through tower progression.

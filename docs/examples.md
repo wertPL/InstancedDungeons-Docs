@@ -1,6 +1,6 @@
 # Examples
 
-This page gives practical setup recipes you can copy, adapt, and validate. The examples are intentionally small: build the dungeon first, confirm it works, then add more stages, mobs, loot, and commands.
+Examples for boss dungeons, trigger puzzles, towers, stage keys, and event commands.
 
 ## Example 1: Simple Boss Dungeon
 
@@ -66,7 +66,7 @@ rewards:
 ```
 
 !!! tip
-    Trigger blocks still work when normal dungeon interactions are blocked, so they are reliable for final puzzle buttons.
+    Trigger blocks work even when normal dungeon interactions are blocked.
 
 ## Example 3: Two-Stage Tower
 

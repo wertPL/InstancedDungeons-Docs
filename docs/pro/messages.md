@@ -8,28 +8,15 @@ plugins/InstancedDungeons/messages.yml
 
 Messages use `%placeholder%` tokens. Event commands use a separate `<placeholder>` format.
 
-## Safe Update Migration
+## Updating Messages
 
-A fresh installation receives the complete bundled `messages.yml`, with every message in its normal documented location.
+New installations receive the default `messages.yml`. Updates append missing new message keys at the bottom of the file and load them automatically.
 
-When an update introduces a new message, an existing file is handled differently:
-
-- Only update-introduced keys that are missing are added.
-- Existing message values, comments, order, and custom translations are not overwritten.
-- New keys are appended at the bottom under one shared header:
-
-```yaml
-# Messages added by plugin updates will appear below. Existing messages are never overwritten.
-```
-
-- The file is written through a temporary file and replaced atomically when the operating system supports it.
-- The updated file is reloaded immediately, so the newly added defaults can be used without regenerating the whole file.
-
-If a key already exists, the plugin keeps its configured value. Future reloads do not duplicate appended keys or the shared header.
+Your existing messages, translations, comments, and key order are preserved. Added keys are not duplicated on later reloads. To use revised wording for an existing message, edit that key yourself; updates do not replace its value.
 
 ## Item Restriction Message
 
-InstancedDungeons Pro 2.0.1 adds:
+Configure the message shown when an item is blocked:
 
 ```yaml
 item-use-blocked-in-dungeon: "&c%item% cannot be used inside this dungeon."
@@ -37,7 +24,7 @@ item-use-blocked-in-dungeon: "&c%item% cannot be used inside this dungeon."
 
 `%item%` is replaced with the blocked item or action name.
 
-On a fresh installation this message appears in its normal location with other dungeon messages. When upgrading an older `messages.yml`, the missing key is appended through the safe update migration described above.
+This key is added automatically if it is missing.
 
 ## Mission Names
 

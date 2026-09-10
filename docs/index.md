@@ -4,9 +4,8 @@
   <div>
     <h1><span class="accent">InstancedDungeons</span></h1>
     <p>
-      A clean dungeon system for Minecraft servers: <strong>private instances</strong>,
-      party runs, staged progression, rewards, mob encounters, and event automation
-      in one polished workflow.
+      Create <strong>private dungeon instances</strong> for parties, with stages,
+      mobs, loot, and boss or trigger objectives.
     </p>
     <div class="hero-badges">
       <span class="hero-badge">Paper 1.21.x / 26.1.x / 26.2</span>
@@ -28,7 +27,7 @@ InstancedDungeons copies a configured template world into a temporary instance w
 
 <div class="status-row">
   <div class="status-box"><strong>Instances</strong><span>One copied world per active run</span></div>
-  <div class="status-box"><strong>Parties</strong><span>Open, join, start, spectate, and leave flows</span></div>
+  <div class="status-box"><strong>Parties</strong><span>Create parties, join runs, or spectate</span></div>
   <div class="status-box"><strong>Objectives</strong><span>Boss defeat or trigger activation</span></div>
   <div class="status-box"><strong>Towers</strong><span>Chain dungeons into multi-stage runs</span></div>
 </div>
@@ -42,7 +41,7 @@ InstancedDungeons copies a configured template world into a temporary instance w
   </div>
   <div class="doc-card">
     <h3>Stages and Gates</h3>
-    <p>Add layered progression with locked paths, live objective tracking, and interactive mission mechanics.</p>
+    <p>Require players to complete missions before stage gates open.</p>
   </div>
   <div class="doc-card">
     <h3>Loot and Rewards</h3>
@@ -62,7 +61,7 @@ InstancedDungeons copies a configured template world into a temporary instance w
   </div>
 </div>
 
-## Fast Path
+## Quick Start
 
 1. Install the plugin and Multiverse-Core.
 2. Create a template world.

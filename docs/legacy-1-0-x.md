@@ -1,8 +1,8 @@
-﻿# InstancedDungeons - Complete Documentation
+# InstancedDungeons 1.0.x Documentation
 
 ## Overview
 
-InstancedDungeons is a fully configurable instanced dungeon system for Paper 1.21, 26.x servers. It allows server administrators to create template-based dungeons that support multiple simultaneous instances, party systems, customizable mobs, loot chests, and boss fights.
+InstancedDungeons creates separate dungeon instances from template worlds, with parties, mobs, loot chests, and bosses.
 
 ### Key Features
 
@@ -222,8 +222,6 @@ Reload the plugin to apply all configuration changes:
 /dungeon reload
 ```
 
-Your dungeon is now ready!
-
 ## Player Commands
 
 ### `/dungeon help`
@@ -304,7 +302,6 @@ Lists available Oraxen IDs or shows exact config usage for a selected ID. *(beta
 ### `/dungeon nexo [itemId]`
 Lists available Nexo IDs or shows exact config usage for a selected ID. *(beta)*
 
-
 ## Configuration Files
 
 ### Main Configuration (`config.yml`)
@@ -330,7 +327,6 @@ All plugin messages can be customized. Color codes using `&` are supported.
 ### Dungeon Configuration (`dungeons/<id>/config.yml`)
 
 Main dungeon settings including display name, world template, player limits, time limits, costs, and spawn/exit locations.
-
 
 ### Command Blacklist (`dungeons/<id>/command-blacklist.yml`)
 
@@ -422,7 +418,6 @@ mob-pools:
   count: 1
   chance: 20.0
 ```
-
 
 ## Loot Chest System
 
@@ -539,15 +534,13 @@ death-behavior: ONE_LIFE_SPECTATOR
 - Can watch teammates
 - Can exit instantly with `/dungeon exit`
 
-
 ### KICK Mode
 
 ```yaml
 death-behavior: ONE_LIFE_KICK
 ```
 
-- Players wil be kicked after they die
-
+- Players are removed from the dungeon when they die
 
 ## Cost System
 
@@ -592,7 +585,6 @@ costs:
 - Global open/join `false` + template open/join `true` = denied
 - Global open/join `false` + template open/join `false` = denied
 
-
 ## Party System
 
 ### Creating a Party
@@ -635,12 +627,10 @@ On plugin disable or server shutdown:
 1. All active instances are detected
 2. Players are teleported to their original locations
 3. Instance worlds are cleaned up
-4. No data loss occurs
 
 ## Integration with GUI Plugins
 
 All functionality is command-based, making it easy to integrate with GUI plugins like Command Panels
-
 
 ## Troubleshooting
 
@@ -686,8 +676,7 @@ Set appropriate `max-instances` values based on your server hardware:
 - Medium server (4-8 GB RAM): 3-5 instances per dungeon
 - Large server (16+ GB RAM): 5-10 instances per dungeon
 
-Note that these parameters are only valid if you have only this plugin and its dependencies installed.
-If you have many other plugins, etc., these values may differ significantly.
+These estimates assume only InstancedDungeons and its dependencies are installed. Adjust the limits for your other plugins and server load.
 
 ### World Size
 
@@ -698,16 +687,10 @@ Keep template worlds reasonably sized. Smaller worlds copy faster and use less d
 Balance mob spawners to avoid lag:
 - Don't spawn too many mobs at once
 
-
 ## Support
 
-For issues, questions, or feature requests, please:
+Before contacting support:
 1. Check this whole documentation
 2. Review example configuration files
 3. Check console for errors
-4. If you are sure something is broken, join the Discord: https://discord.com/invite/sD4HvQh8P4
-
----
-
-*Thank you for using InstancedDungeons!*
-
+4. Ask for help on [Discord](https://discord.com/invite/sD4HvQh8P4).

@@ -8,30 +8,11 @@ plugins/InstancedDungeons/messages.yml
 
 Messages use `%placeholder%` tokens. Event commands use a separate `<placeholder>` format.
 
-## Safe Update Migration
+## Updating Messages
 
-A fresh installation receives the complete bundled `messages.yml`, with every message in its normal documented location.
+New installations receive the default `messages.yml`. Updates append missing new message keys at the bottom of the file and load them automatically.
 
-When an update introduces a new message, an existing file is handled differently:
-
-- Only update-introduced keys that are missing are added.
-- Existing message values, comments, order, and custom translations are not overwritten.
-- New keys are appended at the bottom under one shared header:
-
-```yaml
-# Messages added by plugin updates will appear below. Existing messages are never overwritten.
-```
-
-- The file is written through a temporary file and replaced atomically when the operating system supports it.
-- The updated file is reloaded immediately, so the newly added defaults can be used without regenerating the whole file.
-
-The Free edition uses this migration system for update messages, including item-restriction feedback. The Pro discount notice and `[OPEN OFFICIAL PRO PAGE]` button are intentionally hardcoded and are not stored in `messages.yml`.
-
-## Existing Custom Messages
-
-If a key already exists, the plugin always keeps the configured value. Updating the plugin does not restore that key to its bundled default.
-
-If a newly introduced key is missing, its default is appended once. Later reloads do not create duplicates.
+Your existing messages, translations, comments, and key order are preserved. Added keys are not duplicated on later reloads. To use revised wording for an existing message, edit that key yourself; updates do not replace its value.
 
 ## Mission Names
 

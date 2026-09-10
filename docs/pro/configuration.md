@@ -1,7 +1,5 @@
 # Dungeon Config
 
-This page documents the Pro dungeon configuration format.
-
 Every dungeon has a main config file:
 
 ```text
@@ -105,9 +103,7 @@ Per-dungeon `max-instances` still controls the limit for that dungeon template.
 
 ## Dungeon Scale
 
-The Pro build reads the configured stage, mission, key, sacrifice, money payment, and item payment data directly from the dungeon files.
-
-Use this section for production dungeon layouts with multiple stages, richer mission groups, and larger item-payment setups.
+Pro supports multiple stages, missions, key requirements, and payment items per dungeon.
 
 ## Protection
 
@@ -158,7 +154,7 @@ Restrictions apply only while the player belongs to an active dungeon instance a
 
 They can be edited from the dungeon settings GUI under **Item Restrictions**. New dungeons generate the complete section automatically.
 
-For existing dungeon configs, missing values load as `false`. The first change made in the Item Restrictions GUI appends or updates only this section through an atomic targeted write; unrelated settings such as `announce-start` and `allow-interactions` are not reserialized or reset.
+Missing restriction settings default to `false`. GUI changes are saved without altering other dungeon settings.
 
 ## Death Behavior
 
@@ -191,7 +187,7 @@ timer-bossbar:
 ## Timer Alerts
 
 !!! note "Pro sound profiles"
-    In Pro, runtime timer alert messages and sounds are controlled by the dungeon's `sounds.yml`. The legacy section below remains in existing configs but no longer affects runtime behavior after migration. See [Dungeon Sounds](sounds.md).
+    Configure Pro timer alert messages and sounds in `sounds.yml`. The legacy section below is ignored after migration. See [Dungeon Sounds](sounds.md).
 
 ```yaml
 timer-alerts:

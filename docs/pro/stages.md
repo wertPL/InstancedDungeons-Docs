@@ -1,10 +1,8 @@
 # Stages and Gates
 
-This page documents stage behavior for Pro dungeon builds.
-
 Stages are optional progression gates inside a dungeon.
 
-The four-row stage detail GUI groups stage settings, gate editing, advanced logic, and navigation. Dedicated **After-Open Logic** and **Emergency Return** menus handle their locations and actions.
+Use the stage GUI to edit gates and missions. **After-Open Logic** configures party teleports and gate closing; **Emergency Return** configures the return plate and destination.
 
 Runtime gate blocks, mission blocks, triggers, loot chests, and emergency plates are protected from player breaking, replacement, water, and lava even when the dungeon otherwise allows those actions.
 
@@ -178,15 +176,7 @@ Emergency-return holograms support `%dungeon%`, `%dungeon_name%`, `%instance%`, 
 !!! note "Clickable missions"
     `SACRIFICE`, `MONEY_PAYMENT`, and `ITEM_PAYMENT` are opened during a run by right-clicking a gate block.
 
-## Stage Runtime Data
-
-Stage runtime uses the configured stage file data directly:
-
-- Stage order and parallel stage groups.
-- Mission lists and mission block sets.
-- Required key amounts.
-- Sacrifice, money payment, and item payment missions.
-- Item payment cost entries.
+## Required Keys
 
 For `REQUIRED_KEY`, set the required amount directly:
 
@@ -195,7 +185,6 @@ missions:
   - type: REQUIRED_KEY
     required: 3
 ```
-
 
 ## Kill Mobs Filters (2.2.0)
 
@@ -209,11 +198,11 @@ missions:
     count-baby-variants: true
 ```
 
-`only-dungeon-spawner-mobs` counts only mobs spawned by this dungeon instance's configured spawners, including vanilla and MythicMobs pools. Friendly summons from enchantments or other plugins, natural mobs, and mobs already stored in the template do not count. Bosses remain excluded from stage kill missions. The origin marker survives entity transformations, such as a zombie turning into a drowned.
+`only-dungeon-spawner-mobs` counts only mobs spawned by this dungeon instance's configured spawners, including vanilla and MythicMobs pools. Friendly summons from enchantments or other plugins, natural mobs, and mobs already stored in the template do not count. Bosses remain excluded from stage kill missions. Dungeon-spawned mobs still count after transformations, such as a zombie becoming a drowned.
 
-Set `only-dungeon-spawner-mobs: false` to allow other mobs in the instance to count again. A qualifying kill still needs to be credited to a player, as before. Mobs summoned separately by a Mythic skill are not automatically treated as dungeon spawner mobs.
+Set `only-dungeon-spawner-mobs: false` to count mobs from other sources inside the instance. Kills must be credited to a player. Mobs summoned separately by a Mythic skill are not automatically treated as dungeon spawner mobs.
 
-`count-baby-variants` includes baby versions of eligible mobs, including zombies, drowned, piglins, and other ageable mobs. Set it to `false` to exclude babies. It does not change what the spawner creates and does not override the spawner-origin filter.
+`count-baby-variants` includes baby versions of eligible mobs, including zombies, drowned, piglins, and other ageable mobs. Set it to `false` to exclude babies. The spawner-source filter still applies. To control which variants spawn, use the spawner settings.
 
 Both options default to `true` when omitted, including in existing missions. Changing the required amount through a command or the editor preserves these filters. Save the mission to write the fields, or add them manually and reload.
 
@@ -221,7 +210,7 @@ PRO provides both switches in the dedicated **Kill Mobs Mission** settings menu.
 
 ## Specific Kill Mobs Targets (PRO, 2.2.0)
 
-Open **Stages > stage > Missions > Kill Mobs Mission** to reach the mission settings. The menu contains the required amount, **Dungeon Spawner Mobs Only**, and **Count Baby Variants**. Clicking the mission no longer immediately opens a chat prompt. The source filter uses an iron-bars icon; it does not configure a spawner or a spawn egg.
+Open **Stages > stage > Missions > Kill Mobs Mission** to reach the mission settings. The menu contains the required amount, **Dungeon Spawner Mobs Only**, and **Count Baby Variants**. Click **Required Amount** to enter the mob count in chat.
 
 Use **Specific Mob Targets** to show the configuration path in chat:
 `plugins/InstancedDungeons/dungeons/<dungeon-id>/stages/<stage-id>.yml`.

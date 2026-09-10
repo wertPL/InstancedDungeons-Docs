@@ -1,8 +1,6 @@
 # Help Center
 
-Use this section when something needs checking after setup.
-
-## Recommended Order
+## Troubleshooting Steps
 
 1. Run validation:
 

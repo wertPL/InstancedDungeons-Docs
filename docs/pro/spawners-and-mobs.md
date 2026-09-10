@@ -1,6 +1,6 @@
 # Spawners and Mobs
 
-This page documents Pro spawner and mob equipment behavior.
+Configure mob spawning, equipment, and drops for each dungeon.
 
 Spawner files live in:
 
@@ -46,7 +46,7 @@ mob-pools:
 | `ON_DELAY` | Spawns after `trigger-time`. |
 | `ON_PLAYER_NEAR_ON_DELAY` | Starts `trigger-time` after a player enters `trigger-distance`. |
 
-New generated spawners default to `ON_PLAYER_NEAR` with `trigger-distance: 20`. `trigger-distance` and `trigger-time` are generated in new spawners even when the selected trigger does not use them.
+Spawners default to `ON_PLAYER_NEAR` with `trigger-distance: 20`. The selected trigger determines whether `trigger-distance`, `trigger-time`, or both apply.
 
 ## Mob Pools
 
@@ -199,7 +199,7 @@ The Pro build applies equipment only to vanilla mobs that can normally wear or h
 - `EVOKER`
 - `ILLUSIONER`
 
-`WITCH` is intentionally not included.
+`WITCH` does not support configured equipment.
 
 Unsupported mobs, such as `GHAST` or `BLAZE`, still spawn normally. Their configured equipment is ignored, and validation warns admins that the mob cannot wear armor or hold equipment.
 
@@ -218,7 +218,6 @@ main-hand:
 
 This works for armor, tools, weapons, shields, and enchanted books.
 
-
 ## Boss Stage Requirement (PRO, 2.2.0)
 
 New `boss.yml` files include:
@@ -235,7 +234,7 @@ stage-requirement:
 | `STAGE` | Requires the stage named by `stage-id` to be completed. |
 | `ALL` | Requires every stage in the current dungeon to be completed. With no stages configured, there is nothing to wait for. |
 
-A stage counts as completed when all its missions are complete and its gate has been marked open. Becoming available in the stage order is not enough. Gate closing after completion does not reset that completion.
+A stage is completed when all its missions are finished and its gate opens. Unlocking a stage does not complete it. Closing its gate later does not reset its completion.
 
 For example, require the `courtyard` stage before allowing the proximity trigger:
 
@@ -255,8 +254,8 @@ The stage requirement is an additional condition for every boss trigger:
 - `ON_PLAYER_NEAR`: requires an alive party member within range and the stage requirement to be met.
 - `ON_PLAYER_NEAR_ON_DELAY`: starts its delay only once both conditions are met.
 
-Approaching early does not consume the trigger. A player already standing in range is detected once the requirement is met, without needing to move again. Spectators cannot trigger the boss. An invalid mode or missing stage ID in `STAGE` mode blocks spawning; `/dg validate <id>` reports the configuration error.
+If a player is already in range, the boss can activate as soon as the stage requirement is met. Spectators cannot trigger the boss. An invalid mode or missing stage ID in `STAGE` mode blocks spawning; `/dg validate <id>` reports the configuration error.
 
-In the admin GUI, open **Boss & Trigger**. **Boss Stage Requirement** cycles the mode; **Required Stage ID** accepts an existing stage only while `STAGE` mode is selected; it is inactive in `DISABLED` and `ALL`. Both settings are saved to `boss.yml`. Moving the boss spawn preserves them. **Test Boss Spawn** remains an editor preview and does not simulate progression requirements.
+In the admin GUI, open **Boss & Trigger**. **Boss Stage Requirement** cycles the mode; **Required Stage ID** accepts an existing stage only while `STAGE` mode is selected; it is inactive in `DISABLED` and `ALL`. Both settings are saved to `boss.yml`. Moving the boss spawn preserves them. **Test Boss Spawn** previews the boss without applying stage requirements.
 
 This feature is available only in PRO.

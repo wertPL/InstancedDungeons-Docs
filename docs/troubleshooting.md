@@ -21,7 +21,7 @@ Check:
 - Min/max players are valid.
 - The dungeon passes `/dungeon validate <id>`.
 
-Older 1.x dungeons are intentionally blocked in 2.0.
+Dungeons using the 1.x config format must be recreated for 2.x.
 
 ## Boss Dungeon Does Not Complete
 

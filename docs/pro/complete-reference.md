@@ -2,7 +2,7 @@
 
 InstancedDungeons is a Paper plugin for creating isolated dungeon runs from template worlds. Each party gets a copied instance world, independent mobs, loot, objectives, stages, timers, protection rules, and cleanup after the run ends.
 
-The current dungeon config format uses `v: 2.0` at the top of `dungeons/<id>/config.yml`. Dungeons without this marker are blocked from opening so incompatible 1.x configs cannot be loaded accidentally.
+Set `v: 2.0` at the top of `dungeons/<id>/config.yml`. Dungeons without this format marker cannot open.
 
 ## Table of Contents
 
@@ -27,7 +27,7 @@ The current dungeon config format uses `v: 2.0` at the top of `dungeons/<id>/con
 - Event Commands
 - Messages and Placeholders
 - Validation
-- Pro Version Behavior
+- Pro Features
 - Compatibility Notes
 - Troubleshooting
 
@@ -66,7 +66,7 @@ Dungeon ID: folder name under `dungeons/<id>`. This is used by commands, permiss
 
 Party: players open or join a party before entering. Parties stay tracked while the run is active and close only after completion, failure, or abandonment cleanup.
 
-Objective: the thing that completes a dungeon. Supported objective types are `BOSS` and `TRIGGER`.
+Objective: the condition that completes a dungeon. Supported objective types are `BOSS` and `TRIGGER`.
 
 Stage: an optional progression gate inside a dungeon. A stage can require missions before its gate opens.
 
@@ -127,14 +127,14 @@ Admin commands:
 
 | Command | Description |
 | --- | --- |
-| `/dungeon create <id> <template-world> <boss|trigger>` | Creates a dungeon using the current config format. |
+| `/dungeon create <id> <template-world> <boss\|trigger>` | Creates a dungeon using the current config format. |
 | `/dungeon edit <id>` | Enters editor mode. Template teleport is controlled by `editor.teleport-to-template-on-edit` in `config.yml`. |
 | `/dungeon save` | Exits editor mode. |
 | `/dungeon setspawn` | Sets the dungeon spawn in editor mode. |
 | `/dungeon setexit` | Sets the exit location. |
 | `/dungeon setboss` | Sets the boss spawn for boss-objective dungeons. |
 | `/dungeon boss reward edit` | Opens the boss reward editor GUI. |
-| `/dungeon settrigger <button|pressure_plate>` | Gives the trigger block item for trigger-objective dungeons. |
+| `/dungeon settrigger <button\|pressure_plate>` | Gives the trigger block item for trigger-objective dungeons. |
 | `/dungeon trigger reward edit` | Opens the trigger reward editor GUI. |
 | `/dungeon addspawner <id>` | Creates a spawner config at the admin location. |
 | `/dungeon addlootchest <id>` | Creates a loot chest config. |
@@ -146,7 +146,7 @@ Admin commands:
 | `/dungeon reload` | Reloads configs and validation. |
 | `/dungeon instances` | Shows active parties and instances. |
 | `/dg status` | Shows supported integration plugins, detected versions, and economy hook status. |
-| `/dungeon gui` | Reserved for the admin GUI workflow. |
+| `/dungeon gui` | Opens the admin GUI. |
 | `/dungeon mythicmob [mobId]` | Lists or checks MythicMobs mob IDs. |
 | `/dungeon mythicitem [itemId]` | Lists or checks MythicMobs item IDs for `MYTHIC_ITEM` config entries. |
 | `/dungeon itemsadder [itemId]` | Lists or checks ItemsAdder IDs. |
@@ -173,7 +173,7 @@ Stage commands:
 | `/dungeon stage <stage_id> mission button <material>` | Gives a mission button. |
 | `/dungeon stage <stage_id> mission pressure_plate <material>` | Gives a mission pressure plate. |
 
-All new commands should be tab-completed. Loot chest IDs, dungeon IDs, stage IDs, trigger materials, mission materials, and validation targets are completed where the command supports them. `/dungeon open` completion hides tower middle/last stage dungeon IDs because those stages are entered only through tower progression.
+Loot chest IDs, dungeon IDs, stage IDs, trigger materials, mission materials, and validation targets are completed where the command supports them. `/dungeon open` completion hides tower middle/last stage dungeon IDs because those stages are entered only through tower progression.
 
 ## Permissions
 
@@ -214,7 +214,7 @@ instances:
 
 `editor.teleport-to-template-on-edit` controls `/dungeon edit <id>` teleport behavior. When `true`, the admin is teleported to the dungeon spawn if it is configured, otherwise to the template world's spawn. When `false`, editor mode starts without moving the admin.
 
-For this build, `instances.max-active-global: 0` disables the global active-instance ceiling. Positive values set the exact global active instance maximum.
+`instances.max-active-global: 0` disables the global instance limit. Positive values set the maximum number of active instances.
 
 Tower transitions reserve the current global instance slot while the next tower stage is being prepared. This prevents another party from taking the slot during the short handoff between tower stages.
 
@@ -222,12 +222,11 @@ Instance world cleanup:
 
 - Every dungeon run creates a temporary instance world copied from the template world.
 - Normal completion, failure, abandon, and shutdown paths unload and delete the temporary world.
-- New instance worlds contain an `.instanced-dungeons-instance` marker file with the instance ID, dungeon ID, creation time, and marker format version.
-- Auto-cleanup scans the direct children of approved world roots asynchronously instead of recursively walking complete directory trees on the server thread.
-- Automatic deletion requires a valid marker or an exact world registration created by the plugin. A folder name by itself is never sufficient authorization.
+- The plugin marks the instance worlds it creates so cleanup can identify them.
+- Automatic cleanup checks for leftover instance worlds in the background.
+- Automatic cleanup deletes only worlds identified by an instance marker or an exact plugin world registration.
 - Unmarked legacy folders are not automatically deleted.
-- Unload, Multiverse removal, and deletion steps are serialized so world lifecycle operations do not overlap.
-- Loaded worlds with players inside are skipped instead of being force-deleted.
+- Worlds with players inside are skipped.
 
 ## Dungeon Config
 
@@ -339,7 +338,7 @@ Boss dungeons are created with:
 /dungeon create <id> <template-world> boss
 ```
 
-They generate a boss objective flow. The boss is configured with `/dungeon setboss`, which creates or updates the boss spawner file.
+Use `/dungeon setboss` to create or update `boss.yml` at your location.
 
 Boss completion behavior:
 
@@ -465,7 +464,7 @@ Trigger modes:
 - `ON_DELAY`: spawn after `trigger-time`.
 - `ON_PLAYER_NEAR_ON_DELAY`: start `trigger-time` after a player enters `trigger-distance`.
 
-New generated spawners default to `ON_PLAYER_NEAR` with `trigger-distance: 20`. `trigger-distance` and `trigger-time` are generated in new spawners even when unused. If the selected trigger does not need them, they do nothing.
+Spawners default to `ON_PLAYER_NEAR` with `trigger-distance: 20`. The selected trigger determines whether `trigger-distance`, `trigger-time`, or both apply.
 
 Mob pools can mix vanilla and MythicMobs entries in one spawner.
 
@@ -547,7 +546,7 @@ Use:
 /dungeon lootchest loot treasure_room add
 ```
 
-`/dungeon lootchest loot <id> add` reads the item currently held in the admin's main hand and appends a new loot entry to the bottom of the loot table, above the commented notes. It detects vanilla items, supported custom item providers, potions, tipped arrows, and enchanted books. The new entry uses `min-amount: 1`, `max-amount: 1`, and `chance: 100.0`.
+`/dungeon lootchest loot <id> add` adds the item in your main hand to the loot table. It detects vanilla items, supported custom item providers, potions, tipped arrows, and enchanted books. The new entry uses `min-amount: 1`, `max-amount: 1`, and `chance: 100.0`.
 
 Example:
 
@@ -841,7 +840,7 @@ Party states in 2.0:
 - `COMPLETED`: run completed and party is closing.
 - `ABANDONED`: run failed or was abandoned and party is closing.
 
-Parties are not left in memory forever. Completion, failure, timeout, shutdown, or disband paths close them and remove player-party mappings.
+Parties close when the run ends, the party times out or disbands, or the server shuts down.
 
 Players who are not part of the active instance are removed if they enter an instance world through external plugins, vehicles, teleports, or other non-dungeon mechanics.
 
@@ -875,7 +874,7 @@ Death spectators and external spectators are different systems:
 
 - Death spectators are still dungeon participants, but they are marked as eliminated and are excluded from alive-player checks and sacrifice mission target lists.
 - If all real dungeon players are eliminated and `fail-if-all-players-dead: true`, the dungeon or tower fails.
-- Death spectators do not receive an inventory snapshot restore when the run ends. They keep items only when the dungeon/world death rules keep their inventory.
+- Death spectators keep items only when the dungeon or world death rules preserve their inventory. Items lost on death are not restored at the end of the run.
 - Death spectators and sacrificed players who were original dungeon players are sent to the dungeon exit when they leave the run or when the run ends.
 - External spectators who joined with `/dungeon spectate <leader>` are not participants, cannot progress missions, and receive their saved inventory/gamemode back when they exit or the run ends.
 
@@ -909,7 +908,7 @@ gate-blocks:
 
 Stage orders are progression priorities. Order `1` is the lowest and unlocks first. Multiple stages may share the same order, which means they can be progressed in parallel. Higher order stages unlock only after every lower-order stage has opened. Used order groups must still be continuous: `1`, `2`, `3`, and so on. For example, using orders `1` and `3` without any order `2` is invalid.
 
-Admin stage commands use the stage file ID, not `stage-order`. This keeps commands unambiguous when several stages share the same order. For example:
+Use the stage file ID in admin commands, even when several stages share an order. For example:
 
 ```text
 /dungeon stage entrance gate create
@@ -933,9 +932,9 @@ place gate blocks
 
 While gate edit mode is active, the action bar turns purple and selected gate blocks show subtle purple dust particles to admins editing that dungeon. Multiple admins can join the same stage gate edit session and work on the same gate together.
 
-During an active gate create/edit session, `/dungeon stage <stage_id> gate stick` gives an enchanted gate edit stick. Left-click adds the clicked existing block to the active gate without placing a new block. Right-click removes the clicked block from the active gate selection without breaking it. Sneak-left-click adds connected same-material blocks, and sneak-right-click removes connected same-material blocks from the selection. The connected-block mode is capped to avoid accidental server-heavy scans. The final selection is still saved with `/dungeon gate save`.
+During an active gate create/edit session, `/dungeon stage <stage_id> gate stick` gives an enchanted gate edit stick. Left-click adds the clicked existing block to the active gate without placing a new block. Right-click removes the clicked block from the active gate selection without breaking it. Sneak-left-click adds connected same-material blocks, and sneak-right-click removes connected same-material blocks from the selection. Split large connected-block selections into smaller operations. The final selection is still saved with `/dungeon gate save`.
 
-Manual block placement and breaking are tracked immediately. WorldEdit `//set` is also supported during active gate create/edit mode: after the command runs, the plugin reads the admin's current WorldEdit selection and adds every non-air block in that selection to the active gate selection. The sync is capped for safety, so very large selections should be split into smaller operations. Vanilla `/setblock` and `/fill` are detected by comparing the nearby template world with the gate session snapshot. Replacing existing blocks with the same material through commands is still best handled by WorldEdit `//set` selection sync or the gate stick.
+Manual block placement and breaking are tracked immediately. WorldEdit `//set` is also supported during active gate create/edit mode: after the command runs, the plugin reads the admin's current WorldEdit selection and adds every non-air block in that selection to the active gate selection. Split large WorldEdit selections into smaller operations. Changes made with vanilla `/setblock` and `/fill` near the gate are also detected. Replacing existing blocks with the same material through commands is still best handled by WorldEdit `//set` selection sync or the gate stick.
 
 Gate holograms:
 
@@ -946,13 +945,13 @@ Gate holograms:
 The hologram shows live mission progress. Completed missions turn green and receive the configured completed prefix. Clickable missions such as `SACRIFICE`, `MONEY_PAYMENT`, and `ITEM_PAYMENT` add an instruction line that explains who should right-click a gate block, for example `Leader must right-click a gate block for Sacrifice.` or per-mission action lines when multiple clickable missions are active.
 You can create multiple holograms for the same stage by running the create command again at another location. The delete command removes the nearest hologram for that stage within 3 blocks. Locked higher-order holograms show the missing previous stage names, for example `Complete Entrance first.`
 
-The create command must be run while standing in the dungeon template world. If editor mode is configured not to teleport admins automatically, move to the template world first before creating stage holograms. The saved hologram anchor is placed above the admin's eye position so the text appears above the player instead of inside the player's body.
+The create command must be run while standing in the dungeon template world. If editor mode is configured not to teleport admins automatically, move to the template world first before creating stage holograms. The hologram appears above your position.
 
-In editor mode, stage holograms are also visible in the template world. Editor previews use the same armor-stand hologram renderer as runtime instances, show the configured title and every mission currently defined in that stage, and refresh immediately after hologram or mission changes. If the stage has no missions yet, only the hologram title is shown.
+In editor mode, stage holograms are also visible in the template world. Previews show the title and configured missions, and refresh after hologram or mission changes. If the stage has no missions yet, only the hologram title is shown.
 
 ## Stage Missions
 
-Stage runtime uses the configured stage file data directly, including stage order, mission lists, required key amounts, mission blocks, and item payment costs.
+Configure stage order, missions, key requirements, and payment items in each stage file.
 
 Mission types:
 
@@ -983,7 +982,7 @@ Mission creation commands:
 /dungeon stage <stage_id> mission <type> delete
 ```
 
-`ITEM_PAYMENT` does not take item provider, item id, amount, or payment mode in the command. The command opens a 27-slot editor GUI. Put vanilla, ItemsAdder, Oraxen, Nexo, or MythicMobs items into the GUI and close it to save them. Re-running the command opens the GUI populated with the currently configured items. `payment-mode` remains a stage config field (`ANY_PLAYER` or `LEADER_ONLY`).
+The `ITEM_PAYMENT` command opens a 27-slot item editor. Add vanilla, ItemsAdder, Oraxen, Nexo, or MythicMobs items, then close it to save. Run the command again to edit the saved items. Set `payment-mode` to `ANY_PLAYER` or `LEADER_ONLY` in the stage config.
 
 Mission lever/button/pressure-plate blocks can be moved while in editor mode. Break the mission block to remove it from the stage, then place a new mission block where you want it. If the last block for that mission is removed, the mission is removed from the stage file too.
 
@@ -1003,9 +1002,6 @@ Mission YAML is saved with only the fields that apply to that mission type:
 
 Mission GUI:
 
-- The mission GUI has 3 rows.
-- Mission items are centered in the middle row.
-- Empty slots are filled with black glass.
 - Mission items cannot be moved.
 - Sacrifice selection opens a second GUI with player heads.
 - Sacrifice announces the chosen player. If the sacrificed player is the current leader, a random alive dungeon player becomes the new leader and the party is notified. The same leader reassignment is used when the leader loses all lives.
@@ -1075,7 +1071,7 @@ commands:
   #     - "broadcast <party_leader>'s party completed <dungeon_name>"
 ```
 
-Set `enabled: true` and uncomment entries you want to use. Entries stay commented in the generated file so no command can run until an admin explicitly enables it.
+Set `enabled: true` and uncomment the entries you want to run.
 
 Executor:
 
@@ -1095,7 +1091,7 @@ Command format:
 
 - Leading `/` is optional.
 - Commands are skipped when the event is not configured.
-- Event command config is cached on `/dungeon reload`.
+- Run `/dungeon reload` after editing event commands.
 - The `commands:` list may contain the same `event` more than once. This is the recommended way to run separate command groups or run the same trigger with different executor/audience combinations.
 - Each entry can use its own `executor`; otherwise it uses `default-executor`.
 - If `audience` is omitted, it defaults to `NONE`.
@@ -1111,7 +1107,7 @@ Player event keys:
 | `on-player-start-dungeon-command` | For each dungeon player when the instance starts and players enter the dungeon. |
 | `on-player-complete-dungeon-command` | For each active dungeon player when a single dungeon completes, or when the last tower dungeon completes. |
 | `on-player-abandon-dungeon-command` | For a player who leaves through an external/abandon flow before completion. |
-| `on-player-exit-dungeon-command` | For a player who intentionally exits with `/dungeon exit`. |
+| `on-player-exit-dungeon-command` | When a player exits with `/dungeon exit`. |
 | `on-player-death-command` | When a dungeon player dies inside an active instance. |
 | `on-player-kill-mob-command` | When a dungeon player kills a regular dungeon mob. |
 | `on-player-kill-boss-command` | When a dungeon player kills the boss and Bukkit can resolve the killer. |
@@ -1181,19 +1177,18 @@ Important placeholder styles:
 
 - Messages use `%placeholder%`.
 - Event commands use `<placeholder>`.
-- Hardcoded admin validation notices are intentionally not in `messages.yml`.
 
-The `mission-names` section controls player-facing mission labels used in mission completion messages, mission GUI names, hologram mission hints, and mission lore placeholders. Internal enum names in stage configs are not changed by this section.
+The `mission-names` section controls player-facing mission labels used in mission completion messages, mission GUI names, hologram mission hints, and mission lore placeholders. Keep using mission IDs such as `KILL_MOBS` in configs and commands.
 
-Fresh installations receive the complete bundled file. When a plugin update introduces a new message, only missing update-introduced keys are appended to an existing file under:
+New installations receive the default messages. Updates append missing new messages under:
 
 ```yaml
 # Messages added by plugin updates will appear below. Existing messages are never overwritten.
 ```
 
-Existing values, comments, order, and translations are preserved. The update uses a temporary file and atomic replacement where supported, then reloads `messages.yml`.
+Existing messages, comments, order, and translations are preserved.
 
-Pro 2.0.1 adds `item-use-blocked-in-dungeon`, using `%item%` for the blocked item name. See [Messages](messages.md) for the complete behavior.
+`item-use-blocked-in-dungeon` uses `%item%` for the blocked item name. See [Messages](messages.md) for the complete behavior.
 
 `messages.yml` also includes a placeholder reference comment at the bottom.
 
@@ -1228,7 +1223,7 @@ Validation output:
 - Normal players do not receive validation warnings.
 - If chat output is shortened, check the console because it may contain more validation details.
 
-## Pro Version Behavior
+## Pro Features
 
 | Area | Pro behavior |
 | --- | --- |
@@ -1246,18 +1241,18 @@ Validation output:
 | Item payment missions | Multiple item payment mission entries are supported. |
 | Item payment item types | Multiple item payment item types are supported. |
 
-## Pro GUI and Optional RAM Analysis
+## Admin GUI and RAM Analysis
 
-The Pro editor uses a four-row main screen grouped by workflow: dungeon content, progression, testing/administration, and save/delete/close actions. Its **Boss & Trigger** entry opens only the controls for the selected completion objective. It also includes reward-logic menus with preview/real-roll actions, full checkpoint editing, advanced after-open and emergency-return gate menus, and admin-only sound previews. Advanced checkpoint/gate event commands and contextual placeholders are listed in the [event command reference](event-commands.md).
+The admin GUI provides dungeon settings, gate and mission editing, checkpoints, reward previews and test rolls, and sound previews. **Boss & Trigger** shows the controls for the selected objective. **After-Open Logic** and **Emergency Return** configure gate teleports and return plates. See [Event Commands](event-commands.md) for checkpoint and gate actions.
 
-`/dungeon ram analysis` is a hidden, admin-only toggle available in every edition. It creates `ram-analysis.yml` only when first enabled, uses lightweight periodic counters, and stores newest reports first. It reports only estimated plugin-core and dungeon-instance memory, including their combined value; it does not report the whole server/JVM heap. Times are written in the server's local zone using a readable format. See [RAM Analysis](../ram-analysis.md).
+`/dungeon ram analysis` toggles memory reports and requires `instanceddungeons.admin`. Reports estimate plugin and active-instance memory. See [RAM Analysis](../ram-analysis.md) for settings and report fields.
 
 ## Compatibility Notes
 
 - Paper 26.1.x / 26.2 support is beta.
 - No update checker is included in this build.
-- The current documentation follows current plugin behavior, not the old 1.x loot chest documentation.
-- Dungeons using the 1.x format should be rebuilt with the current format instead of migrated in place.
+
+- Recreate dungeons that use the 1.x config format before using them with 2.x.
 
 ## Troubleshooting
 
@@ -1303,7 +1298,6 @@ Custom items fail validation:
 - Confirm the item ID exactly matches the provider ID.
 - For potions and enchanted books, confirm the ID follows the special vanilla formats above.
 
-
 ## Kill Mobs Filters (2.2.0)
 
 New `KILL_MOBS` missions include both options:
@@ -1316,16 +1310,15 @@ missions:
     count-baby-variants: true
 ```
 
-`only-dungeon-spawner-mobs` counts only mobs spawned by this dungeon instance's configured spawners, including vanilla and MythicMobs pools. Friendly summons from enchantments or other plugins, natural mobs, and mobs already stored in the template do not count. Bosses remain excluded from stage kill missions. The origin marker survives entity transformations, such as a zombie turning into a drowned.
+`only-dungeon-spawner-mobs` counts only mobs spawned by this dungeon instance's configured spawners, including vanilla and MythicMobs pools. Friendly summons from enchantments or other plugins, natural mobs, and mobs already stored in the template do not count. Bosses remain excluded from stage kill missions. Dungeon-spawned mobs still count after transformations, such as a zombie becoming a drowned.
 
-Set `only-dungeon-spawner-mobs: false` to allow other mobs in the instance to count again. A qualifying kill still needs to be credited to a player, as before. Mobs summoned separately by a Mythic skill are not automatically treated as dungeon spawner mobs.
+Set `only-dungeon-spawner-mobs: false` to count mobs from other sources inside the instance. Kills must be credited to a player. Mobs summoned separately by a Mythic skill are not automatically treated as dungeon spawner mobs.
 
-`count-baby-variants` includes baby versions of eligible mobs, including zombies, drowned, piglins, and other ageable mobs. Set it to `false` to exclude babies. It does not change what the spawner creates and does not override the spawner-origin filter.
+`count-baby-variants` includes baby versions of eligible mobs, including zombies, drowned, piglins, and other ageable mobs. Set it to `false` to exclude babies. The spawner-source filter still applies. To control which variants spawn, use the spawner settings.
 
 Both options default to `true` when omitted, including in existing missions. Changing the required amount through a command or the editor preserves these filters. Save the mission to write the fields, or add them manually and reload.
 
 PRO provides both switches in the dedicated **Kill Mobs Mission** settings menu.
-
 
 ## Boss Stage Requirement (PRO, 2.2.0)
 
@@ -1343,7 +1336,7 @@ stage-requirement:
 | `STAGE` | Requires the stage named by `stage-id` to be completed. |
 | `ALL` | Requires every stage in the current dungeon to be completed. With no stages configured, there is nothing to wait for. |
 
-A stage counts as completed when all its missions are complete and its gate has been marked open. Becoming available in the stage order is not enough. Gate closing after completion does not reset that completion.
+A stage is completed when all its missions are finished and its gate opens. Unlocking a stage does not complete it. Closing its gate later does not reset its completion.
 
 For example, require the `courtyard` stage before allowing the proximity trigger:
 
@@ -1363,9 +1356,9 @@ The stage requirement is an additional condition for every boss trigger:
 - `ON_PLAYER_NEAR`: requires an alive party member within range and the stage requirement to be met.
 - `ON_PLAYER_NEAR_ON_DELAY`: starts its delay only once both conditions are met.
 
-Approaching early does not consume the trigger. A player already standing in range is detected once the requirement is met, without needing to move again. Spectators cannot trigger the boss. An invalid mode or missing stage ID in `STAGE` mode blocks spawning; `/dg validate <id>` reports the configuration error.
+If a player is already in range, the boss can activate as soon as the stage requirement is met. Spectators cannot trigger the boss. An invalid mode or missing stage ID in `STAGE` mode blocks spawning; `/dg validate <id>` reports the configuration error.
 
-In the admin GUI, open **Boss & Trigger**. **Boss Stage Requirement** cycles the mode; **Required Stage ID** accepts an existing stage only while `STAGE` mode is selected; it is inactive in `DISABLED` and `ALL`. Both settings are saved to `boss.yml`. Moving the boss spawn preserves them. **Test Boss Spawn** remains an editor preview and does not simulate progression requirements.
+In the admin GUI, open **Boss & Trigger**. **Boss Stage Requirement** cycles the mode; **Required Stage ID** accepts an existing stage only while `STAGE` mode is selected; it is inactive in `DISABLED` and `ALL`. Both settings are saved to `boss.yml`. Moving the boss spawn preserves them. **Test Boss Spawn** previews the boss without applying stage requirements.
 
 This feature is available only in PRO.
 
@@ -1377,7 +1370,7 @@ Kicking removes the current membership; it does not ban the player from joining 
 
 ## Specific Kill Mobs Targets (PRO, 2.2.0)
 
-Open **Stages > stage > Missions > Kill Mobs Mission** to reach the mission settings. The menu contains the required amount, **Dungeon Spawner Mobs Only**, and **Count Baby Variants**. Clicking the mission no longer immediately opens a chat prompt. The source filter uses an iron-bars icon; it does not configure a spawner or a spawn egg.
+Open **Stages > stage > Missions > Kill Mobs Mission** to reach the mission settings. The menu contains the required amount, **Dungeon Spawner Mobs Only**, and **Count Baby Variants**. Click **Required Amount** to enter the mob count in chat.
 
 Use **Specific Mob Targets** to show the configuration path in chat:
 `plugins/InstancedDungeons/dungeons/<dungeon-id>/stages/<stage-id>.yml`.
@@ -1412,7 +1405,7 @@ stage-requirement:
   stage-id: entrance
 ```
 
-- `DISABLED`: the configured button or pressure plate works as before. This is the default for new and existing trigger configs.
+- `DISABLED`: no stage requirement. This is the default for new and existing trigger configs.
 - `STAGE`: the named stage must be completed.
 - `ALL`: every configured stage must be completed. With no stages configured, this requirement is satisfied.
 

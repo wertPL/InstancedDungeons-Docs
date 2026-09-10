@@ -21,7 +21,7 @@ checkpoint-activate:
 
 Use `enabled: false` or `sound: NONE` to silence an event. Namespaced custom sounds are supported.
 
-The legacy `timer-alerts` section remains in the dungeon `config.yml` for compatibility, but it no longer controls Pro runtime sounds after migration. Timer events are read from `sounds.yml`.
+Configure Pro timer alerts in `sounds.yml`. The old `timer-alerts` section in `config.yml` is ignored after migration.
 
 ## Testing sounds
 

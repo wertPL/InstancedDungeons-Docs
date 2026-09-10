@@ -1,18 +1,17 @@
 <section class="hero">
 
-**2.2.0:** party kicks before starting, dungeon-spawner kill filters, and configurable baby counting. PRO also adds boss stage requirements in the admin GUI. See [Updating](../updating.md).
+**2.2.0:** party kicks before starting, dungeon-spawner kill filters, and configurable baby counting. PRO adds specific mob targets and stage requirements for bosses and completion triggers. See [Updating](../updating.md).
   <div>
     <h1><span class="accent">InstancedDungeons</span><span class="break">Pro</span></h1>
     <p>
-      A clean dungeon system for Minecraft servers: <strong>private instances</strong>,
-      party runs, staged progression, rewards, mob encounters, and event automation
-      in one polished workflow.
+      Create <strong>private dungeon instances</strong> for parties, with stages,
+      mobs, loot, and boss or trigger objectives.
     </p>
     <div class="hero-badges">
       <span class="hero-badge">Paper 1.21.x / 26.1.x / 26.2</span>
       <span class="hero-badge">Java 21+ / 25+</span>
       <span class="hero-badge">Multiverse-Core</span>
-      <span class="hero-badge">Production Scale</span>
+      <span class="hero-badge">Checkpoints</span>
       <span class="hero-badge">Advanced Mob Gear</span>
     </div>
     <div class="hero-actions">
@@ -25,11 +24,11 @@
 
 ## Pro Overview
 
-This section documents the production build for larger dungeon networks, tower routes, advanced rewards, mob encounters, and event automation.
+Pro adds longer tower chains, checkpoints, mob equipment, custom kill targets, and an admin GUI.
 
 <div class="status-row">
-  <div class="status-box"><strong>Instances</strong><span>Configurable global active instance handling</span></div>
-  <div class="status-box"><strong>Stages</strong><span>Large stage chains and mission layouts</span></div>
+  <div class="status-box"><strong>Instances</strong><span>Configurable global instance limit</span></div>
+  <div class="status-box"><strong>Stages</strong><span>Multiple stages and missions</span></div>
   <div class="status-box"><strong>Towers</strong><span><code>FIRST -> MIDDLE -> ... -> LAST</code></span></div>
   <div class="status-box"><strong>Items</strong><span>Enchanted vanilla gear in costs and rewards</span></div>
 </div>
@@ -39,7 +38,7 @@ This section documents the production build for larger dungeon networks, tower r
 <div class="grid">
   <div class="doc-card">
     <h3>Large Dungeons</h3>
-    <p>Build multi-stage dungeon routes with detailed mission layouts and larger mission block sets.</p>
+    <p>Add stages with kill, key, timer, interaction, and payment missions.</p>
   </div>
   <div class="doc-card">
     <h3>Stage Keys</h3>
@@ -55,7 +54,7 @@ This section documents the production build for larger dungeon networks, tower r
   </div>
   <div class="doc-card">
     <h3>Tower Chains</h3>
-    <p>Connect multiple dungeon templates into one continuous multi-stage adventure from start to finish.</p>
+    <p>Connect dungeon templates with FIRST, MIDDLE, and LAST tower stages.</p>
   </div>
   <div class="doc-card">
     <h3>Checkpoints</h3>
@@ -63,7 +62,7 @@ This section documents the production build for larger dungeon networks, tower r
   </div>
   <div class="doc-card">
     <h3>Dungeon Sounds</h3>
-    <p>Configure and preview each dungeon sound through a dedicated per-dungeon sound profile.</p>
+    <p>Configure sounds in sounds.yml and preview them in the admin GUI.</p>
   </div>
   <div class="doc-card">
     <h3>Validation</h3>
@@ -71,7 +70,7 @@ This section documents the production build for larger dungeon networks, tower r
   </div>
 </div>
 
-## Fast Path
+## Quick Start
 
 1. Install the plugin and Multiverse-Core.
 2. Create a template world.

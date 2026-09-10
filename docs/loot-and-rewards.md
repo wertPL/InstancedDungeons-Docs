@@ -77,7 +77,7 @@ reward-logic:
 | `ACTIVATOR` | Trigger only | `INVENTORY` only |
 | `EVERY_ALIVE` | Boss or trigger | `INVENTORY` or `GROUND` |
 
-Invalid combinations block the dungeon from opening and are reported by validation. `GROUND + EVERY_ALIVE` makes one independent reward roll for every eligible player and creates one public pile at the boss or trigger location. Inventory overflow drops safely at the recipient's location.
+Invalid combinations block the dungeon from opening and are reported by validation. `GROUND + EVERY_ALIVE` makes one independent reward roll for every eligible player and creates one public pile at the boss or trigger location. Inventory overflow drops at the recipient's location.
 
 Only online, alive party members inside the instance world count for `EVERY_ALIVE`. Supported custom items follow the same delivery rules as vanilla items.
 

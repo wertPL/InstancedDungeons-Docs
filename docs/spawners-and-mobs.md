@@ -52,7 +52,7 @@ mob-pools:
 | `ON_DELAY` | Spawns after `trigger-time`. |
 | `ON_PLAYER_NEAR_ON_DELAY` | Starts `trigger-time` after a player enters `trigger-distance`. |
 
-New generated spawners default to `ON_PLAYER_NEAR` with `trigger-distance: 20`. `trigger-distance` and `trigger-time` are generated in new spawner files even when the selected trigger does not use them.
+Spawners default to `ON_PLAYER_NEAR` with `trigger-distance: 20`. The selected trigger determines whether `trigger-distance`, `trigger-time`, or both apply.
 
 ## Mob Pools
 

@@ -77,6 +77,6 @@ Supported context placeholders include `%dungeon%`, `%dungeon_name%`, `%instance
 /dungeon checkpoint <id> delete
 ```
 
-The Pro admin GUI also provides the complete create, configure, and delete workflow.
+You can also create, edit, and delete checkpoints in the admin GUI.
 
 The editor has separate particle toggles for checkpoint respawn locations and checkpoint trigger blocks.

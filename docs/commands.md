@@ -1,10 +1,6 @@
 # Commands
 
-## Hidden diagnostics
-
-`/dungeon ram analysis` toggles the optional lightweight RAM report in every edition. It requires the admin permission and intentionally does not appear in in-game help or tab completion. See [RAM Analysis](ram-analysis.md).
-
-The main command is `/dungeon`. `/dg` may also be available depending on your plugin configuration.
+Use `/dungeon` or its alias `/dg`.
 
 ## Player Commands
 
@@ -24,7 +20,7 @@ The main command is `/dungeon`. `/dg` may also be available depending on your pl
 
 | Command | Description |
 | --- | --- |
-| `/dungeon create <id> <template-world> <boss|trigger>` | Creates a dungeon using the current config format. |
+| `/dungeon create <id> <template-world> <boss\|trigger>` | Creates a dungeon using the current config format. |
 | `/dungeon edit <id>` | Enters editor mode. |
 | `/dungeon save` | Exits editor mode. |
 | `/dungeon reload` | Reloads configs and validation. |
@@ -42,7 +38,7 @@ The main command is `/dungeon`. `/dg` may also be available depending on your pl
 | `/dungeon setexit` | Sets the dungeon exit at your location. |
 | `/dungeon setboss` | Sets the boss spawn for boss-objective dungeons. |
 | `/dungeon boss reward edit` | Opens the boss reward editor GUI. |
-| `/dungeon settrigger <button|pressure_plate>` | Gives the trigger item for trigger-objective dungeons. |
+| `/dungeon settrigger <button\|pressure_plate>` | Gives the trigger item for trigger-objective dungeons. |
 | `/dungeon trigger reward edit` | Opens the trigger reward editor GUI. |
 
 ## Loot Commands
@@ -92,3 +88,7 @@ The main command is `/dungeon`. `/dg` may also be available depending on your pl
 `/dg kick <player>` removes a member from the leader's open party. Tab completion suggests only other members of that party. The leader cannot kick themselves, players outside the party, or anyone after dungeon preparation has begun. The removed player and the remaining party receive configurable messages. No extra permission is required beyond being that party's leader.
 
 Kicking removes the current membership; it does not ban the player from joining an open party again.
+
+## RAM Analysis
+
+`/dungeon ram analysis` toggles memory reports. Requires `instanceddungeons.admin`. See [RAM Analysis](ram-analysis.md).

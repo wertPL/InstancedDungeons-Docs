@@ -1,6 +1,6 @@
 # Event Commands
 
-The advanced checkpoint, gate-close, after-open teleport, and emergency-return events are available in Pro. See the [Pro event command reference](pro/event-commands.md). Existing Free event commands retain their current behavior.
+The advanced checkpoint, gate-close, after-open teleport, and emergency-return events are available in Pro. See the [Pro event command reference](pro/event-commands.md).
 
 Event commands let admins run server commands when dungeon events happen.
 
