@@ -25,7 +25,7 @@ equipment:
       UNBREAKING: 1
 ```
 
-Supported enchantment names are taken from the server enchantment registry. On the Paper 26.1 build line this includes:
+Supported enchantment names are taken from the server enchantment registry. On the Paper 26.x build line this includes:
 
 ```text
 PROTECTION

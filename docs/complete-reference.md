@@ -36,7 +36,7 @@ Set `v: 2.0` at the top of `dungeons/<id>/config.yml`. Dungeons without this for
 | Minecraft / Paper target | Java | Multiverse-Core |
 | --- | --- | --- |
 | Paper 1.21.x | Java 21+ | Multiverse-Core 5.5.2+ |
-| Paper 26.1.x / 26.2 | Java 25+ | Multiverse-Core 5.8.1+ |
+| Paper 26.1.x / 26.2.x / 26.3.x | Java 25+ | Multiverse-Core 5.8.1+ |
 
 Optional integrations:
 
@@ -704,7 +704,7 @@ ENCHANTED_BOOK_PIERCING_4
 ENCHANTED_BOOK_DENSITY_5
 ```
 
-Supported enchantment names are taken from the server enchantment registry. On the Paper 26.1 build line this includes:
+Supported enchantment names are taken from the server enchantment registry. On the Paper 26.x build line this includes:
 
 ```text
 PROTECTION
@@ -1180,7 +1180,7 @@ Free-version limit notices are visible only to admins.
 
 ## Compatibility Notes
 
-- Paper 26.1.x / 26.2 support is beta.
+- Paper 26.1, 26.2, and 26.3 are officially supported by the 26.x build.
 - The update checker ignores Modrinth releases that do not list this server/API target in their game versions.
 
 - Recreate dungeons that use the 1.x config format before using them with 2.x.

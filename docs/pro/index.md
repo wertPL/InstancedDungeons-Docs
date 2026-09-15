@@ -7,7 +7,7 @@
       mobs, loot, and boss or trigger objectives.
     </p>
     <div class="hero-badges">
-      <span class="hero-badge">Paper 1.21.x / 26.1.x / 26.2</span>
+      <span class="hero-badge">Paper 1.21.x / 26.1.x / 26.2.x / 26.3.x</span>
       <span class="hero-badge">Java 21+ / 25+</span>
       <span class="hero-badge">Multiverse-Core</span>
       <span class="hero-badge">Checkpoints</span>

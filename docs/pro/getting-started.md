@@ -7,9 +7,9 @@ This guide creates a working dungeon from a template world.
 | Target | Java | Multiverse-Core |
 | --- | --- | --- |
 | Paper 1.21.x | 21+ | 5.5.2+ |
-| Paper 26.1.x / 26.2 | 25+ | 5.8.1+ |
+| Paper 26.1.x / 26.2.x / 26.3.x | 25+ | 5.8.1+ |
 
-Use the **26.x build** for Paper 26.1.x or 26.2, and the **1.21.x build** for Paper 1.21.x.
+Use the **26.x build** for Paper 26.1.x, 26.2.x, or 26.3.x, and the **1.21.x build** for Paper 1.21.x.
 
 Optional integrations:
 
