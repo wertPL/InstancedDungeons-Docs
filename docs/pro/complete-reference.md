@@ -1180,7 +1180,7 @@ Important placeholder styles:
 
 The `mission-names` section controls player-facing mission labels used in mission completion messages, mission GUI names, hologram mission hints, and mission lore placeholders. Keep using mission IDs such as `KILL_MOBS` in configs and commands.
 
-New installations receive the default messages. Updates append missing new messages under:
+New installations receive messages grouped by purpose, such as dungeon, instance and editor messages. Updates append missing new messages to existing files under:
 
 ```yaml
 # Messages added by plugin updates will appear below. Existing messages are never overwritten.
