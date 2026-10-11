@@ -60,7 +60,6 @@ nav:
   - Start:
       - Getting Started: getting-started.md
       - Updating: updating.md
-      - Changelog 2.3.0: changelog-2.3.0.md
       - Examples: examples.md
       - Commands: commands.md
       - Permissions: permissions.md

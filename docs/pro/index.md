@@ -90,4 +90,4 @@ Pro adds longer tower chains, checkpoints, mob equipment, custom kill targets, a
 
 ## Version 2.3.0
 
-New: fire spread settings, region missions, working mob lifetime modes, and locked-stage lever protection. PRO also adds mission skipping and durable player cooldowns with tower support. See [Updating](../updating.md) and [the 2.3.0 changelog](../changelog-2.3.0.md).
+New: fire spread settings, region missions, working mob lifetime modes, and locked-stage lever protection. PRO also adds mission skipping and durable player cooldowns with tower support. See [Updating](../updating.md).

@@ -12,8 +12,6 @@ Stop the server and back up `dungeons/`, the general `config.yml`, and `messages
 - The dungeon format remains `v: 2.0`. Do not change this to the plugin release number.
 - After enabling PRO cooldowns, also back up `player-cooldowns.yml`.
 
-Read [the complete 2.3.0 changelog](changelog-2.3.0.md).
-
 ## Updating to 2.2.1
 
 Stop the server and back up `dungeons/`, `config.yml`, and `messages.yml` before replacing the plugin JAR. Use the matching FREE/PRO and Minecraft build.
