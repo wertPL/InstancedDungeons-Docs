@@ -132,7 +132,7 @@ A REGION mission uses a cuboid selected by two opposite block corners in the dun
 /dg stage <stage_id> mission region pos2
 ```
 
-Set corners while standing in the template world. Do not use the generated instance world name in the stage config.
+Run `/dg stage <stage_id> mission region` first to add the mission. The confirmation shows the two commands for selecting its corners. Then stand at each corner in the template world and run `pos1` or `pos2`; each command saves your current block as that corner. Running the creation command again preserves the existing corners and settings. Do not use the generated instance world name in the stage config.
 
 ```yaml
 missions:
@@ -151,7 +151,7 @@ missions:
 
 Spectators do not count. A dead or offline participant does not count as currently inside. For the stay mode, the same player does not have to remain throughout: the configured number of participants must currently satisfy the condition. Leaving before the gate opens makes the stay condition incomplete again. Opening the gate finishes the stage permanently.
 
-`/dg stage <stage_id> mission region mode` toggles the condition, and `... region party` toggles the player requirement. Use `... region delete` to remove the mission. Validation rejects missing corners or invalid settings.
+Set `region.mode` and `region.whole-party` in the stage YAML. These settings have no command variants. Use `/dg stage <stage_id> mission region delete` to remove the mission. Validation rejects missing corners or invalid settings.
 
 Mission levers belonging to locked future stages cannot be pulled. They become available when their stage unlocks.
 

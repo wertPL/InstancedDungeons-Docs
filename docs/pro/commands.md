@@ -124,12 +124,12 @@ Kicking removes the current membership; it does not ban the player from joining 
 
 | Command | Description |
 | --- | --- |
-| `/dg stage <stage> mission region` | Creates the mission. |
-| `/dg stage <stage> mission region pos1` | Sets corner 1 at your current block. |
-| `/dg stage <stage> mission region pos2` | Sets corner 2 at your current block. |
-| `/dg stage <stage> mission region mode` | Toggles ENTER_ONCE / STAY_UNTIL_COMPLETE. |
-| `/dg stage <stage> mission region party` | Toggles one player / whole party. |
+| `/dg stage <stage> mission region` | Creates the mission and shows the corner-selection commands. |
+| `/dg stage <stage> mission region pos1` | Sets corner 1 at your current block after the mission has been created. |
+| `/dg stage <stage> mission region pos2` | Sets corner 2 at your current block after the mission has been created. |
 | `/dg stage <stage> mission region delete` | Deletes the mission. |
+
+Stand at each corner in the dungeon template world before running `pos1` or `pos2`. Set `region.mode` and `region.whole-party` in the stage YAML or use the Region Mission submenu in the PRO GUI. These settings have no command variants.
 
 ## Skipping Missions (PRO, 2.3.0)
 
