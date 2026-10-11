@@ -119,3 +119,27 @@ Kicking removes the current membership; it does not ban the player from joining 
 ## RAM Analysis
 
 `/dungeon ram analysis` toggles memory reports. Requires `instanceddungeons.admin`. See [RAM Analysis](../ram-analysis.md).
+
+## Region Mission Commands (2.3.0)
+
+| Command | Description |
+| --- | --- |
+| `/dg stage <stage> mission region` | Creates the mission. |
+| `/dg stage <stage> mission region pos1` | Sets corner 1 at your current block. |
+| `/dg stage <stage> mission region pos2` | Sets corner 2 at your current block. |
+| `/dg stage <stage> mission region mode` | Toggles ENTER_ONCE / STAY_UNTIL_COMPLETE. |
+| `/dg stage <stage> mission region party` | Toggles one player / whole party. |
+| `/dg stage <stage> mission region delete` | Deletes the mission. |
+
+## Skipping Missions (PRO, 2.3.0)
+
+```text
+/dg skip <stage_id> mission all
+/dg skip <stage_id> mission <mission_type>
+```
+
+Requires `instanceddungeons.admin` or `instanceddungeons.skip.mission`. The player must be a participant in an active dungeon run, not a spectator. There is no skip button in the GUI.
+
+Stage tab completion lists only unlocked, unfinished stages in the player's current instance, including parallel stages with the same order. Mission tab completion lists that stage's mission types and `all`.
+
+Skipping marks the selected missions complete without charging payment costs or performing sacrifice. When every mission is satisfied, normal gate opening, stage events and checkpoint behavior continue. A skipped REGION stay condition cannot block the stage again. `all` affects only the named stage; it never skips a newly unlocked stage.

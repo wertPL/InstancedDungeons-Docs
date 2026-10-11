@@ -257,3 +257,14 @@ The stage requirement is an additional condition for every boss trigger:
 If a player is already in range, the boss can activate as soon as the stage requirement is met. Spectators cannot trigger the boss. An invalid mode or missing stage ID in `STAGE` mode blocks spawning; `/dg validate <id>` reports the configuration error.
 
 In the admin GUI, open **Boss & Trigger**. **Boss Stage Requirement** cycles the mode; **Required Stage ID** accepts an existing stage only while `STAGE` mode is selected; it is inactive in `DISABLED` and `ALL`. Both settings are saved to `boss.yml`. Moving the boss spawn preserves them. **Test Boss Spawn** previews the boss without applying stage requirements.
+
+## Mob Lifetime (2.3.0)
+
+```yaml
+lifetime-behavior: PERSIST
+lifetime-seconds: 0
+```
+
+`PERSIST` and `PERSIST_UNTIL_DUNGEON_END` prevent natural distance despawning during the instance. This also applies to `ON_START` mobs spawned far from players. Entities are saved across chunk unloading and reloading. Both modes still remove mobs when the instance is cleaned up or its world is deleted; neither keeps an instance running after it ends.
+
+`DESPAWN_AFTER_TIME` removes the mob after a positive `lifetime-seconds` duration. Its deadline is retained through chunk unloading and mob transformations. Keep `lifetime-seconds` positive when using this mode. These settings cover Vanilla and MythicMobs spawned by the dungeon. Another plugin that explicitly removes an entity can still remove it.

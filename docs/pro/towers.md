@@ -62,3 +62,7 @@ External spectators from `/dungeon spectate <leader>` move to the next stage wit
 ## Visibility
 
 `/dungeon list` and `/dungeon open` tab completion hide tower middle/last stage dungeon IDs. Players reach those dungeons through tower progression.
+
+## Floor Cooldowns (PRO, 2.3.0)
+
+Each floor may grant its own player cooldown. Automatic floor transitions are always allowed. New global deadlines replace existing ones, even when shorter; they are not added together. See [Player Cooldowns](configuration.md#player-cooldowns-pro-230) for configuration and START/END/WIN timing.

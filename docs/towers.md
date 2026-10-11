@@ -59,3 +59,5 @@ External spectators from `/dungeon spectate <leader>` move to the next stage wit
 ## Visibility
 
 `/dungeon list` and `/dungeon open` tab completion hide tower middle/last stage dungeon IDs. Players reach those dungeons through tower progression.
+
+Player cooldowns are a PRO feature. Free tower progression is unchanged in 2.3.0.

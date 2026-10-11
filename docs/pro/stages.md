@@ -148,6 +148,7 @@ Emergency-return holograms support `%dungeon%`, `%dungeon_name%`, `%instance%`, 
 
 | Mission | Description |
 | --- | --- |
+| `REGION` | Enter or remain in a selected cuboid, individually or as a party. |
 | `KILL_MOBS` | Party must kill a configured number of mobs. |
 | `LEVER` | Party must pull all mission levers. |
 | `BUTTON` | Party must press all mission buttons at the same time. |
@@ -240,3 +241,53 @@ missions:
 With targets configured, the mission requires every listed count. Their sum replaces `required`; extra zombies cannot replace a missing pig or MythicMob. Use Bukkit entity names for vanilla targets and exact, case-sensitive MythicMobs internal IDs for Mythic targets. A Mythic zombie counts toward its Mythic ID, not the vanilla `ZOMBIE` target. Both source and baby filters still apply.
 
 The hologram shows each target's progress and remaining count. Invalid target definitions block progress and are reported by validation and in the server log. Omit `mob-targets` to use the ordinary total-count mission. The amount button is disabled while specific targets control the total; editing the filters preserves those targets.
+
+## Region Missions (2.3.0)
+
+A REGION mission uses a cuboid selected by two opposite block corners in the dungeon template. The corner blocks are included, and either selection order is accepted. Progress starts only after the stage unlocks.
+
+```text
+/dg edit <dungeon_id>
+/dg stage <stage_id> mission region
+/dg stage <stage_id> mission region pos1
+# move to the opposite corner in the template world
+/dg stage <stage_id> mission region pos2
+```
+
+Set corners while standing in the template world. Do not use the generated instance world name in the stage config.
+
+```yaml
+missions:
+  - type: REGION
+    region:
+      mode: ENTER_ONCE
+      whole-party: false
+      pos1: {x: 10, y: 60, z: 10}
+      pos2: {x: 20, y: 70, z: 20}
+```
+
+| Mode | `whole-party: false` | `whole-party: true` |
+| --- | --- | --- |
+| `ENTER_ONCE` | Any participant enters once. | Each required participant enters once; their visits may happen at different times. |
+| `STAY_UNTIL_COMPLETE` | At least one participant is currently inside until all stage missions complete. | All required participants are inside at the same time until all stage missions complete. |
+
+Spectators do not count. A dead or offline participant does not count as currently inside. For the stay mode, the same player does not have to remain throughout: the configured number of participants must currently satisfy the condition. Leaving before the gate opens makes the stay condition incomplete again. Opening the gate finishes the stage permanently.
+
+`/dg stage <stage_id> mission region mode` toggles the condition, and `... region party` toggles the player requirement. Use `... region delete` to remove the mission. Validation rejects missing corners or invalid settings.
+
+Mission levers belonging to locked future stages cannot be pulled. They become available when their stage unlocks.
+
+PRO supports one REGION mission per stage with no per-dungeon region mission limit. In the mission GUI, click Region Mission to create it and open its corner and logic settings. Right-click its mission icon to remove it.
+
+## Skipping Missions (PRO, 2.3.0)
+
+```text
+/dg skip <stage_id> mission all
+/dg skip <stage_id> mission <mission_type>
+```
+
+Requires `instanceddungeons.admin` or `instanceddungeons.skip.mission`. The player must be a participant in an active dungeon run, not a spectator. There is no skip button in the GUI.
+
+Stage tab completion lists only unlocked, unfinished stages in the player's current instance, including parallel stages with the same order. Mission tab completion lists that stage's mission types and `all`.
+
+Skipping marks the selected missions complete without charging payment costs or performing sacrifice. When every mission is satisfied, normal gate opening, stage events and checkpoint behavior continue. A skipped REGION stay condition cannot block the stage again. `all` affects only the named stage; it never skips a newly unlocked stage.

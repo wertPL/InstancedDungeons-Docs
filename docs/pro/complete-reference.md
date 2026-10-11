@@ -1416,3 +1416,90 @@ stage-requirement:
 Before the requirement is met, interacting with the trigger does not complete the dungeon or give rewards. Use it again after completing the required stages. Unknown modes or missing stage IDs do not bypass the requirement; the validator reports configuration errors.
 
 The **Boss & Trigger** editor entry opens only the controls matching the dungeon's completion objective. **Required Stage ID** accepts input only in `STAGE` mode, for both objectives. Switching to `DISABLED` or `ALL` preserves the saved ID but ignores it.
+
+## Fire Spread (2.3.0)
+
+`fire-spread: false` disables fire spreading. The update adds this field next to the existing world rules, preserving all configured values. An explicit `true` remains enabled. Older 1.21.x uses `doFireTick`; from 1.21.11 the plugin uses `minecraft:fire_spread_radius_around_player`, with zero to disable spreading. The template world and copied instances use the configured rule.
+
+PRO exposes this toggle under Settings → World Rules.
+
+## Player Cooldowns (PRO, 2.3.0)
+
+Configure this section in each **dungeon's** `config.yml`, or open **Settings → Player Cooldown** in the admin GUI:
+
+```yaml
+player-cooldown:
+  trigger: START
+  recipients: LEADER
+  dungeon-seconds: 0
+  global-seconds: 0
+  block-joining: false
+```
+
+| Field | Values and behavior |
+| --- | --- |
+| `trigger` | `START`: successful run start; `END`: success or failure; `WIN`: success only. |
+| `recipients` | `LEADER`: leader captured at run start; `PARTY`: all party members captured at run start. |
+| `dungeon-seconds` | Blocks new entry to this dungeon ID for this many seconds. `0` grants no new dungeon cooldown. |
+| `global-seconds` | Blocks new entry to every dungeon for this many seconds. `0` grants no new global cooldown. |
+| `block-joining` | `false`: restricts creating/starting a new run as leader; `true`: also restricts joining another party. |
+
+The default durations are zero, so existing dungeons gain no restrictions after updating. Creating a party or failing to prepare a world does not grant a cooldown. Pending starts are checked before charges and preparation. Durations are wall-clock seconds, not server ticks.
+
+Cooldowns belong to player UUIDs and survive relogging, reloads and server restarts in `plugins/InstancedDungeons/player-cooldowns.yml`. Back up that file when moving the server. A global cooldown also applies when the target dungeon has zero configured durations. When both an existing dungeon-specific and global deadline apply, entry stays blocked until both expire.
+
+### Towers and Replacement
+
+Every tower floor may grant its own cooldown using its own config and trigger. Successfully clearing a non-final floor counts as that floor's success for `END` and `WIN`. Automatic transfer to the next floor bypasses entry checks, including global cooldowns.
+
+New deadlines **replace** old deadlines of the same scope; they are never added or compared to keep the maximum. For example, a new global cooldown of 800 seconds replaces an entry-floor global cooldown of 600 seconds. If 700 seconds remain and the next floor grants 300 seconds, 300 seconds remain from that new event. Dungeon-specific cooldowns remain separate by dungeon ID. A duration of zero grants no new cooldown and does not clear an already active one.
+
+## Region Missions (2.3.0)
+
+A REGION mission uses a cuboid selected by two opposite block corners in the dungeon template. The corner blocks are included, and either selection order is accepted. Progress starts only after the stage unlocks.
+
+```text
+/dg edit <dungeon_id>
+/dg stage <stage_id> mission region
+/dg stage <stage_id> mission region pos1
+# move to the opposite corner in the template world
+/dg stage <stage_id> mission region pos2
+```
+
+Set corners while standing in the template world. Do not use the generated instance world name in the stage config.
+
+```yaml
+missions:
+  - type: REGION
+    region:
+      mode: ENTER_ONCE
+      whole-party: false
+      pos1: {x: 10, y: 60, z: 10}
+      pos2: {x: 20, y: 70, z: 20}
+```
+
+| Mode | `whole-party: false` | `whole-party: true` |
+| --- | --- | --- |
+| `ENTER_ONCE` | Any participant enters once. | Each required participant enters once; their visits may happen at different times. |
+| `STAY_UNTIL_COMPLETE` | At least one participant is currently inside until all stage missions complete. | All required participants are inside at the same time until all stage missions complete. |
+
+Spectators do not count. A dead or offline participant does not count as currently inside. For the stay mode, the same player does not have to remain throughout: the configured number of participants must currently satisfy the condition. Leaving before the gate opens makes the stay condition incomplete again. Opening the gate finishes the stage permanently.
+
+`/dg stage <stage_id> mission region mode` toggles the condition, and `... region party` toggles the player requirement. Use `... region delete` to remove the mission. Validation rejects missing corners or invalid settings.
+
+Mission levers belonging to locked future stages cannot be pulled. They become available when their stage unlocks.
+
+PRO: one REGION per stage, no per-dungeon limit.
+
+## Skipping Missions (PRO, 2.3.0)
+
+```text
+/dg skip <stage_id> mission all
+/dg skip <stage_id> mission <mission_type>
+```
+
+Requires `instanceddungeons.admin` or `instanceddungeons.skip.mission`. The player must be a participant in an active dungeon run, not a spectator. There is no skip button in the GUI.
+
+Stage tab completion lists only unlocked, unfinished stages in the player's current instance, including parallel stages with the same order. Mission tab completion lists that stage's mission types and `all`.
+
+Skipping marks the selected missions complete without charging payment costs or performing sacrifice. When every mission is satisfied, normal gate opening, stage events and checkpoint behavior continue. A skipped REGION stay condition cannot block the stage again. `all` affects only the named stage; it never skips a newly unlocked stage.

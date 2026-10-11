@@ -176,3 +176,7 @@ timer-alerts:
     enabled: true
     sound: ENTITY_EXPERIENCE_ORB_PICKUP
 ```
+
+## Fire Spread (2.3.0)
+
+`fire-spread: false` disables fire spreading. The update adds this field next to the existing world rules, preserving all configured values. An explicit `true` remains enabled. Older 1.21.x uses `doFireTick`; from 1.21.11 the plugin uses `minecraft:fire_spread_radius_around_player`, with zero to disable spreading. The template world and copied instances use the configured rule.

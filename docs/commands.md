@@ -92,3 +92,16 @@ Kicking removes the current membership; it does not ban the player from joining 
 ## RAM Analysis
 
 `/dungeon ram analysis` toggles memory reports. Requires `instanceddungeons.admin`. See [RAM Analysis](ram-analysis.md).
+
+## Region Mission Commands (2.3.0)
+
+| Command | Description |
+| --- | --- |
+| `/dg stage <stage> mission region` | Creates the mission. |
+| `/dg stage <stage> mission region pos1` | Sets corner 1 at your current block. |
+| `/dg stage <stage> mission region pos2` | Sets corner 2 at your current block. |
+| `/dg stage <stage> mission region mode` | Toggles ENTER_ONCE / STAY_UNTIL_COMPLETE. |
+| `/dg stage <stage> mission region party` | Toggles one player / whole party. |
+| `/dg stage <stage> mission region delete` | Deletes the mission. |
+
+`/dg skip <stage> mission <all|mission>` requires PRO. Free shows the upgrade link and discount code instead.

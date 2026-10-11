@@ -19,3 +19,7 @@ Example:
 instanceddungeons.open
 instanceddungeons.open.dragon_lair
 ```
+
+## Mission Skip Permission (2.3.0)
+
+`instanceddungeons.skip.mission` grants the PRO skip command without the full admin permission. It defaults to operators. Administrators also have access. In Free, the command only displays PRO upgrade information.
