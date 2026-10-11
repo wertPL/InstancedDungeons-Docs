@@ -1188,6 +1188,8 @@ New installations receive the default messages. Updates append missing new messa
 
 Existing messages, comments, order, and translations are preserved.
 
+Admin menu titles, button labels, icon descriptions and the Region/Cooldown settings input prompts use fixed English text. `messages.yml` controls chat messages and player-facing mission labels, including the existing `mission-names` section.
+
 `item-use-blocked-in-dungeon` uses `%item%` for the blocked item name.
 
 `messages.yml` also includes a placeholder reference comment at the bottom.

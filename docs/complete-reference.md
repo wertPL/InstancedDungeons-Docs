@@ -1120,6 +1120,8 @@ New installations receive the default messages. Updates append missing new messa
 
 Existing messages, comments, order, and translations are preserved.
 
+Free limit and PRO-only feature notices use fixed English text, including the upgrade link and discount code. These notices are not configurable in `messages.yml`.
+
 `messages.yml` also includes a placeholder reference comment at the bottom.
 
 ## Validation
