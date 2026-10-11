@@ -85,6 +85,37 @@ If `require-all-players-pay` is `false`, only the leader pays. If it is `true`, 
 
 Tower rule: only `FIRST` tower stages may have entry costs.
 
+## Player Cooldowns
+
+Configure this section in each **dungeon's** `config.yml`, or open **Settings → Player Cooldown** in the admin GUI:
+
+```yaml
+player-cooldown:
+  trigger: START
+  recipients: LEADER
+  dungeon-seconds: 0
+  global-seconds: 0
+  block-joining: false
+```
+
+| Field | Values and behavior |
+| --- | --- |
+| `trigger` | `START`: successful run start; `END`: success or failure; `WIN`: success only. |
+| `recipients` | `LEADER`: leader captured at run start; `PARTY`: all party members captured at run start. |
+| `dungeon-seconds` | Blocks new entry to this dungeon ID for this many seconds. `0` grants no new dungeon cooldown. |
+| `global-seconds` | Blocks new entry to every dungeon for this many seconds. `0` grants no new global cooldown. |
+| `block-joining` | `false`: restricts creating/starting a new run as leader; `true`: also restricts joining another party. |
+
+The default durations are zero, so existing dungeons gain no restrictions after updating. Creating a party or failing to prepare a world does not grant a cooldown. Pending starts are checked before charges and preparation. Durations are wall-clock seconds, not server ticks.
+
+Cooldowns belong to player UUIDs and survive relogging, reloads and server restarts in `plugins/InstancedDungeons/player-cooldowns.yml`. Back up that file when moving the server. A global cooldown also applies when the target dungeon has zero configured durations. When both an existing dungeon-specific and global deadline apply, entry stays blocked until both expire.
+
+### Towers and Replacement
+
+Every tower floor may grant its own cooldown using its own config and trigger. Successfully clearing a non-final floor counts as that floor's success for `END` and `WIN`. Automatic transfer to the next floor bypasses entry checks, including global cooldowns.
+
+New deadlines **replace** old deadlines of the same scope; they are never added or compared to keep the maximum. For example, a new global cooldown of 800 seconds replaces an entry-floor global cooldown of 600 seconds. If 700 seconds remain and the next floor grants 300 seconds, 300 seconds remain from that new event. Dungeon-specific cooldowns remain separate by dungeon ID. A duration of zero grants no new cooldown and does not clear an already active one.
+
 ## Global Instance Limit
 
 Configure how many dungeon instances may run globally.
@@ -103,7 +134,7 @@ Per-dungeon `max-instances` still controls the limit for that dungeon template.
 
 ## Dungeon Scale
 
-Pro supports multiple stages, missions, key requirements, and payment items per dungeon.
+Dungeons support multiple stages, missions, key requirements, and payment items per dungeon.
 
 ## Protection
 
@@ -115,15 +146,18 @@ allow-fluid-take: false
 allow-interactions: true
 allow-party-pvp: true
 allow-fly: false
+fire-spread: false
 ```
 
 `allow-fly: true` leaves flight already granted by a game mode, permission, or another plugin untouched. It never grants flight by itself. `false` forces flight off for active Survival and Adventure dungeon players and restores their previous flight state when they leave the dungeon. Creative and Spectator modes are exempt. This setting is also available under **Gameplay Rules** in the admin GUI.
 
 Trigger objectives and mission blocks can still work when normal interactions are blocked.
 
+`fire-spread: false` disables fire spreading in the template world and copied instances. Set it to `true` to allow spreading. Older 1.21.x uses `doFireTick`; from 1.21.11 the plugin uses `minecraft:fire_spread_radius_around_player`, with zero to disable spreading. The same toggle is available under **Settings → World Rules** in the admin GUI.
+
 ## Item Restrictions
 
-Pro dungeons can block movement, teleport, combat, and consumable items inside their active instance:
+Dungeons can block movement, teleport, combat, and consumable items inside their active instance:
 
 ```yaml
 item-restrictions:
@@ -186,8 +220,8 @@ timer-bossbar:
 
 ## Timer Alerts
 
-!!! note "Pro sound profiles"
-    Configure Pro timer alert messages and sounds in `sounds.yml`. The legacy section below is ignored after migration. See [Dungeon Sounds](sounds.md).
+!!! note "Sound profiles"
+    Configure timer alert messages and sounds in `sounds.yml`. The legacy section below is ignored after migration. See [Dungeon Sounds](sounds.md).
 
 ```yaml
 timer-alerts:
@@ -201,40 +235,3 @@ timer-alerts:
     enabled: true
     sound: ENTITY_EXPERIENCE_ORB_PICKUP
 ```
-
-## Fire Spread (2.3.0)
-
-`fire-spread: false` disables fire spreading. The update adds this field next to the existing world rules, preserving all configured values. An explicit `true` remains enabled. Older 1.21.x uses `doFireTick`; from 1.21.11 the plugin uses `minecraft:fire_spread_radius_around_player`, with zero to disable spreading. The template world and copied instances use the configured rule.
-
-PRO exposes this toggle under Settings → World Rules.
-
-## Player Cooldowns (PRO, 2.3.0)
-
-Configure this section in each **dungeon's** `config.yml`, or open **Settings → Player Cooldown** in the admin GUI:
-
-```yaml
-player-cooldown:
-  trigger: START
-  recipients: LEADER
-  dungeon-seconds: 0
-  global-seconds: 0
-  block-joining: false
-```
-
-| Field | Values and behavior |
-| --- | --- |
-| `trigger` | `START`: successful run start; `END`: success or failure; `WIN`: success only. |
-| `recipients` | `LEADER`: leader captured at run start; `PARTY`: all party members captured at run start. |
-| `dungeon-seconds` | Blocks new entry to this dungeon ID for this many seconds. `0` grants no new dungeon cooldown. |
-| `global-seconds` | Blocks new entry to every dungeon for this many seconds. `0` grants no new global cooldown. |
-| `block-joining` | `false`: restricts creating/starting a new run as leader; `true`: also restricts joining another party. |
-
-The default durations are zero, so existing dungeons gain no restrictions after updating. Creating a party or failing to prepare a world does not grant a cooldown. Pending starts are checked before charges and preparation. Durations are wall-clock seconds, not server ticks.
-
-Cooldowns belong to player UUIDs and survive relogging, reloads and server restarts in `plugins/InstancedDungeons/player-cooldowns.yml`. Back up that file when moving the server. A global cooldown also applies when the target dungeon has zero configured durations. When both an existing dungeon-specific and global deadline apply, entry stays blocked until both expire.
-
-### Towers and Replacement
-
-Every tower floor may grant its own cooldown using its own config and trigger. Successfully clearing a non-final floor counts as that floor's success for `END` and `WIN`. Automatic transfer to the next floor bypasses entry checks, including global cooldowns.
-
-New deadlines **replace** old deadlines of the same scope; they are never added or compared to keep the maximum. For example, a new global cooldown of 800 seconds replaces an entry-floor global cooldown of 600 seconds. If 700 seconds remain and the next floor grants 300 seconds, 300 seconds remain from that new event. Dungeon-specific cooldowns remain separate by dungeon ID. A duration of zero grants no new cooldown and does not clear an already active one.

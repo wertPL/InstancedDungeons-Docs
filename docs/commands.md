@@ -7,14 +7,19 @@ Use `/dungeon` or its alias `/dg`.
 | Command | Description |
 | --- | --- |
 | `/dungeon help` | Shows player and admin help. |
-| `/dungeon list` | Lists available dungeons. Tower middle/last stage dungeons are hidden. |
+| `/dungeon list` | Lists available dungeons. Tower last-stage dungeons are hidden. |
 | `/dungeon open <id>` | Creates a party for a standalone dungeon or tower `FIRST` stage. |
 | `/dungeon join <code>` | Joins an open party. |
 | `/dungeon leave` | Leaves an open party. |
+| `/dg kick <player>` | Removes another member before the dungeon starts. |
 | `/dungeon start` | Starts the dungeon as party leader. |
 | `/dungeon exit` | Leaves the active dungeon instance. |
 | `/dungeon spectate <leader>` | Spectates the active dungeon led by that party leader. |
 | `/dungeon spectator exit` | Leaves external spectator mode and restores inventory and gamemode. |
+
+`/dg kick <player>` removes a member from the leader's open party. Tab completion suggests only other members of that party. The leader cannot kick themselves, players outside the party, or anyone after dungeon preparation has begun. The removed player and the remaining party receive configurable messages. No extra permission is required beyond being that party's leader.
+
+Kicking removes the current membership; it does not ban the player from joining an open party again.
 
 ## Core Admin Commands
 
@@ -68,6 +73,10 @@ Use `/dungeon` or its alias `/dg`.
 ## Stage Mission Commands
 
 ```text
+/dg stage <stage_id> mission region
+/dg stage <stage_id> mission region pos1
+/dg stage <stage_id> mission region pos2
+/dg stage <stage_id> mission region delete
 /dungeon stage <stage_id> mission kill_mobs <amount>
 /dungeon stage <stage_id> mission lever
 /dungeon stage <stage_id> mission button <button_material>
@@ -80,28 +89,11 @@ Use `/dungeon` or its alias `/dg`.
 /dungeon stage <stage_id> mission <type> delete
 ```
 
+Run `region` to create the mission, then stand at each corner in the template world and run `pos1` or `pos2`. `delete` removes the mission. Configure `region.mode` and `region.whole-party` in the stage YAML. See [Region Missions](stages.md#region-missions).
+
 !!! note "Tab completion"
     Dungeon IDs, stage IDs, loot chest IDs, trigger materials, mission materials, validation targets, and integration item IDs are tab-completed where supported.
-
-## Remove a Party Member
-
-`/dg kick <player>` removes a member from the leader's open party. Tab completion suggests only other members of that party. The leader cannot kick themselves, players outside the party, or anyone after dungeon preparation has begun. The removed player and the remaining party receive configurable messages. No extra permission is required beyond being that party's leader.
-
-Kicking removes the current membership; it does not ban the player from joining an open party again.
 
 ## RAM Analysis
 
 `/dungeon ram analysis` toggles memory reports. Requires `instanceddungeons.admin`. See [RAM Analysis](ram-analysis.md).
-
-## Region Mission Commands (2.3.0)
-
-| Command | Description |
-| --- | --- |
-| `/dg stage <stage> mission region` | Creates the mission and shows the corner-selection commands. |
-| `/dg stage <stage> mission region pos1` | Sets corner 1 at your current block after the mission has been created. |
-| `/dg stage <stage> mission region pos2` | Sets corner 2 at your current block after the mission has been created. |
-| `/dg stage <stage> mission region delete` | Deletes the mission. |
-
-Stand at each corner in the dungeon template world before running `pos1` or `pos2`. Set `region.mode` and `region.whole-party` in the stage YAML. These settings have no command variants.
-
-`/dg skip <stage> mission <all|mission>` requires PRO. Free shows the upgrade link and discount code instead.

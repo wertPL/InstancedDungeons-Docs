@@ -35,7 +35,7 @@ time-limit: 1800
 | Field | Description |
 | --- | --- |
 | `dungeon-type` | `single` or `tower`. |
-| `tower-stage-type` | `first`, `middle`, or `last`. Used only for tower dungeons. |
+| `tower-stage-type` | `first` or `last`. Used only for tower dungeons. |
 | `next-dungeon` | Next dungeon ID for tower transitions. |
 | `completion-objective` | `BOSS` or `TRIGGER`. |
 | `template-world` | Source world copied for each instance. |
@@ -95,15 +95,18 @@ allow-fluid-take: false
 allow-interactions: true
 allow-party-pvp: true
 allow-fly: false
+fire-spread: false
 ```
 
 `allow-fly: true` leaves flight already granted by a game mode, permission, or another plugin untouched. It never grants flight by itself. `false` forces flight off for active Survival and Adventure dungeon players and restores their previous flight state when they leave the dungeon. Creative and Spectator modes are exempt.
 
 Trigger objectives and mission blocks can still work when normal interactions are blocked.
 
+`fire-spread: false` disables fire spreading in the template world and copied instances. Set it to `true` to allow spreading. Older 1.21.x uses `doFireTick`; from 1.21.11 the plugin uses `minecraft:fire_spread_radius_around_player`, with zero to disable spreading.
+
 ## Item Restrictions
 
-Free and Pro dungeons can block movement, teleport, combat, and consumable items inside an active instance:
+Dungeons can block movement, teleport, combat, and consumable items inside an active instance:
 
 ```yaml
 item-restrictions:
@@ -130,7 +133,7 @@ All restrictions default to `false`.
 | `block-mace` | Using a mace in melee combat. |
 | `block-trident` | Using a trident in melee combat or throwing it. |
 
-Restrictions apply only while the player belongs to an active dungeon instance and is physically inside its world. In Free they are configured in the dungeon YAML; Pro also provides the **Item Restrictions** GUI category.
+Restrictions apply only while the player belongs to an active dungeon instance and is physically inside its world. Configure them in the dungeon YAML.
 
 Missing restriction keys are appended with `false` without replacing existing dungeon settings.
 
@@ -176,7 +179,3 @@ timer-alerts:
     enabled: true
     sound: ENTITY_EXPERIENCE_ORB_PICKUP
 ```
-
-## Fire Spread (2.3.0)
-
-`fire-spread: false` disables fire spreading. The update adds this field next to the existing world rules, preserving all configured values. An explicit `true` remains enabled. Older 1.21.x uses `doFireTick`; from 1.21.11 the plugin uses `minecraft:fire_spread_radius_around_player`, with zero to disable spreading. The template world and copied instances use the configured rule.

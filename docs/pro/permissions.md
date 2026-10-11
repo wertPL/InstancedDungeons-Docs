@@ -3,6 +3,7 @@
 | Permission | Default | Description |
 | --- | --- | --- |
 | `instanceddungeons.admin` | op | Allows all admin setup commands. |
+| `instanceddungeons.skip.mission` | op | Allows skipping missions in the active stage without full admin access. |
 | `instanceddungeons.open` | true | Allows `/dungeon open`. |
 | `instanceddungeons.open.<dungeon_id>` | true | Allows opening one specific dungeon. |
 | `instanceddungeons.join` | true | Allows `/dungeon join`. |
@@ -19,7 +20,3 @@ Example:
 instanceddungeons.open
 instanceddungeons.open.dragon_lair
 ```
-
-## Mission Skip Permission (2.3.0)
-
-`instanceddungeons.skip.mission` grants the PRO skip command without the full admin permission. It defaults to operators. Administrators also have access. In Free, the command only displays PRO upgrade information.

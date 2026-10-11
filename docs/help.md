@@ -14,10 +14,6 @@
 
 For plugin updates and config migration, follow the [Updating guide](updating.md).
 
-## Pro feature buttons
-
-Click `[GET PRO]` to see the 15% discount code `436583-UPGRADE`. Then click `[OPEN OFFICIAL PRO PAGE]` to open the BuiltByBit page.
-
 ## Support Links
 
 - [Discord](https://discord.com/invite/sD4HvQh8P4)

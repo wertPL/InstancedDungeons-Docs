@@ -31,6 +31,7 @@ trigger: ON_PLAYER_NEAR
 trigger-distance: 20
 trigger-time: 5
 lifetime-behavior: PERSIST
+lifetime-seconds: 0
 
 mob-pools:
   - type: VANILLA
@@ -53,6 +54,17 @@ mob-pools:
 | `ON_PLAYER_NEAR_ON_DELAY` | Starts `trigger-time` after a player enters `trigger-distance`. |
 
 Spawners default to `ON_PLAYER_NEAR` with `trigger-distance: 20`. The selected trigger determines whether `trigger-distance`, `trigger-time`, or both apply.
+
+## Mob Lifetime
+
+```yaml
+lifetime-behavior: PERSIST
+lifetime-seconds: 0
+```
+
+`PERSIST` and `PERSIST_UNTIL_DUNGEON_END` prevent natural distance despawning during the instance. This also applies to `ON_START` mobs spawned far from players. Entities are saved across chunk unloading and reloading. Both modes still remove mobs when the instance is cleaned up or its world is deleted; neither keeps an instance running after it ends.
+
+`DESPAWN_AFTER_TIME` removes the mob after a positive `lifetime-seconds` duration. Its deadline is retained through chunk unloading and mob transformations. Keep `lifetime-seconds` positive when using this mode. These settings cover Vanilla and MythicMobs spawned by the dungeon. Another plugin that explicitly removes an entity can still remove it.
 
 ## Mob Pools
 
@@ -111,14 +123,3 @@ If mobs do not spawn:
 - Check `trigger`, `trigger-distance`, and `trigger-time`.
 - Verify MythicMobs IDs if the pool uses `type: MYTHIC`.
 - Make sure the template world is loaded.
-
-## Mob Lifetime (2.3.0)
-
-```yaml
-lifetime-behavior: PERSIST
-lifetime-seconds: 0
-```
-
-`PERSIST` and `PERSIST_UNTIL_DUNGEON_END` prevent natural distance despawning during the instance. This also applies to `ON_START` mobs spawned far from players. Entities are saved across chunk unloading and reloading. Both modes still remove mobs when the instance is cleaned up or its world is deleted; neither keeps an instance running after it ends.
-
-`DESPAWN_AFTER_TIME` removes the mob after a positive `lifetime-seconds` duration. Its deadline is retained through chunk unloading and mob transformations. Keep `lifetime-seconds` positive when using this mode. These settings cover Vanilla and MythicMobs spawned by the dungeon. Another plugin that explicitly removes an entity can still remove it.

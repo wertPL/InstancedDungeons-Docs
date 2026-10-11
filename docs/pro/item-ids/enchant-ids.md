@@ -1,6 +1,6 @@
 # Enchant IDs
 
-Pro stores enchanted armor, tools, weapons, shields, and enchanted books as vanilla items with an `enchants` map. The same format works in loot chests, boss rewards, trigger rewards, entry costs, item payment missions, and mob equipment.
+The plugin stores enchanted armor, tools, weapons, shields, and enchanted books as vanilla items with an `enchants` map. The same format works in loot chests, boss rewards, trigger rewards, entry costs, item payment missions, and mob equipment.
 
 Example loot or reward item:
 

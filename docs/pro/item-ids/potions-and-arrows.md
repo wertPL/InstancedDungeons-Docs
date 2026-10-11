@@ -1,6 +1,6 @@
 # Potions and Tipped Arrows
 
-Special potion IDs work in loot chests, entry costs, stage item payment missions, boss rewards, trigger rewards, and other vanilla item fields supported by Pro.
+Special potion IDs work in loot chests, entry costs, stage item payment missions, boss rewards, trigger rewards, and other supported vanilla item fields.
 
 Use this format:
 

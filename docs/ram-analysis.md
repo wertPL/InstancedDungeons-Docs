@@ -1,6 +1,6 @@
 # RAM Analysis
 
-Use this command in Free or Pro to turn memory reports on or off:
+Use this command to turn memory reports on or off:
 
 ```text
 /dungeon ram analysis

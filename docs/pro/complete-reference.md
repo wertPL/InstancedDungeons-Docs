@@ -27,7 +27,7 @@ Set `v: 2.0` at the top of `dungeons/<id>/config.yml`. Dungeons without this for
 - Event Commands
 - Messages and Placeholders
 - Validation
-- Pro Features
+- Feature Limits
 - Compatibility Notes
 - Troubleshooting
 
@@ -70,7 +70,7 @@ Objective: the condition that completes a dungeon. Supported objective types are
 
 Stage: an optional progression gate inside a dungeon. A stage can require missions before its gate opens.
 
-Tower: a chain of dungeons. Pro supports `FIRST -> LAST` and longer `FIRST -> MIDDLE -> ... -> LAST` chains.
+Tower: a chain of dungeons, from `FIRST -> LAST` to longer `FIRST -> MIDDLE -> ... -> LAST` routes.
 
 ## Quick Start
 
@@ -169,6 +169,11 @@ Stage commands:
 | `/dungeon gate save` | Saves the active gate edit session. |
 | `/dungeon stage <stage_id> gate hologram create` | Adds a stage hologram at your location in the dungeon template world. |
 | `/dungeon stage <stage_id> gate hologram delete` | Removes the nearest hologram for that stage within 3 blocks. |
+| `/dg stage <stage_id> mission region` | Creates the mission and shows the corner-selection commands. |
+| `/dg stage <stage_id> mission region pos1` | Saves your current template-world block as corner 1. |
+| `/dg stage <stage_id> mission region pos2` | Saves your current template-world block as corner 2. |
+| `/dg stage <stage_id> mission region delete` | Removes the region mission. |
+| `/dg skip <stage_id> mission <all\|mission>` | Completes selected missions in an unlocked, unfinished stage. |
 | `/dungeon stage <stage_id> mission lever` | Gives a mission lever. |
 | `/dungeon stage <stage_id> mission button <material>` | Gives a mission button. |
 | `/dungeon stage <stage_id> mission pressure_plate <material>` | Gives a mission pressure plate. |
@@ -180,6 +185,7 @@ Loot chest IDs, dungeon IDs, stage IDs, trigger materials, mission materials, an
 | Permission | Default | Description |
 | --- | --- | --- |
 | `instanceddungeons.admin` | op | Admin/editor commands and admin-only warnings. |
+| `instanceddungeons.skip.mission` | op | Allows skipping missions in the active stage without full admin access. |
 | `instanceddungeons.open` | true | Allows `/dungeon open`. |
 | `instanceddungeons.join` | true | Allows `/dungeon join`. |
 | `instanceddungeons.open.<dungeon_id>` | true | Allows opening a specific dungeon. |
@@ -255,7 +261,7 @@ difficulty: NORMAL
 
 `dungeon-type` can be `single` or `tower`.
 
-`tower-stage-type` can be `first`, `middle`, or `last`. Pro supports `MIDDLE` as a normal tower chain stage.
+`tower-stage-type` can be `first`, `middle`, or `last`. `MIDDLE` is an intermediate tower stage.
 
 `completion-objective` can be `BOSS` or `TRIGGER`.
 
@@ -269,18 +275,21 @@ allow-fluid-take: false
 allow-interactions: true
 allow-party-pvp: true
 allow-fly: false
+fire-spread: false
 tnt-mode: VANILLA
 ```
 
 Allowing block breaking, block placement, or fluid placement does not remove protection from dungeon-owned gameplay blocks. Gates, mission blocks, completion/checkpoint triggers, loot chests, and emergency-return plates cannot be broken or replaced, and fluid flow is cancelled before reaching them.
 
-`allow-fly: true` leaves flight already granted by a game mode, permission, or another plugin untouched. It never grants flight by itself. `false` forces flight off for active Survival and Adventure dungeon players and restores their previous flight state when they leave the dungeon. Creative and Spectator modes are exempt. In Pro this setting is also available under **Gameplay Rules** in the admin GUI.
+`allow-fly: true` leaves flight already granted by a game mode, permission, or another plugin untouched. It never grants flight by itself. `false` forces flight off for active Survival and Adventure dungeon players and restores their previous flight state when they leave the dungeon. Creative and Spectator modes are exempt. This setting is also available under **Gameplay Rules** in the admin GUI.
 
 `tnt-mode` options:
 
 - `VANILLA`: normal TNT behavior.
 - `ONLY_DMG`: TNT deals damage but does not break blocks.
 - `DISABLED`: TNT is blocked.
+
+`fire-spread: false` disables fire spreading in the template world and copied instances. Set it to `true` to allow spreading. Older 1.21.x uses `doFireTick`; from 1.21.11 the plugin uses `minecraft:fire_spread_radius_around_player`, with zero to disable spreading. The same toggle is available under **Settings → World Rules** in the admin GUI.
 
 Item restrictions:
 
@@ -296,7 +305,7 @@ item-restrictions:
   block-trident: false
 ```
 
-All values default to `false`. Set a value to `true` to block that item or action while players are inside this dungeon's active instance. The same settings are available in the Pro dungeon settings GUI under **Item Restrictions**.
+All values default to `false`. Set a value to `true` to block that item or action while players are inside this dungeon's active instance. The same settings are available in the dungeon settings GUI under **Item Restrictions**.
 
 Existing dungeon configs do not need manual migration. Missing restriction values load as `false`, and changing a restriction in the GUI writes only this section without resetting unrelated dungeon settings.
 
@@ -358,6 +367,46 @@ Boss reward editing:
 
 The GUI stores every slot as an independent reward entry. For example, 4 diamonds in one slot and 2 diamonds in another slot become two separate rewards and can have different chances in config.
 
+### Boss Stage Requirement
+
+New `boss.yml` files include:
+
+```yaml
+stage-requirement:
+  mode: DISABLED
+  stage-id: ''
+```
+
+| Mode | Requirement |
+| --- | --- |
+| `DISABLED` | Uses the normal boss trigger without a stage requirement. This is also the default for existing files. |
+| `STAGE` | Requires the stage named by `stage-id` to be completed. |
+| `ALL` | Requires every stage in the current dungeon to be completed. With no stages configured, there is nothing to wait for. |
+
+A stage is completed when all its missions are finished and its gate opens. Unlocking a stage does not complete it. Closing its gate later does not reset its completion.
+
+For example, require the `courtyard` stage before allowing the proximity trigger:
+
+```yaml
+trigger: ON_PLAYER_NEAR
+trigger-distance: 20
+trigger-time: 0
+stage-requirement:
+  mode: STAGE
+  stage-id: courtyard
+```
+
+The stage requirement is an additional condition for every boss trigger:
+
+- `ON_START`: waits until the stage requirement is met.
+- `ON_DELAY`: starts its `trigger-time` delay after the requirement is met.
+- `ON_PLAYER_NEAR`: requires an alive party member within range and the stage requirement to be met.
+- `ON_PLAYER_NEAR_ON_DELAY`: starts its delay only once both conditions are met.
+
+If a player is already in range, the boss can activate as soon as the stage requirement is met. Spectators cannot trigger the boss. An invalid mode or missing stage ID in `STAGE` mode blocks spawning; `/dg validate <id>` reports the configuration error.
+
+In the admin GUI, open **Boss & Trigger**. **Boss Stage Requirement** cycles the mode; **Required Stage ID** accepts an existing stage only while `STAGE` mode is selected; it is inactive in `DISABLED` and `ALL`. Both settings are saved to `boss.yml`. Moving the boss spawn preserves them. **Test Boss Spawn** previews the boss without applying stage requirements.
+
 ## Trigger Objectives
 
 Trigger dungeons are created with:
@@ -390,6 +439,24 @@ Trigger reward editing:
 
 Trigger rewards are saved in `trigger.yml` under `rewards`.
 
+### Trigger Stage Requirement
+
+Trigger objectives support the same completed-stage requirements as bosses. Add this to `trigger.yml`, or use **Trigger Stage Requirement** in the admin GUI:
+
+```yaml
+stage-requirement:
+  mode: STAGE
+  stage-id: entrance
+```
+
+- `DISABLED`: no stage requirement. This is the default for new and existing trigger configs.
+- `STAGE`: the named stage must be completed.
+- `ALL`: every configured stage must be completed. With no stages configured, this requirement is satisfied.
+
+Before the requirement is met, interacting with the trigger does not complete the dungeon or give rewards. Use it again after completing the required stages. Unknown modes or missing stage IDs do not bypass the requirement; the validator reports configuration errors.
+
+The **Boss & Trigger** editor entry opens only the controls matching the dungeon's completion objective. **Required Stage ID** accepts input only in `STAGE` mode, for both objectives. Switching to `DISABLED` or `ALL` preserves the saved ID but ignores it.
+
 ## Towers
 
 Tower dungeons chain multiple dungeon templates.
@@ -403,10 +470,10 @@ next-dungeon: "tower_final"
 Stage types:
 
 - `first`: entry point. Can be opened by command and may have entry costs.
-- `middle`: normal Pro chain stage between the first and last dungeon.
+- `middle`: intermediate chain stage between the first and last dungeon.
 - `last`: final tower dungeon. Completing it finishes the tower.
 
-Pro tower chains:
+Tower chains:
 
 - `FIRST -> LAST`
 - `FIRST -> MIDDLE -> LAST`
@@ -444,6 +511,7 @@ trigger: ON_PLAYER_NEAR
 trigger-distance: 20
 trigger-time: 5
 lifetime-behavior: PERSIST
+lifetime-seconds: 0
 
 mob-pools:
   - type: VANILLA
@@ -497,7 +565,7 @@ mob-pools:
 
 This forces supported ageable mobs into adult form, such as piglins, zombies, zombified piglins, and hoglins.
 
-Pro vanilla mob equipment:
+Vanilla mob equipment:
 
 ```yaml
 mob-pools:
@@ -529,6 +597,17 @@ mob-pools:
 ```
 
 Supported vanilla equipment mobs include zombies, zombie villagers, husks, drowned, skeletons, strays, wither skeletons, bogged, piglins, piglin brutes, zombified piglins, vindicators, pillagers, evokers, and illusioners. Unsupported mobs spawn without configured equipment and validation warns admins.
+
+### Mob Lifetime
+
+```yaml
+lifetime-behavior: PERSIST
+lifetime-seconds: 0
+```
+
+`PERSIST` and `PERSIST_UNTIL_DUNGEON_END` prevent natural distance despawning during the instance. This also applies to `ON_START` mobs spawned far from players. Entities are saved across chunk unloading and reloading. Both modes still remove mobs when the instance is cleaned up or its world is deleted; neither keeps an instance running after it ends.
+
+`DESPAWN_AFTER_TIME` removes the mob after a positive `lifetime-seconds` duration. Its deadline is retained through chunk unloading and mob transformations. Keep `lifetime-seconds` positive when using this mode. These settings cover Vanilla and MythicMobs spawned by the dungeon. Another plugin that explicitly removes an entity can still remove it.
 
 ## Loot Chests
 
@@ -649,6 +728,37 @@ costs:
 If `require-all-players-pay` is `false`, the leader pays. If it is `true`, every party member must meet the cost.
 
 Tower rule: only `FIRST` tower dungeons may have entry costs.
+
+### Player Cooldowns
+
+Configure this section in each **dungeon's** `config.yml`, or open **Settings → Player Cooldown** in the admin GUI:
+
+```yaml
+player-cooldown:
+  trigger: START
+  recipients: LEADER
+  dungeon-seconds: 0
+  global-seconds: 0
+  block-joining: false
+```
+
+| Field | Values and behavior |
+| --- | --- |
+| `trigger` | `START`: successful run start; `END`: success or failure; `WIN`: success only. |
+| `recipients` | `LEADER`: leader captured at run start; `PARTY`: all party members captured at run start. |
+| `dungeon-seconds` | Blocks new entry to this dungeon ID for this many seconds. `0` grants no new dungeon cooldown. |
+| `global-seconds` | Blocks new entry to every dungeon for this many seconds. `0` grants no new global cooldown. |
+| `block-joining` | `false`: restricts creating/starting a new run as leader; `true`: also restricts joining another party. |
+
+The default durations are zero, so existing dungeons gain no restrictions after updating. Creating a party or failing to prepare a world does not grant a cooldown. Pending starts are checked before charges and preparation. Durations are wall-clock seconds, not server ticks.
+
+Cooldowns belong to player UUIDs and survive relogging, reloads and server restarts in `plugins/InstancedDungeons/player-cooldowns.yml`. Back up that file when moving the server. A global cooldown also applies when the target dungeon has zero configured durations. When both an existing dungeon-specific and global deadline apply, entry stays blocked until both expire.
+
+#### Towers and Replacement
+
+Every tower floor may grant its own cooldown using its own config and trigger. Successfully clearing a non-final floor counts as that floor's success for `END` and `WIN`. Automatic transfer to the next floor bypasses entry checks, including global cooldowns.
+
+New deadlines **replace** old deadlines of the same scope; they are never added or compared to keep the maximum. For example, a new global cooldown of 800 seconds replaces an entry-floor global cooldown of 600 seconds. If 700 seconds remain and the next floor grants 300 seconds, 300 seconds remain from that new event. Dungeon-specific cooldowns remain separate by dungeon ID. A duration of zero grants no new cooldown and does not clear an already active one.
 
 ## Special Vanilla Item IDs
 
@@ -819,7 +929,7 @@ LUNGE
 
 Special vanilla drops follow their vanilla stack limits. Potions, splash potions, lingering potions, and enchanted books are split into one-item stacks, while tipped arrows can stack normally up to their item stack limit.
 
-Pro stores enchanted armor, tools, and weapons as vanilla items with an `enchants` map. The same format works in loot chests, boss rewards, trigger rewards, entry costs, item payment missions, and mob equipment.
+The plugin stores enchanted armor, tools, and weapons as vanilla items with an `enchants` map. The same format works in loot chests, boss rewards, trigger rewards, entry costs, item payment missions, and mob equipment.
 
 ```yaml
 - type: VANILLA
@@ -843,6 +953,12 @@ Party states in 2.0:
 Parties close when the run ends, the party times out or disbands, or the server shuts down.
 
 Players who are not part of the active instance are removed if they enter an instance world through external plugins, vehicles, teleports, or other non-dungeon mechanics.
+
+### Remove a Party Member
+
+`/dg kick <player>` removes a member from the leader's open party. Tab completion suggests only other members of that party. The leader cannot kick themselves, players outside the party, or anyone after dungeon preparation has begun. The removed player and the remaining party receive configurable messages. No extra permission is required beyond being that party's leader.
+
+Kicking removes the current membership; it does not ban the player from joining an open party again.
 
 ## Lives and Death Behavior
 
@@ -953,10 +1069,13 @@ In editor mode, stage holograms are also visible in the template world. Previews
 
 Configure stage order, missions, key requirements, and payment items in each stage file.
 
+Mission levers belonging to locked future stages cannot be pulled. They become available when their stage unlocks.
+
 Mission types:
 
 | Mission | Description |
 | --- | --- |
+| `REGION` | Enter or remain in a selected cuboid, individually or as a party. |
 | `KILL_MOBS` | Party must kill a configured number of mobs. |
 | `LEVER` | Party must pull all placed mission levers. |
 | `BUTTON` | Party must press all mission buttons at the same time. |
@@ -970,6 +1089,10 @@ Mission types:
 Mission creation commands:
 
 ```text
+/dg stage <stage_id> mission region
+/dg stage <stage_id> mission region pos1
+/dg stage <stage_id> mission region pos2
+/dg stage <stage_id> mission region delete
 /dungeon stage <stage_id> mission kill_mobs <amount>
 /dungeon stage <stage_id> mission lever
 /dungeon stage <stage_id> mission button <button_material>
@@ -990,6 +1113,7 @@ Mission YAML is saved with only the fields that apply to that mission type:
 
 | Mission | Saved fields |
 | --- | --- |
+| `REGION` | `type`, `region`, optional `lore` |
 | `KILL_MOBS` | `type`, `required`, `only-dungeon-spawner-mobs`, `count-baby-variants` |
 | `LEVER` | `type`, `required`, `blocks` |
 | `BUTTON` | `type`, `required`, `blocks` |
@@ -1029,6 +1153,109 @@ Stage progress isolation:
 - Stages with the same order can receive progress at the same time.
 - Later stage holograms stay locked until every lower-order stage opens and show the missing previous stage names.
 - If a player bypasses a gate, later holograms show the locked previous-stage message.
+
+### Region Missions
+
+A REGION mission uses a cuboid selected by two opposite block corners in the dungeon template. The corner blocks are included, and either selection order is accepted. Progress starts only after the stage unlocks.
+
+```text
+/dg edit <dungeon_id>
+/dg stage <stage_id> mission region
+/dg stage <stage_id> mission region pos1
+# move to the opposite corner in the template world
+/dg stage <stage_id> mission region pos2
+```
+
+Run `/dg stage <stage_id> mission region` first to add the mission. The confirmation shows the two commands for selecting its corners. Then stand at each corner in the template world and run `pos1` or `pos2`; each command saves your current block as that corner. Running the creation command again preserves the existing corners and settings. Do not use the generated instance world name in the stage config.
+
+```yaml
+missions:
+  - type: REGION
+    region:
+      mode: ENTER_ONCE
+      whole-party: false
+      pos1: {x: 10, y: 60, z: 10}
+      pos2: {x: 20, y: 70, z: 20}
+```
+
+| Mode | `whole-party: false` | `whole-party: true` |
+| --- | --- | --- |
+| `ENTER_ONCE` | Any participant enters once. | Each required participant enters once; their visits may happen at different times. |
+| `STAY_UNTIL_COMPLETE` | At least one participant is currently inside until all stage missions complete. | All required participants are inside at the same time until all stage missions complete. |
+
+Spectators do not count. A dead or offline participant does not count as currently inside. For the stay mode, the same player does not have to remain throughout: the configured number of participants must currently satisfy the condition. Leaving before the gate opens makes the stay condition incomplete again. Opening the gate finishes the stage permanently.
+
+Set `region.mode` and `region.whole-party` in the stage YAML or use the Region Mission submenu in the admin GUI. These settings have no command variants. Use `/dg stage <stage_id> mission region delete` to remove the mission. Validation rejects missing corners or invalid settings.
+
+One REGION mission is supported per stage, with no per-dungeon limit.
+
+### Kill Mobs Filters
+
+New `KILL_MOBS` missions include both options:
+
+```yaml
+missions:
+  - type: KILL_MOBS
+    required: 20
+    only-dungeon-spawner-mobs: true
+    count-baby-variants: true
+```
+
+`only-dungeon-spawner-mobs` counts only mobs spawned by this dungeon instance's configured spawners, including vanilla and MythicMobs pools. Friendly summons from enchantments or other plugins, natural mobs, and mobs already stored in the template do not count. Bosses remain excluded from stage kill missions. Dungeon-spawned mobs still count after transformations, such as a zombie becoming a drowned.
+
+Set `only-dungeon-spawner-mobs: false` to count mobs from other sources inside the instance. Kills must be credited to a player. Mobs summoned separately by a Mythic skill are not automatically treated as dungeon spawner mobs.
+
+`count-baby-variants` includes baby versions of eligible mobs, including zombies, drowned, piglins, and other ageable mobs. Set it to `false` to exclude babies. The spawner-source filter still applies. To control which variants spawn, use the spawner settings.
+
+Both options default to `true` when omitted, including in existing missions. Changing the required amount through a command or the editor preserves these filters. Save the mission to write the fields, or add them manually and reload.
+
+Both switches are available in the dedicated **Kill Mobs Mission** settings menu.
+
+### Specific Kill Mobs Targets
+
+Open **Stages > stage > Missions > Kill Mobs Mission** to reach the mission settings. The menu contains the required amount, **Dungeon Spawner Mobs Only**, and **Count Baby Variants**. Click **Required Amount** to enter the mob count in chat.
+
+Click **Specific Mob Targets** to add a one-Zombie example when the mission has no targets and show the configuration path in chat:
+`plugins/InstancedDungeons/dungeons/<dungeon-id>/stages/<stage-id>.yml`.
+Edit `mob-targets` inside that file's `KILL_MOBS` entry, then reload the dungeon configuration before starting a new instance:
+
+```yaml
+missions:
+  - type: KILL_MOBS
+    required: 10
+    only-dungeon-spawner-mobs: true
+    count-baby-variants: true
+    mob-targets:
+      - type: VANILLA
+        mob-id: ZOMBIE
+        count: 6
+      - type: VANILLA
+        mob-id: PIG
+        count: 2
+      - type: MYTHIC
+        mob-id: Kings
+        count: 1
+      - type: MYTHIC
+        mob-id: Barbarian
+        count: 1
+```
+
+With targets configured, the mission requires every listed count. Their sum replaces `required`; extra zombies cannot replace a missing pig or MythicMob. Use Bukkit entity names for vanilla targets and exact, case-sensitive MythicMobs internal IDs for Mythic targets. A Mythic zombie counts toward its Mythic ID, not the vanilla `ZOMBIE` target. Both source and baby filters still apply.
+
+The hologram shows each target's progress and remaining count. Invalid target definitions block progress and are reported by validation and in the server log. Omit `mob-targets` to use the ordinary total-count mission. The amount button is disabled while specific targets control the total; editing the filters preserves those targets.
+
+### Skipping Missions
+
+```text
+/dg skip <stage_id> mission all
+/dg skip <stage_id> mission <mission_type>
+```
+
+Requires `instanceddungeons.admin` or `instanceddungeons.skip.mission`. The player must be a participant in an active dungeon run, not a spectator. There is no skip button in the GUI.
+
+Stage tab completion lists only unlocked, unfinished stages in the player's current instance, including parallel stages with the same order. Mission tab completion lists that stage's mission types and `all`.
+
+Skipping marks the selected missions complete without charging payment costs or performing sacrifice. When every mission is satisfied, normal gate opening, stage events and checkpoint behavior continue. A skipped REGION stay condition cannot block the stage again. `all` affects only the named stage; it never skips a newly unlocked stage.
 
 ## Event Commands
 
@@ -1214,7 +1441,7 @@ Validation checks include:
 - Invalid spawner locations.
 - Unknown mob IDs where they can be resolved.
 - Unknown or unavailable custom item provider entries.
-- Stage ordering and Pro feature validation warnings.
+- Stage ordering and feature validation warnings.
 - Loot chest and boss reward item definitions.
 - `commands.yml` syntax, event keys, executors, audiences, command lists, and risky audience/global command combinations.
 
@@ -1225,9 +1452,9 @@ Validation output:
 - Normal players do not receive validation warnings.
 - If chat output is shortened, check the console because it may contain more validation details.
 
-## Pro Features
+## Feature Limits
 
-| Area | Pro behavior |
+| Area | Behavior |
 | --- | --- |
 | Global active instances | `0` disables the global active-instance ceiling. Positive values set the exact maximum. |
 | Tower length | Supports `FIRST -> LAST` and longer `FIRST -> MIDDLE -> ... -> LAST` chains. |
@@ -1242,6 +1469,7 @@ Validation output:
 | Money payment missions | Multiple money payment mission entries are supported. |
 | Item payment missions | Multiple item payment mission entries are supported. |
 | Item payment item types | Multiple item payment item types are supported. |
+| Region missions | One per stage, with no per-dungeon limit. |
 
 ## Admin GUI and RAM Analysis
 
@@ -1285,7 +1513,7 @@ Tower does not transition:
 - Confirm `dungeon-type: tower`.
 - Confirm `tower-stage-type`.
 - Confirm `next-dungeon` points to a loaded dungeon.
-- In Pro, `FIRST` can point to `MIDDLE`, and `MIDDLE` can point to another `MIDDLE` or `LAST`.
+- `FIRST` can point to `MIDDLE`, and `MIDDLE` can point to another `MIDDLE` or `LAST`.
 
 Stage gate does not open:
 
@@ -1299,209 +1527,3 @@ Custom items fail validation:
 - Confirm the provider plugin is installed and enabled.
 - Confirm the item ID exactly matches the provider ID.
 - For potions and enchanted books, confirm the ID follows the special vanilla formats above.
-
-## Kill Mobs Filters
-
-New `KILL_MOBS` missions include both options:
-
-```yaml
-missions:
-  - type: KILL_MOBS
-    required: 20
-    only-dungeon-spawner-mobs: true
-    count-baby-variants: true
-```
-
-`only-dungeon-spawner-mobs` counts only mobs spawned by this dungeon instance's configured spawners, including vanilla and MythicMobs pools. Friendly summons from enchantments or other plugins, natural mobs, and mobs already stored in the template do not count. Bosses remain excluded from stage kill missions. Dungeon-spawned mobs still count after transformations, such as a zombie becoming a drowned.
-
-Set `only-dungeon-spawner-mobs: false` to count mobs from other sources inside the instance. Kills must be credited to a player. Mobs summoned separately by a Mythic skill are not automatically treated as dungeon spawner mobs.
-
-`count-baby-variants` includes baby versions of eligible mobs, including zombies, drowned, piglins, and other ageable mobs. Set it to `false` to exclude babies. The spawner-source filter still applies. To control which variants spawn, use the spawner settings.
-
-Both options default to `true` when omitted, including in existing missions. Changing the required amount through a command or the editor preserves these filters. Save the mission to write the fields, or add them manually and reload.
-
-Both switches are available in the dedicated **Kill Mobs Mission** settings menu.
-
-## Boss Stage Requirement
-
-New `boss.yml` files include:
-
-```yaml
-stage-requirement:
-  mode: DISABLED
-  stage-id: ''
-```
-
-| Mode | Requirement |
-| --- | --- |
-| `DISABLED` | Uses the normal boss trigger without a stage requirement. This is also the default for existing files. |
-| `STAGE` | Requires the stage named by `stage-id` to be completed. |
-| `ALL` | Requires every stage in the current dungeon to be completed. With no stages configured, there is nothing to wait for. |
-
-A stage is completed when all its missions are finished and its gate opens. Unlocking a stage does not complete it. Closing its gate later does not reset its completion.
-
-For example, require the `courtyard` stage before allowing the proximity trigger:
-
-```yaml
-trigger: ON_PLAYER_NEAR
-trigger-distance: 20
-trigger-time: 0
-stage-requirement:
-  mode: STAGE
-  stage-id: courtyard
-```
-
-The stage requirement is an additional condition for every boss trigger:
-
-- `ON_START`: waits until the stage requirement is met.
-- `ON_DELAY`: starts its `trigger-time` delay after the requirement is met.
-- `ON_PLAYER_NEAR`: requires an alive party member within range and the stage requirement to be met.
-- `ON_PLAYER_NEAR_ON_DELAY`: starts its delay only once both conditions are met.
-
-If a player is already in range, the boss can activate as soon as the stage requirement is met. Spectators cannot trigger the boss. An invalid mode or missing stage ID in `STAGE` mode blocks spawning; `/dg validate <id>` reports the configuration error.
-
-In the admin GUI, open **Boss & Trigger**. **Boss Stage Requirement** cycles the mode; **Required Stage ID** accepts an existing stage only while `STAGE` mode is selected; it is inactive in `DISABLED` and `ALL`. Both settings are saved to `boss.yml`. Moving the boss spawn preserves them. **Test Boss Spawn** previews the boss without applying stage requirements.
-
-## Remove a Party Member
-
-`/dg kick <player>` removes a member from the leader's open party. Tab completion suggests only other members of that party. The leader cannot kick themselves, players outside the party, or anyone after dungeon preparation has begun. The removed player and the remaining party receive configurable messages. No extra permission is required beyond being that party's leader.
-
-Kicking removes the current membership; it does not ban the player from joining an open party again.
-
-## Specific Kill Mobs Targets
-
-Open **Stages > stage > Missions > Kill Mobs Mission** to reach the mission settings. The menu contains the required amount, **Dungeon Spawner Mobs Only**, and **Count Baby Variants**. Click **Required Amount** to enter the mob count in chat.
-
-Click **Specific Mob Targets** to add a one-Zombie example when the mission has no targets and show the configuration path in chat:
-`plugins/InstancedDungeons/dungeons/<dungeon-id>/stages/<stage-id>.yml`.
-Edit `mob-targets` inside that file's `KILL_MOBS` entry, then reload the dungeon configuration before starting a new instance:
-
-```yaml
-missions:
-  - type: KILL_MOBS
-    required: 10
-    only-dungeon-spawner-mobs: true
-    count-baby-variants: true
-    mob-targets:
-      - type: VANILLA
-        mob-id: ZOMBIE
-        count: 6
-      - type: VANILLA
-        mob-id: PIG
-        count: 2
-      - type: MYTHIC
-        mob-id: Kings
-        count: 1
-      - type: MYTHIC
-        mob-id: Barbarian
-        count: 1
-```
-
-With targets configured, the mission requires every listed count. Their sum replaces `required`; extra zombies cannot replace a missing pig or MythicMob. Use Bukkit entity names for vanilla targets and exact, case-sensitive MythicMobs internal IDs for Mythic targets. A Mythic zombie counts toward its Mythic ID, not the vanilla `ZOMBIE` target. Both source and baby filters still apply.
-
-The hologram shows each target's progress and remaining count. Invalid target definitions block progress and are reported by validation and in the server log. Omit `mob-targets` to use the ordinary total-count mission. The amount button is disabled while specific targets control the total; editing the filters preserves those targets.
-
-## Trigger Stage Requirement
-
-Trigger objectives support the same completed-stage requirements as bosses. Add this to `trigger.yml`, or use **Trigger Stage Requirement** in the admin GUI:
-
-```yaml
-stage-requirement:
-  mode: STAGE
-  stage-id: entrance
-```
-
-- `DISABLED`: no stage requirement. This is the default for new and existing trigger configs.
-- `STAGE`: the named stage must be completed.
-- `ALL`: every configured stage must be completed. With no stages configured, this requirement is satisfied.
-
-Before the requirement is met, interacting with the trigger does not complete the dungeon or give rewards. Use it again after completing the required stages. Unknown modes or missing stage IDs do not bypass the requirement; the validator reports configuration errors.
-
-The **Boss & Trigger** editor entry opens only the controls matching the dungeon's completion objective. **Required Stage ID** accepts input only in `STAGE` mode, for both objectives. Switching to `DISABLED` or `ALL` preserves the saved ID but ignores it.
-
-## Fire Spread (2.3.0)
-
-`fire-spread: false` disables fire spreading. The update adds this field next to the existing world rules, preserving all configured values. An explicit `true` remains enabled. Older 1.21.x uses `doFireTick`; from 1.21.11 the plugin uses `minecraft:fire_spread_radius_around_player`, with zero to disable spreading. The template world and copied instances use the configured rule.
-
-PRO exposes this toggle under Settings → World Rules.
-
-## Player Cooldowns (PRO, 2.3.0)
-
-Configure this section in each **dungeon's** `config.yml`, or open **Settings → Player Cooldown** in the admin GUI:
-
-```yaml
-player-cooldown:
-  trigger: START
-  recipients: LEADER
-  dungeon-seconds: 0
-  global-seconds: 0
-  block-joining: false
-```
-
-| Field | Values and behavior |
-| --- | --- |
-| `trigger` | `START`: successful run start; `END`: success or failure; `WIN`: success only. |
-| `recipients` | `LEADER`: leader captured at run start; `PARTY`: all party members captured at run start. |
-| `dungeon-seconds` | Blocks new entry to this dungeon ID for this many seconds. `0` grants no new dungeon cooldown. |
-| `global-seconds` | Blocks new entry to every dungeon for this many seconds. `0` grants no new global cooldown. |
-| `block-joining` | `false`: restricts creating/starting a new run as leader; `true`: also restricts joining another party. |
-
-The default durations are zero, so existing dungeons gain no restrictions after updating. Creating a party or failing to prepare a world does not grant a cooldown. Pending starts are checked before charges and preparation. Durations are wall-clock seconds, not server ticks.
-
-Cooldowns belong to player UUIDs and survive relogging, reloads and server restarts in `plugins/InstancedDungeons/player-cooldowns.yml`. Back up that file when moving the server. A global cooldown also applies when the target dungeon has zero configured durations. When both an existing dungeon-specific and global deadline apply, entry stays blocked until both expire.
-
-### Towers and Replacement
-
-Every tower floor may grant its own cooldown using its own config and trigger. Successfully clearing a non-final floor counts as that floor's success for `END` and `WIN`. Automatic transfer to the next floor bypasses entry checks, including global cooldowns.
-
-New deadlines **replace** old deadlines of the same scope; they are never added or compared to keep the maximum. For example, a new global cooldown of 800 seconds replaces an entry-floor global cooldown of 600 seconds. If 700 seconds remain and the next floor grants 300 seconds, 300 seconds remain from that new event. Dungeon-specific cooldowns remain separate by dungeon ID. A duration of zero grants no new cooldown and does not clear an already active one.
-
-## Region Missions (2.3.0)
-
-A REGION mission uses a cuboid selected by two opposite block corners in the dungeon template. The corner blocks are included, and either selection order is accepted. Progress starts only after the stage unlocks.
-
-```text
-/dg edit <dungeon_id>
-/dg stage <stage_id> mission region
-/dg stage <stage_id> mission region pos1
-# move to the opposite corner in the template world
-/dg stage <stage_id> mission region pos2
-```
-
-Run `/dg stage <stage_id> mission region` first to add the mission. The confirmation shows the two commands for selecting its corners. Then stand at each corner in the template world and run `pos1` or `pos2`; each command saves your current block as that corner. Running the creation command again preserves the existing corners and settings. Do not use the generated instance world name in the stage config.
-
-```yaml
-missions:
-  - type: REGION
-    region:
-      mode: ENTER_ONCE
-      whole-party: false
-      pos1: {x: 10, y: 60, z: 10}
-      pos2: {x: 20, y: 70, z: 20}
-```
-
-| Mode | `whole-party: false` | `whole-party: true` |
-| --- | --- | --- |
-| `ENTER_ONCE` | Any participant enters once. | Each required participant enters once; their visits may happen at different times. |
-| `STAY_UNTIL_COMPLETE` | At least one participant is currently inside until all stage missions complete. | All required participants are inside at the same time until all stage missions complete. |
-
-Spectators do not count. A dead or offline participant does not count as currently inside. For the stay mode, the same player does not have to remain throughout: the configured number of participants must currently satisfy the condition. Leaving before the gate opens makes the stay condition incomplete again. Opening the gate finishes the stage permanently.
-
-Set `region.mode` and `region.whole-party` in the stage YAML or use the Region Mission submenu in the PRO GUI. These settings have no command variants. Use `/dg stage <stage_id> mission region delete` to remove the mission. Validation rejects missing corners or invalid settings.
-
-Mission levers belonging to locked future stages cannot be pulled. They become available when their stage unlocks.
-
-PRO: one REGION per stage, no per-dungeon limit.
-
-## Skipping Missions (PRO, 2.3.0)
-
-```text
-/dg skip <stage_id> mission all
-/dg skip <stage_id> mission <mission_type>
-```
-
-Requires `instanceddungeons.admin` or `instanceddungeons.skip.mission`. The player must be a participant in an active dungeon run, not a spectator. There is no skip button in the GUI.
-
-Stage tab completion lists only unlocked, unfinished stages in the player's current instance, including parallel stages with the same order. Mission tab completion lists that stage's mission types and `all`.
-
-Skipping marks the selected missions complete without charging payment costs or performing sacrifice. When every mission is satisfied, normal gate opening, stage events and checkpoint behavior continue. A skipped REGION stay condition cannot block the stage again. `all` affects only the named stage; it never skips a newly unlocked stage.

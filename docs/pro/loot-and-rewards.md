@@ -1,6 +1,6 @@
 # Loot and Rewards
 
-Pro preserves enchantments on vanilla items used in costs and rewards.
+The plugin preserves enchantments on vanilla items used in costs and rewards.
 
 InstancedDungeons supports loot chests, mission keys, boss rewards, trigger rewards, and custom item providers.
 
@@ -87,7 +87,7 @@ For existing dungeons, boss rewards keep `GROUND + PARTY_SHARED` and trigger rew
 
 Reward entries are independent. If you place 4 diamonds in one GUI slot and 2 diamonds in another slot, the plugin saves two separate reward entries.
 
-The Pro admin GUI exposes the matching objective's reward-logic profile under **Boss & Trigger**. The test control uses normal left-click for a non-destructive entry preview and Shift-left-click for a real random roll. A real test follows `INVENTORY`/`GROUND` delivery at the testing administrator and supports every configured custom-item provider.
+The admin GUI exposes the matching objective's reward-logic profile under **Boss & Trigger**. The test control uses normal left-click for a non-destructive entry preview and Shift-left-click for a real random roll. A real test follows `INVENTORY`/`GROUND` delivery at the testing administrator and supports every configured custom-item provider.
 
 ## Trigger Rewards
 
@@ -142,7 +142,7 @@ Supported examples include potions, splash potions, lingering potions, tipped ar
 
 ## Enchanted Vanilla Items
 
-Pro supports enchanted vanilla items in:
+Enchanted vanilla items are supported in:
 
 - Loot chests.
 - Boss rewards.

@@ -82,9 +82,50 @@ Runtime holograms show live mission progress. Locked higher-order holograms show
 | `MONEY_PAYMENT` | Requires a Vault money payment. |
 | `ITEM_PAYMENT` | Requires configured items through a GUI editor. |
 
+Mission levers belonging to locked future stages cannot be pulled. They become available when their stage unlocks.
+
+### Region Missions
+
+A REGION mission uses a cuboid selected by two opposite block corners in the dungeon template. The corner blocks are included, and either selection order is accepted. Progress starts only after the stage unlocks.
+
+```text
+/dg edit <dungeon_id>
+/dg stage <stage_id> mission region
+/dg stage <stage_id> mission region pos1
+# move to the opposite corner in the template world
+/dg stage <stage_id> mission region pos2
+```
+
+Run `/dg stage <stage_id> mission region` first to add the mission. The confirmation shows the two commands for selecting its corners. Then stand at each corner in the template world and run `pos1` or `pos2`; each command saves your current block as that corner. Running the creation command again preserves the existing corners and settings. Do not use the generated instance world name in the stage config.
+
+```yaml
+missions:
+  - type: REGION
+    region:
+      mode: ENTER_ONCE
+      whole-party: false
+      pos1: {x: 10, y: 60, z: 10}
+      pos2: {x: 20, y: 70, z: 20}
+```
+
+| Mode | `whole-party: false` | `whole-party: true` |
+| --- | --- | --- |
+| `ENTER_ONCE` | Any participant enters once. | Each required participant enters once; their visits may happen at different times. |
+| `STAY_UNTIL_COMPLETE` | At least one participant is currently inside until all stage missions complete. | All required participants are inside at the same time until all stage missions complete. |
+
+Spectators do not count. A dead or offline participant does not count as currently inside. For the stay mode, the same player does not have to remain throughout: the configured number of participants must currently satisfy the condition. Leaving before the gate opens makes the stay condition incomplete again. Opening the gate finishes the stage permanently.
+
+Set `region.mode` and `region.whole-party` in the stage YAML. These settings have no command variants. Use `/dg stage <stage_id> mission region delete` to remove the mission. Validation rejects missing corners or invalid settings.
+
+One REGION mission is supported across the entire dungeon, including all its stages. Other mission limits still apply. Extra REGION missions in manually edited configs are reported by validation; files are not deleted.
+
 ## Mission Commands
 
 ```text
+/dg stage <stage_id> mission region
+/dg stage <stage_id> mission region pos1
+/dg stage <stage_id> mission region pos2
+/dg stage <stage_id> mission region delete
 /dungeon stage <stage_id> mission kill_mobs <amount>
 /dungeon stage <stage_id> mission lever
 /dungeon stage <stage_id> mission button <button_material>
@@ -119,40 +160,3 @@ Set `only-dungeon-spawner-mobs: false` to count mobs from other sources inside t
 `count-baby-variants` includes baby versions of eligible mobs, including zombies, drowned, piglins, and other ageable mobs. Set it to `false` to exclude babies. The spawner-source filter still applies. To control which variants spawn, use the spawner settings.
 
 Both options default to `true` when omitted, including in existing missions. Changing the required amount through a command or the editor preserves these filters. Save the mission to write the fields, or add them manually and reload.
-
-## Region Missions (2.3.0)
-
-A REGION mission uses a cuboid selected by two opposite block corners in the dungeon template. The corner blocks are included, and either selection order is accepted. Progress starts only after the stage unlocks.
-
-```text
-/dg edit <dungeon_id>
-/dg stage <stage_id> mission region
-/dg stage <stage_id> mission region pos1
-# move to the opposite corner in the template world
-/dg stage <stage_id> mission region pos2
-```
-
-Run `/dg stage <stage_id> mission region` first to add the mission. The confirmation shows the two commands for selecting its corners. Then stand at each corner in the template world and run `pos1` or `pos2`; each command saves your current block as that corner. Running the creation command again preserves the existing corners and settings. Do not use the generated instance world name in the stage config.
-
-```yaml
-missions:
-  - type: REGION
-    region:
-      mode: ENTER_ONCE
-      whole-party: false
-      pos1: {x: 10, y: 60, z: 10}
-      pos2: {x: 20, y: 70, z: 20}
-```
-
-| Mode | `whole-party: false` | `whole-party: true` |
-| --- | --- | --- |
-| `ENTER_ONCE` | Any participant enters once. | Each required participant enters once; their visits may happen at different times. |
-| `STAY_UNTIL_COMPLETE` | At least one participant is currently inside until all stage missions complete. | All required participants are inside at the same time until all stage missions complete. |
-
-Spectators do not count. A dead or offline participant does not count as currently inside. For the stay mode, the same player does not have to remain throughout: the configured number of participants must currently satisfy the condition. Leaving before the gate opens makes the stay condition incomplete again. Opening the gate finishes the stage permanently.
-
-Set `region.mode` and `region.whole-party` in the stage YAML. These settings have no command variants. Use `/dg stage <stage_id> mission region delete` to remove the mission. Validation rejects missing corners or invalid settings.
-
-Mission levers belonging to locked future stages cannot be pulled. They become available when their stage unlocks.
-
-Free supports **one REGION mission across the entire dungeon**, including all its stages. Other existing Free limits still apply. Extra REGION missions in manually edited configs are reported by validation; files are not deleted.

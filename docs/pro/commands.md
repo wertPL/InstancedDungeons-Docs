@@ -11,10 +11,15 @@ Use `/dungeon` or its alias `/dg`.
 | `/dungeon open <id>` | Creates a party for a standalone dungeon or tower `FIRST` stage. |
 | `/dungeon join <code>` | Joins an open party. |
 | `/dungeon leave` | Leaves an open party. |
+| `/dg kick <player>` | Removes another member before the dungeon starts. |
 | `/dungeon start` | Starts the dungeon as party leader. |
 | `/dungeon exit` | Leaves the active dungeon instance. |
 | `/dungeon spectate <leader>` | Spectates the active dungeon led by that party leader. |
 | `/dungeon spectator exit` | Leaves external spectator mode and restores inventory and gamemode. |
+
+`/dg kick <player>` removes a member from the leader's open party. Tab completion suggests only other members of that party. The leader cannot kick themselves, players outside the party, or anyone after dungeon preparation has begun. The removed player and the remaining party receive configurable messages. No extra permission is required beyond being that party's leader.
+
+Kicking removes the current membership; it does not ban the player from joining an open party again.
 
 ## Core Admin Commands
 
@@ -95,6 +100,10 @@ Use `/dungeon` or its alias `/dg`.
 ## Stage Mission Commands
 
 ```text
+/dg stage <stage_id> mission region
+/dg stage <stage_id> mission region pos1
+/dg stage <stage_id> mission region pos2
+/dg stage <stage_id> mission region delete
 /dungeon stage <stage_id> mission kill_mobs <amount>
 /dungeon stage <stage_id> mission lever
 /dungeon stage <stage_id> mission button <button_material>
@@ -105,41 +114,17 @@ Use `/dungeon` or its alias `/dg`.
 /dungeon stage <stage_id> mission money_payment <amount> [ANY_PLAYER|LEADER_ONLY]
 /dungeon stage <stage_id> mission item_payment
 /dungeon stage <stage_id> mission <type> delete
-```
-
-!!! note "Tab completion"
-    Dungeon IDs, stage IDs, loot chest IDs, trigger materials, mission materials, validation targets, and integration item IDs are tab-completed where supported.
-
-## Remove a Party Member
-
-`/dg kick <player>` removes a member from the leader's open party. Tab completion suggests only other members of that party. The leader cannot kick themselves, players outside the party, or anyone after dungeon preparation has begun. The removed player and the remaining party receive configurable messages. No extra permission is required beyond being that party's leader.
-
-Kicking removes the current membership; it does not ban the player from joining an open party again.
-
-## RAM Analysis
-
-`/dungeon ram analysis` toggles memory reports. Requires `instanceddungeons.admin`. See [RAM Analysis](../ram-analysis.md).
-
-## Region Mission Commands (2.3.0)
-
-| Command | Description |
-| --- | --- |
-| `/dg stage <stage> mission region` | Creates the mission and shows the corner-selection commands. |
-| `/dg stage <stage> mission region pos1` | Sets corner 1 at your current block after the mission has been created. |
-| `/dg stage <stage> mission region pos2` | Sets corner 2 at your current block after the mission has been created. |
-| `/dg stage <stage> mission region delete` | Deletes the mission. |
-
-Stand at each corner in the dungeon template world before running `pos1` or `pos2`. Set `region.mode` and `region.whole-party` in the stage YAML or use the Region Mission submenu in the PRO GUI. These settings have no command variants.
-
-## Skipping Missions (PRO, 2.3.0)
-
-```text
 /dg skip <stage_id> mission all
 /dg skip <stage_id> mission <mission_type>
 ```
 
-Requires `instanceddungeons.admin` or `instanceddungeons.skip.mission`. The player must be a participant in an active dungeon run, not a spectator. There is no skip button in the GUI.
+Run `region` to create the mission, then stand at each corner in the template world and run `pos1` or `pos2`. `delete` removes the mission. Configure `region.mode` and `region.whole-party` in the stage YAML or the Region Mission submenu in the admin GUI. See [Region Missions](stages.md#region-missions).
 
-Stage tab completion lists only unlocked, unfinished stages in the player's current instance, including parallel stages with the same order. Mission tab completion lists that stage's mission types and `all`.
+`/dg skip` requires `instanceddungeons.admin` or `instanceddungeons.skip.mission`. It applies only to an unlocked, unfinished stage in the player's active run. See [Skipping Missions](stages.md#skipping-missions).
 
-Skipping marks the selected missions complete without charging payment costs or performing sacrifice. When every mission is satisfied, normal gate opening, stage events and checkpoint behavior continue. A skipped REGION stay condition cannot block the stage again. `all` affects only the named stage; it never skips a newly unlocked stage.
+!!! note "Tab completion"
+    Dungeon IDs, stage IDs, loot chest IDs, trigger materials, mission materials, validation targets, and integration item IDs are tab-completed where supported.
+
+## RAM Analysis
+
+`/dungeon ram analysis` toggles memory reports. Requires `instanceddungeons.admin`. See [RAM Analysis](../ram-analysis.md).

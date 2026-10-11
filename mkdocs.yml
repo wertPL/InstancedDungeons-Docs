@@ -84,7 +84,7 @@ nav:
       - Home: pro/index.md
       - Start:
           - Getting Started: pro/getting-started.md
-          - Updating: updating.md
+          - Updating: pro/updating.md
           - Examples: pro/examples.md
           - Commands: pro/commands.md
           - Permissions: pro/permissions.md

@@ -31,6 +31,7 @@ Minimal boss behavior in `config.yml`:
 
 ```yaml
 completion-objective: BOSS
+fire-spread: false
 
 boss:
   must-die-to-complete: true
@@ -159,7 +160,3 @@ Before publishing a dungeon to players:
 - Confirm tower `next-dungeon` links are valid.
 - Confirm loot chest IDs match placed loot chest items.
 - Confirm stage order is continuous.
-
-## Fire Spread (2.3.0)
-
-`fire-spread: false` disables fire spreading. The update adds this field next to the existing world rules, preserving all configured values. An explicit `true` remains enabled. Older 1.21.x uses `doFireTick`; from 1.21.11 the plugin uses `minecraft:fire_spread_radius_around_player`, with zero to disable spreading. The template world and copied instances use the configured rule.

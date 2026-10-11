@@ -78,7 +78,3 @@ InstancedDungeons copies a configured template world into a temporary instance w
 /dungeon save
 /dungeon reload
 ```
-
-## Version 2.3.0
-
-New: fire spread settings, region missions, working mob lifetime modes, and locked-stage lever protection. PRO also adds mission skipping and durable player cooldowns with tower support. See [Updating](updating.md).

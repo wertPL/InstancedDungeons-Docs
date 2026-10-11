@@ -13,7 +13,6 @@ next-dungeon: "tower_final"
 | Type | Meaning |
 | --- | --- |
 | `first` | Entry point. Can be opened by command and may have entry costs. |
-| `middle` | Intermediate tower stage. Requires Pro. |
 | `last` | Final tower dungeon. Completing it completes the tower. |
 
 ## Free Version Limit
@@ -24,13 +23,11 @@ The free version supports:
 FIRST -> LAST
 ```
 
-Middle stages are reserved for Pro.
-
 ## Behavior
 
 - Players open only the `FIRST` dungeon directly.
 - Completing `FIRST` moves the same party into `next-dungeon`.
-- `FIRST` and `MIDDLE` use tower transition messages instead of normal completion messages.
+- `FIRST` uses tower transition messages instead of normal completion messages.
 - Completing `LAST` completes the tower and sends players to exit.
 - Failure in any tower stage fails the whole tower.
 - Entry costs are allowed only on `FIRST`.
@@ -48,7 +45,7 @@ announce-fail: true
 `announce-complete` is broadcast only after the final tower stage completes. The broadcast uses the final stage dungeon name.
 
 !!! important
-    Set `announce-complete` in the FIRST dungeon. The same setting in MIDDLE or LAST does not control tower announcements.
+    Set `announce-complete` in the FIRST dungeon. The same setting in LAST does not control tower announcements.
 
 ## Spectators During Tower Transitions
 
@@ -58,6 +55,4 @@ External spectators from `/dungeon spectate <leader>` move to the next stage wit
 
 ## Visibility
 
-`/dungeon list` and `/dungeon open` tab completion hide tower middle/last stage dungeon IDs. Players reach those dungeons through tower progression.
-
-Player cooldowns are a PRO feature. Free tower progression is unchanged in 2.3.0.
+`/dungeon list` and `/dungeon open` tab completion hide tower last-stage dungeon IDs. Players reach those dungeons through tower progression.

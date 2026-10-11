@@ -21,9 +21,9 @@
   <img class="hero-logo" src="../assets/plugin-logo-badge-transparent.png" alt="InstancedDungeons logo">
 </section>
 
-## Pro Overview
+## Overview
 
-Pro adds longer tower chains, checkpoints, mob equipment, custom kill targets, and an admin GUI.
+Create long tower chains, configure checkpoints and mob equipment, set custom kill targets, and manage dungeons through the admin GUI.
 
 <div class="status-row">
   <div class="status-box"><strong>Instances</strong><span>Configurable global instance limit</span></div>
@@ -87,7 +87,3 @@ Pro adds longer tower chains, checkpoints, mob equipment, custom kill targets, a
 /dungeon save
 /dungeon reload
 ```
-
-## Version 2.3.0
-
-New: fire spread settings, region missions, working mob lifetime modes, and locked-stage lever protection. PRO also adds mission skipping and durable player cooldowns with tower support. See [Updating](../updating.md).

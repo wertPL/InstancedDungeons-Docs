@@ -12,7 +12,7 @@
 3. Check the current configuration and complete reference pages.
 4. Join Discord if the issue still looks like a plugin bug.
 
-For plugin updates and config migration, follow the [Updating guide](../updating.md).
+For plugin updates and config migration, follow the [Updating guide](updating.md).
 
 ## Support Links
 

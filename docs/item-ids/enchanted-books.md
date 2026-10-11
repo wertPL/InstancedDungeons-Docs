@@ -85,4 +85,4 @@ LUNGE
 
 When an enchanted book drops with an amount above `1`, the plugin creates separate one-item stacks because enchanted books do not stack.
 
-Free does not store enchanted armor, tools, or weapons. If an admin places an enchanted non-book item into the cost or reward editor, it is saved as the base vanilla material and the admin receives a Pro notice.
+The cost and reward editors save enchanted non-book items as their base vanilla material.

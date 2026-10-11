@@ -13,12 +13,12 @@ next-dungeon: "tower_floor_2"
 | Type | Meaning |
 | --- | --- |
 | `first` | Entry point. Can be opened by command and may have entry costs. |
-| `middle` | Normal Pro chain stage between the first and last dungeon. |
+| `middle` | Intermediate chain stage between the first and last dungeon. |
 | `last` | Final tower dungeon. Completing it completes the tower. |
 
-## Pro Tower Chains
+## Tower Chains
 
-Pro supports short and long tower chains:
+Tower chains can be short or span several floors:
 
 ```text
 FIRST -> LAST
@@ -37,6 +37,10 @@ FIRST -> MIDDLE -> MIDDLE -> ... -> LAST
 - Completing `LAST` completes the tower and sends players to exit.
 - Failure in any tower stage fails the whole tower.
 - Entry costs are allowed only on `FIRST`.
+
+## Floor Cooldowns
+
+Each floor may grant its own player cooldown. Automatic floor transitions are always allowed. New global deadlines replace existing ones, even when shorter; they are not added together. See [Player Cooldowns](configuration.md#player-cooldowns) for configuration and START/END/WIN timing.
 
 ## Announcements
 
@@ -62,7 +66,3 @@ External spectators from `/dungeon spectate <leader>` move to the next stage wit
 ## Visibility
 
 `/dungeon list` and `/dungeon open` tab completion hide tower middle/last stage dungeon IDs. Players reach those dungeons through tower progression.
-
-## Floor Cooldowns (PRO, 2.3.0)
-
-Each floor may grant its own player cooldown. Automatic floor transitions are always allowed. New global deadlines replace existing ones, even when shorter; they are not added together. See [Player Cooldowns](configuration.md#player-cooldowns-pro-230) for configuration and START/END/WIN timing.

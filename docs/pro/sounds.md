@@ -1,6 +1,6 @@
 # Dungeon Sounds
 
-Every Pro dungeon has its own file:
+Each dungeon has its own file:
 
 ```text
 dungeons/<id>/sounds.yml
@@ -21,7 +21,7 @@ checkpoint-activate:
 
 Use `enabled: false` or `sound: NONE` to silence an event. Namespaced custom sounds are supported.
 
-Configure Pro timer alerts in `sounds.yml`. The old `timer-alerts` section in `config.yml` is ignored after migration.
+Configure timer alerts in `sounds.yml`. The old `timer-alerts` section in `config.yml` is ignored after migration.
 
 ## Testing sounds
 
