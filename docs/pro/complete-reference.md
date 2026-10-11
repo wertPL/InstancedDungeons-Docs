@@ -1168,6 +1168,8 @@ A REGION mission uses a cuboid selected by two opposite block corners in the dun
 
 Run `/dg stage <stage_id> mission region` first to add the mission. The confirmation shows the two commands for selecting its corners. Then stand at each corner in the template world and run `pos1` or `pos2`; each command saves your current block as that corner. Running the creation command again preserves the existing corners and settings. Do not use the generated instance world name in the stage config.
 
+In editor mode, cyan particles mark `pos1` and pink particles mark `pos2`. Markers are visible only to the editing admin within 50 blocks of a corner. Toggle **Region Corners** under **Admin Settings** to show or hide them independently of other mission particles.
+
 ```yaml
 missions:
   - type: REGION
@@ -1184,6 +1186,10 @@ missions:
 | `STAY_UNTIL_COMPLETE` | At least one participant is currently inside until all stage missions complete. | All required participants are inside at the same time until all stage missions complete. |
 
 Spectators do not count. A dead or offline participant does not count as currently inside. For the stay mode, the same player does not have to remain throughout: the configured number of participants must currently satisfy the condition. Leaving before the gate opens makes the stay condition incomplete again. Opening the gate finishes the stage permanently.
+
+With `whole-party: true`, the requirement uses the actual participants in the run, not the dungeon's maximum capacity. A solo run in a dungeon configured for 1–5 players requires only that solo player.
+
+In `STAY_UNTIL_COMPLETE`, the hologram shows the region as complete while the required participants are inside and returns to pending if they leave before the stage opens. The mission completion message and sound occur only when all stage missions are satisfied and the gate opens. In `ENTER_ONCE`, completion is announced as soon as the required visits are recorded and stays complete after players leave.
 
 Set `region.mode` and `region.whole-party` in the stage YAML or use the Region Mission submenu in the admin GUI. These settings have no command variants. Use `/dg stage <stage_id> mission region delete` to remove the mission. Validation rejects missing corners or invalid settings.
 
@@ -1255,7 +1261,7 @@ Requires `instanceddungeons.admin` or `instanceddungeons.skip.mission`. The play
 
 Stage tab completion lists only unlocked, unfinished stages in the player's current instance, including parallel stages with the same order. Mission tab completion lists that stage's mission types and `all`.
 
-Skipping marks the selected missions complete without charging payment costs or performing sacrifice. When every mission is satisfied, normal gate opening, stage events and checkpoint behavior continue. A skipped REGION stay condition cannot block the stage again. `all` affects only the named stage; it never skips a newly unlocked stage.
+Skipping marks the selected missions complete without charging payment costs or performing sacrifice. Skipping `KILL_MOBS` also fills every configured mob target on the hologram, such as `SKELETON: 2/2` and `ZOMBIE: 2/2`, with zero remaining. When every mission is satisfied, normal gate opening, stage events and checkpoint behavior continue. A skipped REGION stay condition cannot block the stage again. `all` affects only the named stage; it never skips a newly unlocked stage.
 
 ## Event Commands
 
