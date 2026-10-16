@@ -75,6 +75,10 @@ Check:
 
 ## Players Get Removed From Instance Worlds
 
+In the Free Paper 1.21.x build 2.3.1, startup verifies that all participants reach the instance before starting the run. A failed entry cancels startup and refunds entry costs. Respawning is tracked separately from leaving the dungeon.
+
+For that build, set `debug: true` in the main `config.yml` and run `/dungeon reload` to investigate teleport problems. Keep the complete console log from preparation through cleanup. `[Teleport]` lines include the requested destination, API result, event cancellation, player state, and actual world after the event. `eventSeen=false` means no teleport event was observed for that attempt. `[Respawn]` lines record respawn destinations and arrival checks. Registered listeners are diagnostic candidates; the list does not prove which plugin cancelled a teleport.
+
 Active instance worlds reject players who are not part of the dungeon run. This prevents outside players from entering temporary worlds.
 
 If this happens to real dungeon players, check:
