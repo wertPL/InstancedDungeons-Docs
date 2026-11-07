@@ -9,7 +9,7 @@
     <div class="hero-badges">
       <span class="hero-badge">Paper 1.21.x / 26.1.x / 26.2.x / 26.3.x</span>
       <span class="hero-badge">Java 21+ / 25+</span>
-      <span class="hero-badge">Multiverse-Core</span>
+      <span class="hero-badge">Built-in World Manager</span>
       <span class="hero-badge">Boss and Trigger Objectives</span>
     </div>
     <div class="hero-actions">
@@ -62,14 +62,15 @@ InstancedDungeons copies a configured template world into a temporary instance w
 
 ## Quick Start
 
-1. Install the plugin and Multiverse-Core.
-2. Create a template world.
+1. Install the plugin.
+2. Create a template world with `/dg world create`.
 3. Create a dungeon with `/dungeon create`.
 4. Set spawn, exit, and objective data in editor mode.
 5. Run `/dungeon validate <id>`.
 6. Let players open, join, and start a party.
 
 ```text
+/dg world create dragon_template
 /dungeon create dragon_lair dragon_template boss
 /dungeon edit dragon_lair
 /dungeon setspawn

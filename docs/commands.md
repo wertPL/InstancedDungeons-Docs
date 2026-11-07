@@ -21,6 +21,17 @@ Use `/dungeon` or its alias `/dg`.
 
 Kicking removes the current membership; it does not ban the player from joining an open party again.
 
+## World Management Commands
+
+| Command | Description |
+| --- | --- |
+| `/dg world create <name> [flat] [normal\|nether\|the_end] [worldborder]` | Creates a structure-free flat template world with an optional environment and initial world border size (default `500`). |
+| `/dg world list` | Lists available server and template worlds (excludes active dungeon instances) and highlights worlds created by the plugin. |
+| `/dg world tp <name>` | Teleports to a template or server world. |
+| `/dg world delete <name>` | Deletes a plugin-created template world after confirmation if no dungeon uses it. |
+
+Newly created template worlds apply the defaults from `template-worlds` in the main `config.yml` and set an initial world border (`500` by default, or the number passed at the end of `/dg world create`). You can later adjust the template world's border with vanilla `/worldborder` commands, and each dungeon instance copies that border automatically.
+
 ## Core Admin Commands
 
 | Command | Description |
@@ -92,7 +103,7 @@ Kicking removes the current membership; it does not ban the player from joining 
 Run `region` to create the mission, then stand at each corner in the template world and run `pos1` or `pos2`. `delete` removes the mission. Configure `region.mode` and `region.whole-party` in the stage YAML. See [Region Missions](stages.md#region-missions).
 
 !!! note "Tab completion"
-    Dungeon IDs, stage IDs, loot chest IDs, trigger materials, mission materials, validation targets, and integration item IDs are tab-completed where supported.
+    Dungeon IDs, template worlds, stage IDs, loot chest IDs, trigger materials, mission materials, validation targets, and integration item IDs are tab-completed where supported.
 
 ## RAM Analysis
 

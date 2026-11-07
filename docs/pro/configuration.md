@@ -41,6 +41,22 @@ time-limit: 1800
 | `template-world` | Source world copied for each instance. |
 | `time-limit` | Run time in seconds. |
 
+## Template World Defaults and Inheritance
+
+When creating new template worlds with `/dg world create` or the **Create Template World** button in the admin GUI, the plugin applies the default rules from `plugins/InstancedDungeons/config.yml`:
+
+```yaml
+template-worlds:
+  freeze-ticks: true
+  freeze-time: true
+  freeze-weather: true
+  natural-mob-spawning: false
+```
+
+- `freeze-ticks: true` sets the template world's random tick speed to `0` so leaves, ice, and crops do not decay or grow while building or running the dungeon.
+- `freeze-time: true`, `freeze-weather: true`, and `natural-mob-spawning: false` disable daylight progression, weather changes, and natural mob spawns on newly created template worlds.
+- All gamerules, the `WorldBorder` center/size/damage settings, and any **WorldGuard** regions and flags configured on the template world are automatically copied to every dungeon instance and cleaned up when the instance ends.
+
 ## Spawn and Exit
 
 Spawn and exit are normally set in-game:

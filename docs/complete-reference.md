@@ -33,13 +33,16 @@ Set `v: 2.0` at the top of `dungeons/<id>/config.yml`. Dungeons without this for
 
 ## Requirements
 
-| Minecraft / Paper target | Java | Multiverse-Core |
+| Minecraft / Paper target | Java | World Management |
 | --- | --- | --- |
-| Paper 1.21.x | Java 21+ | Multiverse-Core 5.5.2+ |
-| Paper 26.1.x / 26.2.x / 26.3.x | Java 25+ | Multiverse-Core 5.8.1+ |
+| Paper 1.21.x | Java 21+ | Built-in (/dg world) |
+| Paper 26.1.x / 26.2.x / 26.3.x | Java 25+ | Built-in (/dg world) |
+
+One universal plugin JAR supports both Paper 1.21.x and Paper 26.1.x / 26.2.x / 26.3.x.
 
 Optional integrations:
 
+- WorldGuard for copying template world regions and flags into dungeon instances.
 - MythicMobs 5.0+ for custom mobs and bosses.
 - MythicMobs item support through `MYTHIC_ITEM` entries.
 - ItemsAdder 3.0+ for custom items.
@@ -77,7 +80,7 @@ Tower: a chain of dungeons. The free version supports a two-step tower: `FIRST -
 Create a boss dungeon:
 
 ```text
-/mv create dragon_template normal
+/dg world create dragon_template
 /dungeon create dragon_lair dragon_template boss
 /dungeon edit dragon_lair
 /dungeon setspawn
@@ -211,6 +214,12 @@ editor:
 
 instances:
   max-active-global: 0
+
+template-worlds:
+  freeze-ticks: true
+  freeze-time: true
+  freeze-weather: true
+  natural-mob-spawning: false
 ```
 
 `debug` enables additional console logging, including gate block add/remove messages while an admin is building gates.
@@ -1262,6 +1271,7 @@ Validation output:
 | Item payment missions | 1 per dungeon. |
 | Item payment item types | 3 per mission. |
 | Region missions | 1 per dungeon. |
+| Template world generator | lat (without structures). |
 
 Free-version limit notices are visible only to admins.
 
@@ -1271,7 +1281,8 @@ Free-version limit notices are visible only to admins.
 
 ## Compatibility Notes
 
-- Paper 26.1, 26.2, and 26.3 are officially supported by the 26.x build.
+- One universal JAR supports both Paper 1.21.x and Paper 26.1 / 26.2 / 26.3.
+- Template world gamerules, WorldBorder settings, and WorldGuard regions/flags copy automatically to each dungeon instance.
 - The update checker ignores Modrinth releases that do not list this server/API target in their game versions.
 
 - Recreate dungeons that use the 1.x config format before using them with 2.x.
