@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Spawners and Mobs | InstancedDungeons (FREE)</title>
+  <link rel="icon" href="../assets/header-logo.png">
+  <link rel="stylesheet" href="../assets/style.css?v=3">
+</head>
+<body data-edition="free" data-root="../">
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-left">
+        <button type="button" class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation">&#9776;</button>
+        <a class="brand" href="../index.html">
+          <img src="../assets/header-logo.png" alt="InstancedDungeons">
+          <span>InstancedDungeons</span>
+        </a>
+        <nav class="edition-switch" data-active="free" aria-label="Documentation edition">
+          <span class="edition-icon" aria-hidden="true">&#9876;</span>
+          <span class="edition-track">
+            <span class="edition-thumb" aria-hidden="true"></span>
+            <a class="edition-link is-active" data-edition-target="free" href="index.html">Free</a>
+            <a class="edition-link" data-edition-target="pro" href="../pro/spawners-and-mobs/index.html">Pro</a>
+          </span>
+        </nav>
+      </div>
+
+      <nav class="top-nav" aria-label="Main sections">
+        <span class="top-nav-thumb" aria-hidden="true"></span>
+        <a class="top-nav-link" href="../index.html">Start</a><a class="top-nav-link" href="../configuration/index.html">Configuration</a><a class="top-nav-link is-active" href="index.html">Systems</a><a class="top-nav-link" href="../item-ids/potions-and-arrows/index.html">Item ID Reference</a><a class="top-nav-link" href="../help/index.html">Help</a>
+      </nav>
+
+      <div class="header-right">
+        <button type="button" class="search-trigger" id="search-open" aria-label="Search documentation">
+          <span>Search docs...</span>
+          <span class="search-kbd">Ctrl K</span>
+        </button>
+        <button type="button" class="icon-btn" id="theme-toggle" title="Toggle dark/light theme" aria-label="Toggle theme">&#9728;</button>
+        <div class="ext-links">
+          <a class="ext-pill" href="https://modrinth.com/plugin/instanced-dungeon" target="_blank" rel="noopener">Modrinth</a><a class="ext-pill ext-pill-pro" href="https://builtbybit.com/resources/instanceddungeons-pro.112271/" target="_blank" rel="noopener">GET PRO</a><a class="ext-pill" href="https://discord.com/invite/sD4HvQh8P4" target="_blank" rel="noopener">Discord</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout-shell">
+    <aside class="sidebar-left" id="sidebar-left" aria-label="Sidebar navigation">
+      <div class="nav-group"><div class="nav-group-title">Start</div><ul class="nav-list"><li class="nav-item"><a href="../index.html">Overview</a></li><li class="nav-item"><a href="../getting-started/index.html">Getting Started</a></li><li class="nav-item"><a href="../updating/index.html">Updating</a></li><li class="nav-item"><a href="../examples/index.html">Examples</a></li><li class="nav-item"><a href="../commands/index.html">Commands</a></li><li class="nav-item"><a href="../permissions/index.html">Permissions</a></li></ul></div><div class="nav-group"><div class="nav-group-title">Configuration</div><ul class="nav-list"><li class="nav-item"><a href="../configuration/index.html">Dungeon Config</a></li><li class="nav-item"><a href="../objectives/index.html">Objectives</a></li><li class="nav-item"><a href="../towers/index.html">Towers</a></li><li class="nav-item"><a href="../complete-reference/index.html">Complete Reference</a></li></ul></div><div class="nav-group"><div class="nav-group-title">Systems</div><ul class="nav-list"><li class="nav-item"><a class="is-active" href="index.html">Spawners and Mobs</a></li><li class="nav-item"><a href="../stages/index.html">Stages and Gates</a></li><li class="nav-item"><a href="../loot-and-rewards/index.html">Loot and Rewards</a></li><li class="nav-item"><a href="../event-commands/index.html">Event Commands</a></li></ul></div><div class="nav-group"><div class="nav-group-title">Item ID Reference</div><ul class="nav-list"><li class="nav-item"><a href="../item-ids/potions-and-arrows/index.html">Potions and Arrows</a></li><li class="nav-item"><a href="../item-ids/enchanted-books/index.html">Enchanted Books</a></li></ul></div><div class="nav-group"><div class="nav-group-title">Help</div><ul class="nav-list"><li class="nav-item"><a href="../help/index.html">Help Center</a></li><li class="nav-item"><a href="../ram-analysis/index.html">RAM Analysis</a></li><li class="nav-item"><a href="../troubleshooting/index.html">Troubleshooting</a></li></ul></div>
+    </aside>
+
+    <main class="doc-main">
+      <div class="breadcrumb">
+        <span class="edition-tag">Free Edition</span>
+        <span class="sep">/</span>
+        <span>Systems</span>
+        <span class="sep">/</span>
+        <span>Spawners and Mobs</span>
+      </div>
+      <article class="doc-article">
+        <h1 id="spawners-and-mobs">Spawners and Mobs</h1>
+<p>Spawner files control regular dungeon mob waves. Boss-objective dungeons use the same mob pool format inside <code>boss.yml</code>.</p>
+<p>Spawner files live in:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code>dungeons/&lt;id&gt;/spawners/&lt;spawner_id&gt;.yml</code></pre></div>
+<p>Create a spawner while editing a dungeon:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-cmd">/dungeon</span><span class="tok-sub"> edit</span> <span class="tok-arg">&lt;dungeon_id&gt;</span>
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> addspawner</span> <span class="tok-arg">&lt;spawner_id&gt;</span>
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> save</span></code></pre></div>
+<p>The command creates the spawner file at the admin's current location in the template world.</p>
+<h2 id="basic-spawner"><a class="heading-anchor" href="#basic-spawner" aria-label="Link to section">Basic Spawner</a></h2>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-key">location</span><span class="tok-punct">:</span>
+  <span class="tok-key">world</span><span class="tok-punct">:</span> dragon_template
+  <span class="tok-key">x</span><span class="tok-punct">:</span> <span class="tok-num">100.5</span>
+  <span class="tok-key">y</span><span class="tok-punct">:</span> <span class="tok-num">64.0</span>
+  <span class="tok-key">z</span><span class="tok-punct">:</span> <span class="tok-num">200.5</span>
+
+<span class="tok-key">trigger</span><span class="tok-punct">:</span> ON_PLAYER_NEAR
+<span class="tok-key">trigger-distance</span><span class="tok-punct">:</span> <span class="tok-num">20</span>
+<span class="tok-key">trigger-time</span><span class="tok-punct">:</span> <span class="tok-num">5</span>
+<span class="tok-key">lifetime-behavior</span><span class="tok-punct">:</span> PERSIST
+<span class="tok-key">lifetime-seconds</span><span class="tok-punct">:</span> <span class="tok-num">0</span>
+
+<span class="tok-key">mob-pools</span><span class="tok-punct">:</span>
+  - <span class="tok-key">type</span><span class="tok-punct">:</span> VANILLA
+    <span class="tok-key">mob-id</span><span class="tok-punct">:</span> ZOMBIE
+    <span class="tok-key">count</span><span class="tok-punct">:</span> <span class="tok-num">5</span>
+    <span class="tok-key">chance</span><span class="tok-punct">:</span> <span class="tok-num">100.0</span>
+  - <span class="tok-key">type</span><span class="tok-punct">:</span> MYTHIC
+    <span class="tok-key">mob-id</span><span class="tok-punct">:</span> SkeletonKing
+    <span class="tok-key">count</span><span class="tok-punct">:</span> <span class="tok-num">1</span>
+    <span class="tok-key">chance</span><span class="tok-punct">:</span> <span class="tok-num">35.0</span></code></pre></div>
+<h2 id="trigger-modes"><a class="heading-anchor" href="#trigger-modes" aria-label="Link to section">Trigger Modes</a></h2>
+<div class="table-wrap"><table><thead><tr><th>Trigger</th><th>Behavior</th></tr></thead><tbody><tr><td><code>ON_START</code></td><td>Spawns when the instance starts. This is usually not recommended for regular spawners because every configured mob can spawn immediately at dungeon startup.</td></tr><tr><td><code>ON_PLAYER_NEAR</code></td><td>Spawns when a player enters <code>trigger-distance</code>.</td></tr><tr><td><code>ON_DELAY</code></td><td>Spawns after <code>trigger-time</code>.</td></tr><tr><td><code>ON_PLAYER_NEAR_ON_DELAY</code></td><td>Starts <code>trigger-time</code> after a player enters <code>trigger-distance</code>.</td></tr></tbody></table></div>
+<p>Spawners default to <code>ON_PLAYER_NEAR</code> with <code>trigger-distance: 20</code>. The selected trigger determines whether <code>trigger-distance</code>, <code>trigger-time</code>, or both apply.</p>
+<h2 id="mob-lifetime"><a class="heading-anchor" href="#mob-lifetime" aria-label="Link to section">Mob Lifetime</a></h2>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-key">lifetime-behavior</span><span class="tok-punct">:</span> PERSIST
+<span class="tok-key">lifetime-seconds</span><span class="tok-punct">:</span> <span class="tok-num">0</span></code></pre></div>
+<p><code>PERSIST</code> and <code>PERSIST_UNTIL_DUNGEON_END</code> prevent natural distance despawning during the instance. This also applies to <code>ON_START</code> mobs spawned far from players. Entities are saved across chunk unloading and reloading. Both modes still remove mobs when the instance is cleaned up or its world is deleted; neither keeps an instance running after it ends.</p>
+<p><code>DESPAWN_AFTER_TIME</code> removes the mob after a positive <code>lifetime-seconds</code> duration. Its deadline is retained through chunk unloading and mob transformations. Keep <code>lifetime-seconds</code> positive when using this mode. These settings cover Vanilla and MythicMobs spawned by the dungeon. Another plugin that explicitly removes an entity can still remove it.</p>
+<h2 id="mob-pools"><a class="heading-anchor" href="#mob-pools" aria-label="Link to section">Mob Pools</a></h2>
+<p>Mob pools can mix vanilla and MythicMobs entries in the same spawner:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-key">mob-pools</span><span class="tok-punct">:</span>
+  - <span class="tok-key">type</span><span class="tok-punct">:</span> VANILLA
+    <span class="tok-key">mob-id</span><span class="tok-punct">:</span> SKELETON
+    <span class="tok-key">count</span><span class="tok-punct">:</span> <span class="tok-num">3</span>
+    <span class="tok-key">chance</span><span class="tok-punct">:</span> <span class="tok-num">100.0</span>
+  - <span class="tok-key">type</span><span class="tok-punct">:</span> MYTHIC
+    <span class="tok-key">mob-id</span><span class="tok-punct">:</span> DungeonKnight
+    <span class="tok-key">count</span><span class="tok-punct">:</span> <span class="tok-num">1</span>
+    <span class="tok-key">chance</span><span class="tok-punct">:</span> <span class="tok-num">25.0</span></code></pre></div>
+<div class="table-wrap"><table><thead><tr><th>Field</th><th>Description</th></tr></thead><tbody><tr><td><code>type</code></td><td><code>VANILLA</code> or <code>MYTHIC</code>.</td></tr><tr><td><code>mob-id</code></td><td>Bukkit entity type for vanilla mobs, MythicMobs mob ID for Mythic mobs.</td></tr><tr><td><code>count</code></td><td>How many mobs this pool spawns when selected.</td></tr><tr><td><code>chance</code></td><td>Percent chance from <code>0.0</code> to <code>100.0</code>.</td></tr></tbody></table></div>
+<p>Use <code>/dungeon mythicmob [mobId]</code> to list or check MythicMobs IDs when MythicMobs is installed.</p>
+<h2 id="boss-spawners"><a class="heading-anchor" href="#boss-spawners" aria-label="Link to section">Boss Spawners</a></h2>
+<p>Boss dungeons use <code>/dungeon setboss</code> instead of <code>/dungeon addspawner</code>.</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-cmd">/dungeon</span><span class="tok-sub"> edit</span> dragon_lair
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> setboss</span>
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> save</span></code></pre></div>
+<p>This creates or updates the boss spawner data for the boss objective. Boss mob pools use the same <code>VANILLA</code> and <code>MYTHIC</code> entry format as regular spawners.</p>
+<h2 id="validation"><a class="heading-anchor" href="#validation" aria-label="Link to section">Validation</a></h2>
+<p>Run validation after changing spawner files:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-cmd">/dungeon</span><span class="tok-sub"> validate</span> <span class="tok-arg">&lt;dungeon_id&gt;</span>
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> validate</span> all</code></pre></div>
+<p>Validation checks spawner locations, trigger settings, mob pool data, and unavailable MythicMobs IDs where possible. Console output may contain more detail than chat.</p>
+<h2 id="troubleshooting"><a class="heading-anchor" href="#troubleshooting" aria-label="Link to section">Troubleshooting</a></h2>
+<p>If mobs do not spawn:</p>
+<ul><li>Run <code>/dungeon validate &lt;dungeon_id&gt;</code>.</li><li>Check that the spawner location is inside the template world.</li><li>Check <code>trigger</code>, <code>trigger-distance</code>, and <code>trigger-time</code>.</li><li>Verify MythicMobs IDs if the pool uses <code>type: MYTHIC</code>.</li><li>Make sure the template world is loaded.</li></ul>
+      </article>
+      <nav class="page-nav" aria-label="Page navigation">
+        <a class="page-nav-card prev" href="../complete-reference/index.html"><span class="page-nav-label">Previous</span><span class="page-nav-title">&larr; Complete Reference</span></a>
+        <a class="page-nav-card next" href="../stages/index.html"><span class="page-nav-label">Next</span><span class="page-nav-title">Stages and Gates &rarr;</span></a>
+      </nav>
+    </main>
+
+    <aside class="sidebar-right" aria-label="Table of contents">
+      <div class="toc-title">On this page</div><ul class="toc-list"><li class="toc-item"><a href="#basic-spawner">Basic Spawner</a></li><li class="toc-item"><a href="#trigger-modes">Trigger Modes</a></li><li class="toc-item"><a href="#mob-lifetime">Mob Lifetime</a></li><li class="toc-item"><a href="#mob-pools">Mob Pools</a></li><li class="toc-item"><a href="#boss-spawners">Boss Spawners</a></li><li class="toc-item"><a href="#validation">Validation</a></li><li class="toc-item"><a href="#troubleshooting">Troubleshooting</a></li></ul>
+    </aside>
+  </div>
+
+  <div class="search-backdrop" id="search-backdrop" role="dialog" aria-modal="true" aria-label="Search documentation">
+    <div class="search-modal">
+      <div class="search-input-wrap">
+        <span class="search-edition-pill">FREE</span>
+        <input type="search" class="search-input" id="search-input" placeholder="Search Free documentation..." autocomplete="off">
+        <span class="search-kbd">ESC</span>
+      </div>
+      <div class="search-results" id="search-results"></div>
+    </div>
+  </div>
+
+  <script src="../assets/search-index.js?v=3"></script>
+  <script src="../assets/app.js?v=3"></script>
+</body>
+</html>

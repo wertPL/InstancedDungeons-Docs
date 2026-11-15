@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Potions and Arrows | InstancedDungeons (PRO)</title>
+  <link rel="icon" href="../../../assets/header-logo.png">
+  <link rel="stylesheet" href="../../../assets/style.css?v=3">
+</head>
+<body data-edition="pro" data-root="../../../">
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-left">
+        <button type="button" class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation">&#9776;</button>
+        <a class="brand" href="../../index.html">
+          <img src="../../../assets/header-logo.png" alt="InstancedDungeons">
+          <span>InstancedDungeons</span>
+        </a>
+        <nav class="edition-switch" data-active="pro" aria-label="Documentation edition">
+          <span class="edition-icon" aria-hidden="true">&#9876;</span>
+          <span class="edition-track">
+            <span class="edition-thumb" aria-hidden="true"></span>
+            <a class="edition-link" data-edition-target="free" href="../../../item-ids/potions-and-arrows/index.html">Free</a>
+            <a class="edition-link is-active" data-edition-target="pro" href="index.html">Pro</a>
+          </span>
+        </nav>
+      </div>
+
+      <nav class="top-nav" aria-label="Main sections">
+        <span class="top-nav-thumb" aria-hidden="true"></span>
+        <a class="top-nav-link" href="../../index.html">Start</a><a class="top-nav-link" href="../../configuration/index.html">Configuration</a><a class="top-nav-link" href="../../spawners-and-mobs/index.html">Systems</a><a class="top-nav-link is-active" href="index.html">Item ID Reference</a><a class="top-nav-link" href="../../help/index.html">Help</a>
+      </nav>
+
+      <div class="header-right">
+        <button type="button" class="search-trigger" id="search-open" aria-label="Search documentation">
+          <span>Search docs...</span>
+          <span class="search-kbd">Ctrl K</span>
+        </button>
+        <button type="button" class="icon-btn" id="theme-toggle" title="Toggle dark/light theme" aria-label="Toggle theme">&#9728;</button>
+        <div class="ext-links">
+          <a class="ext-pill" href="https://builtbybit.com/resources/instanceddungeons-pro.112271/" target="_blank" rel="noopener">BuiltByBit</a><a class="ext-pill" href="https://discord.com/invite/sD4HvQh8P4" target="_blank" rel="noopener">Discord</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout-shell">
+    <aside class="sidebar-left" id="sidebar-left" aria-label="Sidebar navigation">
+      <div class="nav-group"><div class="nav-group-title">Start</div><ul class="nav-list"><li class="nav-item"><a href="../../index.html">Overview</a></li><li class="nav-item"><a href="../../getting-started/index.html">Getting Started</a></li><li class="nav-item"><a href="../../updating/index.html">Updating</a></li><li class="nav-item"><a href="../../examples/index.html">Examples</a></li><li class="nav-item"><a href="../../commands/index.html">Commands</a></li><li class="nav-item"><a href="../../permissions/index.html">Permissions</a></li></ul></div><div class="nav-group"><div class="nav-group-title">Configuration</div><ul class="nav-list"><li class="nav-item"><a href="../../configuration/index.html">Dungeon Config</a></li><li class="nav-item"><a href="../../objectives/index.html">Objectives</a></li><li class="nav-item"><a href="../../towers/index.html">Towers</a></li><li class="nav-item"><a href="../../complete-reference/index.html">Complete Reference</a></li></ul></div><div class="nav-group"><div class="nav-group-title">Systems</div><ul class="nav-list"><li class="nav-item"><a href="../../spawners-and-mobs/index.html">Spawners and Mobs</a></li><li class="nav-item"><a href="../../stages/index.html">Stages and Gates</a></li><li class="nav-item"><a href="../../checkpoints/index.html">Checkpoints</a></li><li class="nav-item"><a href="../../loot-and-rewards/index.html">Loot and Rewards</a></li><li class="nav-item"><a href="../../sounds/index.html">Sounds</a></li><li class="nav-item"><a href="../../event-commands/index.html">Event Commands</a></li></ul></div><div class="nav-group"><div class="nav-group-title">Item ID Reference</div><ul class="nav-list"><li class="nav-item"><a class="is-active" href="index.html">Potions and Arrows</a></li><li class="nav-item"><a href="../enchanted-books/index.html">Enchanted Books</a></li><li class="nav-item"><a href="../enchant-ids/index.html">Enchant IDs</a></li></ul></div><div class="nav-group"><div class="nav-group-title">Help</div><ul class="nav-list"><li class="nav-item"><a href="../../help/index.html">Help Center</a></li><li class="nav-item"><a href="../../ram-analysis/index.html">RAM Analysis</a></li><li class="nav-item"><a href="../../troubleshooting/index.html">Troubleshooting</a></li></ul></div>
+    </aside>
+
+    <main class="doc-main">
+      <div class="breadcrumb">
+        <span class="edition-tag">PRO Edition</span>
+        <span class="sep">/</span>
+        <span>Item ID Reference</span>
+        <span class="sep">/</span>
+        <span>Potions and Arrows</span>
+      </div>
+      <article class="doc-article">
+        <h1 id="potions-and-tipped-arrows">Potions and Tipped Arrows</h1>
+<p>Special potion IDs work in loot chests, entry costs, stage item payment missions, boss rewards, trigger rewards, and other supported vanilla item fields.</p>
+<p>Use this format:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code>&lt;ITEM_TYPE&gt;_&lt;POTION_EFFECT&gt;</code></pre></div>
+<p>Available item types:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code>POTION
+SPLASH_POTION
+LINGERING_POTION
+TIPPED_ARROW</code></pre></div>
+<p>Example loot entries:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code>- <span class="tok-key">type</span><span class="tok-punct">:</span> VANILLA
+  <span class="tok-key">item</span><span class="tok-punct">:</span> POTION_LONG_POISON
+  <span class="tok-key">min-amount</span><span class="tok-punct">:</span> <span class="tok-num">1</span>
+  <span class="tok-key">max-amount</span><span class="tok-punct">:</span> <span class="tok-num">3</span>
+  <span class="tok-key">chance</span><span class="tok-punct">:</span> <span class="tok-num">100.0</span>
+
+- <span class="tok-key">type</span><span class="tok-punct">:</span> VANILLA
+  <span class="tok-key">item</span><span class="tok-punct">:</span> SPLASH_POTION_STRONG_HEALING
+  <span class="tok-key">min-amount</span><span class="tok-punct">:</span> <span class="tok-num">1</span>
+  <span class="tok-key">max-amount</span><span class="tok-punct">:</span> <span class="tok-num">1</span>
+  <span class="tok-key">chance</span><span class="tok-punct">:</span> <span class="tok-num">100.0</span>
+
+- <span class="tok-key">type</span><span class="tok-punct">:</span> VANILLA
+  <span class="tok-key">item</span><span class="tok-punct">:</span> TIPPED_ARROW_SLOW_FALLING
+  <span class="tok-key">min-amount</span><span class="tok-punct">:</span> <span class="tok-num">4</span>
+  <span class="tok-key">max-amount</span><span class="tok-punct">:</span> <span class="tok-num">8</span>
+  <span class="tok-key">chance</span><span class="tok-punct">:</span> <span class="tok-num">50.0</span></code></pre></div>
+<p><code>LONG_</code> variants use Minecraft's extended-duration potion type. <code>STRONG_</code> variants use Minecraft's upgraded stronger potion type where vanilla provides one.</p>
+<p>Available effect names:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code>NIGHT_VISION
+LONG_NIGHT_VISION
+INVISIBILITY
+LONG_INVISIBILITY
+LEAPING
+LONG_LEAPING
+STRONG_LEAPING
+FIRE_RESISTANCE
+LONG_FIRE_RESISTANCE
+SWIFTNESS
+LONG_SWIFTNESS
+STRONG_SWIFTNESS
+SLOWNESS
+LONG_SLOWNESS
+STRONG_SLOWNESS
+WATER_BREATHING
+LONG_WATER_BREATHING
+HEALING
+STRONG_HEALING
+HARMING
+STRONG_HARMING
+POISON
+LONG_POISON
+STRONG_POISON
+REGENERATION
+LONG_REGENERATION
+STRONG_REGENERATION
+STRENGTH
+LONG_STRENGTH
+STRONG_STRENGTH
+WEAKNESS
+LONG_WEAKNESS
+LUCK
+SLOW_FALLING
+LONG_SLOW_FALLING
+TURTLE_MASTER
+LONG_TURTLE_MASTER
+STRONG_TURTLE_MASTER
+INFESTED
+OOZING
+WEAVING
+WIND_CHARGED</code></pre></div>
+<p>Special potion and arrow drops follow their vanilla stack limits. Potions, splash potions, and lingering potions are split into one-item stacks, while tipped arrows can stack normally up to their item stack limit.</p>
+      </article>
+      <nav class="page-nav" aria-label="Page navigation">
+        <a class="page-nav-card prev" href="../../event-commands/index.html"><span class="page-nav-label">Previous</span><span class="page-nav-title">&larr; Event Commands</span></a>
+        <a class="page-nav-card next" href="../enchanted-books/index.html"><span class="page-nav-label">Next</span><span class="page-nav-title">Enchanted Books &rarr;</span></a>
+      </nav>
+    </main>
+
+    <aside class="sidebar-right" aria-label="Table of contents">
+      
+    </aside>
+  </div>
+
+  <div class="search-backdrop" id="search-backdrop" role="dialog" aria-modal="true" aria-label="Search documentation">
+    <div class="search-modal">
+      <div class="search-input-wrap">
+        <span class="search-edition-pill">PRO</span>
+        <input type="search" class="search-input" id="search-input" placeholder="Search Pro documentation..." autocomplete="off">
+        <span class="search-kbd">ESC</span>
+      </div>
+      <div class="search-results" id="search-results"></div>
+    </div>
+  </div>
+
+  <script src="../../../assets/search-index.js?v=3"></script>
+  <script src="../../../assets/app.js?v=3"></script>
+</body>
+</html>

@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Complete Reference | InstancedDungeons (PRO)</title>
+  <link rel="icon" href="../../assets/header-logo.png">
+  <link rel="stylesheet" href="../../assets/style.css?v=3">
+</head>
+<body data-edition="pro" data-root="../../">
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-left">
+        <button type="button" class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation">&#9776;</button>
+        <a class="brand" href="../index.html">
+          <img src="../../assets/header-logo.png" alt="InstancedDungeons">
+          <span>InstancedDungeons</span>
+        </a>
+        <nav class="edition-switch" data-active="pro" aria-label="Documentation edition">
+          <span class="edition-icon" aria-hidden="true">&#9876;</span>
+          <span class="edition-track">
+            <span class="edition-thumb" aria-hidden="true"></span>
+            <a class="edition-link" data-edition-target="free" href="../../complete-reference/index.html">Free</a>
+            <a class="edition-link is-active" data-edition-target="pro" href="index.html">Pro</a>
+          </span>
+        </nav>
+      </div>
+
+      <nav class="top-nav" aria-label="Main sections">
+        <span class="top-nav-thumb" aria-hidden="true"></span>
+        <a class="top-nav-link" href="../index.html">Start</a><a class="top-nav-link is-active" href="../configuration/index.html">Configuration</a><a class="top-nav-link" href="../spawners-and-mobs/index.html">Systems</a><a class="top-nav-link" href="../item-ids/potions-and-arrows/index.html">Item ID Reference</a><a class="top-nav-link" href="../help/index.html">Help</a>
+      </nav>
+
+      <div class="header-right">
+        <button type="button" class="search-trigger" id="search-open" aria-label="Search documentation">
+          <span>Search docs...</span>
+          <span class="search-kbd">Ctrl K</span>
+        </button>
+        <button type="button" class="icon-btn" id="theme-toggle" title="Toggle dark/light theme" aria-label="Toggle theme">&#9728;</button>
+        <div class="ext-links">
+          <a class="ext-pill" href="https://builtbybit.com/resources/instanceddungeons-pro.112271/" target="_blank" rel="noopener">BuiltByBit</a><a class="ext-pill" href="https://discord.com/invite/sD4HvQh8P4" target="_blank" rel="noopener">Discord</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout-shell">
+    <aside class="sidebar-left" id="sidebar-left" aria-label="Sidebar navigation">
+      <div class="nav-group"><div class="nav-group-title">Start</div><ul class="nav-list"><li class="nav-item"><a href="../index.html">Overview</a></li><li class="nav-item"><a href="../getting-started/index.html">Getting Started</a></li><li class="nav-item"><a href="../updating/index.html">Updating</a></li><li class="nav-item"><a href="../examples/index.html">Examples</a></li><li class="nav-item"><a href="../commands/index.html">Commands</a></li><li class="nav-item"><a href="../permissions/index.html">Permissions</a></li></ul></div><div class="nav-group"><div class="nav-group-title">Configuration</div><ul class="nav-list"><li class="nav-item"><a href="../configuration/index.html">Dungeon Config</a></li><li class="nav-item"><a href="../objectives/index.html">Objectives</a></li><li class="nav-item"><a href="../towers/index.html">Towers</a></li><li class="nav-item"><a class="is-active" href="index.html">Complete Reference</a></li></ul></div><div class="nav-group"><div class="nav-group-title">Systems</div><ul class="nav-list"><li class="nav-item"><a href="../spawners-and-mobs/index.html">Spawners and Mobs</a></li><li class="nav-item"><a href="../stages/index.html">Stages and Gates</a></li><li class="nav-item"><a href="../checkpoints/index.html">Checkpoints</a></li><li class="nav-item"><a href="../loot-and-rewards/index.html">Loot and Rewards</a></li><li class="nav-item"><a href="../sounds/index.html">Sounds</a></li><li class="nav-item"><a href="../event-commands/index.html">Event Commands</a></li></ul></div><div class="nav-group"><div class="nav-group-title">Item ID Reference</div><ul class="nav-list"><li class="nav-item"><a href="../item-ids/potions-and-arrows/index.html">Potions and Arrows</a></li><li class="nav-item"><a href="../item-ids/enchanted-books/index.html">Enchanted Books</a></li><li class="nav-item"><a href="../item-ids/enchant-ids/index.html">Enchant IDs</a></li></ul></div><div class="nav-group"><div class="nav-group-title">Help</div><ul class="nav-list"><li class="nav-item"><a href="../help/index.html">Help Center</a></li><li class="nav-item"><a href="../ram-analysis/index.html">RAM Analysis</a></li><li class="nav-item"><a href="../troubleshooting/index.html">Troubleshooting</a></li></ul></div>
+    </aside>
+
+    <main class="doc-main">
+      <div class="breadcrumb">
+        <span class="edition-tag">PRO Edition</span>
+        <span class="sep">/</span>
+        <span>Configuration</span>
+        <span class="sep">/</span>
+        <span>Complete Reference</span>
+      </div>
+      <article class="doc-article">
+        <h1 id="complete-reference">Complete Reference</h1>
+<p>InstancedDungeons is a Paper plugin for creating isolated dungeon runs from template worlds. Each party gets a copied instance world, independent mobs, loot, objectives, stages, timers, protection rules, and cleanup after the run ends.</p>
+<h2 id="table-of-contents"><a class="heading-anchor" href="#table-of-contents" aria-label="Link to section">Table of Contents</a></h2>
+<ul><li>Requirements</li><li>Installation</li><li>Core Concepts</li><li>Quick Start</li><li>Commands</li><li>Permissions</li><li>Dungeon Config</li><li>Boss Objectives</li><li>Trigger Objectives</li><li>Towers</li><li>Spawners</li><li>Loot Chests</li><li>Boss Rewards</li><li>Entry Costs</li><li>Parties and Instances</li><li>Lives and Death Behavior</li><li>Stages and Gates</li><li>Stage Missions</li><li>Event Commands</li><li>Messages and Placeholders</li><li>Validation</li><li>Feature Limits</li><li>Compatibility Notes</li><li>Troubleshooting</li></ul>
+<h2 id="requirements"><a class="heading-anchor" href="#requirements" aria-label="Link to section">Requirements</a></h2>
+<div class="table-wrap"><table><thead><tr><th>Minecraft / Paper target</th><th>Java</th><th>World Management</th></tr></thead><tbody><tr><td>Paper 1.21.x</td><td>Java 21+</td><td>Built-in (/dg world and Admin GUI)</td></tr><tr><td>Paper 26.1.x / 26.2.x / 26.3.x</td><td>Java 25+</td><td>Built-in (/dg world and Admin GUI)</td></tr></tbody></table></div>
+<p>One universal plugin JAR supports both Paper 1.21.x and Paper 26.1.x / 26.2.x / 26.3.x.</p>
+<p>Optional integrations:</p>
+<ul><li>WorldGuard for copying template world regions and flags into dungeon instances.</li><li>MythicMobs 5.0+ for custom mobs and bosses.</li><li>MythicMobs item support through <code>MYTHIC_ITEM</code> entries.</li><li>ItemsAdder 3.0+ for custom items.</li><li>Oraxen custom item support.</li><li>Nexo custom item support.</li><li>Vault plus an economy plugin for money entry costs and stage money missions.</li></ul>
+<h2 id="installation"><a class="heading-anchor" href="#installation" aria-label="Link to section">Installation</a></h2>
+<ol><li>Stop the server.</li><li>Install the required Multiverse-Core version.</li><li>Place <code>InstancedDungeons.jar</code> in <code>plugins/</code>.</li><li>Start the server once so configs are generated.</li><li>Configure dungeons in <code>plugins/InstancedDungeons/dungeons/</code>.</li><li>Use <code>/dungeon reload</code> after YAML edits.</li></ol>
+<h2 id="core-concepts"><a class="heading-anchor" href="#core-concepts" aria-label="Link to section">Core Concepts</a></h2>
+<p>Template world: the original world that admins build in. It is copied for every run.</p>
+<p>Instance world: the temporary copied world used by one active party.</p>
+<p>Dungeon ID: folder name under <code>dungeons/&lt;id&gt;</code>. This is used by commands, permissions, towers, and event commands.</p>
+<p>Party: players open or join a party before entering. Parties stay tracked while the run is active and close only after completion, failure, or abandonment cleanup.</p>
+<p>Objective: the condition that completes a dungeon. Supported objective types are <code>BOSS</code> and <code>TRIGGER</code>.</p>
+<p>Stage: an optional progression gate inside a dungeon. A stage can require missions before its gate opens.</p>
+<p>Tower: a chain of dungeons, from <code>FIRST -&gt; LAST</code> to longer <code>FIRST -&gt; MIDDLE -&gt; ... -&gt; LAST</code> routes.</p>
+<h2 id="quick-start"><a class="heading-anchor" href="#quick-start" aria-label="Link to section">Quick Start</a></h2>
+<p>Create a boss dungeon:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-cmd">/dg</span><span class="tok-sub"> world</span> create dragon_template void
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> create</span> dragon_lair dragon_template boss
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> edit</span> dragon_lair
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> setspawn</span>
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> setexit</span>
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> setboss</span>
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> save</span>
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> reload</span></code></pre></div>
+<p>Create a trigger dungeon:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-cmd">/dungeon</span><span class="tok-sub"> create</span> puzzle_room puzzle_template trigger
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> edit</span> puzzle_room
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> setspawn</span>
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> setexit</span>
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> settrigger</span> STONE_BUTTON
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> save</span>
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> reload</span></code></pre></div>
+<p>Start as a player:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-cmd">/dungeon</span><span class="tok-sub"> open</span> dragon_lair
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> join</span> <span class="tok-arg">&lt;code&gt;</span>
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> start</span></code></pre></div>
+<h2 id="commands"><a class="heading-anchor" href="#commands" aria-label="Link to section">Commands</a></h2>
+<p>Player commands:</p>
+<div class="table-wrap"><table><thead><tr><th>Command</th><th>Description</th></tr></thead><tbody><tr><td><code>/dungeon help</code></td><td>Shows player and admin help.</td></tr><tr><td><code>/dungeon list</code></td><td>Lists available dungeons. Tower middle/last stage dungeons are hidden.</td></tr><tr><td><code>/dungeon open &lt;id&gt;</code></td><td>Creates a party for a dungeon. Only standalone dungeons and tower <code>FIRST</code> stages are suggested/openable directly.</td></tr><tr><td><code>/dungeon join &lt;code&gt;</code></td><td>Joins an open party.</td></tr><tr><td><code>/dungeon leave</code></td><td>Leaves an open party.</td></tr><tr><td><code>/dungeon start</code></td><td>Starts the party dungeon as the leader.</td></tr><tr><td><code>/dungeon exit</code></td><td>Leaves the current dungeon instance.</td></tr><tr><td><code>/dungeon spectate &lt;leader&gt;</code></td><td>Spectates the active dungeon led by that party leader.</td></tr><tr><td><code>/dungeon spectator exit</code></td><td>Leaves external spectator mode and restores inventory/gamemode.</td></tr></tbody></table></div>
+<p>Admin commands:</p>
+<div class="table-wrap"><table><thead><tr><th>Command</th><th>Description</th></tr></thead><tbody><tr><td><code>/dungeon create &lt;id&gt; &lt;template-world&gt; &lt;boss|trigger&gt;</code></td><td>Creates a dungeon using the current config format.</td></tr><tr><td><code>/dungeon edit &lt;id&gt;</code></td><td>Enters editor mode. Template teleport is controlled by <code>editor.teleport-to-template-on-edit</code> in <code>config.yml</code>.</td></tr><tr><td><code>/dungeon save</code></td><td>Exits editor mode.</td></tr><tr><td><code>/dungeon setspawn</code></td><td>Sets the dungeon spawn in editor mode.</td></tr><tr><td><code>/dungeon setexit</code></td><td>Sets the exit location.</td></tr><tr><td><code>/dungeon setboss</code></td><td>Sets the boss spawn for boss-objective dungeons.</td></tr><tr><td><code>/dungeon boss reward edit</code></td><td>Opens the boss reward editor GUI.</td></tr><tr><td><code>/dungeon settrigger &lt;button|pressure_plate&gt;</code></td><td>Gives the trigger block item for trigger-objective dungeons.</td></tr><tr><td><code>/dungeon trigger reward edit</code></td><td>Opens the trigger reward editor GUI.</td></tr><tr><td><code>/dungeon addspawner &lt;id&gt;</code></td><td>Creates a spawner config at the admin location.</td></tr><tr><td><code>/dungeon addlootchest &lt;id&gt;</code></td><td>Creates a loot chest config.</td></tr><tr><td><code>/dungeon lootchest give &lt;id&gt;</code></td><td>Gives a placeable loot chest item.</td></tr><tr><td><code>/dungeon lootchest loot &lt;id&gt; add</code></td><td>Adds the item in your main hand to the loot chest config. Works only in editor mode.</td></tr><tr><td><code>/dungeon addcost</code></td><td>Opens the entry cost editor.</td></tr><tr><td><code>/dungeon validate &lt;id&gt;</code></td><td>Validates one dungeon and prints a summary.</td></tr><tr><td><code>/dungeon validate all</code></td><td>Validates every dungeon.</td></tr><tr><td><code>/dungeon reload</code></td><td>Reloads configs and validation.</td></tr><tr><td><code>/dungeon instances</code></td><td>Shows active parties and instances.</td></tr><tr><td><code>/dg status</code></td><td>Shows supported integration plugins, detected versions, and economy hook status.</td></tr><tr><td><code>/dungeon gui</code></td><td>Opens the admin GUI.</td></tr><tr><td><code>/dungeon mythicmob [mobId]</code></td><td>Lists or checks MythicMobs mob IDs.</td></tr><tr><td><code>/dungeon mythicitem [itemId]</code></td><td>Lists or checks MythicMobs item IDs for <code>MYTHIC_ITEM</code> config entries.</td></tr><tr><td><code>/dungeon itemsadder [itemId]</code></td><td>Lists or checks ItemsAdder IDs.</td></tr><tr><td><code>/dungeon oraxen [itemId]</code></td><td>Lists or checks Oraxen IDs.</td></tr><tr><td><code>/dungeon nexo [itemId]</code></td><td>Lists or checks Nexo IDs.</td></tr><tr><td><code>/dungeon delete &lt;id&gt;</code></td><td>Deletes a dungeon after confirmation.</td></tr></tbody></table></div>
+<p>Stage commands:</p>
+<div class="table-wrap"><table><thead><tr><th>Command</th><th>Description</th></tr></thead><tbody><tr><td><code>/dungeon stage create &lt;stage_id&gt;</code></td><td>Creates a stage file.</td></tr><tr><td><code>/dungeon stage list</code></td><td>Lists stages in the current editor dungeon with order, gate block count, and mission count.</td></tr><tr><td><code>/dungeon stage &lt;stage_id&gt; order &lt;number&gt;</code></td><td>Moves a stage to another order. Multiple stages may share the same order and run in parallel.</td></tr><tr><td><code>/dungeon stage &lt;stage_id&gt; delete</code></td><td>Deletes a stage after confirmation, including its missions, hologram config, gate blocks, and active gate edit session.</td></tr><tr><td><code>/dungeon stage &lt;stage_id&gt; gate create</code></td><td>Starts gate block creation mode.</td></tr><tr><td><code>/dungeon stage &lt;stage_id&gt; gate edit</code></td><td>Edits existing gate blocks.</td></tr><tr><td><code>/dungeon stage &lt;stage_id&gt; gate delete</code></td><td>Deletes a gate after confirmation.</td></tr><tr><td><code>/dungeon stage &lt;stage_id&gt; gate stick</code></td><td>Gives a gate edit stick during gate create/edit mode. Left-click adds one existing block, right-click removes one selected gate block, and sneak-click affects connected same-material blocks.</td></tr><tr><td><code>/dungeon gate save</code></td><td>Saves the active gate edit session.</td></tr><tr><td><code>/dungeon stage &lt;stage_id&gt; gate hologram create</code></td><td>Adds a stage hologram at your location in the dungeon template world.</td></tr><tr><td><code>/dungeon stage &lt;stage_id&gt; gate hologram delete</code></td><td>Removes the nearest hologram for that stage within 3 blocks.</td></tr><tr><td><code>/dg stage &lt;stage_id&gt; mission region</code></td><td>Creates the mission and shows the corner-selection commands.</td></tr><tr><td><code>/dg stage &lt;stage_id&gt; mission region pos1</code></td><td>Saves your current template-world block as corner 1.</td></tr><tr><td><code>/dg stage &lt;stage_id&gt; mission region pos2</code></td><td>Saves your current template-world block as corner 2.</td></tr><tr><td><code>/dg stage &lt;stage_id&gt; mission region delete</code></td><td>Removes the region mission.</td></tr><tr><td><code>/dg skip &lt;stage_id&gt; mission &lt;all|mission&gt;</code></td><td>Completes selected missions in an unlocked, unfinished stage.</td></tr><tr><td><code>/dungeon stage &lt;stage_id&gt; mission lever</code></td><td>Gives a mission lever.</td></tr><tr><td><code>/dungeon stage &lt;stage_id&gt; mission button &lt;material&gt;</code></td><td>Gives a mission button.</td></tr><tr><td><code>/dungeon stage &lt;stage_id&gt; mission pressure_plate &lt;material&gt;</code></td><td>Gives a mission pressure plate.</td></tr></tbody></table></div>
+<p>Loot chest IDs, dungeon IDs, stage IDs, trigger materials, mission materials, and validation targets are completed where the command supports them. <code>/dungeon open</code> completion hides tower middle/last stage dungeon IDs because those stages are entered only through tower progression.</p>
+<h2 id="permissions"><a class="heading-anchor" href="#permissions" aria-label="Link to section">Permissions</a></h2>
+<div class="table-wrap"><table><thead><tr><th>Permission</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>instanceddungeons.admin</code></td><td>op</td><td>Admin/editor commands and admin-only warnings.</td></tr><tr><td><code>instanceddungeons.skip.mission</code></td><td>op</td><td>Allows skipping missions in the active stage without full admin access.</td></tr><tr><td><code>instanceddungeons.open</code></td><td>true</td><td>Allows <code>/dungeon open</code>.</td></tr><tr><td><code>instanceddungeons.join</code></td><td>true</td><td>Allows <code>/dungeon join</code>.</td></tr><tr><td><code>instanceddungeons.open.&lt;dungeon_id&gt;</code></td><td>true</td><td>Allows opening a specific dungeon.</td></tr><tr><td><code>instanceddungeons.join.&lt;dungeon_id&gt;</code></td><td>true</td><td>Allows joining a specific dungeon.</td></tr><tr><td><code>instanceddungeons.spectate</code></td><td>true</td><td>Allows spectator commands.</td></tr><tr><td><code>instanceddungeons.bypass.cost</code></td><td>op</td><td>Bypasses item and money entry costs.</td></tr><tr><td><code>instanceddungeons.bypass.limit</code></td><td>op</td><td>Bypasses normal active-instance start checks.</td></tr></tbody></table></div>
+<p>Both global and dungeon-specific open/join permissions must allow the action.</p>
+<h2 id="global-config"><a class="heading-anchor" href="#global-config" aria-label="Link to section">Global Config</a></h2>
+<p>Main file:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code>plugins/InstancedDungeons/config.yml</code></pre></div>
+<p>Useful global options:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-key">debug</span><span class="tok-punct">:</span> <span class="tok-bool">false</span>
+
+<span class="tok-key">editor</span><span class="tok-punct">:</span>
+  <span class="tok-key">teleport-to-template-on-edit</span><span class="tok-punct">:</span> <span class="tok-bool">false</span>
+
+<span class="tok-key">instances</span><span class="tok-punct">:</span>
+  <span class="tok-key">max-active-global</span><span class="tok-punct">:</span> <span class="tok-num">0</span>
+
+<span class="tok-key">template-worlds</span><span class="tok-punct">:</span>
+  <span class="tok-key">freeze-ticks</span><span class="tok-punct">:</span> <span class="tok-bool">true</span>
+  <span class="tok-key">freeze-time</span><span class="tok-punct">:</span> <span class="tok-bool">true</span>
+  <span class="tok-key">freeze-weather</span><span class="tok-punct">:</span> <span class="tok-bool">true</span>
+  <span class="tok-key">natural-mob-spawning</span><span class="tok-punct">:</span> <span class="tok-bool">false</span></code></pre></div>
+<p><code>debug</code> enables additional console logging, including gate block add/remove messages while an admin is building gates.</p>
+<p><code>editor.teleport-to-template-on-edit</code> controls <code>/dungeon edit &lt;id&gt;</code> teleport behavior. When <code>true</code>, the admin is teleported to the dungeon spawn if it is configured, otherwise to the template world's spawn. When <code>false</code>, editor mode starts without moving the admin.</p>
+<p><code>instances.max-active-global: 0</code> disables the global instance limit. Positive values set the maximum number of active instances.</p>
+<p>Tower transitions reserve the current global instance slot while the next tower stage is being prepared. This prevents another party from taking the slot during the short handoff between tower stages.</p>
+<p>Instance world cleanup:</p>
+<ul><li>Every dungeon run creates a temporary instance world copied from the template world.</li><li>Normal completion, failure, abandon, and shutdown paths unload and delete the temporary world.</li><li>The plugin marks the instance worlds it creates so cleanup can identify them.</li><li>Automatic cleanup checks for leftover instance worlds in the background.</li><li>Automatic cleanup deletes only worlds identified by an instance marker or an exact plugin world registration.</li><li>Unmarked legacy folders are not automatically deleted.</li><li>Worlds with players inside are skipped.</li></ul>
+<h2 id="dungeon-config"><a class="heading-anchor" href="#dungeon-config" aria-label="Link to section">Dungeon Config</a></h2>
+<p>Main file:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code>plugins/InstancedDungeons/dungeons/&lt;id&gt;/config.yml</code></pre></div>
+<p>Important top-level fields:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-key">v</span><span class="tok-punct">:</span> <span class="tok-num">2.0</span>
+<span class="tok-key">dungeon-type</span><span class="tok-punct">:</span> single
+<span class="tok-key">tower-stage-type</span><span class="tok-punct">:</span> first
+<span class="tok-key">next-dungeon</span><span class="tok-punct">:</span> <span class="tok-str">&quot;&quot;</span>
+<span class="tok-key">completion-objective</span><span class="tok-punct">:</span> BOSS
+<span class="tok-key">display-name</span><span class="tok-punct">:</span> <span class="tok-str">&quot;dragon_lair&quot;</span>
+<span class="tok-key">template-world</span><span class="tok-punct">:</span> <span class="tok-str">&quot;dragon_template&quot;</span>
+<span class="tok-key">max-players</span><span class="tok-punct">:</span> <span class="tok-num">5</span>
+<span class="tok-key">min-players</span><span class="tok-punct">:</span> <span class="tok-num">1</span>
+<span class="tok-key">time-limit</span><span class="tok-punct">:</span> <span class="tok-num">1800</span>
+<span class="tok-key">max-instances</span><span class="tok-punct">:</span> <span class="tok-num">3</span>
+<span class="tok-key">difficulty</span><span class="tok-punct">:</span> NORMAL</code></pre></div>
+<p><code>dungeon-type</code> can be <code>single</code> or <code>tower</code>.</p>
+<p><code>tower-stage-type</code> can be <code>first</code>, <code>middle</code>, or <code>last</code>. <code>MIDDLE</code> is an intermediate tower stage.</p>
+<p><code>completion-objective</code> can be <code>BOSS</code> or <code>TRIGGER</code>.</p>
+<p>Protection:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-key">allow-block-break</span><span class="tok-punct">:</span> <span class="tok-bool">false</span>
+<span class="tok-key">allow-block-place</span><span class="tok-punct">:</span> <span class="tok-bool">false</span>
+<span class="tok-key">allow-fluid-place</span><span class="tok-punct">:</span> <span class="tok-bool">false</span>
+<span class="tok-key">allow-fluid-take</span><span class="tok-punct">:</span> <span class="tok-bool">false</span>
+<span class="tok-key">allow-interactions</span><span class="tok-punct">:</span> <span class="tok-bool">true</span>
+<span class="tok-key">allow-party-pvp</span><span class="tok-punct">:</span> <span class="tok-bool">true</span>
+<span class="tok-key">allow-fly</span><span class="tok-punct">:</span> <span class="tok-bool">false</span>
+<span class="tok-key">fire-spread</span><span class="tok-punct">:</span> <span class="tok-bool">false</span>
+<span class="tok-key">tnt-mode</span><span class="tok-punct">:</span> VANILLA</code></pre></div>
+<p>Allowing block breaking, block placement, or fluid placement does not remove protection from dungeon-owned gameplay blocks. Gates, mission blocks, completion/checkpoint triggers, loot chests, and emergency-return plates cannot be broken or replaced, and fluid flow is cancelled before reaching them.</p>
+<p><code>allow-fly: true</code> leaves flight already granted by a game mode, permission, or another plugin untouched. It never grants flight by itself. <code>false</code> forces flight off for active Survival and Adventure dungeon players and restores their previous flight state when they leave the dungeon. Creative and Spectator modes are exempt. This setting is also available under <strong>Gameplay Rules</strong> in the admin GUI.</p>
+<p><code>tnt-mode</code> options:</p>
+<ul><li><code>VANILLA</code>: normal TNT behavior.</li><li><code>ONLY_DMG</code>: TNT deals damage but does not break blocks.</li><li><code>DISABLED</code>: TNT is blocked.</li></ul>
+<p><code>fire-spread: false</code> disables fire spreading in the template world and copied instances. Set it to <code>true</code> to allow spreading. Older 1.21.x uses <code>doFireTick</code>; from 1.21.11 the plugin uses <code>minecraft:fire_spread_radius_around_player</code>, with zero to disable spreading. The same toggle is available under <strong>Settings → World Rules</strong> in the admin GUI.</p>
+<p>Item restrictions:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-key">item-restrictions</span><span class="tok-punct">:</span>
+  <span class="tok-key">block-elytra</span><span class="tok-punct">:</span> <span class="tok-bool">false</span>
+  <span class="tok-key">block-ender-pearls</span><span class="tok-punct">:</span> <span class="tok-bool">false</span>
+  <span class="tok-key">block-chorus-fruit</span><span class="tok-punct">:</span> <span class="tok-bool">false</span>
+  <span class="tok-key">block-enchanted-golden-apples</span><span class="tok-punct">:</span> <span class="tok-bool">false</span>
+  <span class="tok-key">block-wind-charges</span><span class="tok-punct">:</span> <span class="tok-bool">false</span>
+  <span class="tok-key">block-firework-rockets</span><span class="tok-punct">:</span> <span class="tok-bool">false</span>
+  <span class="tok-key">block-mace</span><span class="tok-punct">:</span> <span class="tok-bool">false</span>
+  <span class="tok-key">block-trident</span><span class="tok-punct">:</span> <span class="tok-bool">false</span></code></pre></div>
+<p>All values default to <code>false</code>. Set a value to <code>true</code> to block that item or action while players are inside this dungeon's active instance. The same settings are available in the dungeon settings GUI under <strong>Item Restrictions</strong>.</p>
+<p>Existing dungeon configs do not need manual migration. Missing restriction values load as <code>false</code>, and changing a restriction in the GUI writes only this section without resetting unrelated dungeon settings.</p>
+<p>Timer:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-key">timer-bossbar</span><span class="tok-punct">:</span>
+  <span class="tok-key">enabled</span><span class="tok-punct">:</span> <span class="tok-bool">true</span>
+  <span class="tok-key">color</span><span class="tok-punct">:</span> GREEN
+  <span class="tok-key">style</span><span class="tok-punct">:</span> SOLID
+  <span class="tok-key">show-time-left</span><span class="tok-punct">:</span> <span class="tok-bool">true</span>
+
+<span class="tok-key">timer-alerts</span><span class="tok-punct">:</span>
+  <span class="tok-key">10-minutes</span><span class="tok-punct">:</span>
+    <span class="tok-key">enabled</span><span class="tok-punct">:</span> <span class="tok-bool">true</span>
+    <span class="tok-key">sound</span><span class="tok-punct">:</span> BLOCK_NOTE_BLOCK_PLING
+  <span class="tok-key">5-minutes</span><span class="tok-punct">:</span>
+    <span class="tok-key">enabled</span><span class="tok-punct">:</span> <span class="tok-bool">true</span>
+    <span class="tok-key">sound</span><span class="tok-punct">:</span> BLOCK_NOTE_BLOCK_PLING
+  <span class="tok-key">1-minute</span><span class="tok-punct">:</span>
+    <span class="tok-key">enabled</span><span class="tok-punct">:</span> <span class="tok-bool">true</span>
+    <span class="tok-key">sound</span><span class="tok-punct">:</span> ENTITY_EXPERIENCE_ORB_PICKUP</code></pre></div>
+<p>Validation warnings:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-key">validation-warnings</span><span class="tok-punct">:</span>
+  <span class="tok-key">chat</span><span class="tok-punct">:</span> <span class="tok-bool">true</span></code></pre></div>
+<p>Console validation warnings are always logged. Chat validation warnings are sent only to admins and can be disabled per dungeon.</p>
+<h2 id="boss-objectives"><a class="heading-anchor" href="#boss-objectives" aria-label="Link to section">Boss Objectives</a></h2>
+<p>Boss dungeons are created with:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-cmd">/dungeon</span><span class="tok-sub"> create</span> <span class="tok-arg">&lt;id&gt;</span> <span class="tok-arg">&lt;template-world&gt;</span> boss</code></pre></div>
+<p>Use <code>/dungeon setboss</code> to create or update <code>boss.yml</code> at your location.</p>
+<p>Boss completion behavior:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-key">boss</span><span class="tok-punct">:</span>
+  <span class="tok-key">must-die-to-complete</span><span class="tok-punct">:</span> <span class="tok-bool">true</span>
+  <span class="tok-key">countdown-after-death</span><span class="tok-punct">:</span> <span class="tok-num">30</span></code></pre></div>
+<p><code>must-die-to-complete</code> defaults to <code>true</code> in new configs.</p>
+<p>Boss reward editing:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-cmd">/dungeon</span><span class="tok-sub"> boss</span> reward edit</code></pre></div>
+<p>The GUI stores every slot as an independent reward entry. For example, 4 diamonds in one slot and 2 diamonds in another slot become two separate rewards and can have different chances in config.</p>
+<h3 id="boss-stage-requirement"><a class="heading-anchor" href="#boss-stage-requirement" aria-label="Link to section">Boss Stage Requirement</a></h3>
+<p>New <code>boss.yml</code> files include:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-key">stage-requirement</span><span class="tok-punct">:</span>
+  <span class="tok-key">mode</span><span class="tok-punct">:</span> DISABLED
+  <span class="tok-key">stage-id</span><span class="tok-punct">:</span> &#x27;&#x27;</code></pre></div>
+<div class="table-wrap"><table><thead><tr><th>Mode</th><th>Requirement</th></tr></thead><tbody><tr><td><code>DISABLED</code></td><td>Uses the normal boss trigger without a stage requirement. This is also the default for existing files.</td></tr><tr><td><code>STAGE</code></td><td>Requires the stage named by <code>stage-id</code> to be completed.</td></tr><tr><td><code>ALL</code></td><td>Requires every stage in the current dungeon to be completed. With no stages configured, there is nothing to wait for.</td></tr></tbody></table></div>
+<p>A stage is completed when all its missions are finished and its gate opens. Unlocking a stage does not complete it. Closing its gate later does not reset its completion.</p>
+<p>For example, require the <code>courtyard</code> stage before allowing the proximity trigger:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-key">trigger</span><span class="tok-punct">:</span> ON_PLAYER_NEAR
+<span class="tok-key">trigger-distance</span><span class="tok-punct">:</span> <span class="tok-num">20</span>
+<span class="tok-key">trigger-time</span><span class="tok-punct">:</span> <span class="tok-num">0</span>
+<span class="tok-key">stage-requirement</span><span class="tok-punct">:</span>
+  <span class="tok-key">mode</span><span class="tok-punct">:</span> STAGE
+  <span class="tok-key">stage-id</span><span class="tok-punct">:</span> courtyard</code></pre></div>
+<p>The stage requirement is an additional condition for every boss trigger:</p>
+<ul><li><code>ON_START</code>: waits until the stage requirement is met.</li><li><code>ON_DELAY</code>: starts its <code>trigger-time</code> delay after the requirement is met.</li><li><code>ON_PLAYER_NEAR</code>: requires an alive party member within range and the stage requirement to be met.</li><li><code>ON_PLAYER_NEAR_ON_DELAY</code>: starts its delay only once both conditions are met.</li></ul>
+<p>If a player is already in range, the boss can activate as soon as the stage requirement is met. Spectators cannot trigger the boss. An invalid mode or missing stage ID in <code>STAGE</code> mode blocks spawning; <code>/dg validate &lt;id&gt;</code> reports the configuration error.</p>
+<p>In the admin GUI, open <strong>Boss & Trigger</strong>. <strong>Boss Stage Requirement</strong> cycles the mode; <strong>Required Stage ID</strong> accepts an existing stage only while <code>STAGE</code> mode is selected; it is inactive in <code>DISABLED</code> and <code>ALL</code>. Both settings are saved to <code>boss.yml</code>. Moving the boss spawn preserves them. <strong>Test Boss Spawn</strong> previews the boss without applying stage requirements.</p>
+<h2 id="trigger-objectives"><a class="heading-anchor" href="#trigger-objectives" aria-label="Link to section">Trigger Objectives</a></h2>
+<p>Trigger dungeons are created with:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-cmd">/dungeon</span><span class="tok-sub"> create</span> <span class="tok-arg">&lt;id&gt;</span> <span class="tok-arg">&lt;template-world&gt;</span> trigger</code></pre></div>
+<p>Trigger dungeons do not generate a boss file. Instead, they use:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code>dungeons/&lt;id&gt;/trigger.yml</code></pre></div>
+<p>The trigger is placed with:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-cmd">/dungeon</span><span class="tok-sub"> settrigger</span> <span class="tok-arg">&lt;material&gt;</span></code></pre></div>
+<p>Supported trigger materials are Minecraft buttons and pressure plates. The trigger ignores dungeon interaction blocking so it can complete the run even when normal interactions are disabled.</p>
+<p>Only one trigger can exist per dungeon. Placing a new trigger replaces the previous one. After activation, the trigger is completed and further clicks do not run completion again.</p>
+<p>Trigger reward editing:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-cmd">/dungeon</span><span class="tok-sub"> trigger</span> reward edit</code></pre></div>
+<p>Trigger rewards are saved in <code>trigger.yml</code> under <code>rewards</code>.</p>
+<h3 id="trigger-stage-requirement"><a class="heading-anchor" href="#trigger-stage-requirement" aria-label="Link to section">Trigger Stage Requirement</a></h3>
+<p>Trigger objectives support the same completed-stage requirements as bosses. Add this to <code>trigger.yml</code>, or use <strong>Trigger Stage Requirement</strong> in the admin GUI:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-key">stage-requirement</span><span class="tok-punct">:</span>
+  <span class="tok-key">mode</span><span class="tok-punct">:</span> STAGE
+  <span class="tok-key">stage-id</span><span class="tok-punct">:</span> entrance</code></pre></div>
+<ul><li><code>DISABLED</code>: no stage requirement. This is the default for new and existing trigger configs.</li><li><code>STAGE</code>: the named stage must be completed.</li><li><code>ALL</code>: every configured stage must be completed. With no stages configured, this requirement is satisfied.</li></ul>
+<p>Before the requirement is met, interacting with the trigger does not complete the dungeon or give rewards. Use it again after completing the required stages. Unknown modes or missing stage IDs do not bypass the requirement; the validator reports configuration errors.</p>
+<p>The <strong>Boss & Trigger</strong> editor entry opens only the controls matching the dungeon's completion objective. <strong>Required Stage ID</strong> accepts input only in <code>STAGE</code> mode, for both objectives. Switching to <code>DISABLED</code> or <code>ALL</code> preserves the saved ID but ignores it.</p>
+<h2 id="towers"><a class="heading-anchor" href="#towers" aria-label="Link to section">Towers</a></h2>
+<p>Tower dungeons chain multiple dungeon templates.</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-key">dungeon-type</span><span class="tok-punct">:</span> tower
+<span class="tok-key">tower-stage-type</span><span class="tok-punct">:</span> first
+<span class="tok-key">next-dungeon</span><span class="tok-punct">:</span> <span class="tok-str">&quot;tower_final&quot;</span></code></pre></div>
+<p>Stage types:</p>
+<ul><li><code>first</code>: entry point. Can be opened by command and may have entry costs.</li><li><code>middle</code>: intermediate chain stage between the first and last dungeon.</li><li><code>last</code>: final tower dungeon. Completing it finishes the tower.</li></ul>
+<p>Tower chains:</p>
+<ul><li><code>FIRST -&gt; LAST</code></li><li><code>FIRST -&gt; MIDDLE -&gt; LAST</code></li><li><code>FIRST -&gt; MIDDLE -&gt; MIDDLE -&gt; ... -&gt; LAST</code></li><li><code>FIRST</code> and every <code>MIDDLE</code> stage must define <code>next-dungeon</code>.</li><li><code>LAST</code> completes the tower and ignores <code>next-dungeon</code>.</li></ul>
+<p>Tower behavior:</p>
+<ul><li>Completing <code>FIRST</code> teleports the same party to <code>next-dungeon</code>.</li><li><code>FIRST</code> and <code>MIDDLE</code> use tower transition messages, not normal dungeon completion messages.</li><li>Global tower completion/failure announcements use the <code>announce-*</code> settings from the tower entry dungeon (<code>FIRST</code>) only. <code>announce-complete</code> is broadcast only after the final tower stage completes, and the announcement uses the final stage dungeon name.</li><li>Dungeon players who became spectators through death or sacrifice stay spectators when the party moves to the next tower stage.</li><li>Entry costs are allowed only on <code>FIRST</code>.</li><li>Failure in any tower stage fails the whole tower and teleports players to that stage's exit.</li></ul>
+<h2 id="spawners"><a class="heading-anchor" href="#spawners" aria-label="Link to section">Spawners</a></h2>
+<p>Spawner files live in:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code>dungeons/&lt;id&gt;/spawners/&lt;spawner_id&gt;.yml</code></pre></div>
+<p>Example:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-key">location</span><span class="tok-punct">:</span>
+  <span class="tok-key">world</span><span class="tok-punct">:</span> dragon_template
+  <span class="tok-key">x</span><span class="tok-punct">:</span> <span class="tok-num">100.5</span>
+  <span class="tok-key">y</span><span class="tok-punct">:</span> <span class="tok-num">64.0</span>
+  <span class="tok-key">z</span><span class="tok-punct">:</span> <span class="tok-num">200.5</span>
+
+<span class="tok-key">trigger</span><span class="tok-punct">:</span> ON_PLAYER_NEAR
+<span class="tok-key">trigger-distance</span><span class="tok-punct">:</span> <span class="tok-num">20</span>
+<span class="tok-key">trigger-time</span><span class="tok-punct">:</span> <span class="tok-num">5</span>
+<span class="tok-key">lifetime-behavior</span><span class="tok-punct">:</span> PERSIST
+<span class="tok-key">lifetime-seconds</span><span class="tok-punct">:</span> <span class="tok-num">0</span>
+
+<span class="tok-key">mob-pools</span><span class="tok-punct">:</span>
+  - <span class="tok-key">type</span><span class="tok-punct">:</span> VANILLA
+    <span class="tok-key">mob-id</span><span class="tok-punct">:</span> ZOMBIE
+    <span class="tok-key">count</span><span class="tok-punct">:</span> <span class="tok-num">5</span>
+    <span class="tok-key">chance</span><span class="tok-punct">:</span> <span class="tok-num">100.0</span>
+    <span class="tok-key">drop-vanilla-loot</span><span class="tok-punct">:</span> <span class="tok-bool">false</span>
+  - <span class="tok-key">type</span><span class="tok-punct">:</span> MYTHIC
+    <span class="tok-key">mob-id</span><span class="tok-punct">:</span> SkeletonKing
+    <span class="tok-key">count</span><span class="tok-punct">:</span> <span class="tok-num">1</span>
+    <span class="tok-key">chance</span><span class="tok-punct">:</span> <span class="tok-num">35.0</span></code></pre></div>
+<p>Trigger modes:</p>
+<ul><li><code>ON_START</code>: spawn when the instance starts. This mode is not recommended for regular spawners because it can spawn every configured mob immediately at dungeon startup; prefer <code>ON_PLAYER_NEAR</code> for normal gameplay.</li><li><code>ON_PLAYER_NEAR</code>: spawn when a player enters <code>trigger-distance</code>.</li><li><code>ON_DELAY</code>: spawn after <code>trigger-time</code>.</li><li><code>ON_PLAYER_NEAR_ON_DELAY</code>: start <code>trigger-time</code> after a player enters <code>trigger-distance</code>.</li></ul>
+<p>Spawners default to <code>ON_PLAYER_NEAR</code> with <code>trigger-distance: 20</code>. The selected trigger determines whether <code>trigger-distance</code>, <code>trigger-time</code>, or both apply.</p>
+<p>Mob pools can mix vanilla and MythicMobs entries in one spawner.</p>
+<p><code>drop-vanilla-loot: false</code> removes normal drops from spawned vanilla mobs, such as bones, arrows, rotten flesh, and evoker totems. If the same pool has configured equipment, armor and tool drop chances from the <code>equipment</code> section still work.</p>
+<p>To keep mobs such as piglins or hoglins from transforming into zombified variants outside their native dimension, manually add <code>prevent-zombification: true</code> to that mob pool:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-key">mob-pools</span><span class="tok-punct">:</span>
+  - <span class="tok-key">type</span><span class="tok-punct">:</span> VANILLA
+    <span class="tok-key">mob-id</span><span class="tok-punct">:</span> PIGLIN
+    <span class="tok-key">count</span><span class="tok-punct">:</span> <span class="tok-num">1</span>
+    <span class="tok-key">chance</span><span class="tok-punct">:</span> <span class="tok-num">100.0</span>
+    <span class="tok-key">drop-vanilla-loot</span><span class="tok-punct">:</span> <span class="tok-bool">false</span>
+    <span class="tok-key">prevent-zombification</span><span class="tok-punct">:</span> <span class="tok-bool">true</span></code></pre></div>
+<p>To stop baby variants from spawning from a pool, manually add <code>prevent-baby-spawns: true</code>:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-key">mob-pools</span><span class="tok-punct">:</span>
+  - <span class="tok-key">type</span><span class="tok-punct">:</span> VANILLA
+    <span class="tok-key">mob-id</span><span class="tok-punct">:</span> PIGLIN
+    <span class="tok-key">count</span><span class="tok-punct">:</span> <span class="tok-num">3</span>
+    <span class="tok-key">chance</span><span class="tok-punct">:</span> <span class="tok-num">100.0</span>
+    <span class="tok-key">drop-vanilla-loot</span><span class="tok-punct">:</span> <span class="tok-bool">false</span>
+    <span class="tok-key">prevent-zombification</span><span class="tok-punct">:</span> <span class="tok-bool">true</span>
+    <span class="tok-key">prevent-baby-spawns</span><span class="tok-punct">:</span> <span class="tok-bool">true</span></code></pre></div>
+<p>This forces supported ageable mobs into adult form, such as piglins, zombies, zombified piglins, and hoglins.</p>
+<p>Vanilla mob equipment:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-key">mob-pools</span><span class="tok-punct">:</span>
+  - <span class="tok-key">type</span><span class="tok-punct">:</span> VANILLA
+    <span class="tok-key">mob-id</span><span class="tok-punct">:</span> SKELETON
+    <span class="tok-key">count</span><span class="tok-punct">:</span> <span class="tok-num">1</span>
+    <span class="tok-key">chance</span><span class="tok-punct">:</span> <span class="tok-num">100.0</span>
+    <span class="tok-key">equipment</span><span class="tok-punct">:</span>
+      <span class="tok-key">helmet</span><span class="tok-punct">:</span>
+        <span class="tok-key">item</span><span class="tok-punct">:</span> IRON_HELMET
+        <span class="tok-key">drop-chance</span><span class="tok-punct">:</span> <span class="tok-num">10.0</span>
+      <span class="tok-key">chestplate</span><span class="tok-punct">:</span>
+        <span class="tok-key">item</span><span class="tok-punct">:</span> IRON_CHESTPLATE
+        <span class="tok-key">drop-chance</span><span class="tok-punct">:</span> <span class="tok-num">10.0</span>
+      <span class="tok-key">leggings</span><span class="tok-punct">:</span>
+        <span class="tok-key">item</span><span class="tok-punct">:</span> IRON_LEGGINGS
+        <span class="tok-key">drop-chance</span><span class="tok-punct">:</span> <span class="tok-num">10.0</span>
+      <span class="tok-key">boots</span><span class="tok-punct">:</span>
+        <span class="tok-key">item</span><span class="tok-punct">:</span> IRON_BOOTS
+        <span class="tok-key">drop-chance</span><span class="tok-punct">:</span> <span class="tok-num">10.0</span>
+      <span class="tok-key">main-hand</span><span class="tok-punct">:</span>
+        <span class="tok-key">item</span><span class="tok-punct">:</span> IRON_SWORD
+        <span class="tok-key">drop-chance</span><span class="tok-punct">:</span> <span class="tok-num">5.0</span>
+        <span class="tok-key">enchants</span><span class="tok-punct">:</span>
+          <span class="tok-key">SHARPNESS</span><span class="tok-punct">:</span> <span class="tok-num">1</span>
+      <span class="tok-key">off-hand</span><span class="tok-punct">:</span>
+        <span class="tok-key">item</span><span class="tok-punct">:</span> SHIELD
+        <span class="tok-key">drop-chance</span><span class="tok-punct">:</span> <span class="tok-num">0.0</span></code></pre></div>
+<p>Supported vanilla equipment mobs include zombies, zombie villagers, husks, drowned, skeletons, strays, wither skeletons, bogged, piglins, piglin brutes, zombified piglins, vindicators, pillagers, evokers, and illusioners. Unsupported mobs spawn without configured equipment and validation warns admins.</p>
+<h3 id="mob-lifetime"><a class="heading-anchor" href="#mob-lifetime" aria-label="Link to section">Mob Lifetime</a></h3>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-key">lifetime-behavior</span><span class="tok-punct">:</span> PERSIST
+<span class="tok-key">lifetime-seconds</span><span class="tok-punct">:</span> <span class="tok-num">0</span></code></pre></div>
+<p><code>PERSIST</code> and <code>PERSIST_UNTIL_DUNGEON_END</code> prevent natural distance despawning during the instance. This also applies to <code>ON_START</code> mobs spawned far from players. Entities are saved across chunk unloading and reloading. Both modes still remove mobs when the instance is cleaned up or its world is deleted; neither keeps an instance running after it ends.</p>
+<p><code>DESPAWN_AFTER_TIME</code> removes the mob after a positive <code>lifetime-seconds</code> duration. Its deadline is retained through chunk unloading and mob transformations. Keep <code>lifetime-seconds</code> positive when using this mode. These settings cover Vanilla and MythicMobs spawned by the dungeon. Another plugin that explicitly removes an entity can still remove it.</p>
+<h2 id="loot-chests"><a class="heading-anchor" href="#loot-chests" aria-label="Link to section">Loot Chests</a></h2>
+<p>Loot chest files live in:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code>dungeons/&lt;id&gt;/loot-chests/&lt;loot_id&gt;.yml</code></pre></div>
+<p>Use:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-cmd">/dungeon</span><span class="tok-sub"> addlootchest</span> treasure_room
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> lootchest</span> give treasure_room
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> lootchest</span> loot treasure_room add</code></pre></div>
+<p><code>/dungeon lootchest loot &lt;id&gt; add</code> adds the item in your main hand to the loot table. It detects vanilla items, supported custom item providers, potions, tipped arrows, and enchanted books. The new entry uses <code>min-amount: 1</code>, <code>max-amount: 1</code>, and <code>chance: 100.0</code>.</p>
+<p>Example:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-key">min-items-per-drop</span><span class="tok-punct">:</span> <span class="tok-num">2</span>
+<span class="tok-key">max-items-per-drop</span><span class="tok-punct">:</span> <span class="tok-num">4</span>
+
+<span class="tok-key">loot-table</span><span class="tok-punct">:</span>
+  - <span class="tok-key">type</span><span class="tok-punct">:</span> VANILLA
+    <span class="tok-key">item</span><span class="tok-punct">:</span> DIAMOND
+    <span class="tok-key">min-amount</span><span class="tok-punct">:</span> <span class="tok-num">1</span>
+    <span class="tok-key">max-amount</span><span class="tok-punct">:</span> <span class="tok-num">3</span>
+    <span class="tok-key">chance</span><span class="tok-punct">:</span> <span class="tok-num">75.0</span>
+  - <span class="tok-key">type</span><span class="tok-punct">:</span> ITEMSADDER
+    <span class="tok-key">item</span><span class="tok-punct">:</span> coins:bronze_coin
+    <span class="tok-key">min-amount</span><span class="tok-punct">:</span> <span class="tok-num">1</span>
+    <span class="tok-key">max-amount</span><span class="tok-punct">:</span> <span class="tok-num">3</span>
+    <span class="tok-key">chance</span><span class="tok-punct">:</span> <span class="tok-num">25.0</span></code></pre></div>
+<p>Supported item providers:</p>
+<ul><li><code>VANILLA</code></li><li><code>ITEMSADDER</code></li><li><code>ORAXEN</code></li><li><code>NEXO</code></li><li><code>MYTHIC_ITEM</code></li><li><code>MISSION</code>, for stage keys</li></ul>
+<p>Mission key loot entry:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-comment"># - type: MISSION</span>
+<span class="tok-comment">#   item: KEY</span>
+<span class="tok-comment">#   stage: 1</span>
+<span class="tok-comment">#   quantity: 1</span>
+<span class="tok-comment">#   lore:</span>
+<span class="tok-comment">#     - &quot;&amp;7A key used to unlock a dungeon stage.&quot;</span></code></pre></div>
+<p><code>MISSION KEY</code> entries are guaranteed key supply entries, not random loot rolls. They ignore <code>chance</code> and do not count toward <code>min-items-per-drop</code> or <code>max-items-per-drop</code>.</p>
+<p><code>quantity</code> means how many keys this loot chest definition should provide per dungeon instance. When an instance starts, the plugin chooses random physical loot chests of that loot chest ID and assigns the keys to those chests. If chunks are not loaded yet, the assignment is refreshed shortly after start and can fall back to the opened chest of the matching loot chest ID. If <code>quantity</code> is higher than the number of physical chests of that ID, selected chests can contain more than one key.</p>
+<p>Example: if a <code>REQUIRED_KEY</code> mission needs 3 keys, configure the stage mission with <code>required: 3</code>, then put <code>quantity: 2</code> in the Bronze loot chest config and <code>quantity: 1</code> in the Silver loot chest config.</p>
+<p>Mission key loot entries should normally be in loot chests reachable before the related gate. Mission keys are bound to the instance where they dropped and are removed when the player leaves that instance.</p>
+<h2 id="boss-rewards"><a class="heading-anchor" href="#boss-rewards" aria-label="Link to section">Boss Rewards</a></h2>
+<p>Boss rewards are configured per dungeon and support custom items from the same providers as loot where available.</p>
+<p>Reward entries are independent. Stacked items in separate GUI slots stay separate reward entries and can have separate chance values in the config.</p>
+<p><code>reward-logic</code> controls whether rolled boss rewards go to inventories or form a public pile at the boss spawn. Recipient and delivery combinations are validated before the dungeon can open. See <a href="../loot-and-rewards/index.html#boss-rewards">Loot and Rewards</a>.</p>
+<p>Edit boss rewards while editing a boss-objective dungeon:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-cmd">/dungeon</span><span class="tok-sub"> boss</span> reward edit</code></pre></div>
+<p>Common fields:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-key">boss-rewards</span><span class="tok-punct">:</span>
+  <span class="tok-key">enabled</span><span class="tok-punct">:</span> <span class="tok-bool">true</span>
+  <span class="tok-key">rewards</span><span class="tok-punct">:</span>
+    - <span class="tok-key">type</span><span class="tok-punct">:</span> VANILLA
+      <span class="tok-key">item</span><span class="tok-punct">:</span> DIAMOND
+      <span class="tok-key">amount</span><span class="tok-punct">:</span> <span class="tok-num">4</span>
+      <span class="tok-key">chance</span><span class="tok-punct">:</span> <span class="tok-num">100.0</span></code></pre></div>
+<h2 id="trigger-rewards"><a class="heading-anchor" href="#trigger-rewards" aria-label="Link to section">Trigger Rewards</a></h2>
+<p>Trigger rewards are configured in <code>dungeons/&lt;id&gt;/trigger.yml</code> and are distributed according to its <code>reward-logic</code> when the trigger completes the dungeon.</p>
+<p>Edit trigger rewards while editing a trigger-objective dungeon:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-cmd">/dungeon</span><span class="tok-sub"> trigger</span> reward edit</code></pre></div>
+<p>The trigger reward GUI follows the same independent-entry behavior as boss rewards: separate inventory slots become separate reward entries with separate chances in config.</p>
+<h2 id="entry-costs"><a class="heading-anchor" href="#entry-costs" aria-label="Link to section">Entry Costs</a></h2>
+<p>Entry costs are stored in the dungeon config:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-key">costs</span><span class="tok-punct">:</span>
+  <span class="tok-key">money</span><span class="tok-punct">:</span> <span class="tok-num">1000</span>
+  <span class="tok-key">items</span><span class="tok-punct">:</span>
+    - <span class="tok-key">type</span><span class="tok-punct">:</span> VANILLA
+      <span class="tok-key">item</span><span class="tok-punct">:</span> DIAMOND
+      <span class="tok-key">amount</span><span class="tok-punct">:</span> <span class="tok-num">2</span></code></pre></div>
+<p>If <code>require-all-players-pay</code> is <code>false</code>, the leader pays. If it is <code>true</code>, every party member must meet the cost.</p>
+<p>Tower rule: only <code>FIRST</code> tower dungeons may have entry costs.</p>
+<h3 id="player-cooldowns"><a class="heading-anchor" href="#player-cooldowns" aria-label="Link to section">Player Cooldowns</a></h3>
+<p>Configure this section in each <strong>dungeon's</strong> <code>config.yml</code>, or open <strong>Settings → Player Cooldown</strong> in the admin GUI:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-key">player-cooldown</span><span class="tok-punct">:</span>
+  <span class="tok-key">trigger</span><span class="tok-punct">:</span> START
+  <span class="tok-key">recipients</span><span class="tok-punct">:</span> LEADER
+  <span class="tok-key">dungeon-seconds</span><span class="tok-punct">:</span> <span class="tok-num">0</span>
+  <span class="tok-key">global-seconds</span><span class="tok-punct">:</span> <span class="tok-num">0</span>
+  <span class="tok-key">block-joining</span><span class="tok-punct">:</span> <span class="tok-bool">false</span></code></pre></div>
+<div class="table-wrap"><table><thead><tr><th>Field</th><th>Values and behavior</th></tr></thead><tbody><tr><td><code>trigger</code></td><td><code>START</code>: successful run start; <code>END</code>: success or failure; <code>WIN</code>: success only.</td></tr><tr><td><code>recipients</code></td><td><code>LEADER</code>: leader captured at run start; <code>PARTY</code>: all party members captured at run start.</td></tr><tr><td><code>dungeon-seconds</code></td><td>Blocks new entry to this dungeon ID for this many seconds. <code>0</code> grants no new dungeon cooldown.</td></tr><tr><td><code>global-seconds</code></td><td>Blocks new entry to every dungeon for this many seconds. <code>0</code> grants no new global cooldown.</td></tr><tr><td><code>block-joining</code></td><td><code>false</code>: restricts creating/starting a new run as leader; <code>true</code>: also restricts joining another party.</td></tr></tbody></table></div>
+<p>The default durations are zero, so existing dungeons gain no restrictions after updating. Creating a party or failing to prepare a world does not grant a cooldown. Pending starts are checked before charges and preparation. Durations are wall-clock seconds, not server ticks. A join blocked by cooldown shows only the cooldown message and remaining seconds.</p>
+<p>Cooldowns belong to player UUIDs and survive relogging, reloads and server restarts in <code>plugins/InstancedDungeons/data/player-cooldowns.dat</code>. Back up that file when moving the server. A global cooldown also applies when the target dungeon has zero configured durations. When both an existing dungeon-specific and global deadline apply, entry stays blocked until both expire.</p>
+<h4 id="towers-and-replacement"><a class="heading-anchor" href="#towers-and-replacement" aria-label="Link to section">Towers and Replacement</a></h4>
+<p>Every tower floor may grant its own cooldown using its own config and trigger. Successfully clearing a non-final floor counts as that floor's success for <code>END</code> and <code>WIN</code>. Automatic transfer to the next floor bypasses entry checks, including global cooldowns.</p>
+<p>New deadlines <strong>replace</strong> old deadlines of the same scope; they are never added or compared to keep the maximum. For example, a new global cooldown of 800 seconds replaces an entry-floor global cooldown of 600 seconds. If 700 seconds remain and the next floor grants 300 seconds, 300 seconds remain from that new event. Dungeon-specific cooldowns remain separate by dungeon ID. A duration of zero grants no new cooldown and does not clear an already active one.</p>
+<h2 id="special-vanilla-item-ids"><a class="heading-anchor" href="#special-vanilla-item-ids" aria-label="Link to section">Special Vanilla Item IDs</a></h2>
+<p>Special vanilla item IDs work in loot chests, entry costs, stage item payment missions, boss rewards, and trigger rewards. They can also be captured automatically from the cost editor GUI, reward editor GUI, and <code>/dungeon lootchest loot &lt;id&gt; add</code>.</p>
+<p>Potions, splash potions, lingering potions, and tipped arrows use:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code>- <span class="tok-key">type</span><span class="tok-punct">:</span> VANILLA
+  <span class="tok-key">item</span><span class="tok-punct">:</span> POTION_LONG_POISON
+  <span class="tok-key">min-amount</span><span class="tok-punct">:</span> <span class="tok-num">1</span>
+  <span class="tok-key">max-amount</span><span class="tok-punct">:</span> <span class="tok-num">3</span>
+  <span class="tok-key">chance</span><span class="tok-punct">:</span> <span class="tok-num">100.0</span></code></pre></div>
+<p>The first part is one of:</p>
+<ul><li><code>POTION</code></li><li><code>SPLASH_POTION</code></li><li><code>LINGERING_POTION</code></li><li><code>TIPPED_ARROW</code></li></ul>
+<p>The effect part is one of:</p>
+<p><code>LONG_</code> variants use Minecraft's extended-duration potion type. <code>STRONG_</code> variants use Minecraft's upgraded stronger potion type where vanilla provides one.</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code>NIGHT_VISION
+LONG_NIGHT_VISION
+INVISIBILITY
+LONG_INVISIBILITY
+LEAPING
+LONG_LEAPING
+STRONG_LEAPING
+FIRE_RESISTANCE
+LONG_FIRE_RESISTANCE
+SWIFTNESS
+LONG_SWIFTNESS
+STRONG_SWIFTNESS
+SLOWNESS
+LONG_SLOWNESS
+STRONG_SLOWNESS
+WATER_BREATHING
+LONG_WATER_BREATHING
+HEALING
+STRONG_HEALING
+HARMING
+STRONG_HARMING
+POISON
+LONG_POISON
+STRONG_POISON
+REGENERATION
+LONG_REGENERATION
+STRONG_REGENERATION
+STRENGTH
+LONG_STRENGTH
+STRONG_STRENGTH
+WEAKNESS
+LONG_WEAKNESS
+LUCK
+SLOW_FALLING
+LONG_SLOW_FALLING
+TURTLE_MASTER
+LONG_TURTLE_MASTER
+STRONG_TURTLE_MASTER
+INFESTED
+OOZING
+WEAVING
+WIND_CHARGED</code></pre></div>
+<p>Examples:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code>- <span class="tok-key">type</span><span class="tok-punct">:</span> VANILLA
+  <span class="tok-key">item</span><span class="tok-punct">:</span> SPLASH_POTION_STRONG_HEALING
+  <span class="tok-key">min-amount</span><span class="tok-punct">:</span> <span class="tok-num">1</span>
+  <span class="tok-key">max-amount</span><span class="tok-punct">:</span> <span class="tok-num">1</span>
+  <span class="tok-key">chance</span><span class="tok-punct">:</span> <span class="tok-num">100.0</span>
+
+- <span class="tok-key">type</span><span class="tok-punct">:</span> VANILLA
+  <span class="tok-key">item</span><span class="tok-punct">:</span> TIPPED_ARROW_SLOW_FALLING
+  <span class="tok-key">min-amount</span><span class="tok-punct">:</span> <span class="tok-num">4</span>
+  <span class="tok-key">max-amount</span><span class="tok-punct">:</span> <span class="tok-num">8</span>
+  <span class="tok-key">chance</span><span class="tok-punct">:</span> <span class="tok-num">50.0</span></code></pre></div>
+<p>Enchanted books use:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code>ENCHANTED_BOOK_&lt;ENCHANTMENT&gt;_&lt;LEVEL&gt;</code></pre></div>
+<p>Example:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code>- <span class="tok-key">type</span><span class="tok-punct">:</span> VANILLA
+  <span class="tok-key">item</span><span class="tok-punct">:</span> ENCHANTED_BOOK_SHARPNESS_4
+  <span class="tok-key">min-amount</span><span class="tok-punct">:</span> <span class="tok-num">1</span>
+  <span class="tok-key">max-amount</span><span class="tok-punct">:</span> <span class="tok-num">1</span>
+  <span class="tok-key">chance</span><span class="tok-punct">:</span> <span class="tok-num">100.0</span></code></pre></div>
+<p>The level cannot be higher than the vanilla max level of that enchantment. For example, <code>ENCHANTED_BOOK_SHARPNESS_5</code> is valid, but <code>ENCHANTED_BOOK_SHARPNESS_6</code> is rejected by validation.</p>
+<p>Common enchanted book IDs:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code>ENCHANTED_BOOK_SHARPNESS_5
+ENCHANTED_BOOK_PROTECTION_4
+ENCHANTED_BOOK_EFFICIENCY_5
+ENCHANTED_BOOK_UNBREAKING_3
+ENCHANTED_BOOK_MENDING_1
+ENCHANTED_BOOK_FORTUNE_3
+ENCHANTED_BOOK_LOOTING_3
+ENCHANTED_BOOK_POWER_5
+ENCHANTED_BOOK_PIERCING_4
+ENCHANTED_BOOK_DENSITY_5</code></pre></div>
+<p>Supported enchantment names are taken from the server enchantment registry. On the Paper 26.x build line this includes:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code>PROTECTION
+FIRE_PROTECTION
+FEATHER_FALLING
+BLAST_PROTECTION
+PROJECTILE_PROTECTION
+RESPIRATION
+AQUA_AFFINITY
+THORNS
+DEPTH_STRIDER
+FROST_WALKER
+BINDING_CURSE
+SHARPNESS
+SMITE
+BANE_OF_ARTHROPODS
+KNOCKBACK
+FIRE_ASPECT
+LOOTING
+SWEEPING_EDGE
+EFFICIENCY
+SILK_TOUCH
+UNBREAKING
+FORTUNE
+POWER
+PUNCH
+FLAME
+INFINITY
+LUCK_OF_THE_SEA
+LURE
+LOYALTY
+IMPALING
+RIPTIDE
+CHANNELING
+MULTISHOT
+QUICK_CHARGE
+PIERCING
+DENSITY
+BREACH
+WIND_BURST
+MENDING
+VANISHING_CURSE
+SOUL_SPEED
+SWIFT_SNEAK
+LUNGE</code></pre></div>
+<p>Special vanilla drops follow their vanilla stack limits. Potions, splash potions, lingering potions, and enchanted books are split into one-item stacks, while tipped arrows can stack normally up to their item stack limit.</p>
+<p>The plugin stores enchanted armor, tools, and weapons as vanilla items with an <code>enchants</code> map. The same format works in loot chests, boss rewards, trigger rewards, entry costs, item payment missions, and mob equipment.</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code>- <span class="tok-key">type</span><span class="tok-punct">:</span> VANILLA
+  <span class="tok-key">item</span><span class="tok-punct">:</span> DIAMOND_CHESTPLATE
+  <span class="tok-key">amount</span><span class="tok-punct">:</span> <span class="tok-num">1</span>
+  <span class="tok-key">enchants</span><span class="tok-punct">:</span>
+    <span class="tok-key">PROTECTION</span><span class="tok-punct">:</span> <span class="tok-num">4</span>
+    <span class="tok-key">UNBREAKING</span><span class="tok-punct">:</span> <span class="tok-num">3</span></code></pre></div>
+<h2 id="parties-and-instances"><a class="heading-anchor" href="#parties-and-instances" aria-label="Link to section">Parties and Instances</a></h2>
+<p>Party states in 2.0:</p>
+<ul><li><code>OPEN</code>: players can join and the leader can start.</li><li><code>PREPARING_START</code>: instance world is being prepared and countdown is running.</li><li><code>IN_DUNGEON</code>: players are inside an active run.</li><li><code>COMPLETED</code>: run completed and party is closing.</li><li><code>ABANDONED</code>: run failed or was abandoned and party is closing.</li></ul>
+<p>Parties close when the run ends, the party times out or disbands, or the server shuts down.</p>
+<p>Players who are not part of the active instance are removed if they enter an instance world through external plugins, vehicles, teleports, or other non-dungeon mechanics.</p>
+<h3 id="remove-a-party-member"><a class="heading-anchor" href="#remove-a-party-member" aria-label="Link to section">Remove a Party Member</a></h3>
+<p><code>/dg kick &lt;player&gt;</code> removes a member from the leader's open party. Tab completion suggests only other members of that party. The leader cannot kick themselves, players outside the party, or anyone after dungeon preparation has begun. The removed player and the remaining party receive configurable messages. No extra permission is required beyond being that party's leader.</p>
+<p>Kicking removes the current membership; it does not ban the player from joining an open party again.</p>
+<h2 id="lives-and-death-behavior"><a class="heading-anchor" href="#lives-and-death-behavior" aria-label="Link to section">Lives and Death Behavior</a></h2>
+<p>Lives config:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-key">lives</span><span class="tok-punct">:</span>
+  <span class="tok-key">scope</span><span class="tok-punct">:</span> PLAYER
+  <span class="tok-key">amount</span><span class="tok-punct">:</span> <span class="tok-num">0</span></code></pre></div>
+<p><code>amount: 0</code> means unlimited lives.</p>
+<p><code>scope: PLAYER</code> means each player has their own death counter.</p>
+<p><code>scope: TEAM</code> means deaths are shared by the whole party.</p>
+<p>Death behavior:</p>
+<ul><li><code>INFINITE_RESPAWN</code>: respawn at the dungeon start when lives are unlimited.</li><li><code>ELIMINATE_AS_SPECTATOR</code>: after the configured player/team lives run out, eliminated players become dungeon spectators.</li><li><code>ELIMINATE_TO_EXIT</code>: after the configured player/team lives run out, eliminated players are sent to the dungeon exit.</li></ul>
+<p>Legacy values <code>ONE_LIFE_SPECTATOR</code> and <code>ONE_LIFE_KICK</code> are still read for compatibility, but current configs should use the names above.</p>
+<p>Death announcements follow the configured lives scope. With <code>scope: PLAYER</code>, the party sees the dead player's remaining lives. With <code>scope: TEAM</code>, the party sees the remaining shared team lives. When lives reach zero, the message also reflects whether the player became a spectator or was sent to the exit.</p>
+<p>Death spectators and external spectators are different systems:</p>
+<ul><li>Death spectators are still dungeon participants, but they are marked as eliminated and are excluded from alive-player checks and sacrifice mission target lists.</li><li>If all real dungeon players are eliminated and <code>fail-if-all-players-dead: true</code>, the dungeon or tower fails.</li><li>Death spectators keep items only when the dungeon or world death rules preserve their inventory. Items lost on death are not restored at the end of the run.</li><li>Death spectators and sacrificed players who were original dungeon players are sent to the dungeon exit when they leave the run or when the run ends.</li><li>External spectators who joined with <code>/dungeon spectate &lt;leader&gt;</code> are not participants, cannot progress missions, and receive their saved inventory/gamemode back when they exit or the run ends.</li></ul>
+<h2 id="stages-and-gates"><a class="heading-anchor" href="#stages-and-gates" aria-label="Link to section">Stages and Gates</a></h2>
+<p>Stages live in:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code>dungeons/&lt;id&gt;/stages/&lt;stage_id&gt;.yml
+dungeons/&lt;id&gt;/stages/&lt;stage_id&gt;-hologram.yml</code></pre></div>
+<p>Every stage has an order:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-key">stage-id</span><span class="tok-punct">:</span> entrance
+<span class="tok-key">stage-order</span><span class="tok-punct">:</span> <span class="tok-num">1</span>
+<span class="tok-key">gate</span><span class="tok-punct">:</span>
+  <span class="tok-key">disappear-seconds</span><span class="tok-punct">:</span> <span class="tok-num">6</span>
+
+<span class="tok-key">missions</span><span class="tok-punct">:</span>
+  - <span class="tok-key">type</span><span class="tok-punct">:</span> LEVER
+    <span class="tok-key">required</span><span class="tok-punct">:</span> <span class="tok-num">1</span>
+
+<span class="tok-comment"># Saved at the bottom because large gates can contain many coordinates.</span>
+<span class="tok-key">gate-blocks</span><span class="tok-punct">:</span>
+  - <span class="tok-key">x</span><span class="tok-punct">:</span> <span class="tok-num">10</span>
+    <span class="tok-key">y</span><span class="tok-punct">:</span> <span class="tok-num">64</span>
+    <span class="tok-key">z</span><span class="tok-punct">:</span> <span class="tok-num">20</span></code></pre></div>
+<p>Stage orders are progression priorities. Order <code>1</code> is the lowest and unlocks first. Multiple stages may share the same order, which means they can be progressed in parallel. Higher order stages unlock only after every lower-order stage has opened. Used order groups must still be continuous: <code>1</code>, <code>2</code>, <code>3</code>, and so on. For example, using orders <code>1</code> and <code>3</code> without any order <code>2</code> is invalid.</p>
+<p>Use the stage file ID in admin commands, even when several stages share an order. For example:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-cmd">/dungeon</span><span class="tok-sub"> stage</span> entrance gate create</code></pre></div>
+<p>Use <code>/dungeon stage list</code> in editor mode to see the current order. New stages get the next order automatically based on creation order. To change order without editing YAML, use:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-cmd">/dungeon</span><span class="tok-sub"> stage</span> <span class="tok-arg">&lt;stage_id&gt;</span> order <span class="tok-arg">&lt;number&gt;</span></code></pre></div>
+<p>If the target order is already used, the moved stage joins that order group instead of swapping. Stages with the same order can be completed in any order, but every stage in that order must open before the next order unlocks.</p>
+<p>Gate editing:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-cmd">/dungeon</span><span class="tok-sub"> stage</span> entrance gate create
+place gate blocks
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> gate</span> save</code></pre></div>
+<p>While gate edit mode is active, the action bar turns purple and selected gate blocks show subtle purple dust particles to admins editing that dungeon. Multiple admins can join the same stage gate edit session and work on the same gate together.</p>
+<p>During an active gate create/edit session, <code>/dungeon stage &lt;stage_id&gt; gate stick</code> gives an enchanted gate edit stick. Left-click adds the clicked existing block to the active gate without placing a new block. Right-click removes the clicked block from the active gate selection without breaking it. Sneak-left-click adds connected same-material blocks, and sneak-right-click removes connected same-material blocks from the selection. Split large connected-block selections into smaller operations. The final selection is still saved with <code>/dungeon gate save</code>.</p>
+<p>Manual block placement and breaking are tracked immediately. WorldEdit <code>//set</code> is also supported during active gate create/edit mode: after the command runs, the plugin reads the admin's current WorldEdit selection and adds every non-air block in that selection to the active gate selection. Split large WorldEdit selections into smaller operations. Changes made with vanilla <code>/setblock</code> and <code>/fill</code> near the gate are also detected. Replacing existing blocks with the same material through commands is still best handled by WorldEdit <code>//set</code> selection sync or the gate stick.</p>
+<p>Gate holograms:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-cmd">/dungeon</span><span class="tok-sub"> stage</span> entrance gate hologram create</code></pre></div>
+<p>The hologram shows live mission progress. Completed missions turn green and receive the configured completed prefix. Clickable missions such as <code>SACRIFICE</code>, <code>MONEY_PAYMENT</code>, and <code>ITEM_PAYMENT</code> add an instruction line that explains who should right-click a gate block, for example <code>Leader must right-click a gate block for Sacrifice.</code> or per-mission action lines when multiple clickable missions are active. You can create multiple holograms for the same stage by running the create command again at another location. The delete command removes the nearest hologram for that stage within 3 blocks. Locked higher-order holograms show the missing previous stage names, for example <code>Complete Entrance first.</code></p>
+<p>The create command must be run while standing in the dungeon template world. If editor mode is configured not to teleport admins automatically, move to the template world first before creating stage holograms. The hologram appears above your position.</p>
+<p>In editor mode, stage holograms are also visible in the template world. Previews show the title and configured missions, and refresh after hologram or mission changes. If the stage has no missions yet, only the hologram title is shown.</p>
+<h2 id="stage-missions"><a class="heading-anchor" href="#stage-missions" aria-label="Link to section">Stage Missions</a></h2>
+<p>Configure stage order, missions, key requirements, and payment items in each stage file.</p>
+<p>Mission levers belonging to locked future stages cannot be pulled. They become available when their stage unlocks.</p>
+<p>Mission types:</p>
+<div class="table-wrap"><table><thead><tr><th>Mission</th><th>Description</th></tr></thead><tbody><tr><td><code>REGION</code></td><td>Enter or remain in a selected cuboid, individually or as a party.</td></tr><tr><td><code>KILL_MOBS</code></td><td>Party must kill a configured number of mobs.</td></tr><tr><td><code>LEVER</code></td><td>Party must pull all placed mission levers.</td></tr><tr><td><code>BUTTON</code></td><td>Party must press all mission buttons at the same time.</td></tr><tr><td><code>PRESSURE_PLATE</code></td><td>Party must activate all mission plates at the same time.</td></tr><tr><td><code>REQUIRED_KEY</code></td><td>Players must submit mission keys by right-clicking any block of the gate with the key in hand. <code>required</code> is the number of keys needed to unlock the gate.</td></tr><tr><td><code>TIME</code></td><td>Waits a configured number of seconds after the active stage starts.</td></tr><tr><td><code>SACRIFICE</code></td><td>Requires selecting players to eliminate through the mission GUI. Open it by right-clicking any block of the stage gate. <code>sacrifice-outcome</code> controls whether the sacrificed player becomes a spectator or is kicked out of the dungeon, independently from dungeon death behavior. <code>sacrifice-drop-items: false</code> keeps the player's inventory; <code>true</code> drops storage, armor, and offhand items on the ground.</td></tr><tr><td><code>MONEY_PAYMENT</code></td><td>Requires a Vault money payment. Open it by right-clicking any block of the stage gate. Cannot be added unless Vault and an economy provider are detected.</td></tr><tr><td><code>ITEM_PAYMENT</code></td><td>Requires configured items. Open it by right-clicking any block of the stage gate during a run. Configure required items with <code>/dungeon stage &lt;stage_id&gt; mission item_payment</code>, which opens an editor GUI and saves the inserted supported items into the stage config.</td></tr></tbody></table></div>
+<p>Mission creation commands:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-cmd">/dg</span><span class="tok-sub"> stage</span> <span class="tok-arg">&lt;stage_id&gt;</span> mission region
+<span class="tok-cmd">/dg</span><span class="tok-sub"> stage</span> <span class="tok-arg">&lt;stage_id&gt;</span> mission region pos1
+<span class="tok-cmd">/dg</span><span class="tok-sub"> stage</span> <span class="tok-arg">&lt;stage_id&gt;</span> mission region pos2
+<span class="tok-cmd">/dg</span><span class="tok-sub"> stage</span> <span class="tok-arg">&lt;stage_id&gt;</span> mission region delete
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> stage</span> <span class="tok-arg">&lt;stage_id&gt;</span> mission kill_mobs <span class="tok-arg">&lt;amount&gt;</span>
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> stage</span> <span class="tok-arg">&lt;stage_id&gt;</span> mission lever
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> stage</span> <span class="tok-arg">&lt;stage_id&gt;</span> mission button <span class="tok-arg">&lt;button_material&gt;</span>
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> stage</span> <span class="tok-arg">&lt;stage_id&gt;</span> mission pressure_plate <span class="tok-arg">&lt;plate_material&gt;</span>
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> stage</span> <span class="tok-arg">&lt;stage_id&gt;</span> mission required_key <span class="tok-arg">&lt;amount&gt;</span>
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> stage</span> <span class="tok-arg">&lt;stage_id&gt;</span> mission time <span class="tok-arg">&lt;seconds&gt;</span>
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> stage</span> <span class="tok-arg">&lt;stage_id&gt;</span> mission sacrifice <span class="tok-arg">[LEADER_SELECTS|PARTY_VOTE|FIRST_PLAYER_DECISION]</span> <span class="tok-arg">[drop_items]</span>
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> stage</span> <span class="tok-arg">&lt;stage_id&gt;</span> mission money_payment <span class="tok-arg">&lt;amount&gt;</span> <span class="tok-arg">[ANY_PLAYER|LEADER_ONLY]</span>
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> stage</span> <span class="tok-arg">&lt;stage_id&gt;</span> mission item_payment
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> stage</span> <span class="tok-arg">&lt;stage_id&gt;</span> mission <span class="tok-arg">&lt;type&gt;</span> delete</code></pre></div>
+<p>The <code>ITEM_PAYMENT</code> command opens a 27-slot item editor. Add vanilla, ItemsAdder, Oraxen, Nexo, or MythicMobs items, then close it to save. Run the command again to edit the saved items. Set <code>payment-mode</code> to <code>ANY_PLAYER</code> or <code>LEADER_ONLY</code> in the stage config.</p>
+<p>Mission lever/button/pressure-plate blocks can be moved while in editor mode. Break the mission block to remove it from the stage, then place a new mission block where you want it. If the last block for that mission is removed, the mission is removed from the stage file too.</p>
+<p>Mission YAML is saved with only the fields that apply to that mission type:</p>
+<div class="table-wrap"><table><thead><tr><th>Mission</th><th>Saved fields</th></tr></thead><tbody><tr><td><code>REGION</code></td><td><code>type</code>, <code>region</code>, optional <code>lore</code></td></tr><tr><td><code>KILL_MOBS</code></td><td><code>type</code>, <code>required</code>, <code>only-dungeon-spawner-mobs</code>, <code>count-baby-variants</code></td></tr><tr><td><code>LEVER</code></td><td><code>type</code>, <code>required</code>, <code>blocks</code></td></tr><tr><td><code>BUTTON</code></td><td><code>type</code>, <code>required</code>, <code>blocks</code></td></tr><tr><td><code>PRESSURE_PLATE</code></td><td><code>type</code>, <code>required</code>, <code>blocks</code></td></tr><tr><td><code>REQUIRED_KEY</code></td><td><code>type</code>, <code>required</code></td></tr><tr><td><code>TIME</code></td><td><code>type</code>, <code>duration-seconds</code></td></tr><tr><td><code>SACRIFICE</code></td><td><code>type</code>, <code>required</code>, <code>sacrifice-mode</code>, <code>sacrifice-outcome</code>, <code>sacrifice-drop-items</code>, optional <code>lore</code></td></tr><tr><td><code>MONEY_PAYMENT</code></td><td><code>type</code>, <code>payment-mode</code>, <code>money-amount</code>, optional <code>lore</code></td></tr><tr><td><code>ITEM_PAYMENT</code></td><td><code>type</code>, <code>payment-mode</code>, <code>items</code>, optional <code>lore</code></td></tr></tbody></table></div>
+<p>Mission GUI:</p>
+<ul><li>Mission items cannot be moved.</li><li>Sacrifice selection opens a second GUI with player heads.</li><li>Sacrifice announces the chosen player. If the sacrificed player is the current leader, a random alive dungeon player becomes the new leader and the party is notified. The same leader reassignment is used when the leader loses all lives.</li><li>Player-facing mission names come from <code>messages.yml</code> under <code>mission-names</code>. Config files and commands still use internal mission IDs such as <code>REQUIRED_KEY</code>.</li><li>Each mission can define custom GUI icon lore with a <code>lore:</code> list in the stage file.</li><li>Mission lore placeholders: <code>%mission%</code>, <code>%current%</code>, <code>%required%</code>, <code>%money%</code>, <code>%items%</code>.</li><li>For <code>REQUIRED_KEY</code>, configure how many keys must be found in each loot chest type with <code>MISSION KEY</code> entries in the related loot chest configs.</li></ul>
+<p>Example mission lore:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-key">missions</span><span class="tok-punct">:</span>
+  - <span class="tok-key">type</span><span class="tok-punct">:</span> MONEY_PAYMENT
+    <span class="tok-key">required</span><span class="tok-punct">:</span> <span class="tok-num">1</span>
+    <span class="tok-key">payment-mode</span><span class="tok-punct">:</span> ANY_PLAYER
+    <span class="tok-key">money-amount</span><span class="tok-punct">:</span> <span class="tok-num">500</span>
+    <span class="tok-key">lore</span><span class="tok-punct">:</span>
+      - <span class="tok-str">&quot;&amp;7Pay &amp;<span class="tok-num">6500</span> &amp;7coins to unlock the gate.&quot;</span>
+      - <span class="tok-str">&quot;&amp;8Progress: %current%/%required%&quot;</span></code></pre></div>
+<p>Stage progress isolation:</p>
+<ul><li>Only unlocked stages receive kill/time/payment progress.</li><li>Stages with the same order can receive progress at the same time.</li><li>Later stage holograms stay locked until every lower-order stage opens and show the missing previous stage names.</li><li>If a player bypasses a gate, later holograms show the locked previous-stage message.</li></ul>
+<h3 id="region-missions"><a class="heading-anchor" href="#region-missions" aria-label="Link to section">Region Missions</a></h3>
+<p>A REGION mission uses a cuboid selected by two opposite block corners in the dungeon template. The corner blocks are included, and either selection order is accepted. Progress starts only after the stage unlocks.</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-cmd">/dg</span><span class="tok-sub"> edit</span> <span class="tok-arg">&lt;dungeon_id&gt;</span>
+<span class="tok-cmd">/dg</span><span class="tok-sub"> stage</span> <span class="tok-arg">&lt;stage_id&gt;</span> mission region
+<span class="tok-cmd">/dg</span><span class="tok-sub"> stage</span> <span class="tok-arg">&lt;stage_id&gt;</span> mission region pos1
+<span class="tok-comment"># move to the opposite corner in the template world</span>
+<span class="tok-cmd">/dg</span><span class="tok-sub"> stage</span> <span class="tok-arg">&lt;stage_id&gt;</span> mission region pos2</code></pre></div>
+<p>Run <code>/dg stage &lt;stage_id&gt; mission region</code> first to add the mission. The confirmation shows the two commands for selecting its corners. Then stand at each corner in the template world and run <code>pos1</code> or <code>pos2</code>; each command saves your current block as that corner. Running the creation command again preserves the existing corners and settings. Do not use the generated instance world name in the stage config.</p>
+<p>In editor mode, cyan particles mark <code>pos1</code> and pink particles mark <code>pos2</code>. Markers are visible only to the editing admin within 50 blocks of a corner. Toggle <strong>Region Corners</strong> under <strong>Admin Settings</strong> to show or hide them independently of other mission particles.</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-key">missions</span><span class="tok-punct">:</span>
+  - <span class="tok-key">type</span><span class="tok-punct">:</span> REGION
+    <span class="tok-key">region</span><span class="tok-punct">:</span>
+      <span class="tok-key">mode</span><span class="tok-punct">:</span> ENTER_ONCE
+      <span class="tok-key">whole-party</span><span class="tok-punct">:</span> <span class="tok-bool">false</span>
+      <span class="tok-key">pos1</span><span class="tok-punct">:</span> {x: <span class="tok-num">10</span>, y: <span class="tok-num">60</span>, z: <span class="tok-num">10</span>}
+      <span class="tok-key">pos2</span><span class="tok-punct">:</span> {x: <span class="tok-num">20</span>, y: <span class="tok-num">70</span>, z: <span class="tok-num">20</span>}</code></pre></div>
+<div class="table-wrap"><table><thead><tr><th>Mode</th><th><code>whole-party: false</code></th><th><code>whole-party: true</code></th></tr></thead><tbody><tr><td><code>ENTER_ONCE</code></td><td>Any participant enters once.</td><td>Each required participant enters once; their visits may happen at different times.</td></tr><tr><td><code>STAY_UNTIL_COMPLETE</code></td><td>At least one participant is currently inside until all stage missions complete.</td><td>All required participants are inside at the same time until all stage missions complete.</td></tr></tbody></table></div>
+<p>Spectators do not count. A dead or offline participant does not count as currently inside. For the stay mode, the same player does not have to remain throughout: the configured number of participants must currently satisfy the condition. Leaving before the gate opens makes the stay condition incomplete again. Opening the gate finishes the stage permanently.</p>
+<p>With <code>whole-party: true</code>, the requirement uses the actual participants in the run, not the dungeon's maximum capacity. A solo run in a dungeon configured for 1–5 players requires only that solo player.</p>
+<p>In <code>STAY_UNTIL_COMPLETE</code>, the hologram shows the region as complete while the required participants are inside and returns to pending if they leave before the stage opens. The mission completion message and sound occur only when all stage missions are satisfied and the gate opens. In <code>ENTER_ONCE</code>, completion is announced as soon as the required visits are recorded and stays complete after players leave.</p>
+<p>Set <code>region.mode</code> and <code>region.whole-party</code> in the stage YAML or use the Region Mission submenu in the admin GUI. These settings have no command variants. Use <code>/dg stage &lt;stage_id&gt; mission region delete</code> to remove the mission. Validation rejects missing corners or invalid settings.</p>
+<p>One REGION mission is supported per stage, with no per-dungeon limit.</p>
+<h3 id="kill-mobs-filters"><a class="heading-anchor" href="#kill-mobs-filters" aria-label="Link to section">Kill Mobs Filters</a></h3>
+<p>New <code>KILL_MOBS</code> missions include both options:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-key">missions</span><span class="tok-punct">:</span>
+  - <span class="tok-key">type</span><span class="tok-punct">:</span> KILL_MOBS
+    <span class="tok-key">required</span><span class="tok-punct">:</span> <span class="tok-num">20</span>
+    <span class="tok-key">only-dungeon-spawner-mobs</span><span class="tok-punct">:</span> <span class="tok-bool">true</span>
+    <span class="tok-key">count-baby-variants</span><span class="tok-punct">:</span> <span class="tok-bool">true</span></code></pre></div>
+<p><code>only-dungeon-spawner-mobs</code> counts only mobs spawned by this dungeon instance's configured spawners, including vanilla and MythicMobs pools. Friendly summons from enchantments or other plugins, natural mobs, and mobs already stored in the template do not count. Bosses remain excluded from stage kill missions. Dungeon-spawned mobs still count after transformations, such as a zombie becoming a drowned.</p>
+<p>Set <code>only-dungeon-spawner-mobs: false</code> to count mobs from other sources inside the instance. Kills must be credited to a player. Mobs summoned separately by a Mythic skill are not automatically treated as dungeon spawner mobs.</p>
+<p><code>count-baby-variants</code> includes baby versions of eligible mobs, including zombies, drowned, piglins, and other ageable mobs. Set it to <code>false</code> to exclude babies. The spawner-source filter still applies. To control which variants spawn, use the spawner settings.</p>
+<p>Both options default to <code>true</code> when omitted, including in existing missions. Changing the required amount through a command or the editor preserves these filters. Save the mission to write the fields, or add them manually and reload.</p>
+<p>Both switches are available in the dedicated <strong>Kill Mobs Mission</strong> settings menu.</p>
+<h3 id="specific-kill-mobs-targets"><a class="heading-anchor" href="#specific-kill-mobs-targets" aria-label="Link to section">Specific Kill Mobs Targets</a></h3>
+<p>Open <strong>Stages > stage > Missions > Kill Mobs Mission</strong> to reach the mission settings. The menu contains the required amount, <strong>Dungeon Spawner Mobs Only</strong>, and <strong>Count Baby Variants</strong>. Click <strong>Required Amount</strong> to enter the mob count in chat.</p>
+<p>Click <strong>Specific Mob Targets</strong> to add a one-Zombie example when the mission has no targets and show the configuration path in chat: <code>plugins/InstancedDungeons/dungeons/&lt;dungeon-id&gt;/stages/&lt;stage-id&gt;.yml</code>. Edit <code>mob-targets</code> inside that file's <code>KILL_MOBS</code> entry, then reload the dungeon configuration before starting a new instance:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-key">missions</span><span class="tok-punct">:</span>
+  - <span class="tok-key">type</span><span class="tok-punct">:</span> KILL_MOBS
+    <span class="tok-key">required</span><span class="tok-punct">:</span> <span class="tok-num">10</span>
+    <span class="tok-key">only-dungeon-spawner-mobs</span><span class="tok-punct">:</span> <span class="tok-bool">true</span>
+    <span class="tok-key">count-baby-variants</span><span class="tok-punct">:</span> <span class="tok-bool">true</span>
+    <span class="tok-key">mob-targets</span><span class="tok-punct">:</span>
+      - <span class="tok-key">type</span><span class="tok-punct">:</span> VANILLA
+        <span class="tok-key">mob-id</span><span class="tok-punct">:</span> ZOMBIE
+        <span class="tok-key">count</span><span class="tok-punct">:</span> <span class="tok-num">6</span>
+      - <span class="tok-key">type</span><span class="tok-punct">:</span> VANILLA
+        <span class="tok-key">mob-id</span><span class="tok-punct">:</span> PIG
+        <span class="tok-key">count</span><span class="tok-punct">:</span> <span class="tok-num">2</span>
+      - <span class="tok-key">type</span><span class="tok-punct">:</span> MYTHIC
+        <span class="tok-key">mob-id</span><span class="tok-punct">:</span> Kings
+        <span class="tok-key">count</span><span class="tok-punct">:</span> <span class="tok-num">1</span>
+      - <span class="tok-key">type</span><span class="tok-punct">:</span> MYTHIC
+        <span class="tok-key">mob-id</span><span class="tok-punct">:</span> Barbarian
+        <span class="tok-key">count</span><span class="tok-punct">:</span> <span class="tok-num">1</span></code></pre></div>
+<p>With targets configured, the mission requires every listed count. Their sum replaces <code>required</code>; extra zombies cannot replace a missing pig or MythicMob. Use Bukkit entity names for vanilla targets and exact, case-sensitive MythicMobs internal IDs for Mythic targets. A Mythic zombie counts toward its Mythic ID, not the vanilla <code>ZOMBIE</code> target. Both source and baby filters still apply.</p>
+<p>The hologram shows each target's progress and remaining count. Invalid target definitions block progress and are reported by validation and in the server log. Omit <code>mob-targets</code> to use the ordinary total-count mission. The amount button is disabled while specific targets control the total; editing the filters preserves those targets.</p>
+<h3 id="skipping-missions"><a class="heading-anchor" href="#skipping-missions" aria-label="Link to section">Skipping Missions</a></h3>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-cmd">/dg</span><span class="tok-sub"> skip</span> <span class="tok-arg">&lt;stage_id&gt;</span> mission all
+<span class="tok-cmd">/dg</span><span class="tok-sub"> skip</span> <span class="tok-arg">&lt;stage_id&gt;</span> mission <span class="tok-arg">&lt;mission_type&gt;</span></code></pre></div>
+<p>Requires <code>instanceddungeons.admin</code> or <code>instanceddungeons.skip.mission</code>. The player must be a participant in an active dungeon run, not a spectator. There is no skip button in the GUI.</p>
+<p>Stage tab completion lists only unlocked, unfinished stages in the player's current instance, including parallel stages with the same order. Mission tab completion lists that stage's mission types and <code>all</code>.</p>
+<p>Skipping marks the selected missions complete without charging payment costs or performing sacrifice. Skipping <code>KILL_MOBS</code> also fills every configured mob target on the hologram, such as <code>SKELETON: 2/2</code> and <code>ZOMBIE: 2/2</code>, with zero remaining. When every mission is satisfied, normal gate opening, stage events and checkpoint behavior continue. A skipped REGION stay condition cannot block the stage again. <code>all</code> affects only the named stage; it never skips a newly unlocked stage.</p>
+<h2 id="event-commands"><a class="heading-anchor" href="#event-commands" aria-label="Link to section">Event Commands</a></h2>
+<p>Event commands let server owners run commands when dungeon events happen. They are per dungeon and disabled by default.</p>
+<p>Admins configure them in each dungeon's command file:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code>plugins/InstancedDungeons/dungeons/&lt;dungeon_id&gt;/commands.yml</code></pre></div>
+<p>Default file:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-key">enabled</span><span class="tok-punct">:</span> <span class="tok-bool">false</span>
+<span class="tok-key">default-executor</span><span class="tok-punct">:</span> CONSOLE
+<span class="tok-key">commands</span><span class="tok-punct">:</span>
+<span class="tok-comment">  # - event: on-player-death-command</span>
+<span class="tok-comment">  #   executor: CONSOLE</span>
+<span class="tok-comment">  #   audience: NONE</span>
+<span class="tok-comment">  #   run:</span>
+<span class="tok-comment">  #     - &quot;say &lt;player&gt; died in &lt;dungeon_name&gt;&quot;</span>
+<span class="tok-comment">  #</span>
+<span class="tok-comment">  # - event: on-player-death-command</span>
+<span class="tok-comment">  #   executor: CONSOLE</span>
+<span class="tok-comment">  #   audience: PARTY</span>
+<span class="tok-comment">  #   run:</span>
+<span class="tok-comment">  #     - &quot;tell &lt;target&gt; &lt;player&gt; died in &lt;dungeon_name&gt;&quot;</span>
+<span class="tok-comment">  #</span>
+<span class="tok-comment">  # - event: on-player-death-command</span>
+<span class="tok-comment">  #   executor: CONSOLE</span>
+<span class="tok-comment">  #   audience: ALIVE_PARTY</span>
+<span class="tok-comment">  #   run:</span>
+<span class="tok-comment">  #     - &quot;msg &lt;target&gt; &lt;player&gt; has died.&quot;</span>
+<span class="tok-comment">  #</span>
+<span class="tok-comment">  # - event: on-party-complete-dungeon-command</span>
+<span class="tok-comment">  #   executor: CONSOLE</span>
+<span class="tok-comment">  #   audience: NONE</span>
+<span class="tok-comment">  #   run:</span>
+<span class="tok-comment">  #     - &quot;broadcast &lt;party_leader&gt;&#x27;s party completed &lt;dungeon_name&gt;&quot;</span></code></pre></div>
+<p>Set <code>enabled: true</code> and uncomment the entries you want to run.</p>
+<p>Executor:</p>
+<ul><li><code>CONSOLE</code>: runs command as console.</li><li><code>PLAYER</code>: runs command as the event player. Party events use the online party leader when available.</li></ul>
+<p>Audience:</p>
+<ul><li><code>NONE</code>: no plugin targeting. The command runs once. Example: <code>executor: CONSOLE</code>, <code>audience: NONE</code>, and <code>say ...</code> broadcasts globally because Minecraft's <code>say</code> command is global.</li><li><code>PLAYER</code>: targets the event player and fills <code>&lt;target&gt;</code> with that player.</li><li><code>PARTY</code>: runs once per online dungeon party member and fills <code>&lt;target&gt;</code> for each member. External spectators are not included.</li><li><code>ALIVE_PARTY</code>: runs once per online non-eliminated dungeon player.</li><li><code>DEAD_PARTY</code>: runs once per online eliminated death spectator.</li><li><code>LEADER</code>: targets the party leader.</li></ul>
+<p>Command format:</p>
+<ul><li>Leading <code>/</code> is optional.</li><li>Commands are skipped when the event is not configured.</li><li>Run <code>/dungeon reload</code> after editing event commands.</li><li>The <code>commands:</code> list may contain the same <code>event</code> more than once. This is the recommended way to run separate command groups or run the same trigger with different executor/audience combinations.</li><li>Each entry can use its own <code>executor</code>; otherwise it uses <code>default-executor</code>.</li><li>If <code>audience</code> is omitted, it defaults to <code>NONE</code>.</li><li>If an audience other than <code>NONE</code> has no online targets, that command entry is skipped.</li><li>Audience does not change how Minecraft commands behave. <code>say</code> is still global. Use commands such as <code>msg &lt;target&gt; ...</code> or <code>tell &lt;target&gt; ...</code> when you want only the selected audience to see a message.</li></ul>
+<p>Player event keys:</p>
+<div class="table-wrap"><table><thead><tr><th>Event key</th><th>When it runs</th></tr></thead><tbody><tr><td><code>on-player-create-party-command</code></td><td>Once for the player who creates a party with <code>/dungeon open &lt;id&gt;</code>.</td></tr><tr><td><code>on-player-join-party-command</code></td><td>Once for the player who joins a party with <code>/dungeon join &lt;code&gt;</code>.</td></tr><tr><td><code>on-player-start-dungeon-command</code></td><td>For each dungeon player when the instance starts and players enter the dungeon.</td></tr><tr><td><code>on-player-complete-dungeon-command</code></td><td>For each active dungeon player when a single dungeon completes, or when the last tower dungeon completes.</td></tr><tr><td><code>on-player-abandon-dungeon-command</code></td><td>For a player who leaves through an external/abandon flow before completion.</td></tr><tr><td><code>on-player-exit-dungeon-command</code></td><td>When a player exits with <code>/dungeon exit</code>.</td></tr><tr><td><code>on-player-death-command</code></td><td>When a dungeon player dies inside an active instance.</td></tr><tr><td><code>on-player-kill-mob-command</code></td><td>When a dungeon player kills a regular dungeon mob.</td></tr><tr><td><code>on-player-kill-boss-command</code></td><td>When a dungeon player kills the boss and Bukkit can resolve the killer.</td></tr><tr><td><code>on-player-complete-stage-command</code></td><td>For each active dungeon player when the active stage is completed.</td></tr><tr><td><code>on-player-open-gate-command</code></td><td>For each active dungeon player when a stage gate opens.</td></tr><tr><td><code>on-player-fail-dungeon-command</code></td><td>For each active dungeon player when the dungeon or tower fails.</td></tr></tbody></table></div>
+<p>Party event keys:</p>
+<div class="table-wrap"><table><thead><tr><th>Event key</th><th>When it runs</th></tr></thead><tbody><tr><td><code>on-party-create-command</code></td><td>Once when a party is created.</td></tr><tr><td><code>on-party-player-join-command</code></td><td>Once when any player joins the party. Use this for party-wide scripts.</td></tr><tr><td><code>on-party-start-dungeon-command</code></td><td>Once when the party enters the dungeon instance.</td></tr><tr><td><code>on-party-complete-dungeon-command</code></td><td>Once when a single dungeon completes. In towers, this runs on the final dungeon only.</td></tr><tr><td><code>on-party-abandon-dungeon-command</code></td><td>Reserved for full-party abandon flows before completion.</td></tr><tr><td><code>on-party-fail-dungeon-command</code></td><td>Once when the dungeon or whole tower fails.</td></tr><tr><td><code>on-party-complete-stage-command</code></td><td>Once when a stage is completed.</td></tr><tr><td><code>on-party-open-gate-command</code></td><td>Once when a stage gate opens.</td></tr><tr><td><code>on-party-enter-tower-stage-command</code></td><td>Once when the party enters the next tower dungeon after a transition.</td></tr><tr><td><code>on-party-complete-tower-command</code></td><td>Once when the final tower dungeon completes.</td></tr></tbody></table></div>
+<p>Event placeholder reference:</p>
+<div class="table-wrap"><table><thead><tr><th>Placeholder</th><th>Meaning</th></tr></thead><tbody><tr><td><code>&lt;player&gt;</code></td><td>Event player name.</td></tr><tr><td><code>&lt;player_uuid&gt;</code></td><td>Event player UUID.</td></tr><tr><td><code>&lt;executor&gt;</code></td><td>Configured command executor, <code>CONSOLE</code> or <code>PLAYER</code>.</td></tr><tr><td><code>&lt;executor_player&gt;</code></td><td>Player executing the command when using <code>PLAYER</code>.</td></tr><tr><td><code>&lt;executor_uuid&gt;</code></td><td>Executor player UUID when using <code>PLAYER</code>.</td></tr><tr><td><code>&lt;audience&gt;</code></td><td>Configured audience.</td></tr><tr><td><code>&lt;target&gt;</code></td><td>Current audience target player name. Empty when <code>audience: NONE</code>.</td></tr><tr><td><code>&lt;target_uuid&gt;</code></td><td>Current audience target player UUID. Empty when <code>audience: NONE</code>.</td></tr><tr><td><code>&lt;party_leader&gt;</code></td><td>Party leader name.</td></tr><tr><td><code>&lt;party_code&gt;</code></td><td>Party code.</td></tr><tr><td><code>&lt;party_size&gt;</code></td><td>Number of players in the party or active instance.</td></tr><tr><td><code>&lt;dungeon_id&gt;</code></td><td>Dungeon folder ID.</td></tr><tr><td><code>&lt;dungeon_name&gt;</code></td><td>Dungeon display name.</td></tr><tr><td><code>&lt;template_id&gt;</code></td><td>Template world name.</td></tr><tr><td><code>&lt;stage_id&gt;</code></td><td>Stage ID when the event is stage-related.</td></tr><tr><td><code>&lt;stage_order&gt;</code></td><td>Stage order when available.</td></tr><tr><td><code>&lt;tower_id&gt;</code></td><td>Tower context ID.</td></tr><tr><td><code>&lt;mob_id&gt;</code></td><td>Killed mob type or ID when available.</td></tr><tr><td><code>&lt;boss_id&gt;</code></td><td>Boss ID placeholder when available.</td></tr><tr><td><code>&lt;world&gt;</code></td><td>Event player's current world.</td></tr><tr><td><code>&lt;instance_world&gt;</code></td><td>Active instance world name when available.</td></tr><tr><td><code>&lt;x&gt;</code>, <code>&lt;y&gt;</code>, <code>&lt;z&gt;</code></td><td>Event player's block coordinates.</td></tr></tbody></table></div>
+<p>Duplicate rules:</p>
+<ul><li>Player events run once per affected player.</li><li>Party events run once per party/run.</li><li><code>/dungeon exit</code> fires the exit event, not the abandon event.</li><li>External teleports/leaves can fire abandon events.</li><li>Stage gate open and stage complete are separate hooks so admins can script either moment.</li></ul>
+<h2 id="messages-and-placeholders"><a class="heading-anchor" href="#messages-and-placeholders" aria-label="Link to section">Messages and Placeholders</a></h2>
+<p>Main messages file:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code>plugins/InstancedDungeons/messages.yml</code></pre></div>
+<p>Important placeholder styles:</p>
+<ul><li>Messages use <code>%placeholder%</code>.</li><li>Event commands use <code>&lt;placeholder&gt;</code>.</li></ul>
+<p>The <code>mission-names</code> section controls player-facing mission labels used in mission completion messages, mission GUI names, hologram mission hints, and mission lore placeholders. Keep using mission IDs such as <code>KILL_MOBS</code> in configs and commands.</p>
+<p>New installations receive messages grouped by purpose, such as dungeon, instance and editor messages. Updates append missing new messages to existing files under:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-comment"># Messages added by plugin updates will appear below. Existing messages are never overwritten.</span></code></pre></div>
+<p>Existing messages, comments, order, and translations are preserved.</p>
+<p>Admin menu titles, button labels, icon descriptions and the Region/Cooldown settings input prompts use fixed English text. <code>messages.yml</code> controls chat messages and player-facing mission labels, including the existing <code>mission-names</code> section.</p>
+<p><code>item-use-blocked-in-dungeon</code> uses <code>%item%</code> for the blocked item name.</p>
+<p><code>messages.yml</code> also includes a placeholder reference comment at the bottom.</p>
+<h2 id="validation"><a class="heading-anchor" href="#validation" aria-label="Link to section">Validation</a></h2>
+<p>Use:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-cmd">/dungeon</span><span class="tok-sub"> validate</span> <span class="tok-arg">&lt;id&gt;</span>
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> validate</span> all
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> reload</span></code></pre></div>
+<p>Validation checks include:</p>
+<ul><li>Config version compatibility.</li><li>Missing spawn/exit locations.</li><li>Invalid objective files.</li><li>Invalid tower chain setup.</li><li>Unsupported costs on middle/last tower stages.</li><li>Invalid spawner locations.</li><li>Unknown mob IDs where they can be resolved.</li><li>Unknown or unavailable custom item provider entries.</li><li>Stage ordering and feature validation warnings.</li><li>Loot chest and boss reward item definitions.</li><li><code>commands.yml</code> syntax, event keys, executors, audiences, command lists, and risky audience/global command combinations.</li></ul>
+<p>Validation output:</p>
+<ul><li>Console always receives validation output.</li><li>Online admins receive chat validation warnings unless disabled per dungeon.</li><li>Normal players do not receive validation warnings.</li><li>If chat output is shortened, check the console because it may contain more validation details.</li></ul>
+<h2 id="feature-limits"><a class="heading-anchor" href="#feature-limits" aria-label="Link to section">Feature Limits</a></h2>
+<div class="table-wrap"><table><thead><tr><th>Area</th><th>Behavior</th></tr></thead><tbody><tr><td>Global active instances</td><td><code>0</code> disables the global active-instance ceiling. Positive values set the exact maximum.</td></tr><tr><td>Tower length</td><td>Supports <code>FIRST -&gt; LAST</code> and longer <code>FIRST -&gt; MIDDLE -&gt; ... -&gt; LAST</code> chains.</td></tr><tr><td>Tower middle stage</td><td>Fully supported.</td></tr><tr><td>Stages per dungeon</td><td>Uses all configured stages.</td></tr><tr><td>Missions per stage</td><td>Uses all configured missions.</td></tr><tr><td>Lever mission blocks</td><td>Uses all configured blocks.</td></tr><tr><td>Button mission blocks</td><td>Uses all configured blocks.</td></tr><tr><td>Pressure plate mission blocks</td><td>Uses all configured blocks.</td></tr><tr><td>Required keys</td><td>Uses the configured <code>required</code> amount.</td></tr><tr><td>Sacrifice missions</td><td>Multiple sacrifice mission entries are supported.</td></tr><tr><td>Money payment missions</td><td>Multiple money payment mission entries are supported.</td></tr><tr><td>Item payment missions</td><td>Multiple item payment mission entries are supported.</td></tr><tr><td>Item payment item types</td><td>Multiple item payment item types are supported.</td></tr><tr><td>Region missions</td><td>One per stage, with no per-dungeon limit.</td></tr></tbody></table></div>
+<h2 id="admin-gui-and-ram-analysis"><a class="heading-anchor" href="#admin-gui-and-ram-analysis" aria-label="Link to section">Admin GUI and RAM Analysis</a></h2>
+<p>The admin GUI provides dungeon settings, gate and mission editing, checkpoints, reward previews and test rolls, and sound previews. <strong>Boss & Trigger</strong> shows the controls for the selected objective. <strong>After-Open Logic</strong> and <strong>Emergency Return</strong> configure gate teleports and return plates. See <a href="../event-commands/index.html">Event Commands</a> for checkpoint and gate actions.</p>
+<p><code>/dungeon ram analysis</code> toggles memory reports and requires <code>instanceddungeons.admin</code>. Reports estimate plugin and active-instance memory. See <a href="../ram-analysis/index.html">RAM Analysis</a> for settings and report fields.</p>
+<h2 id="compatibility-notes"><a class="heading-anchor" href="#compatibility-notes" aria-label="Link to section">Compatibility Notes</a></h2>
+<ul><li>One universal JAR supports both Paper 1.21.x and Paper 26.1 / 26.2 / 26.3.</li><li>Template world gamerules, WorldBorder settings, and WorldGuard regions/flags copy automatically to each dungeon instance.</li><li>No update checker is included in this build.</li></ul>
+<ul><li>Recreate dungeons that use the 1.x config format before using them with 2.x.</li></ul>
+<h2 id="troubleshooting"><a class="heading-anchor" href="#troubleshooting" aria-label="Link to section">Troubleshooting</a></h2>
+<p>Mobs do not spawn:</p>
+<ul><li>Run <code>/dungeon validate &lt;id&gt;</code>.</li><li>Check spawner location and trigger.</li><li>Verify MythicMobs IDs if using <code>MYTHIC</code>.</li><li>Ensure the template world is loaded.</li></ul>
+<p>Loot chests are empty:</p>
+<ul><li>Check <code>min-items-per-drop</code> and <code>max-items-per-drop</code>.</li><li>Verify item provider and item IDs.</li><li>Check chance values.</li><li>Run <code>/dungeon reload</code> after edits.</li></ul>
+<p>Dungeon will not start:</p>
+<ul><li>Run <code>/dungeon validate &lt;id&gt;</code>.</li><li>Check <code>v: 2.0</code>.</li><li>Check spawn and exit locations.</li><li>Check max instance limits.</li><li>Check party size and offline members.</li></ul>
+<p>Tower does not transition:</p>
+<ul><li>Confirm <code>dungeon-type: tower</code>.</li><li>Confirm <code>tower-stage-type</code>.</li><li>Confirm <code>next-dungeon</code> points to a loaded dungeon.</li><li><code>FIRST</code> can point to <code>MIDDLE</code>, and <code>MIDDLE</code> can point to another <code>MIDDLE</code> or <code>LAST</code>.</li></ul>
+<p>Stage gate does not open:</p>
+<ul><li>Confirm stage order is valid.</li><li>Confirm all missions are complete.</li><li>Confirm the hologram belongs to the same stage.</li><li>Check that the gate was saved with <code>/dungeon gate save</code>.</li></ul>
+<p>Custom items fail validation:</p>
+<ul><li>Confirm the provider plugin is installed and enabled.</li><li>Confirm the item ID exactly matches the provider ID.</li><li>For potions and enchanted books, confirm the ID follows the special vanilla formats above.</li></ul>
+      </article>
+      <nav class="page-nav" aria-label="Page navigation">
+        <a class="page-nav-card prev" href="../towers/index.html"><span class="page-nav-label">Previous</span><span class="page-nav-title">&larr; Towers</span></a>
+        <a class="page-nav-card next" href="../spawners-and-mobs/index.html"><span class="page-nav-label">Next</span><span class="page-nav-title">Spawners and Mobs &rarr;</span></a>
+      </nav>
+    </main>
+
+    <aside class="sidebar-right" aria-label="Table of contents">
+      <div class="toc-title">On this page</div><ul class="toc-list"><li class="toc-item"><a href="#table-of-contents">Table of Contents</a></li><li class="toc-item"><a href="#requirements">Requirements</a></li><li class="toc-item"><a href="#installation">Installation</a></li><li class="toc-item"><a href="#core-concepts">Core Concepts</a></li><li class="toc-item"><a href="#quick-start">Quick Start</a></li><li class="toc-item"><a href="#commands">Commands</a></li><li class="toc-item"><a href="#permissions">Permissions</a></li><li class="toc-item"><a href="#global-config">Global Config</a></li><li class="toc-item"><a href="#dungeon-config">Dungeon Config</a></li><li class="toc-item"><a href="#boss-objectives">Boss Objectives</a></li><li class="toc-item toc-h3"><a href="#boss-stage-requirement">Boss Stage Requirement</a></li><li class="toc-item"><a href="#trigger-objectives">Trigger Objectives</a></li><li class="toc-item toc-h3"><a href="#trigger-stage-requirement">Trigger Stage Requirement</a></li><li class="toc-item"><a href="#towers">Towers</a></li><li class="toc-item"><a href="#spawners">Spawners</a></li><li class="toc-item toc-h3"><a href="#mob-lifetime">Mob Lifetime</a></li><li class="toc-item"><a href="#loot-chests">Loot Chests</a></li><li class="toc-item"><a href="#boss-rewards">Boss Rewards</a></li><li class="toc-item"><a href="#trigger-rewards">Trigger Rewards</a></li><li class="toc-item"><a href="#entry-costs">Entry Costs</a></li><li class="toc-item toc-h3"><a href="#player-cooldowns">Player Cooldowns</a></li><li class="toc-item"><a href="#special-vanilla-item-ids">Special Vanilla Item IDs</a></li><li class="toc-item"><a href="#parties-and-instances">Parties and Instances</a></li><li class="toc-item toc-h3"><a href="#remove-a-party-member">Remove a Party Member</a></li><li class="toc-item"><a href="#lives-and-death-behavior">Lives and Death Behavior</a></li><li class="toc-item"><a href="#stages-and-gates">Stages and Gates</a></li><li class="toc-item"><a href="#stage-missions">Stage Missions</a></li><li class="toc-item toc-h3"><a href="#region-missions">Region Missions</a></li><li class="toc-item toc-h3"><a href="#kill-mobs-filters">Kill Mobs Filters</a></li><li class="toc-item toc-h3"><a href="#specific-kill-mobs-targets">Specific Kill Mobs Targets</a></li><li class="toc-item toc-h3"><a href="#skipping-missions">Skipping Missions</a></li><li class="toc-item"><a href="#event-commands">Event Commands</a></li><li class="toc-item"><a href="#messages-and-placeholders">Messages and Placeholders</a></li><li class="toc-item"><a href="#validation">Validation</a></li><li class="toc-item"><a href="#feature-limits">Feature Limits</a></li><li class="toc-item"><a href="#admin-gui-and-ram-analysis">Admin GUI and RAM Analysis</a></li><li class="toc-item"><a href="#compatibility-notes">Compatibility Notes</a></li><li class="toc-item"><a href="#troubleshooting">Troubleshooting</a></li></ul>
+    </aside>
+  </div>
+
+  <div class="search-backdrop" id="search-backdrop" role="dialog" aria-modal="true" aria-label="Search documentation">
+    <div class="search-modal">
+      <div class="search-input-wrap">
+        <span class="search-edition-pill">PRO</span>
+        <input type="search" class="search-input" id="search-input" placeholder="Search Pro documentation..." autocomplete="off">
+        <span class="search-kbd">ESC</span>
+      </div>
+      <div class="search-results" id="search-results"></div>
+    </div>
+  </div>
+
+  <script src="../../assets/search-index.js?v=3"></script>
+  <script src="../../assets/app.js?v=3"></script>
+</body>
+</html>

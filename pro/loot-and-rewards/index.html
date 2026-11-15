@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Loot and Rewards | InstancedDungeons (PRO)</title>
+  <link rel="icon" href="../../assets/header-logo.png">
+  <link rel="stylesheet" href="../../assets/style.css?v=3">
+</head>
+<body data-edition="pro" data-root="../../">
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-left">
+        <button type="button" class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation">&#9776;</button>
+        <a class="brand" href="../index.html">
+          <img src="../../assets/header-logo.png" alt="InstancedDungeons">
+          <span>InstancedDungeons</span>
+        </a>
+        <nav class="edition-switch" data-active="pro" aria-label="Documentation edition">
+          <span class="edition-icon" aria-hidden="true">&#9876;</span>
+          <span class="edition-track">
+            <span class="edition-thumb" aria-hidden="true"></span>
+            <a class="edition-link" data-edition-target="free" href="../../loot-and-rewards/index.html">Free</a>
+            <a class="edition-link is-active" data-edition-target="pro" href="index.html">Pro</a>
+          </span>
+        </nav>
+      </div>
+
+      <nav class="top-nav" aria-label="Main sections">
+        <span class="top-nav-thumb" aria-hidden="true"></span>
+        <a class="top-nav-link" href="../index.html">Start</a><a class="top-nav-link" href="../configuration/index.html">Configuration</a><a class="top-nav-link is-active" href="../spawners-and-mobs/index.html">Systems</a><a class="top-nav-link" href="../item-ids/potions-and-arrows/index.html">Item ID Reference</a><a class="top-nav-link" href="../help/index.html">Help</a>
+      </nav>
+
+      <div class="header-right">
+        <button type="button" class="search-trigger" id="search-open" aria-label="Search documentation">
+          <span>Search docs...</span>
+          <span class="search-kbd">Ctrl K</span>
+        </button>
+        <button type="button" class="icon-btn" id="theme-toggle" title="Toggle dark/light theme" aria-label="Toggle theme">&#9728;</button>
+        <div class="ext-links">
+          <a class="ext-pill" href="https://builtbybit.com/resources/instanceddungeons-pro.112271/" target="_blank" rel="noopener">BuiltByBit</a><a class="ext-pill" href="https://discord.com/invite/sD4HvQh8P4" target="_blank" rel="noopener">Discord</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout-shell">
+    <aside class="sidebar-left" id="sidebar-left" aria-label="Sidebar navigation">
+      <div class="nav-group"><div class="nav-group-title">Start</div><ul class="nav-list"><li class="nav-item"><a href="../index.html">Overview</a></li><li class="nav-item"><a href="../getting-started/index.html">Getting Started</a></li><li class="nav-item"><a href="../updating/index.html">Updating</a></li><li class="nav-item"><a href="../examples/index.html">Examples</a></li><li class="nav-item"><a href="../commands/index.html">Commands</a></li><li class="nav-item"><a href="../permissions/index.html">Permissions</a></li></ul></div><div class="nav-group"><div class="nav-group-title">Configuration</div><ul class="nav-list"><li class="nav-item"><a href="../configuration/index.html">Dungeon Config</a></li><li class="nav-item"><a href="../objectives/index.html">Objectives</a></li><li class="nav-item"><a href="../towers/index.html">Towers</a></li><li class="nav-item"><a href="../complete-reference/index.html">Complete Reference</a></li></ul></div><div class="nav-group"><div class="nav-group-title">Systems</div><ul class="nav-list"><li class="nav-item"><a href="../spawners-and-mobs/index.html">Spawners and Mobs</a></li><li class="nav-item"><a href="../stages/index.html">Stages and Gates</a></li><li class="nav-item"><a href="../checkpoints/index.html">Checkpoints</a></li><li class="nav-item"><a class="is-active" href="index.html">Loot and Rewards</a></li><li class="nav-item"><a href="../sounds/index.html">Sounds</a></li><li class="nav-item"><a href="../event-commands/index.html">Event Commands</a></li></ul></div><div class="nav-group"><div class="nav-group-title">Item ID Reference</div><ul class="nav-list"><li class="nav-item"><a href="../item-ids/potions-and-arrows/index.html">Potions and Arrows</a></li><li class="nav-item"><a href="../item-ids/enchanted-books/index.html">Enchanted Books</a></li><li class="nav-item"><a href="../item-ids/enchant-ids/index.html">Enchant IDs</a></li></ul></div><div class="nav-group"><div class="nav-group-title">Help</div><ul class="nav-list"><li class="nav-item"><a href="../help/index.html">Help Center</a></li><li class="nav-item"><a href="../ram-analysis/index.html">RAM Analysis</a></li><li class="nav-item"><a href="../troubleshooting/index.html">Troubleshooting</a></li></ul></div>
+    </aside>
+
+    <main class="doc-main">
+      <div class="breadcrumb">
+        <span class="edition-tag">PRO Edition</span>
+        <span class="sep">/</span>
+        <span>Systems</span>
+        <span class="sep">/</span>
+        <span>Loot and Rewards</span>
+      </div>
+      <article class="doc-article">
+        <h1 id="loot-and-rewards">Loot and Rewards</h1>
+<p>The plugin preserves enchantments on vanilla items used in costs and rewards.</p>
+<p>InstancedDungeons supports loot chests, mission keys, boss rewards, trigger rewards, and custom item providers.</p>
+<h2 id="loot-chests"><a class="heading-anchor" href="#loot-chests" aria-label="Link to section">Loot Chests</a></h2>
+<p>Create a loot chest config:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-cmd">/dungeon</span><span class="tok-sub"> edit</span> dragon_lair
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> addlootchest</span> treasure_room
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> lootchest</span> give treasure_room</code></pre></div>
+<p>Add the item in your main hand to the loot table:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-cmd">/dungeon</span><span class="tok-sub"> lootchest</span> loot treasure_room add</code></pre></div>
+<p>Loot chest files live in:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code>dungeons/&lt;id&gt;/lootchests/&lt;loot_chest_id&gt;.yml</code></pre></div>
+<p>Example:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-key">loot-table</span><span class="tok-punct">:</span>
+  - <span class="tok-key">type</span><span class="tok-punct">:</span> VANILLA
+    <span class="tok-key">item</span><span class="tok-punct">:</span> DIAMOND
+    <span class="tok-key">min-amount</span><span class="tok-punct">:</span> <span class="tok-num">1</span>
+    <span class="tok-key">max-amount</span><span class="tok-punct">:</span> <span class="tok-num">4</span>
+    <span class="tok-key">chance</span><span class="tok-punct">:</span> <span class="tok-num">50.0</span></code></pre></div>
+<h2 id="mission-keys"><a class="heading-anchor" href="#mission-keys" aria-label="Link to section">Mission Keys</a></h2>
+<p>Mission keys use the <code>MISSION</code> type and are guaranteed supply entries.</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-key">loot-table</span><span class="tok-punct">:</span>
+  - <span class="tok-key">type</span><span class="tok-punct">:</span> MISSION
+    <span class="tok-key">item</span><span class="tok-punct">:</span> KEY
+    <span class="tok-key">stage</span><span class="tok-punct">:</span> <span class="tok-num">1</span>
+    <span class="tok-key">quantity</span><span class="tok-punct">:</span> <span class="tok-num">1</span>
+    <span class="tok-key">lore</span><span class="tok-punct">:</span>
+      - <span class="tok-str">&quot;&amp;7A key used to unlock a dungeon stage.&quot;</span></code></pre></div>
+<p>Mission keys are bound to the instance where they dropped and are removed when the player leaves that instance.</p>
+<h2 id="boss-rewards"><a class="heading-anchor" href="#boss-rewards" aria-label="Link to section">Boss Rewards</a></h2>
+<p>Open the boss reward editor:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-cmd">/dungeon</span><span class="tok-sub"> boss</span> reward edit</code></pre></div>
+<p>Boss and trigger delivery is controlled by <code>reward-logic</code>:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-key">reward-logic</span><span class="tok-punct">:</span>
+  <span class="tok-key">delivery</span><span class="tok-punct">:</span> INVENTORY
+  <span class="tok-key">recipients</span><span class="tok-punct">:</span> EVERY_ALIVE</code></pre></div>
+<p><code>delivery</code> accepts <code>INVENTORY</code> or <code>GROUND</code>.</p>
+<div class="table-wrap"><table><thead><tr><th>Recipient</th><th>Objective</th><th>Allowed delivery</th></tr></thead><tbody><tr><td><code>PARTY_SHARED</code></td><td>Boss or trigger</td><td><code>GROUND</code> only</td></tr><tr><td><code>LEADER</code></td><td>Boss or trigger</td><td><code>INVENTORY</code> only</td></tr><tr><td><code>KILLER</code></td><td>Boss only</td><td><code>INVENTORY</code> only</td></tr><tr><td><code>ACTIVATOR</code></td><td>Trigger only</td><td><code>INVENTORY</code> only</td></tr><tr><td><code>EVERY_ALIVE</code></td><td>Boss or trigger</td><td><code>INVENTORY</code> or <code>GROUND</code></td></tr></tbody></table></div>
+<p>Invalid combinations block the dungeon from opening and are reported by validation. <code>GROUND + EVERY_ALIVE</code> makes one independent reward roll for every eligible player and creates one public pile at the boss or trigger location. Inventory overflow drops at the recipient's location.</p>
+<p>Only online, alive party members inside the instance world count for <code>EVERY_ALIVE</code>. Supported custom items follow the same delivery rules as vanilla items.</p>
+<p>For existing dungeons, boss rewards keep <code>GROUND + PARTY_SHARED</code> and trigger rewards keep <code>INVENTORY + EVERY_ALIVE</code> unless an administrator changes them.</p>
+<p>Reward entries are independent. If you place 4 diamonds in one GUI slot and 2 diamonds in another slot, the plugin saves two separate reward entries.</p>
+<p>The admin GUI exposes the matching objective's reward-logic profile under <strong>Boss & Trigger</strong>. The test control uses normal left-click for a non-destructive entry preview and Shift-left-click for a real random roll. A real test follows <code>INVENTORY</code>/<code>GROUND</code> delivery at the testing administrator and supports every configured custom-item provider.</p>
+<h2 id="trigger-rewards"><a class="heading-anchor" href="#trigger-rewards" aria-label="Link to section">Trigger Rewards</a></h2>
+<p>Open the trigger reward editor:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-cmd">/dungeon</span><span class="tok-sub"> trigger</span> reward edit</code></pre></div>
+<p>Trigger rewards are saved in:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code>dungeons/&lt;id&gt;/trigger.yml</code></pre></div>
+<p>They are given when the configured trigger completes the dungeon.</p>
+<p>Example:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-key">rewards</span><span class="tok-punct">:</span>
+  <span class="tok-key">enabled</span><span class="tok-punct">:</span> <span class="tok-bool">true</span>
+  <span class="tok-key">items</span><span class="tok-punct">:</span>
+    - <span class="tok-key">type</span><span class="tok-punct">:</span> VANILLA
+      <span class="tok-key">item</span><span class="tok-punct">:</span> DIAMOND
+      <span class="tok-key">amount</span><span class="tok-punct">:</span> <span class="tok-num">2</span>
+      <span class="tok-key">chance</span><span class="tok-punct">:</span> <span class="tok-num">100.0</span></code></pre></div>
+<h2 id="supported-item-types"><a class="heading-anchor" href="#supported-item-types" aria-label="Link to section">Supported Item Types</a></h2>
+<div class="table-wrap"><table><thead><tr><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>VANILLA</code></td><td>Standard Minecraft item material or special vanilla ID.</td></tr><tr><td><code>MYTHIC_ITEM</code></td><td>MythicMobs item ID.</td></tr><tr><td><code>ITEMSADDER</code></td><td>ItemsAdder item ID.</td></tr><tr><td><code>ORAXEN</code></td><td>Oraxen item ID.</td></tr><tr><td><code>NEXO</code></td><td>Nexo item ID.</td></tr><tr><td><code>MISSION</code></td><td>Dungeon mission key entry.</td></tr></tbody></table></div>
+<h2 id="special-vanilla-item-ids"><a class="heading-anchor" href="#special-vanilla-item-ids" aria-label="Link to section">Special Vanilla Item IDs</a></h2>
+<p>Special vanilla IDs work in loot chests, entry costs, stage item payment missions, boss rewards, and trigger rewards.</p>
+<p>Supported examples include potions, splash potions, lingering potions, tipped arrows, and enchanted books.</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code>- <span class="tok-key">type</span><span class="tok-punct">:</span> VANILLA
+  <span class="tok-key">item</span><span class="tok-punct">:</span> POTION_LONG_POISON
+  <span class="tok-key">amount</span><span class="tok-punct">:</span> <span class="tok-num">1</span></code></pre></div>
+<h2 id="enchanted-vanilla-items"><a class="heading-anchor" href="#enchanted-vanilla-items" aria-label="Link to section">Enchanted Vanilla Items</a></h2>
+<p>Enchanted vanilla items are supported in:</p>
+<ul><li>Loot chests.</li><li>Boss rewards.</li><li>Trigger rewards.</li><li>Entry costs.</li><li>Stage item payment missions.</li><li>Mob equipment, documented separately in <a href="../spawners-and-mobs/index.html">Spawners and Mobs</a>.</li></ul>
+<p>Example:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code>- <span class="tok-key">type</span><span class="tok-punct">:</span> VANILLA
+  <span class="tok-key">item</span><span class="tok-punct">:</span> DIAMOND_SWORD
+  <span class="tok-key">amount</span><span class="tok-punct">:</span> <span class="tok-num">1</span>
+  <span class="tok-key">enchants</span><span class="tok-punct">:</span>
+    <span class="tok-key">SHARPNESS</span><span class="tok-punct">:</span> <span class="tok-num">5</span>
+    <span class="tok-key">UNBREAKING</span><span class="tok-punct">:</span> <span class="tok-num">3</span></code></pre></div>
+<p>The same <code>enchants</code> map can be used for armor, tools, weapons, and enchanted books.</p>
+      </article>
+      <nav class="page-nav" aria-label="Page navigation">
+        <a class="page-nav-card prev" href="../checkpoints/index.html"><span class="page-nav-label">Previous</span><span class="page-nav-title">&larr; Checkpoints</span></a>
+        <a class="page-nav-card next" href="../sounds/index.html"><span class="page-nav-label">Next</span><span class="page-nav-title">Sounds &rarr;</span></a>
+      </nav>
+    </main>
+
+    <aside class="sidebar-right" aria-label="Table of contents">
+      <div class="toc-title">On this page</div><ul class="toc-list"><li class="toc-item"><a href="#loot-chests">Loot Chests</a></li><li class="toc-item"><a href="#mission-keys">Mission Keys</a></li><li class="toc-item"><a href="#boss-rewards">Boss Rewards</a></li><li class="toc-item"><a href="#trigger-rewards">Trigger Rewards</a></li><li class="toc-item"><a href="#supported-item-types">Supported Item Types</a></li><li class="toc-item"><a href="#special-vanilla-item-ids">Special Vanilla Item IDs</a></li><li class="toc-item"><a href="#enchanted-vanilla-items">Enchanted Vanilla Items</a></li></ul>
+    </aside>
+  </div>
+
+  <div class="search-backdrop" id="search-backdrop" role="dialog" aria-modal="true" aria-label="Search documentation">
+    <div class="search-modal">
+      <div class="search-input-wrap">
+        <span class="search-edition-pill">PRO</span>
+        <input type="search" class="search-input" id="search-input" placeholder="Search Pro documentation..." autocomplete="off">
+        <span class="search-kbd">ESC</span>
+      </div>
+      <div class="search-results" id="search-results"></div>
+    </div>
+  </div>
+
+  <script src="../../assets/search-index.js?v=3"></script>
+  <script src="../../assets/app.js?v=3"></script>
+</body>
+</html>
