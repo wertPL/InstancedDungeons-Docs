@@ -827,6 +827,10 @@ body {
   object-fit: contain;
 }
 
+.brand:focus:not(:focus-visible) {
+  outline: none;
+}
+
 /* Edition Switcher */
 .edition-switch {
   display: inline-flex;
@@ -1064,13 +1068,15 @@ body {
   padding: 0 1.25rem;
 }
 
-.layout-shell.layout-standalone {
-  grid-template-columns: minmax(0, 1fr);
+.standalone-shell {
   max-width: 54rem;
+  margin: 0 auto;
+  padding: 0 1.25rem;
 }
 
-.layout-shell.layout-standalone .doc-main {
+.standalone-shell .doc-main {
   max-width: 100%;
+  margin: 0 auto;
 }
 
 /* Left Sidebar */
@@ -2144,9 +2150,9 @@ def render_page_html(
         root_dir_prefix = root_prefix[:-10]
 
     logo_href = f"{root_dir_prefix}assets/header-logo.png"
-    css_href = f"{root_dir_prefix}assets/style.css"
-    search_js_href = f"{root_dir_prefix}assets/search-index.js"
-    app_js_href = f"{root_dir_prefix}assets/app.js"
+    css_href = f"{root_dir_prefix}assets/style.css?v=3"
+    search_js_href = f"{root_dir_prefix}assets/search-index.js?v=3"
+    app_js_href = f"{root_dir_prefix}assets/app.js?v=3"
     home_href = relative_href(html_rel, "pro/index.html" if edition == "pro" else "index.html")
     free_href = relative_href(html_rel, free_target_html)
     pro_href = relative_href(html_rel, pro_target_html)
@@ -2319,8 +2325,8 @@ def render_standalone_page_html(page_label, html_rel, article_html):
         root_dir_prefix = root_prefix[:-10]
 
     logo_href = f"{root_dir_prefix}assets/header-logo.png"
-    css_href = f"{root_dir_prefix}assets/style.css"
-    app_js_href = f"{root_dir_prefix}assets/app.js"
+    css_href = f"{root_dir_prefix}assets/style.css?v=3"
+    app_js_href = f"{root_dir_prefix}assets/app.js?v=3"
     home_href = relative_href(html_rel, "index.html")
 
     ext_links_html = (
@@ -2356,8 +2362,8 @@ def render_standalone_page_html(page_label, html_rel, article_html):
     </div>
   </header>
 
-  <div class="layout-shell layout-standalone">
-    <main class="doc-main">
+  <div class="standalone-shell" style="max-width:54rem;margin:0 auto;padding:0 1.25rem;">
+    <main class="doc-main" style="max-width:100%;margin:0 auto;">
       <article class="doc-article">
         {article_html}
       </article>

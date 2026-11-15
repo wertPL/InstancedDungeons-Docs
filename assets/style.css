@@ -172,6 +172,10 @@ body {
   object-fit: contain;
 }
 
+.brand:focus:not(:focus-visible) {
+  outline: none;
+}
+
 /* Edition Switcher */
 .edition-switch {
   display: inline-flex;
@@ -409,13 +413,15 @@ body {
   padding: 0 1.25rem;
 }
 
-.layout-shell.layout-standalone {
-  grid-template-columns: minmax(0, 1fr);
+.standalone-shell {
   max-width: 54rem;
+  margin: 0 auto;
+  padding: 0 1.25rem;
 }
 
-.layout-shell.layout-standalone .doc-main {
+.standalone-shell .doc-main {
   max-width: 100%;
+  margin: 0 auto;
 }
 
 /* Left Sidebar */
