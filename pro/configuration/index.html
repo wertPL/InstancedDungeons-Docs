@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dungeon Config | InstancedDungeons (PRO)</title>
+  <link rel="icon" href="../../assets/header-logo.png">
+  <link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body data-edition="pro" data-root="../../">
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-left">
+        <button type="button" class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation">&#9776;</button>
+        <a class="brand" href="../index.html">
+          <img src="../../assets/header-logo.png" alt="InstancedDungeons">
+          <span>InstancedDungeons</span>
+        </a>
+        <nav class="edition-switch" data-active="pro" aria-label="Documentation edition">
+          <span class="edition-icon" aria-hidden="true">&#9876;</span>
+          <span class="edition-track">
+            <span class="edition-thumb" aria-hidden="true"></span>
+            <a class="edition-link" data-edition-target="free" href="../../configuration/index.html">Free</a>
+            <a class="edition-link is-active" data-edition-target="pro" href="index.html">Pro</a>
+          </span>
+        </nav>
+      </div>
+
+      <nav class="top-nav" aria-label="Main sections">
+        <span class="top-nav-thumb" aria-hidden="true"></span>
+        <a class="top-nav-link" href="../index.html">Start</a><a class="top-nav-link is-active" href="index.html">Configuration</a><a class="top-nav-link" href="../spawners-and-mobs/index.html">Systems</a><a class="top-nav-link" href="../item-ids/potions-and-arrows/index.html">Item ID Reference</a><a class="top-nav-link" href="../help/index.html">Help</a>
+      </nav>
+
+      <div class="header-right">
+        <button type="button" class="search-trigger" id="search-open" aria-label="Search documentation">
+          <span>Search docs...</span>
+          <span class="search-kbd">Ctrl K</span>
+        </button>
+        <button type="button" class="icon-btn" id="theme-toggle" title="Toggle dark/light theme" aria-label="Toggle theme">&#9728;</button>
+        <div class="ext-links">
+          <a class="ext-pill" href="https://builtbybit.com/resources/instanceddungeons-pro.112271/" target="_blank" rel="noopener">BuiltByBit</a><a class="ext-pill" href="https://discord.com/invite/sD4HvQh8P4" target="_blank" rel="noopener">Discord</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout-shell">
+    <aside class="sidebar-left" id="sidebar-left" aria-label="Sidebar navigation">
+      <div class="nav-group"><div class="nav-group-title">Start</div><ul class="nav-list"><li class="nav-item"><a href="../index.html">Overview</a></li><li class="nav-item"><a href="../getting-started/index.html">Getting Started</a></li><li class="nav-item"><a href="../updating/index.html">Updating</a></li><li class="nav-item"><a href="../examples/index.html">Examples</a></li><li class="nav-item"><a href="../commands/index.html">Commands</a></li><li class="nav-item"><a href="../permissions/index.html">Permissions</a></li></ul></div><div class="nav-group"><div class="nav-group-title">Configuration</div><ul class="nav-list"><li class="nav-item"><a class="is-active" href="index.html">Dungeon Config</a></li><li class="nav-item"><a href="../objectives/index.html">Objectives</a></li><li class="nav-item"><a href="../towers/index.html">Towers</a></li><li class="nav-item"><a href="../complete-reference/index.html">Complete Reference</a></li></ul></div><div class="nav-group"><div class="nav-group-title">Systems</div><ul class="nav-list"><li class="nav-item"><a href="../spawners-and-mobs/index.html">Spawners and Mobs</a></li><li class="nav-item"><a href="../stages/index.html">Stages and Gates</a></li><li class="nav-item"><a href="../checkpoints/index.html">Checkpoints</a></li><li class="nav-item"><a href="../loot-and-rewards/index.html">Loot and Rewards</a></li><li class="nav-item"><a href="../sounds/index.html">Sounds</a></li><li class="nav-item"><a href="../event-commands/index.html">Event Commands</a></li></ul></div><div class="nav-group"><div class="nav-group-title">Item ID Reference</div><ul class="nav-list"><li class="nav-item"><a href="../item-ids/potions-and-arrows/index.html">Potions and Arrows</a></li><li class="nav-item"><a href="../item-ids/enchanted-books/index.html">Enchanted Books</a></li><li class="nav-item"><a href="../item-ids/enchant-ids/index.html">Enchant IDs</a></li></ul></div><div class="nav-group"><div class="nav-group-title">Help</div><ul class="nav-list"><li class="nav-item"><a href="../help/index.html">Help Center</a></li><li class="nav-item"><a href="../ram-analysis/index.html">RAM Analysis</a></li><li class="nav-item"><a href="../troubleshooting/index.html">Troubleshooting</a></li></ul></div>
+    </aside>
+
+    <main class="doc-main">
+      <div class="breadcrumb">
+        <span class="edition-tag">PRO Edition</span>
+        <span class="sep">/</span>
+        <span>Configuration</span>
+        <span class="sep">/</span>
+        <span>Dungeon Config</span>
+      </div>
+      <article class="doc-article">
+        <h1 id="dungeon-config">Dungeon Config</h1>
+<p>Every dungeon has a main config file:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code>plugins/InstancedDungeons/dungeons/&lt;dungeon_id&gt;/config.yml</code></pre></div>
+<p>The current dungeon format requires:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-key">v</span><span class="tok-punct">:</span> <span class="tok-num">2.0</span></code></pre></div>
+<p>Dungeons without this marker are blocked from opening.</p>
+<p>The optional <code>ram-analysis.yml</code> is a plugin-level diagnostic file, not a dungeon config. It is created only after an administrator runs <code>/dungeon ram analysis</code>; see <a href="../ram-analysis/index.html">RAM Analysis</a>.</p>
+<h2 id="core-fields"><a class="heading-anchor" href="#core-fields" aria-label="Link to section">Core Fields</a></h2>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-key">dungeon-type</span><span class="tok-punct">:</span> single
+<span class="tok-key">tower-stage-type</span><span class="tok-punct">:</span> first
+<span class="tok-key">next-dungeon</span><span class="tok-punct">:</span> <span class="tok-str">&quot;&quot;</span>
+
+<span class="tok-key">completion-objective</span><span class="tok-punct">:</span> BOSS
+<span class="tok-key">display-name</span><span class="tok-punct">:</span> <span class="tok-str">&quot;Dragon Lair&quot;</span>
+<span class="tok-key">template-world</span><span class="tok-punct">:</span> <span class="tok-str">&quot;dragon_template&quot;</span>
+
+<span class="tok-key">min-players</span><span class="tok-punct">:</span> <span class="tok-num">1</span>
+<span class="tok-key">max-players</span><span class="tok-punct">:</span> <span class="tok-num">5</span>
+<span class="tok-key">time-limit</span><span class="tok-punct">:</span> <span class="tok-num">1800</span></code></pre></div>
+<div class="table-wrap"><table><thead><tr><th>Field</th><th>Description</th></tr></thead><tbody><tr><td><code>dungeon-type</code></td><td><code>single</code> or <code>tower</code>.</td></tr><tr><td><code>tower-stage-type</code></td><td><code>first</code>, <code>middle</code>, or <code>last</code>. Used only for tower dungeons.</td></tr><tr><td><code>next-dungeon</code></td><td>Next dungeon ID for tower transitions.</td></tr><tr><td><code>completion-objective</code></td><td><code>BOSS</code> or <code>TRIGGER</code>.</td></tr><tr><td><code>template-world</code></td><td>Source world copied for each instance.</td></tr><tr><td><code>time-limit</code></td><td>Run time in seconds.</td></tr></tbody></table></div>
+<h2 id="template-world-defaults-and-inheritance"><a class="heading-anchor" href="#template-world-defaults-and-inheritance" aria-label="Link to section">Template World Defaults and Inheritance</a></h2>
+<p>When creating new template worlds with <code>/dg world create</code> or the <strong>Create Template World</strong> button in the admin GUI, the plugin applies the default rules from <code>plugins/InstancedDungeons/config.yml</code>:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-key">template-worlds</span><span class="tok-punct">:</span>
+  <span class="tok-key">freeze-ticks</span><span class="tok-punct">:</span> <span class="tok-bool">true</span>
+  <span class="tok-key">freeze-time</span><span class="tok-punct">:</span> <span class="tok-bool">true</span>
+  <span class="tok-key">freeze-weather</span><span class="tok-punct">:</span> <span class="tok-bool">true</span>
+  <span class="tok-key">natural-mob-spawning</span><span class="tok-punct">:</span> <span class="tok-bool">false</span></code></pre></div>
+<ul><li><code>freeze-ticks: true</code> sets the template world's random tick speed to <code>0</code> so leaves, ice, and crops do not decay or grow while building or running the dungeon.</li><li><code>freeze-time: true</code>, <code>freeze-weather: true</code>, and <code>natural-mob-spawning: false</code> disable daylight progression, weather changes, and natural mob spawns on newly created template worlds.</li><li>All gamerules, the <code>WorldBorder</code> center/size/damage settings, and any <strong>WorldGuard</strong> regions and flags configured on the template world are automatically copied to every dungeon instance and cleaned up when the instance ends.</li></ul>
+<h2 id="spawn-and-exit"><a class="heading-anchor" href="#spawn-and-exit" aria-label="Link to section">Spawn and Exit</a></h2>
+<p>Spawn and exit are normally set in-game:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-cmd">/dungeon</span><span class="tok-sub"> edit</span> <span class="tok-arg">&lt;id&gt;</span>
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> setspawn</span>
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> setexit</span></code></pre></div>
+<p>Players enter the instance at the dungeon spawn. Players are sent to the exit when they leave, fail, or complete the run.</p>
+<h2 id="announcements"><a class="heading-anchor" href="#announcements" aria-label="Link to section">Announcements</a></h2>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-key">announce-start</span><span class="tok-punct">:</span> <span class="tok-bool">false</span>
+<span class="tok-key">announce-complete</span><span class="tok-punct">:</span> <span class="tok-bool">false</span>
+<span class="tok-key">announce-fail</span><span class="tok-punct">:</span> <span class="tok-bool">false</span></code></pre></div>
+<p><code>announce-start</code> broadcasts when a run starts.</p>
+<p><code>announce-complete</code> broadcasts when a standalone dungeon completes. In towers, this is controlled by the entry dungeon and is broadcast only after the final tower stage completes.</p>
+<p><code>announce-fail</code> broadcasts when a standalone dungeon or whole tower fails.</p>
+<div class="callout callout-important"><div class="callout-title">Tower announcement rule</div><div class="callout-body"><p>Tower complete/fail announcements use the entry dungeon's <code>announce-*</code> settings. Middle and last tower stage configs do not control global tower announcements.</p></div></div>
+<h2 id="entry-costs"><a class="heading-anchor" href="#entry-costs" aria-label="Link to section">Entry Costs</a></h2>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-key">costs</span><span class="tok-punct">:</span>
+  <span class="tok-key">money</span><span class="tok-punct">:</span> <span class="tok-num">1000</span>
+  <span class="tok-key">items</span><span class="tok-punct">:</span>
+    - <span class="tok-key">type</span><span class="tok-punct">:</span> VANILLA
+      <span class="tok-key">item</span><span class="tok-punct">:</span> DIAMOND
+      <span class="tok-key">amount</span><span class="tok-punct">:</span> <span class="tok-num">2</span></code></pre></div>
+<p>If <code>require-all-players-pay</code> is <code>false</code>, only the leader pays. If it is <code>true</code>, every party member must meet the cost.</p>
+<p>Tower rule: only <code>FIRST</code> tower stages may have entry costs.</p>
+<h2 id="player-cooldowns"><a class="heading-anchor" href="#player-cooldowns" aria-label="Link to section">Player Cooldowns</a></h2>
+<p>Configure this section in each <strong>dungeon's</strong> <code>config.yml</code>, or open <strong>Settings → Player Cooldown</strong> in the admin GUI:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-key">player-cooldown</span><span class="tok-punct">:</span>
+  <span class="tok-key">trigger</span><span class="tok-punct">:</span> START
+  <span class="tok-key">recipients</span><span class="tok-punct">:</span> LEADER
+  <span class="tok-key">dungeon-seconds</span><span class="tok-punct">:</span> <span class="tok-num">0</span>
+  <span class="tok-key">global-seconds</span><span class="tok-punct">:</span> <span class="tok-num">0</span>
+  <span class="tok-key">block-joining</span><span class="tok-punct">:</span> <span class="tok-bool">false</span></code></pre></div>
+<div class="table-wrap"><table><thead><tr><th>Field</th><th>Values and behavior</th></tr></thead><tbody><tr><td><code>trigger</code></td><td><code>START</code>: successful run start; <code>END</code>: success or failure; <code>WIN</code>: success only.</td></tr><tr><td><code>recipients</code></td><td><code>LEADER</code>: leader captured at run start; <code>PARTY</code>: all party members captured at run start.</td></tr><tr><td><code>dungeon-seconds</code></td><td>Blocks new entry to this dungeon ID for this many seconds. <code>0</code> grants no new dungeon cooldown.</td></tr><tr><td><code>global-seconds</code></td><td>Blocks new entry to every dungeon for this many seconds. <code>0</code> grants no new global cooldown.</td></tr><tr><td><code>block-joining</code></td><td><code>false</code>: restricts creating/starting a new run as leader; <code>true</code>: also restricts joining another party.</td></tr></tbody></table></div>
+<p>The default durations are zero, so existing dungeons gain no restrictions after updating. Creating a party or failing to prepare a world does not grant a cooldown. Pending starts are checked before charges and preparation. Durations are wall-clock seconds, not server ticks. A join blocked by cooldown shows only the cooldown message and remaining seconds.</p>
+<p>Cooldowns belong to player UUIDs and survive relogging, reloads and server restarts in <code>plugins/InstancedDungeons/data/player-cooldowns.dat</code>. Back up that file when moving the server. A global cooldown also applies when the target dungeon has zero configured durations. When both an existing dungeon-specific and global deadline apply, entry stays blocked until both expire.</p>
+<h3 id="towers-and-replacement"><a class="heading-anchor" href="#towers-and-replacement" aria-label="Link to section">Towers and Replacement</a></h3>
+<p>Every tower floor may grant its own cooldown using its own config and trigger. Successfully clearing a non-final floor counts as that floor's success for <code>END</code> and <code>WIN</code>. Automatic transfer to the next floor bypasses entry checks, including global cooldowns.</p>
+<p>New deadlines <strong>replace</strong> old deadlines of the same scope; they are never added or compared to keep the maximum. For example, a new global cooldown of 800 seconds replaces an entry-floor global cooldown of 600 seconds. If 700 seconds remain and the next floor grants 300 seconds, 300 seconds remain from that new event. Dungeon-specific cooldowns remain separate by dungeon ID. A duration of zero grants no new cooldown and does not clear an already active one.</p>
+<h2 id="global-instance-limit"><a class="heading-anchor" href="#global-instance-limit" aria-label="Link to section">Global Instance Limit</a></h2>
+<p>Configure how many dungeon instances may run globally.</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-key">instances</span><span class="tok-punct">:</span>
+  <span class="tok-key">max-active-global</span><span class="tok-punct">:</span> <span class="tok-num">0</span></code></pre></div>
+<div class="table-wrap"><table><thead><tr><th>Value</th><th>Behavior</th></tr></thead><tbody><tr><td><code>0</code></td><td>No global active-instance ceiling.</td></tr><tr><td><code>1+</code></td><td>Exact global active instance maximum.</td></tr></tbody></table></div>
+<p>Per-dungeon <code>max-instances</code> still controls the limit for that dungeon template.</p>
+<h2 id="dungeon-scale"><a class="heading-anchor" href="#dungeon-scale" aria-label="Link to section">Dungeon Scale</a></h2>
+<p>Dungeons support multiple stages, missions, key requirements, and payment items per dungeon.</p>
+<h2 id="protection"><a class="heading-anchor" href="#protection" aria-label="Link to section">Protection</a></h2>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-key">allow-block-break</span><span class="tok-punct">:</span> <span class="tok-bool">false</span>
+<span class="tok-key">allow-block-place</span><span class="tok-punct">:</span> <span class="tok-bool">false</span>
+<span class="tok-key">allow-fluid-place</span><span class="tok-punct">:</span> <span class="tok-bool">false</span>
+<span class="tok-key">allow-fluid-take</span><span class="tok-punct">:</span> <span class="tok-bool">false</span>
+<span class="tok-key">allow-interactions</span><span class="tok-punct">:</span> <span class="tok-bool">true</span>
+<span class="tok-key">allow-party-pvp</span><span class="tok-punct">:</span> <span class="tok-bool">true</span>
+<span class="tok-key">allow-fly</span><span class="tok-punct">:</span> <span class="tok-bool">false</span>
+<span class="tok-key">fire-spread</span><span class="tok-punct">:</span> <span class="tok-bool">false</span></code></pre></div>
+<p><code>allow-fly: true</code> leaves flight already granted by a game mode, permission, or another plugin untouched. It never grants flight by itself. <code>false</code> forces flight off for active Survival and Adventure dungeon players and restores their previous flight state when they leave the dungeon. Creative and Spectator modes are exempt. This setting is also available under <strong>Gameplay Rules</strong> in the admin GUI.</p>
+<p>Trigger objectives and mission blocks can still work when normal interactions are blocked.</p>
+<p><code>fire-spread: false</code> disables fire spreading in the template world and copied instances. Set it to <code>true</code> to allow spreading. Older 1.21.x uses <code>doFireTick</code>; from 1.21.11 the plugin uses <code>minecraft:fire_spread_radius_around_player</code>, with zero to disable spreading. The same toggle is available under <strong>Settings → World Rules</strong> in the admin GUI.</p>
+<h2 id="item-restrictions"><a class="heading-anchor" href="#item-restrictions" aria-label="Link to section">Item Restrictions</a></h2>
+<p>Dungeons can block movement, teleport, combat, and consumable items inside their active instance:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-key">item-restrictions</span><span class="tok-punct">:</span>
+  <span class="tok-key">block-elytra</span><span class="tok-punct">:</span> <span class="tok-bool">false</span>
+  <span class="tok-key">block-ender-pearls</span><span class="tok-punct">:</span> <span class="tok-bool">false</span>
+  <span class="tok-key">block-chorus-fruit</span><span class="tok-punct">:</span> <span class="tok-bool">false</span>
+  <span class="tok-key">block-enchanted-golden-apples</span><span class="tok-punct">:</span> <span class="tok-bool">false</span>
+  <span class="tok-key">block-wind-charges</span><span class="tok-punct">:</span> <span class="tok-bool">false</span>
+  <span class="tok-key">block-firework-rockets</span><span class="tok-punct">:</span> <span class="tok-bool">false</span>
+  <span class="tok-key">block-mace</span><span class="tok-punct">:</span> <span class="tok-bool">false</span>
+  <span class="tok-key">block-trident</span><span class="tok-punct">:</span> <span class="tok-bool">false</span></code></pre></div>
+<p>All restrictions default to <code>false</code>, which keeps vanilla behavior.</p>
+<div class="table-wrap"><table><thead><tr><th>Setting</th><th>Blocked behavior</th></tr></thead><tbody><tr><td><code>block-elytra</code></td><td>Starting or continuing elytra flight.</td></tr><tr><td><code>block-ender-pearls</code></td><td>Throwing an ender pearl and the resulting teleport.</td></tr><tr><td><code>block-chorus-fruit</code></td><td>Eating chorus fruit and the resulting teleport.</td></tr><tr><td><code>block-enchanted-golden-apples</code></td><td>Consuming enchanted golden apples.</td></tr><tr><td><code>block-wind-charges</code></td><td>Using or launching wind charges.</td></tr><tr><td><code>block-firework-rockets</code></td><td>Using, launching, or firing firework rockets from a crossbow.</td></tr><tr><td><code>block-mace</code></td><td>Using a mace in melee combat.</td></tr><tr><td><code>block-trident</code></td><td>Using a trident in melee combat or throwing it.</td></tr></tbody></table></div>
+<p>Restrictions apply only while the player belongs to an active dungeon instance and is physically inside that instance world.</p>
+<p>They can be edited from the dungeon settings GUI under <strong>Item Restrictions</strong>. New dungeons generate the complete section automatically.</p>
+<p>Missing restriction settings default to <code>false</code>. GUI changes are saved without altering other dungeon settings.</p>
+<h2 id="death-behavior"><a class="heading-anchor" href="#death-behavior" aria-label="Link to section">Death Behavior</a></h2>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-key">lives</span><span class="tok-punct">:</span>
+  <span class="tok-key">scope</span><span class="tok-punct">:</span> PLAYER
+  <span class="tok-key">amount</span><span class="tok-punct">:</span> <span class="tok-num">1</span>
+
+<span class="tok-key">death-behavior</span><span class="tok-punct">:</span> ELIMINATE_AS_SPECTATOR
+<span class="tok-key">fail-if-all-players-dead</span><span class="tok-punct">:</span> <span class="tok-bool">true</span></code></pre></div>
+<div class="table-wrap"><table><thead><tr><th>Value</th><th>Meaning</th></tr></thead><tbody><tr><td><code>ELIMINATE_AS_SPECTATOR</code></td><td>Eliminated players become dungeon spectators.</td></tr><tr><td><code>ELIMINATE_TO_EXIT</code></td><td>Eliminated players are sent to the dungeon exit.</td></tr></tbody></table></div>
+<p><code>scope: PLAYER</code> gives each player their own lives. <code>scope: TEAM</code> makes lives shared by the party.</p>
+<h2 id="timer-bossbar"><a class="heading-anchor" href="#timer-bossbar" aria-label="Link to section">Timer Bossbar</a></h2>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-key">timer-bossbar</span><span class="tok-punct">:</span>
+  <span class="tok-key">enabled</span><span class="tok-punct">:</span> <span class="tok-bool">true</span>
+  <span class="tok-key">color</span><span class="tok-punct">:</span> GREEN
+  <span class="tok-key">style</span><span class="tok-punct">:</span> SOLID
+  <span class="tok-key">show-time-left</span><span class="tok-punct">:</span> <span class="tok-bool">true</span></code></pre></div>
+<h2 id="timer-alerts"><a class="heading-anchor" href="#timer-alerts" aria-label="Link to section">Timer Alerts</a></h2>
+<div class="callout callout-note"><div class="callout-title">Sound profiles</div><div class="callout-body"><p>Configure timer alert messages and sounds in <code>sounds.yml</code>. The legacy section below is ignored after migration. See <a href="../sounds/index.html">Dungeon Sounds</a>.</p></div></div>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-key">timer-alerts</span><span class="tok-punct">:</span>
+  <span class="tok-key">10-minutes</span><span class="tok-punct">:</span>
+    <span class="tok-key">enabled</span><span class="tok-punct">:</span> <span class="tok-bool">true</span>
+    <span class="tok-key">sound</span><span class="tok-punct">:</span> BLOCK_NOTE_BLOCK_PLING
+  <span class="tok-key">5-minutes</span><span class="tok-punct">:</span>
+    <span class="tok-key">enabled</span><span class="tok-punct">:</span> <span class="tok-bool">true</span>
+    <span class="tok-key">sound</span><span class="tok-punct">:</span> BLOCK_NOTE_BLOCK_PLING
+  <span class="tok-key">1-minute</span><span class="tok-punct">:</span>
+    <span class="tok-key">enabled</span><span class="tok-punct">:</span> <span class="tok-bool">true</span>
+    <span class="tok-key">sound</span><span class="tok-punct">:</span> ENTITY_EXPERIENCE_ORB_PICKUP</code></pre></div>
+      </article>
+      <nav class="page-nav" aria-label="Page navigation">
+        <a class="page-nav-card prev" href="../permissions/index.html"><span class="page-nav-label">Previous</span><span class="page-nav-title">&larr; Permissions</span></a>
+        <a class="page-nav-card next" href="../objectives/index.html"><span class="page-nav-label">Next</span><span class="page-nav-title">Objectives &rarr;</span></a>
+      </nav>
+    </main>
+
+    <aside class="sidebar-right" aria-label="Table of contents">
+      <div class="toc-title">On this page</div><ul class="toc-list"><li class="toc-item"><a href="#core-fields">Core Fields</a></li><li class="toc-item"><a href="#template-world-defaults-and-inheritance">Template World Defaults and Inheritance</a></li><li class="toc-item"><a href="#spawn-and-exit">Spawn and Exit</a></li><li class="toc-item"><a href="#announcements">Announcements</a></li><li class="toc-item"><a href="#entry-costs">Entry Costs</a></li><li class="toc-item"><a href="#player-cooldowns">Player Cooldowns</a></li><li class="toc-item toc-h3"><a href="#towers-and-replacement">Towers and Replacement</a></li><li class="toc-item"><a href="#global-instance-limit">Global Instance Limit</a></li><li class="toc-item"><a href="#dungeon-scale">Dungeon Scale</a></li><li class="toc-item"><a href="#protection">Protection</a></li><li class="toc-item"><a href="#item-restrictions">Item Restrictions</a></li><li class="toc-item"><a href="#death-behavior">Death Behavior</a></li><li class="toc-item"><a href="#timer-bossbar">Timer Bossbar</a></li><li class="toc-item"><a href="#timer-alerts">Timer Alerts</a></li></ul>
+    </aside>
+  </div>
+
+  <div class="search-backdrop" id="search-backdrop" role="dialog" aria-modal="true" aria-label="Search documentation">
+    <div class="search-modal">
+      <div class="search-input-wrap">
+        <span class="search-edition-pill">PRO</span>
+        <input type="search" class="search-input" id="search-input" placeholder="Search Pro documentation..." autocomplete="off">
+        <span class="search-kbd">ESC</span>
+      </div>
+      <div class="search-results" id="search-results"></div>
+    </div>
+  </div>
+
+  <script src="../../assets/search-index.js"></script>
+  <script src="../../assets/app.js"></script>
+</body>
+</html>

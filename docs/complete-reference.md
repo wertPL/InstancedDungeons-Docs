@@ -2,8 +2,6 @@
 
 InstancedDungeons is a Paper plugin for creating isolated dungeon runs from template worlds. Each party gets a copied instance world, independent mobs, loot, objectives, stages, timers, protection rules, and cleanup after the run ends.
 
-Set `v: 2.0` at the top of `dungeons/<id>/config.yml`. Dungeons without this format marker cannot open.
-
 ## Table of Contents
 
 - Requirements
@@ -226,7 +224,7 @@ template-worlds:
 
 `editor.teleport-to-template-on-edit` controls `/dungeon edit <id>` teleport behavior. When `true`, the admin is teleported to the dungeon spawn if it is configured, otherwise to the template world's spawn. When `false`, editor mode starts without moving the admin.
 
-In the free edition, `instances.max-active-global` is always capped at 16. A value of `0` means "use the free-edition cap", not unlimited. Values below 16 can lower the server limit, but values above 16 are reduced to 16.
+In the free edition, `instances.max-active-global` is always capped at 6. A value of `0` means "use the free-edition cap", not unlimited. Values below 6 can lower the server limit, but values above 6 are reduced to 6.
 
 Tower transitions reserve the current global instance slot while the next tower stage is being prepared. This prevents another party from taking the slot during the short handoff between tower stages.
 
@@ -1258,7 +1256,9 @@ Validation output:
 
 | Area | Free limit |
 | --- | --- |
-| Global active instances | 16 maximum, even if config is higher. |
+| Global active instances | 6 maximum, even if config is higher. |
+| Dungeon templates | 6 maximum. |
+| Managed template worlds (`/dg world create`) | 6 maximum (`flat` generator without structures). |
 | Tower length | 2 dungeons: `FIRST -> LAST`. |
 | Stages per dungeon | 2. |
 | Missions per stage | 2. |
@@ -1271,7 +1271,6 @@ Validation output:
 | Item payment missions | 1 per dungeon. |
 | Item payment item types | 3 per mission. |
 | Region missions | 1 per dungeon. |
-| Template world generator | lat (without structures). |
 
 Free-version limit notices are visible only to admins.
 

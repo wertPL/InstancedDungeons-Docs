@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Objectives | InstancedDungeons (FREE)</title>
+  <link rel="icon" href="../assets/header-logo.png">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-edition="free" data-root="../">
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-left">
+        <button type="button" class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation">&#9776;</button>
+        <a class="brand" href="../index.html">
+          <img src="../assets/header-logo.png" alt="InstancedDungeons">
+          <span>InstancedDungeons</span>
+        </a>
+        <nav class="edition-switch" data-active="free" aria-label="Documentation edition">
+          <span class="edition-icon" aria-hidden="true">&#9876;</span>
+          <span class="edition-track">
+            <span class="edition-thumb" aria-hidden="true"></span>
+            <a class="edition-link is-active" data-edition-target="free" href="index.html">Free</a>
+            <a class="edition-link" data-edition-target="pro" href="../pro/objectives/index.html">Pro</a>
+          </span>
+        </nav>
+      </div>
+
+      <nav class="top-nav" aria-label="Main sections">
+        <span class="top-nav-thumb" aria-hidden="true"></span>
+        <a class="top-nav-link" href="../index.html">Start</a><a class="top-nav-link is-active" href="../configuration/index.html">Configuration</a><a class="top-nav-link" href="../spawners-and-mobs/index.html">Systems</a><a class="top-nav-link" href="../item-ids/potions-and-arrows/index.html">Item ID Reference</a><a class="top-nav-link" href="../help/index.html">Help</a>
+      </nav>
+
+      <div class="header-right">
+        <button type="button" class="search-trigger" id="search-open" aria-label="Search documentation">
+          <span>Search docs...</span>
+          <span class="search-kbd">Ctrl K</span>
+        </button>
+        <button type="button" class="icon-btn" id="theme-toggle" title="Toggle dark/light theme" aria-label="Toggle theme">&#9728;</button>
+        <div class="ext-links">
+          <a class="ext-pill" href="https://modrinth.com/plugin/instanced-dungeon" target="_blank" rel="noopener">Modrinth</a><a class="ext-pill ext-pill-pro" href="https://builtbybit.com/resources/instanceddungeons-pro.112271/" target="_blank" rel="noopener">GET PRO</a><a class="ext-pill" href="https://discord.com/invite/sD4HvQh8P4" target="_blank" rel="noopener">Discord</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout-shell">
+    <aside class="sidebar-left" id="sidebar-left" aria-label="Sidebar navigation">
+      <div class="nav-group"><div class="nav-group-title">Start</div><ul class="nav-list"><li class="nav-item"><a href="../index.html">Overview</a></li><li class="nav-item"><a href="../getting-started/index.html">Getting Started</a></li><li class="nav-item"><a href="../updating/index.html">Updating</a></li><li class="nav-item"><a href="../examples/index.html">Examples</a></li><li class="nav-item"><a href="../commands/index.html">Commands</a></li><li class="nav-item"><a href="../permissions/index.html">Permissions</a></li></ul></div><div class="nav-group"><div class="nav-group-title">Configuration</div><ul class="nav-list"><li class="nav-item"><a href="../configuration/index.html">Dungeon Config</a></li><li class="nav-item"><a class="is-active" href="index.html">Objectives</a></li><li class="nav-item"><a href="../towers/index.html">Towers</a></li><li class="nav-item"><a href="../complete-reference/index.html">Complete Reference</a></li></ul></div><div class="nav-group"><div class="nav-group-title">Systems</div><ul class="nav-list"><li class="nav-item"><a href="../spawners-and-mobs/index.html">Spawners and Mobs</a></li><li class="nav-item"><a href="../stages/index.html">Stages and Gates</a></li><li class="nav-item"><a href="../loot-and-rewards/index.html">Loot and Rewards</a></li><li class="nav-item"><a href="../event-commands/index.html">Event Commands</a></li></ul></div><div class="nav-group"><div class="nav-group-title">Item ID Reference</div><ul class="nav-list"><li class="nav-item"><a href="../item-ids/potions-and-arrows/index.html">Potions and Arrows</a></li><li class="nav-item"><a href="../item-ids/enchanted-books/index.html">Enchanted Books</a></li></ul></div><div class="nav-group"><div class="nav-group-title">Help</div><ul class="nav-list"><li class="nav-item"><a href="../help/index.html">Help Center</a></li><li class="nav-item"><a href="../ram-analysis/index.html">RAM Analysis</a></li><li class="nav-item"><a href="../troubleshooting/index.html">Troubleshooting</a></li></ul></div>
+    </aside>
+
+    <main class="doc-main">
+      <div class="breadcrumb">
+        <span class="edition-tag">Free Edition</span>
+        <span class="sep">/</span>
+        <span>Configuration</span>
+        <span class="sep">/</span>
+        <span>Objectives</span>
+      </div>
+      <article class="doc-article">
+        <h1 id="objectives">Objectives</h1>
+<p>Every dungeon completes through one objective type:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-key">completion-objective</span><span class="tok-punct">:</span> BOSS</code></pre></div>
+<p>or:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-key">completion-objective</span><span class="tok-punct">:</span> TRIGGER</code></pre></div>
+<h2 id="boss-objective"><a class="heading-anchor" href="#boss-objective" aria-label="Link to section">Boss Objective</a></h2>
+<p>Boss dungeons use:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code>dungeons/&lt;id&gt;/boss.yml</code></pre></div>
+<p>Set the boss spawn in editor mode:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-cmd">/dungeon</span><span class="tok-sub"> edit</span> dragon_lair
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> setboss</span></code></pre></div>
+<p>Common config:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-key">boss</span><span class="tok-punct">:</span>
+  <span class="tok-key">must-die-to-complete</span><span class="tok-punct">:</span> <span class="tok-bool">true</span>
+  <span class="tok-key">countdown-after-death</span><span class="tok-punct">:</span> <span class="tok-num">30</span></code></pre></div>
+<p>When <code>must-die-to-complete</code> is <code>true</code>, the dungeon completion countdown starts after the boss dies.</p>
+<h2 id="trigger-objective"><a class="heading-anchor" href="#trigger-objective" aria-label="Link to section">Trigger Objective</a></h2>
+<p>Trigger dungeons use:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code>dungeons/&lt;id&gt;/trigger.yml</code></pre></div>
+<p>Set the trigger item and place it in the template world:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-cmd">/dungeon</span><span class="tok-sub"> edit</span> puzzle_room
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> settrigger</span> STONE_BUTTON</code></pre></div>
+<p>Supported trigger blocks are Minecraft buttons and pressure plates.</p>
+<p>Example:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-key">material</span><span class="tok-punct">:</span> STONE_BUTTON
+
+<span class="tok-key">location</span><span class="tok-punct">:</span>
+  <span class="tok-key">world</span><span class="tok-punct">:</span> <span class="tok-str">&quot;puzzle_template&quot;</span>
+  <span class="tok-key">x</span><span class="tok-punct">:</span> <span class="tok-num">120</span>
+  <span class="tok-key">y</span><span class="tok-punct">:</span> <span class="tok-num">65</span>
+  <span class="tok-key">z</span><span class="tok-punct">:</span> <span class="tok-num">220</span>
+
+<span class="tok-key">rewards</span><span class="tok-punct">:</span>
+  <span class="tok-key">enabled</span><span class="tok-punct">:</span> <span class="tok-bool">true</span>
+  <span class="tok-key">items</span><span class="tok-punct">:</span>
+    - <span class="tok-key">type</span><span class="tok-punct">:</span> VANILLA
+      <span class="tok-key">item</span><span class="tok-punct">:</span> DIAMOND
+      <span class="tok-key">amount</span><span class="tok-punct">:</span> <span class="tok-num">2</span>
+      <span class="tok-key">chance</span><span class="tok-punct">:</span> <span class="tok-num">100.0</span></code></pre></div>
+<p>Only one trigger can exist per dungeon. Placing a new trigger replaces the previous one.</p>
+<div class="callout callout-tip"><div class="callout-title">Tip</div><div class="callout-body"><p>Trigger blocks ignore normal dungeon interaction blocking. They can still complete the run when regular interactions are disabled.</p></div></div>
+      </article>
+      <nav class="page-nav" aria-label="Page navigation">
+        <a class="page-nav-card prev" href="../configuration/index.html"><span class="page-nav-label">Previous</span><span class="page-nav-title">&larr; Dungeon Config</span></a>
+        <a class="page-nav-card next" href="../towers/index.html"><span class="page-nav-label">Next</span><span class="page-nav-title">Towers &rarr;</span></a>
+      </nav>
+    </main>
+
+    <aside class="sidebar-right" aria-label="Table of contents">
+      <div class="toc-title">On this page</div><ul class="toc-list"><li class="toc-item"><a href="#boss-objective">Boss Objective</a></li><li class="toc-item"><a href="#trigger-objective">Trigger Objective</a></li></ul>
+    </aside>
+  </div>
+
+  <div class="search-backdrop" id="search-backdrop" role="dialog" aria-modal="true" aria-label="Search documentation">
+    <div class="search-modal">
+      <div class="search-input-wrap">
+        <span class="search-edition-pill">FREE</span>
+        <input type="search" class="search-input" id="search-input" placeholder="Search Free documentation..." autocomplete="off">
+        <span class="search-kbd">ESC</span>
+      </div>
+      <div class="search-results" id="search-results"></div>
+    </div>
+  </div>
+
+  <script src="../assets/search-index.js"></script>
+  <script src="../assets/app.js"></script>
+</body>
+</html>

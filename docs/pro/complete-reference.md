@@ -2,8 +2,6 @@
 
 InstancedDungeons is a Paper plugin for creating isolated dungeon runs from template worlds. Each party gets a copied instance world, independent mobs, loot, objectives, stages, timers, protection rules, and cleanup after the run ends.
 
-Set `v: 2.0` at the top of `dungeons/<id>/config.yml`. Dungeons without this format marker cannot open.
-
 ## Table of Contents
 
 - Requirements
@@ -761,7 +759,7 @@ player-cooldown:
 
 The default durations are zero, so existing dungeons gain no restrictions after updating. Creating a party or failing to prepare a world does not grant a cooldown. Pending starts are checked before charges and preparation. Durations are wall-clock seconds, not server ticks. A join blocked by cooldown shows only the cooldown message and remaining seconds.
 
-Cooldowns belong to player UUIDs and survive relogging, reloads and server restarts in `plugins/InstancedDungeons/player-cooldowns.yml`. Back up that file when moving the server. A global cooldown also applies when the target dungeon has zero configured durations. When both an existing dungeon-specific and global deadline apply, entry stays blocked until both expire.
+Cooldowns belong to player UUIDs and survive relogging, reloads and server restarts in `plugins/InstancedDungeons/data/player-cooldowns.dat`. Back up that file when moving the server. A global cooldown also applies when the target dungeon has zero configured durations. When both an existing dungeon-specific and global deadline apply, entry stays blocked until both expire.
 
 #### Towers and Replacement
 
@@ -1490,7 +1488,7 @@ Validation output:
 
 The admin GUI provides dungeon settings, gate and mission editing, checkpoints, reward previews and test rolls, and sound previews. **Boss & Trigger** shows the controls for the selected objective. **After-Open Logic** and **Emergency Return** configure gate teleports and return plates. See [Event Commands](event-commands.md) for checkpoint and gate actions.
 
-`/dungeon ram analysis` toggles memory reports and requires `instanceddungeons.admin`. Reports estimate plugin and active-instance memory. See [RAM Analysis](../ram-analysis.md) for settings and report fields.
+`/dungeon ram analysis` toggles memory reports and requires `instanceddungeons.admin`. Reports estimate plugin and active-instance memory. See [RAM Analysis](ram-analysis.md) for settings and report fields.
 
 ## Compatibility Notes
 

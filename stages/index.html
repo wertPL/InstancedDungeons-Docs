@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stages and Gates | InstancedDungeons (FREE)</title>
+  <link rel="icon" href="../assets/header-logo.png">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-edition="free" data-root="../">
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-left">
+        <button type="button" class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation">&#9776;</button>
+        <a class="brand" href="../index.html">
+          <img src="../assets/header-logo.png" alt="InstancedDungeons">
+          <span>InstancedDungeons</span>
+        </a>
+        <nav class="edition-switch" data-active="free" aria-label="Documentation edition">
+          <span class="edition-icon" aria-hidden="true">&#9876;</span>
+          <span class="edition-track">
+            <span class="edition-thumb" aria-hidden="true"></span>
+            <a class="edition-link is-active" data-edition-target="free" href="index.html">Free</a>
+            <a class="edition-link" data-edition-target="pro" href="../pro/stages/index.html">Pro</a>
+          </span>
+        </nav>
+      </div>
+
+      <nav class="top-nav" aria-label="Main sections">
+        <span class="top-nav-thumb" aria-hidden="true"></span>
+        <a class="top-nav-link" href="../index.html">Start</a><a class="top-nav-link" href="../configuration/index.html">Configuration</a><a class="top-nav-link is-active" href="../spawners-and-mobs/index.html">Systems</a><a class="top-nav-link" href="../item-ids/potions-and-arrows/index.html">Item ID Reference</a><a class="top-nav-link" href="../help/index.html">Help</a>
+      </nav>
+
+      <div class="header-right">
+        <button type="button" class="search-trigger" id="search-open" aria-label="Search documentation">
+          <span>Search docs...</span>
+          <span class="search-kbd">Ctrl K</span>
+        </button>
+        <button type="button" class="icon-btn" id="theme-toggle" title="Toggle dark/light theme" aria-label="Toggle theme">&#9728;</button>
+        <div class="ext-links">
+          <a class="ext-pill" href="https://modrinth.com/plugin/instanced-dungeon" target="_blank" rel="noopener">Modrinth</a><a class="ext-pill ext-pill-pro" href="https://builtbybit.com/resources/instanceddungeons-pro.112271/" target="_blank" rel="noopener">GET PRO</a><a class="ext-pill" href="https://discord.com/invite/sD4HvQh8P4" target="_blank" rel="noopener">Discord</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout-shell">
+    <aside class="sidebar-left" id="sidebar-left" aria-label="Sidebar navigation">
+      <div class="nav-group"><div class="nav-group-title">Start</div><ul class="nav-list"><li class="nav-item"><a href="../index.html">Overview</a></li><li class="nav-item"><a href="../getting-started/index.html">Getting Started</a></li><li class="nav-item"><a href="../updating/index.html">Updating</a></li><li class="nav-item"><a href="../examples/index.html">Examples</a></li><li class="nav-item"><a href="../commands/index.html">Commands</a></li><li class="nav-item"><a href="../permissions/index.html">Permissions</a></li></ul></div><div class="nav-group"><div class="nav-group-title">Configuration</div><ul class="nav-list"><li class="nav-item"><a href="../configuration/index.html">Dungeon Config</a></li><li class="nav-item"><a href="../objectives/index.html">Objectives</a></li><li class="nav-item"><a href="../towers/index.html">Towers</a></li><li class="nav-item"><a href="../complete-reference/index.html">Complete Reference</a></li></ul></div><div class="nav-group"><div class="nav-group-title">Systems</div><ul class="nav-list"><li class="nav-item"><a href="../spawners-and-mobs/index.html">Spawners and Mobs</a></li><li class="nav-item"><a class="is-active" href="index.html">Stages and Gates</a></li><li class="nav-item"><a href="../loot-and-rewards/index.html">Loot and Rewards</a></li><li class="nav-item"><a href="../event-commands/index.html">Event Commands</a></li></ul></div><div class="nav-group"><div class="nav-group-title">Item ID Reference</div><ul class="nav-list"><li class="nav-item"><a href="../item-ids/potions-and-arrows/index.html">Potions and Arrows</a></li><li class="nav-item"><a href="../item-ids/enchanted-books/index.html">Enchanted Books</a></li></ul></div><div class="nav-group"><div class="nav-group-title">Help</div><ul class="nav-list"><li class="nav-item"><a href="../help/index.html">Help Center</a></li><li class="nav-item"><a href="../ram-analysis/index.html">RAM Analysis</a></li><li class="nav-item"><a href="../troubleshooting/index.html">Troubleshooting</a></li></ul></div>
+    </aside>
+
+    <main class="doc-main">
+      <div class="breadcrumb">
+        <span class="edition-tag">Free Edition</span>
+        <span class="sep">/</span>
+        <span>Systems</span>
+        <span class="sep">/</span>
+        <span>Stages and Gates</span>
+      </div>
+      <article class="doc-article">
+        <h1 id="stages-and-gates">Stages and Gates</h1>
+<p>Stages are optional progression gates inside a dungeon.</p>
+<p>Stage files live in:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code>dungeons/&lt;id&gt;/stages/&lt;stage_id&gt;.yml
+dungeons/&lt;id&gt;/stages/&lt;stage_id&gt;-hologram.yml</code></pre></div>
+<h2 id="create-a-stage"><a class="heading-anchor" href="#create-a-stage" aria-label="Link to section">Create a Stage</a></h2>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-cmd">/dungeon</span><span class="tok-sub"> edit</span> dragon_lair
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> stage</span> create entrance
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> stage</span> entrance gate create
+<span class="tok-comment"># select gate blocks in the template world</span>
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> gate</span> save</code></pre></div>
+<h2 id="stage-order"><a class="heading-anchor" href="#stage-order" aria-label="Link to section">Stage Order</a></h2>
+<p>Every stage has an order:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-key">stage-id</span><span class="tok-punct">:</span> entrance
+<span class="tok-key">stage-order</span><span class="tok-punct">:</span> <span class="tok-num">1</span></code></pre></div>
+<p>Order <code>1</code> unlocks first. Higher orders unlock only after every lower-order stage opens.</p>
+<p>Multiple stages can share the same order. Shared-order stages run in parallel.</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-cmd">/dungeon</span><span class="tok-sub"> stage</span> list
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> stage</span> entrance order 2</code></pre></div>
+<h2 id="gate-editing"><a class="heading-anchor" href="#gate-editing" aria-label="Link to section">Gate Editing</a></h2>
+<p>Use gate mode to select existing blocks from the template world.</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-cmd">/dungeon</span><span class="tok-sub"> stage</span> entrance gate create
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> stage</span> entrance gate stick
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> gate</span> save</code></pre></div>
+<p>Gate stick controls:</p>
+<div class="table-wrap"><table><thead><tr><th>Action</th><th>Result</th></tr></thead><tbody><tr><td>Left-click</td><td>Adds one existing block.</td></tr><tr><td>Right-click</td><td>Removes one selected block.</td></tr><tr><td>Sneak-left-click</td><td>Adds connected same-material blocks.</td></tr><tr><td>Sneak-right-click</td><td>Removes connected same-material blocks.</td></tr></tbody></table></div>
+<h2 id="holograms"><a class="heading-anchor" href="#holograms" aria-label="Link to section">Holograms</a></h2>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-cmd">/dungeon</span><span class="tok-sub"> stage</span> entrance gate hologram create
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> stage</span> entrance gate hologram delete</code></pre></div>
+<p>You can create multiple holograms for the same stage. Delete removes the nearest hologram for that stage within 3 blocks.</p>
+<p>Runtime holograms show live mission progress. Locked higher-order holograms show which earlier stages still need to open.</p>
+<h2 id="mission-types"><a class="heading-anchor" href="#mission-types" aria-label="Link to section">Mission Types</a></h2>
+<div class="table-wrap"><table><thead><tr><th>Mission</th><th>Description</th></tr></thead><tbody><tr><td><code>REGION</code></td><td>Enter or remain in a selected cuboid, individually or as a party.</td></tr><tr><td><code>KILL_MOBS</code></td><td>Party must kill a configured number of mobs.</td></tr><tr><td><code>LEVER</code></td><td>Party must pull all mission levers.</td></tr><tr><td><code>BUTTON</code></td><td>Party must press all mission buttons at the same time.</td></tr><tr><td><code>PRESSURE_PLATE</code></td><td>Party must activate all mission plates at the same time.</td></tr><tr><td><code>REQUIRED_KEY</code></td><td>Players submit mission keys by right-clicking the gate.</td></tr><tr><td><code>TIME</code></td><td>Waits a configured number of seconds.</td></tr><tr><td><code>SACRIFICE</code></td><td>Selects players to eliminate through the mission GUI.</td></tr><tr><td><code>MONEY_PAYMENT</code></td><td>Requires a Vault money payment.</td></tr><tr><td><code>ITEM_PAYMENT</code></td><td>Requires configured items through a GUI editor.</td></tr></tbody></table></div>
+<p>Mission levers belonging to locked future stages cannot be pulled. They become available when their stage unlocks.</p>
+<h3 id="region-missions"><a class="heading-anchor" href="#region-missions" aria-label="Link to section">Region Missions</a></h3>
+<p>A REGION mission uses a cuboid selected by two opposite block corners in the dungeon template. The corner blocks are included, and either selection order is accepted. Progress starts only after the stage unlocks.</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-cmd">/dg</span><span class="tok-sub"> edit</span> <span class="tok-arg">&lt;dungeon_id&gt;</span>
+<span class="tok-cmd">/dg</span><span class="tok-sub"> stage</span> <span class="tok-arg">&lt;stage_id&gt;</span> mission region
+<span class="tok-cmd">/dg</span><span class="tok-sub"> stage</span> <span class="tok-arg">&lt;stage_id&gt;</span> mission region pos1
+<span class="tok-comment"># move to the opposite corner in the template world</span>
+<span class="tok-cmd">/dg</span><span class="tok-sub"> stage</span> <span class="tok-arg">&lt;stage_id&gt;</span> mission region pos2</code></pre></div>
+<p>Run <code>/dg stage &lt;stage_id&gt; mission region</code> first to add the mission. The confirmation shows the two commands for selecting its corners. Then stand at each corner in the template world and run <code>pos1</code> or <code>pos2</code>; each command saves your current block as that corner. Running the creation command again preserves the existing corners and settings. Do not use the generated instance world name in the stage config.</p>
+<p>In editor mode, cyan particles mark <code>pos1</code> and pink particles mark <code>pos2</code>. Markers are visible only to the editing admin within 50 blocks of a corner.</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-key">missions</span><span class="tok-punct">:</span>
+  - <span class="tok-key">type</span><span class="tok-punct">:</span> REGION
+    <span class="tok-key">region</span><span class="tok-punct">:</span>
+      <span class="tok-key">mode</span><span class="tok-punct">:</span> ENTER_ONCE
+      <span class="tok-key">whole-party</span><span class="tok-punct">:</span> <span class="tok-bool">false</span>
+      <span class="tok-key">pos1</span><span class="tok-punct">:</span> {x: <span class="tok-num">10</span>, y: <span class="tok-num">60</span>, z: <span class="tok-num">10</span>}
+      <span class="tok-key">pos2</span><span class="tok-punct">:</span> {x: <span class="tok-num">20</span>, y: <span class="tok-num">70</span>, z: <span class="tok-num">20</span>}</code></pre></div>
+<div class="table-wrap"><table><thead><tr><th>Mode</th><th><code>whole-party: false</code></th><th><code>whole-party: true</code></th></tr></thead><tbody><tr><td><code>ENTER_ONCE</code></td><td>Any participant enters once.</td><td>Each required participant enters once; their visits may happen at different times.</td></tr><tr><td><code>STAY_UNTIL_COMPLETE</code></td><td>At least one participant is currently inside until all stage missions complete.</td><td>All required participants are inside at the same time until all stage missions complete.</td></tr></tbody></table></div>
+<p>Spectators do not count. A dead or offline participant does not count as currently inside. For the stay mode, the same player does not have to remain throughout: the configured number of participants must currently satisfy the condition. Leaving before the gate opens makes the stay condition incomplete again. Opening the gate finishes the stage permanently.</p>
+<p>With <code>whole-party: true</code>, the requirement uses the actual participants in the run, not the dungeon's maximum capacity. A solo run in a dungeon configured for 1–5 players requires only that solo player.</p>
+<p>In <code>STAY_UNTIL_COMPLETE</code>, the hologram shows the region as complete while the required participants are inside and returns to pending if they leave before the stage opens. The mission completion message and sound occur only when all stage missions are satisfied and the gate opens. In <code>ENTER_ONCE</code>, completion is announced as soon as the required visits are recorded and stays complete after players leave.</p>
+<p>Set <code>region.mode</code> and <code>region.whole-party</code> in the stage YAML. These settings have no command variants. Use <code>/dg stage &lt;stage_id&gt; mission region delete</code> to remove the mission. Validation rejects missing corners or invalid settings.</p>
+<p>One REGION mission is supported across the entire dungeon, including all its stages. Other mission limits still apply. Extra REGION missions in manually edited configs are reported by validation; files are not deleted.</p>
+<h2 id="mission-commands"><a class="heading-anchor" href="#mission-commands" aria-label="Link to section">Mission Commands</a></h2>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-cmd">/dg</span><span class="tok-sub"> stage</span> <span class="tok-arg">&lt;stage_id&gt;</span> mission region
+<span class="tok-cmd">/dg</span><span class="tok-sub"> stage</span> <span class="tok-arg">&lt;stage_id&gt;</span> mission region pos1
+<span class="tok-cmd">/dg</span><span class="tok-sub"> stage</span> <span class="tok-arg">&lt;stage_id&gt;</span> mission region pos2
+<span class="tok-cmd">/dg</span><span class="tok-sub"> stage</span> <span class="tok-arg">&lt;stage_id&gt;</span> mission region delete
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> stage</span> <span class="tok-arg">&lt;stage_id&gt;</span> mission kill_mobs <span class="tok-arg">&lt;amount&gt;</span>
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> stage</span> <span class="tok-arg">&lt;stage_id&gt;</span> mission lever
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> stage</span> <span class="tok-arg">&lt;stage_id&gt;</span> mission button <span class="tok-arg">&lt;button_material&gt;</span>
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> stage</span> <span class="tok-arg">&lt;stage_id&gt;</span> mission pressure_plate <span class="tok-arg">&lt;plate_material&gt;</span>
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> stage</span> <span class="tok-arg">&lt;stage_id&gt;</span> mission required_key <span class="tok-arg">&lt;amount&gt;</span>
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> stage</span> <span class="tok-arg">&lt;stage_id&gt;</span> mission time <span class="tok-arg">&lt;seconds&gt;</span>
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> stage</span> <span class="tok-arg">&lt;stage_id&gt;</span> mission sacrifice <span class="tok-arg">[mode]</span> <span class="tok-arg">[drop_items]</span>
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> stage</span> <span class="tok-arg">&lt;stage_id&gt;</span> mission money_payment <span class="tok-arg">&lt;amount&gt;</span> <span class="tok-arg">[ANY_PLAYER|LEADER_ONLY]</span>
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> stage</span> <span class="tok-arg">&lt;stage_id&gt;</span> mission item_payment
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> stage</span> <span class="tok-arg">&lt;stage_id&gt;</span> mission <span class="tok-arg">&lt;type&gt;</span> delete</code></pre></div>
+<div class="callout callout-note"><div class="callout-title">Clickable missions</div><div class="callout-body"><p><code>SACRIFICE</code>, <code>MONEY_PAYMENT</code>, and <code>ITEM_PAYMENT</code> are opened during a run by right-clicking a gate block.</p></div></div>
+<h2 id="kill-mobs-filters"><a class="heading-anchor" href="#kill-mobs-filters" aria-label="Link to section">Kill Mobs Filters</a></h2>
+<p>New <code>KILL_MOBS</code> missions include both options:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-key">missions</span><span class="tok-punct">:</span>
+  - <span class="tok-key">type</span><span class="tok-punct">:</span> KILL_MOBS
+    <span class="tok-key">required</span><span class="tok-punct">:</span> <span class="tok-num">20</span>
+    <span class="tok-key">only-dungeon-spawner-mobs</span><span class="tok-punct">:</span> <span class="tok-bool">true</span>
+    <span class="tok-key">count-baby-variants</span><span class="tok-punct">:</span> <span class="tok-bool">true</span></code></pre></div>
+<p><code>only-dungeon-spawner-mobs</code> counts only mobs spawned by this dungeon instance's configured spawners, including vanilla and MythicMobs pools. Friendly summons from enchantments or other plugins, natural mobs, and mobs already stored in the template do not count. Bosses remain excluded from stage kill missions. Dungeon-spawned mobs still count after transformations, such as a zombie becoming a drowned.</p>
+<p>Set <code>only-dungeon-spawner-mobs: false</code> to count mobs from other sources inside the instance. Kills must be credited to a player. Mobs summoned separately by a Mythic skill are not automatically treated as dungeon spawner mobs.</p>
+<p><code>count-baby-variants</code> includes baby versions of eligible mobs, including zombies, drowned, piglins, and other ageable mobs. Set it to <code>false</code> to exclude babies. The spawner-source filter still applies. To control which variants spawn, use the spawner settings.</p>
+<p>Both options default to <code>true</code> when omitted, including in existing missions. Changing the required amount through a command or the editor preserves these filters. Save the mission to write the fields, or add them manually and reload.</p>
+      </article>
+      <nav class="page-nav" aria-label="Page navigation">
+        <a class="page-nav-card prev" href="../spawners-and-mobs/index.html"><span class="page-nav-label">Previous</span><span class="page-nav-title">&larr; Spawners and Mobs</span></a>
+        <a class="page-nav-card next" href="../loot-and-rewards/index.html"><span class="page-nav-label">Next</span><span class="page-nav-title">Loot and Rewards &rarr;</span></a>
+      </nav>
+    </main>
+
+    <aside class="sidebar-right" aria-label="Table of contents">
+      <div class="toc-title">On this page</div><ul class="toc-list"><li class="toc-item"><a href="#create-a-stage">Create a Stage</a></li><li class="toc-item"><a href="#stage-order">Stage Order</a></li><li class="toc-item"><a href="#gate-editing">Gate Editing</a></li><li class="toc-item"><a href="#holograms">Holograms</a></li><li class="toc-item"><a href="#mission-types">Mission Types</a></li><li class="toc-item toc-h3"><a href="#region-missions">Region Missions</a></li><li class="toc-item"><a href="#mission-commands">Mission Commands</a></li><li class="toc-item"><a href="#kill-mobs-filters">Kill Mobs Filters</a></li></ul>
+    </aside>
+  </div>
+
+  <div class="search-backdrop" id="search-backdrop" role="dialog" aria-modal="true" aria-label="Search documentation">
+    <div class="search-modal">
+      <div class="search-input-wrap">
+        <span class="search-edition-pill">FREE</span>
+        <input type="search" class="search-input" id="search-input" placeholder="Search Free documentation..." autocomplete="off">
+        <span class="search-kbd">ESC</span>
+      </div>
+      <div class="search-results" id="search-results"></div>
+    </div>
+  </div>
+
+  <script src="../assets/search-index.js"></script>
+  <script src="../assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Overview | InstancedDungeons (FREE)</title>
+  <link rel="icon" href="assets/header-logo.png">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-edition="free" data-root="">
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-left">
+        <button type="button" class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation">&#9776;</button>
+        <a class="brand" href="index.html">
+          <img src="assets/header-logo.png" alt="InstancedDungeons">
+          <span>InstancedDungeons</span>
+        </a>
+        <nav class="edition-switch" data-active="free" aria-label="Documentation edition">
+          <span class="edition-icon" aria-hidden="true">&#9876;</span>
+          <span class="edition-track">
+            <span class="edition-thumb" aria-hidden="true"></span>
+            <a class="edition-link is-active" data-edition-target="free" href="index.html">Free</a>
+            <a class="edition-link" data-edition-target="pro" href="pro/index.html">Pro</a>
+          </span>
+        </nav>
+      </div>
+
+      <nav class="top-nav" aria-label="Main sections">
+        <span class="top-nav-thumb" aria-hidden="true"></span>
+        <a class="top-nav-link is-active" href="index.html">Start</a><a class="top-nav-link" href="configuration/index.html">Configuration</a><a class="top-nav-link" href="spawners-and-mobs/index.html">Systems</a><a class="top-nav-link" href="item-ids/potions-and-arrows/index.html">Item ID Reference</a><a class="top-nav-link" href="help/index.html">Help</a>
+      </nav>
+
+      <div class="header-right">
+        <button type="button" class="search-trigger" id="search-open" aria-label="Search documentation">
+          <span>Search docs...</span>
+          <span class="search-kbd">Ctrl K</span>
+        </button>
+        <button type="button" class="icon-btn" id="theme-toggle" title="Toggle dark/light theme" aria-label="Toggle theme">&#9728;</button>
+        <div class="ext-links">
+          <a class="ext-pill" href="https://modrinth.com/plugin/instanced-dungeon" target="_blank" rel="noopener">Modrinth</a><a class="ext-pill ext-pill-pro" href="https://builtbybit.com/resources/instanceddungeons-pro.112271/" target="_blank" rel="noopener">GET PRO</a><a class="ext-pill" href="https://discord.com/invite/sD4HvQh8P4" target="_blank" rel="noopener">Discord</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout-shell">
+    <aside class="sidebar-left" id="sidebar-left" aria-label="Sidebar navigation">
+      <div class="nav-group"><div class="nav-group-title">Start</div><ul class="nav-list"><li class="nav-item"><a class="is-active" href="index.html">Overview</a></li><li class="nav-item"><a href="getting-started/index.html">Getting Started</a></li><li class="nav-item"><a href="updating/index.html">Updating</a></li><li class="nav-item"><a href="examples/index.html">Examples</a></li><li class="nav-item"><a href="commands/index.html">Commands</a></li><li class="nav-item"><a href="permissions/index.html">Permissions</a></li></ul></div><div class="nav-group"><div class="nav-group-title">Configuration</div><ul class="nav-list"><li class="nav-item"><a href="configuration/index.html">Dungeon Config</a></li><li class="nav-item"><a href="objectives/index.html">Objectives</a></li><li class="nav-item"><a href="towers/index.html">Towers</a></li><li class="nav-item"><a href="complete-reference/index.html">Complete Reference</a></li></ul></div><div class="nav-group"><div class="nav-group-title">Systems</div><ul class="nav-list"><li class="nav-item"><a href="spawners-and-mobs/index.html">Spawners and Mobs</a></li><li class="nav-item"><a href="stages/index.html">Stages and Gates</a></li><li class="nav-item"><a href="loot-and-rewards/index.html">Loot and Rewards</a></li><li class="nav-item"><a href="event-commands/index.html">Event Commands</a></li></ul></div><div class="nav-group"><div class="nav-group-title">Item ID Reference</div><ul class="nav-list"><li class="nav-item"><a href="item-ids/potions-and-arrows/index.html">Potions and Arrows</a></li><li class="nav-item"><a href="item-ids/enchanted-books/index.html">Enchanted Books</a></li></ul></div><div class="nav-group"><div class="nav-group-title">Help</div><ul class="nav-list"><li class="nav-item"><a href="help/index.html">Help Center</a></li><li class="nav-item"><a href="ram-analysis/index.html">RAM Analysis</a></li><li class="nav-item"><a href="troubleshooting/index.html">Troubleshooting</a></li></ul></div>
+    </aside>
+
+    <main class="doc-main">
+      <div class="breadcrumb">
+        <span class="edition-tag">Free Edition</span>
+        <span class="sep">/</span>
+        <span>Start</span>
+        <span class="sep">/</span>
+        <span>Overview</span>
+      </div>
+      <article class="doc-article">
+        <h1 id="instanceddungeons">InstancedDungeons</h1>
+<p>InstancedDungeons runs isolated dungeon instances for solo players and parties on Paper servers. When a party starts a run, the plugin clones your configured template world into a temporary instance world, runs your stages, mob spawners, loot chests, and boss or trigger objectives, and deletes the temporary world when the run ends.</p>
+<div class="meta-bar">
+  <span class="meta-pill"><strong>Server</strong> Paper 1.21.x &amp; 26.x (Universal JAR)</span>
+  <span class="meta-pill"><strong>Java</strong> 21+ (1.21.x) / 25+ (26.x)</span>
+  <span class="meta-pill"><strong>Config Format</strong> v2.0</span>
+  <span class="meta-pill"><strong>World Manager</strong> Built-in (<code>/dg world</code>)</span>
+</div>
+<div class="action-row">
+  <a class="btn btn-primary" href="getting-started/index.html">Getting Started</a>
+  <a class="btn btn-secondary" href="commands/index.html">Command Reference</a>
+  <a class="btn btn-secondary" href="configuration/index.html">Dungeon Config</a>
+</div>
+<h2 id="quick-start"><a class="heading-anchor" href="#quick-start" aria-label="Link to section">Quick Start</a></h2>
+<p>Create a template world, set spawn, exit, and objective points in editor mode, and validate before opening to players:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-cmd">/dg</span><span class="tok-sub"> world</span> create dragon_template flat normal 500
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> create</span> dragon_lair dragon_template boss
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> edit</span> dragon_lair
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> setspawn</span>
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> setexit</span>
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> setboss</span>
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> save</span>
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> reload</span>
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> validate</span> dragon_lair</code></pre></div>
+<p>Players can then open a party, invite members, and start an instance:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-cmd">/dungeon</span><span class="tok-sub"> open</span> dragon_lair
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> join</span> <span class="tok-arg">&lt;code&gt;</span>
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> start</span></code></pre></div>
+<h2 id="core-architecture"><a class="heading-anchor" href="#core-architecture" aria-label="Link to section">Core Architecture</a></h2>
+<div class="table-wrap"><table><thead><tr><th>Component</th><th>How it works</th></tr></thead><tbody><tr><td><a href="getting-started/index.html">Template Worlds</a></td><td>Create flat template worlds directly with <code>/dg world create</code> or use existing server worlds. Instances inherit gamerules, <code>WorldBorder</code> settings, and WorldGuard regions/flags.</td></tr><tr><td><a href="objectives/index.html">Objectives</a></td><td>Complete runs by defeating a configured boss (<code>boss.yml</code>) or activating a completion button/pressure plate (<code>trigger.yml</code>).</td></tr><tr><td><a href="stages/index.html">Stages and Gates</a></td><td>Lock sections of a dungeon behind block gates that open after clearing <code>REGION</code>, <code>KILL_MOBS</code>, <code>LEVER</code>, <code>BUTTON</code>, <code>PRESSURE_PLATE</code>, <code>REQUIRED_KEY</code>, <code>TIME</code>, <code>SACRIFICE</code>, <code>MONEY_PAYMENT</code>, or <code>ITEM_PAYMENT</code> missions.</td></tr><tr><td><a href="spawners-and-mobs/index.html">Spawners and Mobs</a></td><td>Trigger Vanilla or MythicMobs pools on instance start or player proximity, with configurable delays and mob lifetime rules.</td></tr><tr><td><a href="loot-and-rewards/index.html">Loot and Rewards</a></td><td>Place tagged loot chests in the template world, distribute stage mission keys, and configure boss or trigger completion rewards.</td></tr><tr><td><a href="towers/index.html">Towers</a></td><td>Link a <code>FIRST</code> entry dungeon to a <code>LAST</code> final dungeon so parties automatically progress between floors.</td></tr><tr><td><a href="event-commands/index.html">Event Commands</a></td><td>Run console or player commands on party creation, run start, stage completion, gate opening, mob/boss kills, completion, or failure.</td></tr><tr><td><a href="commands/index.html#core-admin-commands">Validation</a></td><td>Run `/dungeon validate &lt;id</td></tr></tbody></table></div>
+<h2 id="configuration-layout"><a class="heading-anchor" href="#configuration-layout" aria-label="Link to section">Configuration Layout</a></h2>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code>plugins/InstancedDungeons/
+├── config.yml
+├── messages.yml
+├── data/
+│   ├── template-worlds.dat
+│   └── instance-worlds.dat
+└── dungeons/
+    └── &lt;dungeon_id&gt;/
+        ├── config.yml
+        ├── boss.yml / trigger.yml
+        ├── commands.yml
+        ├── command-blacklist.txt
+        ├── spawners/
+        ├── loot-chests/
+        └── stages/</code></pre></div>
+      </article>
+      <nav class="page-nav" aria-label="Page navigation">
+        <div></div>
+        <a class="page-nav-card next" href="getting-started/index.html"><span class="page-nav-label">Next</span><span class="page-nav-title">Getting Started &rarr;</span></a>
+      </nav>
+    </main>
+
+    <aside class="sidebar-right" aria-label="Table of contents">
+      <div class="toc-title">On this page</div><ul class="toc-list"><li class="toc-item"><a href="#quick-start">Quick Start</a></li><li class="toc-item"><a href="#core-architecture">Core Architecture</a></li><li class="toc-item"><a href="#configuration-layout">Configuration Layout</a></li></ul>
+    </aside>
+  </div>
+
+  <div class="search-backdrop" id="search-backdrop" role="dialog" aria-modal="true" aria-label="Search documentation">
+    <div class="search-modal">
+      <div class="search-input-wrap">
+        <span class="search-edition-pill">FREE</span>
+        <input type="search" class="search-input" id="search-input" placeholder="Search Free documentation..." autocomplete="off">
+        <span class="search-kbd">ESC</span>
+      </div>
+      <div class="search-results" id="search-results"></div>
+    </div>
+  </div>
+
+  <script src="assets/search-index.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

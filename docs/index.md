@@ -1,76 +1,26 @@
-<section class="hero">
+# InstancedDungeons
 
-  <div>
-    <h1><span class="accent">InstancedDungeons</span></h1>
-    <p>
-      Create <strong>private dungeon instances</strong> for parties, with stages,
-      mobs, loot, and boss or trigger objectives.
-    </p>
-    <div class="hero-badges">
-      <span class="hero-badge">Paper 1.21.x / 26.1.x / 26.2.x / 26.3.x</span>
-      <span class="hero-badge">Java 21+ / 25+</span>
-      <span class="hero-badge">Built-in World Manager</span>
-      <span class="hero-badge">Boss and Trigger Objectives</span>
-    </div>
-    <div class="hero-actions">
-      <a class="md-button md-button--primary" href="getting-started/">Get Started</a>
-      <a class="md-button" href="commands/">Command Reference</a>
-    </div>
-  </div>
-  <img class="hero-logo" src="assets/plugin-logo-badge-transparent.png" alt="InstancedDungeons logo">
-</section>
+InstancedDungeons runs isolated dungeon instances for solo players and parties on Paper servers. When a party starts a run, the plugin clones your configured template world into a temporary instance world, runs your stages, mob spawners, loot chests, and boss or trigger objectives, and deletes the temporary world when the run ends.
 
-## What It Does
-
-InstancedDungeons copies a configured template world into a temporary instance world whenever a party starts a run. Players get an isolated dungeon, while the original template stays clean for future runs.
-
-<div class="status-row">
-  <div class="status-box"><strong>Instances</strong><span>One copied world per active run</span></div>
-  <div class="status-box"><strong>Parties</strong><span>Create parties, join runs, or spectate</span></div>
-  <div class="status-box"><strong>Objectives</strong><span>Boss defeat or trigger activation</span></div>
-  <div class="status-box"><strong>Towers</strong><span>Chain dungeons into multi-stage runs</span></div>
+<div class="meta-bar">
+  <span class="meta-pill"><strong>Server</strong> Paper 1.21.x &amp; 26.x (Universal JAR)</span>
+  <span class="meta-pill"><strong>Java</strong> 21+ (1.21.x) / 25+ (26.x)</span>
+  <span class="meta-pill"><strong>Config Format</strong> v2.0</span>
+  <span class="meta-pill"><strong>World Manager</strong> Built-in (<code>/dg world</code>)</span>
 </div>
 
-## Main Systems
-
-<div class="grid">
-  <div class="doc-card">
-    <h3>Template Worlds</h3>
-    <p>Create a dungeon from a real Minecraft world and let the plugin clone it for each party.</p>
-  </div>
-  <div class="doc-card">
-    <h3>Stages and Gates</h3>
-    <p>Require players to complete missions before stage gates open.</p>
-  </div>
-  <div class="doc-card">
-    <h3>Loot and Rewards</h3>
-    <p>Configure loot chests, boss rewards, trigger rewards, custom items, and mission keys.</p>
-  </div>
-  <div class="doc-card">
-    <h3>Validation</h3>
-    <p>Use built-in validation to catch missing bosses, triggers, tower links, costs, stages, and commands.</p>
-  </div>
-  <div class="doc-card">
-    <h3>Event Commands</h3>
-    <p>Run console or player commands on party starts, dungeon completion, failures, kills, stages, and towers.</p>
-  </div>
-  <div class="doc-card">
-    <h3>Protection</h3>
-    <p>Block edits, control interactions, prevent external entry, and clean up temporary worlds automatically.</p>
-  </div>
+<div class="action-row">
+  <a class="btn btn-primary" href="getting-started.md">Getting Started</a>
+  <a class="btn btn-secondary" href="commands.md">Command Reference</a>
+  <a class="btn btn-secondary" href="configuration.md">Dungeon Config</a>
 </div>
 
 ## Quick Start
 
-1. Install the plugin.
-2. Create a template world with `/dg world create`.
-3. Create a dungeon with `/dungeon create`.
-4. Set spawn, exit, and objective data in editor mode.
-5. Run `/dungeon validate <id>`.
-6. Let players open, join, and start a party.
+Create a template world, set spawn, exit, and objective points in editor mode, and validate before opening to players:
 
 ```text
-/dg world create dragon_template
+/dg world create dragon_template flat normal 500
 /dungeon create dragon_lair dragon_template boss
 /dungeon edit dragon_lair
 /dungeon setspawn
@@ -78,4 +28,46 @@ InstancedDungeons copies a configured template world into a temporary instance w
 /dungeon setboss
 /dungeon save
 /dungeon reload
+/dungeon validate dragon_lair
+```
+
+Players can then open a party, invite members, and start an instance:
+
+```text
+/dungeon open dragon_lair
+/dungeon join <code>
+/dungeon start
+```
+
+## Core Architecture
+
+| Component | How it works |
+| --- | --- |
+| [Template Worlds](getting-started.md) | Create flat template worlds directly with `/dg world create` or use existing server worlds. Instances inherit gamerules, `WorldBorder` settings, and WorldGuard regions/flags. |
+| [Objectives](objectives.md) | Complete runs by defeating a configured boss (`boss.yml`) or activating a completion button/pressure plate (`trigger.yml`). |
+| [Stages and Gates](stages.md) | Lock sections of a dungeon behind block gates that open after clearing `REGION`, `KILL_MOBS`, `LEVER`, `BUTTON`, `PRESSURE_PLATE`, `REQUIRED_KEY`, `TIME`, `SACRIFICE`, `MONEY_PAYMENT`, or `ITEM_PAYMENT` missions. |
+| [Spawners and Mobs](spawners-and-mobs.md) | Trigger Vanilla or MythicMobs pools on instance start or player proximity, with configurable delays and mob lifetime rules. |
+| [Loot and Rewards](loot-and-rewards.md) | Place tagged loot chests in the template world, distribute stage mission keys, and configure boss or trigger completion rewards. |
+| [Towers](towers.md) | Link a `FIRST` entry dungeon to a `LAST` final dungeon so parties automatically progress between floors. |
+| [Event Commands](event-commands.md) | Run console or player commands on party creation, run start, stage completion, gate opening, mob/boss kills, completion, or failure. |
+| [Validation](commands.md#core-admin-commands) | Run `/dungeon validate <id|all>` to check YAML syntax, locations, item IDs, stage order continuity, and tower links before opening dungeons to players. |
+
+## Configuration Layout
+
+```text
+plugins/InstancedDungeons/
+├── config.yml
+├── messages.yml
+├── data/
+│   ├── template-worlds.dat
+│   └── instance-worlds.dat
+└── dungeons/
+    └── <dungeon_id>/
+        ├── config.yml
+        ├── boss.yml / trigger.yml
+        ├── commands.yml
+        ├── command-blacklist.txt
+        ├── spawners/
+        ├── loot-chests/
+        └── stages/
 ```

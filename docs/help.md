@@ -1,22 +1,25 @@
 # Help Center
 
-## Troubleshooting Steps
+## Diagnostic Workflow
 
-1. Run validation:
+1. Validate the dungeon configuration and inspect any reported file/field errors:
 
 ```text
 /dungeon validate <id>
+/dungeon validate all
 ```
 
-2. Check the troubleshooting page.
-3. Check the current configuration and complete reference pages.
-4. Join Discord if the issue still looks like a plugin bug.
+2. Check active integrations (Vault, MythicMobs, ItemsAdder, Oraxen, Nexo, WorldGuard):
 
-For plugin updates and config migration, follow the [Updating guide](updating.md).
+```text
+/dungeon status
+```
 
-## Support Links
+3. Review the [Troubleshooting](troubleshooting.md) guide and [Complete Reference](complete-reference.md).
+4. When updating from an earlier release, follow the [Updating](updating.md) checklist.
 
-- [Discord](https://discord.com/invite/sD4HvQh8P4)
-- [Modrinth](https://modrinth.com/plugin/instanced-dungeon)
-- [SpigotMC](https://www.spigotmc.org/resources/instanced-dungeon.132724/)
-- [Buy Me a Coffee](https://buymeacoffee.com/we_rt)
+## Official Links
+
+- **Modrinth:** [modrinth.com/plugin/instanced-dungeon](https://modrinth.com/plugin/instanced-dungeon)
+- **GET PRO:** [BuiltByBit](https://builtbybit.com/resources/instanceddungeons-pro.112271/)
+- **Discord Support:** [discord.com/invite/sD4HvQh8P4](https://discord.com/invite/sD4HvQh8P4)

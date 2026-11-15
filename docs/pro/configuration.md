@@ -14,7 +14,7 @@ v: 2.0
 
 Dungeons without this marker are blocked from opening.
 
-The optional `ram-analysis.yml` is a plugin-level diagnostic file, not a dungeon config. It is created only after an administrator runs `/dungeon ram analysis`; see [RAM Analysis](../ram-analysis.md).
+The optional `ram-analysis.yml` is a plugin-level diagnostic file, not a dungeon config. It is created only after an administrator runs `/dungeon ram analysis`; see [RAM Analysis](ram-analysis.md).
 
 ## Core Fields
 
@@ -124,7 +124,7 @@ player-cooldown:
 
 The default durations are zero, so existing dungeons gain no restrictions after updating. Creating a party or failing to prepare a world does not grant a cooldown. Pending starts are checked before charges and preparation. Durations are wall-clock seconds, not server ticks. A join blocked by cooldown shows only the cooldown message and remaining seconds.
 
-Cooldowns belong to player UUIDs and survive relogging, reloads and server restarts in `plugins/InstancedDungeons/player-cooldowns.yml`. Back up that file when moving the server. A global cooldown also applies when the target dungeon has zero configured durations. When both an existing dungeon-specific and global deadline apply, entry stays blocked until both expire.
+Cooldowns belong to player UUIDs and survive relogging, reloads and server restarts in `plugins/InstancedDungeons/data/player-cooldowns.dat`. Back up that file when moving the server. A global cooldown also applies when the target dungeon has zero configured durations. When both an existing dungeon-specific and global deadline apply, entry stays blocked until both expire.
 
 ### Towers and Replacement
 

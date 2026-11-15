@@ -25,7 +25,7 @@ Kicking removes the current membership; it does not ban the player from joining 
 
 | Command | Description |
 | --- | --- |
-| `/dg world create <name> [void\|flat\|normal] [normal\|nether\|the_end] [worldborder]` | Creates a template world (`flat` by default, `void` with a bedrock block at your coordinates, or `normal` terrain) with an optional environment and initial world border size (default `500`). |
+| `/dg world create <name> [void\|flat\|normal] [normal\|nether\|the_end] [worldborder]` | Creates a template world (`flat` by default, `void` with a bedrock block at `0, 64, 0`, or `normal` terrain) with an optional environment and initial world border size (default `500`). |
 | `/dg world list` | Lists available server and template worlds (excludes active dungeon instances) and highlights worlds created by the plugin. |
 | `/dg world tp <name>` | Teleports to a template or server world. |
 | `/dg world delete <name>` | Deletes a plugin-created template world after confirmation if no dungeon uses it. |
@@ -139,4 +139,4 @@ Run `region` to create the mission, then stand at each corner in the template wo
 
 ## RAM Analysis
 
-`/dungeon ram analysis` toggles memory reports. Requires `instanceddungeons.admin`. See [RAM Analysis](../ram-analysis.md).
+`/dungeon ram analysis` toggles memory reports. Requires `instanceddungeons.admin`. See [RAM Analysis](ram-analysis.md).

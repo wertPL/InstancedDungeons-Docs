@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stages and Gates | InstancedDungeons (PRO)</title>
+  <link rel="icon" href="../../assets/header-logo.png">
+  <link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body data-edition="pro" data-root="../../">
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-left">
+        <button type="button" class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation">&#9776;</button>
+        <a class="brand" href="../index.html">
+          <img src="../../assets/header-logo.png" alt="InstancedDungeons">
+          <span>InstancedDungeons</span>
+        </a>
+        <nav class="edition-switch" data-active="pro" aria-label="Documentation edition">
+          <span class="edition-icon" aria-hidden="true">&#9876;</span>
+          <span class="edition-track">
+            <span class="edition-thumb" aria-hidden="true"></span>
+            <a class="edition-link" data-edition-target="free" href="../../stages/index.html">Free</a>
+            <a class="edition-link is-active" data-edition-target="pro" href="index.html">Pro</a>
+          </span>
+        </nav>
+      </div>
+
+      <nav class="top-nav" aria-label="Main sections">
+        <span class="top-nav-thumb" aria-hidden="true"></span>
+        <a class="top-nav-link" href="../index.html">Start</a><a class="top-nav-link" href="../configuration/index.html">Configuration</a><a class="top-nav-link is-active" href="../spawners-and-mobs/index.html">Systems</a><a class="top-nav-link" href="../item-ids/potions-and-arrows/index.html">Item ID Reference</a><a class="top-nav-link" href="../help/index.html">Help</a>
+      </nav>
+
+      <div class="header-right">
+        <button type="button" class="search-trigger" id="search-open" aria-label="Search documentation">
+          <span>Search docs...</span>
+          <span class="search-kbd">Ctrl K</span>
+        </button>
+        <button type="button" class="icon-btn" id="theme-toggle" title="Toggle dark/light theme" aria-label="Toggle theme">&#9728;</button>
+        <div class="ext-links">
+          <a class="ext-pill" href="https://builtbybit.com/resources/instanceddungeons-pro.112271/" target="_blank" rel="noopener">BuiltByBit</a><a class="ext-pill" href="https://discord.com/invite/sD4HvQh8P4" target="_blank" rel="noopener">Discord</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout-shell">
+    <aside class="sidebar-left" id="sidebar-left" aria-label="Sidebar navigation">
+      <div class="nav-group"><div class="nav-group-title">Start</div><ul class="nav-list"><li class="nav-item"><a href="../index.html">Overview</a></li><li class="nav-item"><a href="../getting-started/index.html">Getting Started</a></li><li class="nav-item"><a href="../updating/index.html">Updating</a></li><li class="nav-item"><a href="../examples/index.html">Examples</a></li><li class="nav-item"><a href="../commands/index.html">Commands</a></li><li class="nav-item"><a href="../permissions/index.html">Permissions</a></li></ul></div><div class="nav-group"><div class="nav-group-title">Configuration</div><ul class="nav-list"><li class="nav-item"><a href="../configuration/index.html">Dungeon Config</a></li><li class="nav-item"><a href="../objectives/index.html">Objectives</a></li><li class="nav-item"><a href="../towers/index.html">Towers</a></li><li class="nav-item"><a href="../complete-reference/index.html">Complete Reference</a></li></ul></div><div class="nav-group"><div class="nav-group-title">Systems</div><ul class="nav-list"><li class="nav-item"><a href="../spawners-and-mobs/index.html">Spawners and Mobs</a></li><li class="nav-item"><a class="is-active" href="index.html">Stages and Gates</a></li><li class="nav-item"><a href="../checkpoints/index.html">Checkpoints</a></li><li class="nav-item"><a href="../loot-and-rewards/index.html">Loot and Rewards</a></li><li class="nav-item"><a href="../sounds/index.html">Sounds</a></li><li class="nav-item"><a href="../event-commands/index.html">Event Commands</a></li></ul></div><div class="nav-group"><div class="nav-group-title">Item ID Reference</div><ul class="nav-list"><li class="nav-item"><a href="../item-ids/potions-and-arrows/index.html">Potions and Arrows</a></li><li class="nav-item"><a href="../item-ids/enchanted-books/index.html">Enchanted Books</a></li><li class="nav-item"><a href="../item-ids/enchant-ids/index.html">Enchant IDs</a></li></ul></div><div class="nav-group"><div class="nav-group-title">Help</div><ul class="nav-list"><li class="nav-item"><a href="../help/index.html">Help Center</a></li><li class="nav-item"><a href="../ram-analysis/index.html">RAM Analysis</a></li><li class="nav-item"><a href="../troubleshooting/index.html">Troubleshooting</a></li></ul></div>
+    </aside>
+
+    <main class="doc-main">
+      <div class="breadcrumb">
+        <span class="edition-tag">PRO Edition</span>
+        <span class="sep">/</span>
+        <span>Systems</span>
+        <span class="sep">/</span>
+        <span>Stages and Gates</span>
+      </div>
+      <article class="doc-article">
+        <h1 id="stages-and-gates">Stages and Gates</h1>
+<p>Stages are optional progression gates inside a dungeon.</p>
+<p>Use the stage GUI to edit gates and missions. <strong>After-Open Logic</strong> configures party teleports and gate closing; <strong>Emergency Return</strong> configures the return plate and destination.</p>
+<p>Runtime gate blocks, mission blocks, triggers, loot chests, and emergency plates are protected from player breaking, replacement, water, and lava even when the dungeon otherwise allows those actions.</p>
+<p>Ordered respawn points are documented separately under <a href="../checkpoints/index.html">Checkpoints</a>.</p>
+<p>Stage files live in:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code>dungeons/&lt;id&gt;/stages/&lt;stage_id&gt;.yml
+dungeons/&lt;id&gt;/stages/&lt;stage_id&gt;-hologram.yml</code></pre></div>
+<h2 id="create-a-stage"><a class="heading-anchor" href="#create-a-stage" aria-label="Link to section">Create a Stage</a></h2>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-cmd">/dungeon</span><span class="tok-sub"> edit</span> dragon_lair
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> stage</span> create entrance
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> stage</span> entrance gate create
+<span class="tok-comment"># select gate blocks in the template world</span>
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> gate</span> save</code></pre></div>
+<h2 id="stage-order"><a class="heading-anchor" href="#stage-order" aria-label="Link to section">Stage Order</a></h2>
+<p>Every stage has an order:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-key">stage-id</span><span class="tok-punct">:</span> entrance
+<span class="tok-key">stage-order</span><span class="tok-punct">:</span> <span class="tok-num">1</span></code></pre></div>
+<p>Order <code>1</code> unlocks first. Higher orders unlock only after every lower-order stage opens.</p>
+<p>Multiple stages can share the same order. Shared-order stages run in parallel.</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-cmd">/dungeon</span><span class="tok-sub"> stage</span> list
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> stage</span> entrance order 2</code></pre></div>
+<h2 id="gate-editing"><a class="heading-anchor" href="#gate-editing" aria-label="Link to section">Gate Editing</a></h2>
+<p>Use gate mode to select existing blocks from the template world.</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-cmd">/dungeon</span><span class="tok-sub"> stage</span> entrance gate create
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> stage</span> entrance gate stick
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> gate</span> save</code></pre></div>
+<p>Gate stick controls:</p>
+<div class="table-wrap"><table><thead><tr><th>Action</th><th>Result</th></tr></thead><tbody><tr><td>Left-click</td><td>Adds one existing block.</td></tr><tr><td>Right-click</td><td>Removes one selected block.</td></tr><tr><td>Sneak-left-click</td><td>Adds connected same-material blocks.</td></tr><tr><td>Sneak-right-click</td><td>Removes connected same-material blocks.</td></tr></tbody></table></div>
+<h2 id="after-open-logic"><a class="heading-anchor" href="#after-open-logic" aria-label="Link to section">After-Open Logic</a></h2>
+<p>A gate can teleport the alive party after it finishes opening and can close earlier gates without a closing animation:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-key">gate</span><span class="tok-punct">:</span>
+  <span class="tok-key">after-open</span><span class="tok-punct">:</span>
+    <span class="tok-key">teleport</span><span class="tok-punct">:</span>
+      <span class="tok-key">enabled</span><span class="tok-punct">:</span> <span class="tok-bool">false</span>
+      <span class="tok-key">location</span><span class="tok-punct">:</span>
+        <span class="tok-key">world</span><span class="tok-punct">:</span> dungeon_template
+        <span class="tok-key">x</span><span class="tok-punct">:</span> <span class="tok-num">20.5</span>
+        <span class="tok-key">y</span><span class="tok-punct">:</span> <span class="tok-num">70.0</span>
+        <span class="tok-key">z</span><span class="tok-punct">:</span> <span class="tok-num">12.5</span>
+        <span class="tok-key">yaw</span><span class="tok-punct">:</span> <span class="tok-num">0.0</span>
+        <span class="tok-key">pitch</span><span class="tok-punct">:</span> <span class="tok-num">0.0</span>
+    <span class="tok-key">close-gates</span><span class="tok-punct">:</span>
+      - entrance_gate</code></pre></div>
+<p>Only online, alive party members inside the instance world are teleported. A gate cannot close itself, and every target in <code>close-gates</code> must have an equal or lower <code>stage-order</code>.</p>
+<p>Configuring both an after-open teleport and a teleporting checkpoint triggered by the same gate is a validation error.</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-cmd">/dungeon</span><span class="tok-sub"> stage</span> <span class="tok-arg">&lt;stage_id&gt;</span> gate afteropen teleport set|clear
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> stage</span> <span class="tok-arg">&lt;stage_id&gt;</span> gate afteropen close add|remove <span class="tok-arg">&lt;target_stage_id&gt;</span></code></pre></div>
+<h2 id="emergency-return"><a class="heading-anchor" href="#emergency-return" aria-label="Link to section">Emergency Return</a></h2>
+<p>Emergency Return provides a way out for a player who remains behind a gate after it closes. Its pressure plate and hologram appear only while that gate is closed, and the plate teleports only the player who steps on it.</p>
+<p>Enable the feature, choose the pressure-plate material, and use <strong>Get Emergency Plate</strong> in the GUI. The tagged item is placed in the template like a mission plate. One gate can have only one emergency plate; placing another removes the previous plate and moves the editor hologram. The item cannot be placed while Emergency Return is disabled.</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-key">gate</span><span class="tok-punct">:</span>
+  <span class="tok-key">emergency-return</span><span class="tok-punct">:</span>
+    <span class="tok-key">enabled</span><span class="tok-punct">:</span> <span class="tok-bool">true</span>
+    <span class="tok-key">plate-material</span><span class="tok-punct">:</span> STONE_PRESSURE_PLATE
+    <span class="tok-key">plate-location</span><span class="tok-punct">:</span>
+      <span class="tok-key">x</span><span class="tok-punct">:</span> <span class="tok-num">10</span>
+      <span class="tok-key">y</span><span class="tok-punct">:</span> <span class="tok-num">69</span>
+      <span class="tok-key">z</span><span class="tok-punct">:</span> <span class="tok-num">5</span>
+    <span class="tok-key">destination</span><span class="tok-punct">:</span>
+      <span class="tok-key">world</span><span class="tok-punct">:</span> dungeon_template
+      <span class="tok-key">x</span><span class="tok-punct">:</span> <span class="tok-num">22.5</span>
+      <span class="tok-key">y</span><span class="tok-punct">:</span> <span class="tok-num">70.0</span>
+      <span class="tok-key">z</span><span class="tok-punct">:</span> <span class="tok-num">12.5</span>
+      <span class="tok-key">yaw</span><span class="tok-punct">:</span> <span class="tok-num">0.0</span>
+      <span class="tok-key">pitch</span><span class="tok-punct">:</span> <span class="tok-num">0.0</span>
+    <span class="tok-key">hologram</span><span class="tok-punct">:</span>
+      <span class="tok-key">enabled</span><span class="tok-punct">:</span> <span class="tok-bool">true</span>
+      <span class="tok-key">height-offset</span><span class="tok-punct">:</span> <span class="tok-num">1.8</span>
+      <span class="tok-key">lines</span><span class="tok-punct">:</span>
+        - <span class="tok-str">&quot;&amp;c&amp;lRETURN&quot;</span>
+        - <span class="tok-str">&quot;&amp;7Step on the plate to leave the closed section.&quot;</span></code></pre></div>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-cmd">/dungeon</span><span class="tok-sub"> stage</span> <span class="tok-arg">&lt;stage_id&gt;</span> gate emergency enable|disable
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> stage</span> <span class="tok-arg">&lt;stage_id&gt;</span> gate emergency plate set <span class="tok-arg">[pressure_plate_material]</span>
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> stage</span> <span class="tok-arg">&lt;stage_id&gt;</span> gate emergency destination set</code></pre></div>
+<p>Emergency-return hologram visibility, height, and lines are configured only under <code>gate.emergency-return.hologram</code> in the stage YAML. They cannot be edited in the GUI or through an in-game command.</p>
+<p>The editor has independent particle toggles for gate teleport destinations and emergency-return locations.</p>
+<h2 id="holograms"><a class="heading-anchor" href="#holograms" aria-label="Link to section">Holograms</a></h2>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-cmd">/dungeon</span><span class="tok-sub"> stage</span> entrance gate hologram create
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> stage</span> entrance gate hologram delete</code></pre></div>
+<p>You can create multiple holograms for the same stage. Delete removes the nearest hologram for that stage within 3 blocks.</p>
+<p>Runtime holograms show live mission progress. Locked higher-order holograms show which earlier stages still need to open.</p>
+<p>Emergency-return holograms support <code>%dungeon%</code>, <code>%dungeon_name%</code>, <code>%instance%</code>, <code>%party_leader%</code>, <code>%party_size%</code>, <code>%alive_players%</code>, <code>%gate%</code>, <code>%stage%</code>, <code>%stage_order%</code>, <code>%destination_x%</code>, <code>%destination_y%</code>, and <code>%destination_z%</code>.</p>
+<h2 id="mission-types"><a class="heading-anchor" href="#mission-types" aria-label="Link to section">Mission Types</a></h2>
+<div class="table-wrap"><table><thead><tr><th>Mission</th><th>Description</th></tr></thead><tbody><tr><td><code>REGION</code></td><td>Enter or remain in a selected cuboid, individually or as a party.</td></tr><tr><td><code>KILL_MOBS</code></td><td>Party must kill a configured number of mobs.</td></tr><tr><td><code>LEVER</code></td><td>Party must pull all mission levers.</td></tr><tr><td><code>BUTTON</code></td><td>Party must press all mission buttons at the same time.</td></tr><tr><td><code>PRESSURE_PLATE</code></td><td>Party must activate all mission plates at the same time.</td></tr><tr><td><code>REQUIRED_KEY</code></td><td>Players submit mission keys by right-clicking the gate.</td></tr><tr><td><code>TIME</code></td><td>Waits a configured number of seconds.</td></tr><tr><td><code>SACRIFICE</code></td><td>Selects players to eliminate through the mission GUI.</td></tr><tr><td><code>MONEY_PAYMENT</code></td><td>Requires a Vault money payment.</td></tr><tr><td><code>ITEM_PAYMENT</code></td><td>Requires configured items through a GUI editor.</td></tr></tbody></table></div>
+<p>Mission levers belonging to locked future stages cannot be pulled. They become available when their stage unlocks.</p>
+<h3 id="region-missions"><a class="heading-anchor" href="#region-missions" aria-label="Link to section">Region Missions</a></h3>
+<p>A REGION mission uses a cuboid selected by two opposite block corners in the dungeon template. The corner blocks are included, and either selection order is accepted. Progress starts only after the stage unlocks.</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-cmd">/dg</span><span class="tok-sub"> edit</span> <span class="tok-arg">&lt;dungeon_id&gt;</span>
+<span class="tok-cmd">/dg</span><span class="tok-sub"> stage</span> <span class="tok-arg">&lt;stage_id&gt;</span> mission region
+<span class="tok-cmd">/dg</span><span class="tok-sub"> stage</span> <span class="tok-arg">&lt;stage_id&gt;</span> mission region pos1
+<span class="tok-comment"># move to the opposite corner in the template world</span>
+<span class="tok-cmd">/dg</span><span class="tok-sub"> stage</span> <span class="tok-arg">&lt;stage_id&gt;</span> mission region pos2</code></pre></div>
+<p>Run <code>/dg stage &lt;stage_id&gt; mission region</code> first to add the mission. The confirmation shows the two commands for selecting its corners. Then stand at each corner in the template world and run <code>pos1</code> or <code>pos2</code>; each command saves your current block as that corner. Running the creation command again preserves the existing corners and settings. Do not use the generated instance world name in the stage config.</p>
+<p>In editor mode, cyan particles mark <code>pos1</code> and pink particles mark <code>pos2</code>. Markers are visible only to the editing admin within 50 blocks of a corner. Toggle <strong>Region Corners</strong> under <strong>Admin Settings</strong> to show or hide them independently of other mission particles.</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-key">missions</span><span class="tok-punct">:</span>
+  - <span class="tok-key">type</span><span class="tok-punct">:</span> REGION
+    <span class="tok-key">region</span><span class="tok-punct">:</span>
+      <span class="tok-key">mode</span><span class="tok-punct">:</span> ENTER_ONCE
+      <span class="tok-key">whole-party</span><span class="tok-punct">:</span> <span class="tok-bool">false</span>
+      <span class="tok-key">pos1</span><span class="tok-punct">:</span> {x: <span class="tok-num">10</span>, y: <span class="tok-num">60</span>, z: <span class="tok-num">10</span>}
+      <span class="tok-key">pos2</span><span class="tok-punct">:</span> {x: <span class="tok-num">20</span>, y: <span class="tok-num">70</span>, z: <span class="tok-num">20</span>}</code></pre></div>
+<div class="table-wrap"><table><thead><tr><th>Mode</th><th><code>whole-party: false</code></th><th><code>whole-party: true</code></th></tr></thead><tbody><tr><td><code>ENTER_ONCE</code></td><td>Any participant enters once.</td><td>Each required participant enters once; their visits may happen at different times.</td></tr><tr><td><code>STAY_UNTIL_COMPLETE</code></td><td>At least one participant is currently inside until all stage missions complete.</td><td>All required participants are inside at the same time until all stage missions complete.</td></tr></tbody></table></div>
+<p>Spectators do not count. A dead or offline participant does not count as currently inside. For the stay mode, the same player does not have to remain throughout: the configured number of participants must currently satisfy the condition. Leaving before the gate opens makes the stay condition incomplete again. Opening the gate finishes the stage permanently.</p>
+<p>With <code>whole-party: true</code>, the requirement uses the actual participants in the run, not the dungeon's maximum capacity. A solo run in a dungeon configured for 1–5 players requires only that solo player.</p>
+<p>In <code>STAY_UNTIL_COMPLETE</code>, the hologram shows the region as complete while the required participants are inside and returns to pending if they leave before the stage opens. The mission completion message and sound occur only when all stage missions are satisfied and the gate opens. In <code>ENTER_ONCE</code>, completion is announced as soon as the required visits are recorded and stays complete after players leave.</p>
+<p>Set <code>region.mode</code> and <code>region.whole-party</code> in the stage YAML or use the Region Mission submenu in the admin GUI. These settings have no command variants. Use <code>/dg stage &lt;stage_id&gt; mission region delete</code> to remove the mission. Validation rejects missing corners or invalid settings.</p>
+<p>One REGION mission is supported per stage with no per-dungeon region mission limit. In the mission GUI, click Region Mission to create it and open its corner and logic settings. Right-click its mission icon to remove it.</p>
+<h2 id="mission-commands"><a class="heading-anchor" href="#mission-commands" aria-label="Link to section">Mission Commands</a></h2>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-cmd">/dg</span><span class="tok-sub"> stage</span> <span class="tok-arg">&lt;stage_id&gt;</span> mission region
+<span class="tok-cmd">/dg</span><span class="tok-sub"> stage</span> <span class="tok-arg">&lt;stage_id&gt;</span> mission region pos1
+<span class="tok-cmd">/dg</span><span class="tok-sub"> stage</span> <span class="tok-arg">&lt;stage_id&gt;</span> mission region pos2
+<span class="tok-cmd">/dg</span><span class="tok-sub"> stage</span> <span class="tok-arg">&lt;stage_id&gt;</span> mission region delete
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> stage</span> <span class="tok-arg">&lt;stage_id&gt;</span> mission kill_mobs <span class="tok-arg">&lt;amount&gt;</span>
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> stage</span> <span class="tok-arg">&lt;stage_id&gt;</span> mission lever
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> stage</span> <span class="tok-arg">&lt;stage_id&gt;</span> mission button <span class="tok-arg">&lt;button_material&gt;</span>
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> stage</span> <span class="tok-arg">&lt;stage_id&gt;</span> mission pressure_plate <span class="tok-arg">&lt;plate_material&gt;</span>
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> stage</span> <span class="tok-arg">&lt;stage_id&gt;</span> mission required_key <span class="tok-arg">&lt;amount&gt;</span>
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> stage</span> <span class="tok-arg">&lt;stage_id&gt;</span> mission time <span class="tok-arg">&lt;seconds&gt;</span>
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> stage</span> <span class="tok-arg">&lt;stage_id&gt;</span> mission sacrifice <span class="tok-arg">[mode]</span> <span class="tok-arg">[drop_items]</span>
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> stage</span> <span class="tok-arg">&lt;stage_id&gt;</span> mission money_payment <span class="tok-arg">&lt;amount&gt;</span> <span class="tok-arg">[ANY_PLAYER|LEADER_ONLY]</span>
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> stage</span> <span class="tok-arg">&lt;stage_id&gt;</span> mission item_payment
+<span class="tok-cmd">/dungeon</span><span class="tok-sub"> stage</span> <span class="tok-arg">&lt;stage_id&gt;</span> mission <span class="tok-arg">&lt;type&gt;</span> delete</code></pre></div>
+<div class="callout callout-note"><div class="callout-title">Clickable missions</div><div class="callout-body"><p><code>SACRIFICE</code>, <code>MONEY_PAYMENT</code>, and <code>ITEM_PAYMENT</code> are opened during a run by right-clicking a gate block.</p></div></div>
+<h3 id="skipping-missions"><a class="heading-anchor" href="#skipping-missions" aria-label="Link to section">Skipping Missions</a></h3>
+<div class="code-block"><div class="code-header"><span class="code-lang">CMD / TEXT</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-cmd">/dg</span><span class="tok-sub"> skip</span> <span class="tok-arg">&lt;stage_id&gt;</span> mission all
+<span class="tok-cmd">/dg</span><span class="tok-sub"> skip</span> <span class="tok-arg">&lt;stage_id&gt;</span> mission <span class="tok-arg">&lt;mission_type&gt;</span></code></pre></div>
+<p>Requires <code>instanceddungeons.admin</code> or <code>instanceddungeons.skip.mission</code>. The player must be a participant in an active dungeon run, not a spectator. There is no skip button in the GUI.</p>
+<p>Stage tab completion lists only unlocked, unfinished stages in the player's current instance, including parallel stages with the same order. Mission tab completion lists that stage's mission types and <code>all</code>.</p>
+<p>Skipping marks the selected missions complete without charging payment costs or performing sacrifice. Skipping <code>KILL_MOBS</code> also fills every configured mob target on the hologram, such as <code>SKELETON: 2/2</code> and <code>ZOMBIE: 2/2</code>, with zero remaining. When every mission is satisfied, normal gate opening, stage events and checkpoint behavior continue. A skipped REGION stay condition cannot block the stage again. <code>all</code> affects only the named stage; it never skips a newly unlocked stage.</p>
+<h2 id="required-keys"><a class="heading-anchor" href="#required-keys" aria-label="Link to section">Required Keys</a></h2>
+<p>For <code>REQUIRED_KEY</code>, set the required amount directly:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-key">missions</span><span class="tok-punct">:</span>
+  - <span class="tok-key">type</span><span class="tok-punct">:</span> REQUIRED_KEY
+    <span class="tok-key">required</span><span class="tok-punct">:</span> <span class="tok-num">3</span></code></pre></div>
+<h2 id="kill-mobs-filters"><a class="heading-anchor" href="#kill-mobs-filters" aria-label="Link to section">Kill Mobs Filters</a></h2>
+<p>New <code>KILL_MOBS</code> missions include both options:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-key">missions</span><span class="tok-punct">:</span>
+  - <span class="tok-key">type</span><span class="tok-punct">:</span> KILL_MOBS
+    <span class="tok-key">required</span><span class="tok-punct">:</span> <span class="tok-num">20</span>
+    <span class="tok-key">only-dungeon-spawner-mobs</span><span class="tok-punct">:</span> <span class="tok-bool">true</span>
+    <span class="tok-key">count-baby-variants</span><span class="tok-punct">:</span> <span class="tok-bool">true</span></code></pre></div>
+<p><code>only-dungeon-spawner-mobs</code> counts only mobs spawned by this dungeon instance's configured spawners, including vanilla and MythicMobs pools. Friendly summons from enchantments or other plugins, natural mobs, and mobs already stored in the template do not count. Bosses remain excluded from stage kill missions. Dungeon-spawned mobs still count after transformations, such as a zombie becoming a drowned.</p>
+<p>Set <code>only-dungeon-spawner-mobs: false</code> to count mobs from other sources inside the instance. Kills must be credited to a player. Mobs summoned separately by a Mythic skill are not automatically treated as dungeon spawner mobs.</p>
+<p><code>count-baby-variants</code> includes baby versions of eligible mobs, including zombies, drowned, piglins, and other ageable mobs. Set it to <code>false</code> to exclude babies. The spawner-source filter still applies. To control which variants spawn, use the spawner settings.</p>
+<p>Both options default to <code>true</code> when omitted, including in existing missions. Changing the required amount through a command or the editor preserves these filters. Save the mission to write the fields, or add them manually and reload.</p>
+<p>Both switches are available in the dedicated <strong>Kill Mobs Mission</strong> settings menu.</p>
+<h2 id="specific-kill-mobs-targets"><a class="heading-anchor" href="#specific-kill-mobs-targets" aria-label="Link to section">Specific Kill Mobs Targets</a></h2>
+<p>Open <strong>Stages > stage > Missions > Kill Mobs Mission</strong> to reach the mission settings. The menu contains the required amount, <strong>Dungeon Spawner Mobs Only</strong>, and <strong>Count Baby Variants</strong>. Click <strong>Required Amount</strong> to enter the mob count in chat.</p>
+<p>Click <strong>Specific Mob Targets</strong> to add a one-Zombie example when the mission has no targets and show the configuration path in chat: <code>plugins/InstancedDungeons/dungeons/&lt;dungeon-id&gt;/stages/&lt;stage-id&gt;.yml</code>. Edit <code>mob-targets</code> inside that file's <code>KILL_MOBS</code> entry, then reload the dungeon configuration before starting a new instance:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">YAML</span><button type="button" class="copy-btn" aria-label="Copy code">Copy</button></div><pre><code><span class="tok-key">missions</span><span class="tok-punct">:</span>
+  - <span class="tok-key">type</span><span class="tok-punct">:</span> KILL_MOBS
+    <span class="tok-key">required</span><span class="tok-punct">:</span> <span class="tok-num">10</span>
+    <span class="tok-key">only-dungeon-spawner-mobs</span><span class="tok-punct">:</span> <span class="tok-bool">true</span>
+    <span class="tok-key">count-baby-variants</span><span class="tok-punct">:</span> <span class="tok-bool">true</span>
+    <span class="tok-key">mob-targets</span><span class="tok-punct">:</span>
+      - <span class="tok-key">type</span><span class="tok-punct">:</span> VANILLA
+        <span class="tok-key">mob-id</span><span class="tok-punct">:</span> ZOMBIE
+        <span class="tok-key">count</span><span class="tok-punct">:</span> <span class="tok-num">6</span>
+      - <span class="tok-key">type</span><span class="tok-punct">:</span> VANILLA
+        <span class="tok-key">mob-id</span><span class="tok-punct">:</span> PIG
+        <span class="tok-key">count</span><span class="tok-punct">:</span> <span class="tok-num">2</span>
+      - <span class="tok-key">type</span><span class="tok-punct">:</span> MYTHIC
+        <span class="tok-key">mob-id</span><span class="tok-punct">:</span> Kings
+        <span class="tok-key">count</span><span class="tok-punct">:</span> <span class="tok-num">1</span>
+      - <span class="tok-key">type</span><span class="tok-punct">:</span> MYTHIC
+        <span class="tok-key">mob-id</span><span class="tok-punct">:</span> Barbarian
+        <span class="tok-key">count</span><span class="tok-punct">:</span> <span class="tok-num">1</span></code></pre></div>
+<p>With targets configured, the mission requires every listed count. Their sum replaces <code>required</code>; extra zombies cannot replace a missing pig or MythicMob. Use Bukkit entity names for vanilla targets and exact, case-sensitive MythicMobs internal IDs for Mythic targets. A Mythic zombie counts toward its Mythic ID, not the vanilla <code>ZOMBIE</code> target. Both source and baby filters still apply.</p>
+<p>The hologram shows each target's progress and remaining count. Invalid target definitions block progress and are reported by validation and in the server log. Omit <code>mob-targets</code> to use the ordinary total-count mission. The amount button is disabled while specific targets control the total; editing the filters preserves those targets.</p>
+      </article>
+      <nav class="page-nav" aria-label="Page navigation">
+        <a class="page-nav-card prev" href="../spawners-and-mobs/index.html"><span class="page-nav-label">Previous</span><span class="page-nav-title">&larr; Spawners and Mobs</span></a>
+        <a class="page-nav-card next" href="../checkpoints/index.html"><span class="page-nav-label">Next</span><span class="page-nav-title">Checkpoints &rarr;</span></a>
+      </nav>
+    </main>
+
+    <aside class="sidebar-right" aria-label="Table of contents">
+      <div class="toc-title">On this page</div><ul class="toc-list"><li class="toc-item"><a href="#create-a-stage">Create a Stage</a></li><li class="toc-item"><a href="#stage-order">Stage Order</a></li><li class="toc-item"><a href="#gate-editing">Gate Editing</a></li><li class="toc-item"><a href="#after-open-logic">After-Open Logic</a></li><li class="toc-item"><a href="#emergency-return">Emergency Return</a></li><li class="toc-item"><a href="#holograms">Holograms</a></li><li class="toc-item"><a href="#mission-types">Mission Types</a></li><li class="toc-item toc-h3"><a href="#region-missions">Region Missions</a></li><li class="toc-item"><a href="#mission-commands">Mission Commands</a></li><li class="toc-item toc-h3"><a href="#skipping-missions">Skipping Missions</a></li><li class="toc-item"><a href="#required-keys">Required Keys</a></li><li class="toc-item"><a href="#kill-mobs-filters">Kill Mobs Filters</a></li><li class="toc-item"><a href="#specific-kill-mobs-targets">Specific Kill Mobs Targets</a></li></ul>
+    </aside>
+  </div>
+
+  <div class="search-backdrop" id="search-backdrop" role="dialog" aria-modal="true" aria-label="Search documentation">
+    <div class="search-modal">
+      <div class="search-input-wrap">
+        <span class="search-edition-pill">PRO</span>
+        <input type="search" class="search-input" id="search-input" placeholder="Search Pro documentation..." autocomplete="off">
+        <span class="search-kbd">ESC</span>
+      </div>
+      <div class="search-results" id="search-results"></div>
+    </div>
+  </div>
+
+  <script src="../../assets/search-index.js"></script>
+  <script src="../../assets/app.js"></script>
+</body>
+</html>

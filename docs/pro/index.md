@@ -1,85 +1,26 @@
-<section class="hero">
+# InstancedDungeons Pro
 
-  <div>
-    <h1><span class="accent">InstancedDungeons</span><span class="break">Pro</span></h1>
-    <p>
-      Create <strong>private dungeon instances</strong> for parties, with stages,
-      mobs, loot, and boss or trigger objectives.
-    </p>
-    <div class="hero-badges">
-      <span class="hero-badge">Paper 1.21.x / 26.1.x / 26.2.x / 26.3.x</span>
-      <span class="hero-badge">Java 21+ / 25+</span>
-      <span class="hero-badge">Built-in World Manager</span>
-      <span class="hero-badge">Checkpoints</span>
-      <span class="hero-badge">Advanced Mob Gear</span>
-    </div>
-    <div class="hero-actions">
-      <a class="md-button md-button--primary" href="getting-started/">Get Started</a>
-      <a class="md-button" href="commands/">Command Reference</a>
-    </div>
-  </div>
-  <img class="hero-logo" src="../assets/plugin-logo-badge-transparent.png" alt="InstancedDungeons logo">
-</section>
+InstancedDungeons Pro is the full-featured dungeon engine for Paper 1.21.x and 26.x servers. Each party run clones a template world into an isolated instance with multi-stage progression, ordered checkpoints, custom mob equipment, multi-floor tower chains, custom sound profiles, and full in-game GUI management.
 
-## Overview
-
-Create long tower chains, configure checkpoints and mob equipment, set custom kill targets, and manage dungeons through the admin GUI.
-
-<div class="status-row">
-  <div class="status-box"><strong>Instances</strong><span>Configurable global instance limit</span></div>
-  <div class="status-box"><strong>Stages</strong><span>Multiple stages and missions</span></div>
-  <div class="status-box"><strong>Towers</strong><span><code>FIRST -> MIDDLE -> ... -> LAST</code></span></div>
-  <div class="status-box"><strong>Items</strong><span>Enchanted vanilla gear in costs and rewards</span></div>
+<div class="meta-bar">
+  <span class="meta-pill"><strong>Server</strong> Paper 1.21.x &amp; 26.x (Universal JAR)</span>
+  <span class="meta-pill"><strong>Java</strong> 21+ (1.21.x) / 25+ (26.x)</span>
+  <span class="meta-pill"><strong>Config Format</strong> v2.0</span>
+  <span class="meta-pill"><strong>Admin Workflow</strong> CLI + Full In-Game GUI (<code>/dg gui</code>)</span>
 </div>
 
-## Main Systems
-
-<div class="grid">
-  <div class="doc-card">
-    <h3>Large Dungeons</h3>
-    <p>Add stages with kill, key, timer, interaction, and payment missions.</p>
-  </div>
-  <div class="doc-card">
-    <h3>Stage Keys</h3>
-    <p>Configure stage key requirements and distribute keys across multiple loot chests.</p>
-  </div>
-  <div class="doc-card">
-    <h3>Loot and Rewards</h3>
-    <p>Keep enchantments on vanilla armor, tools, weapons, books, potions, arrows, costs, and rewards.</p>
-  </div>
-  <div class="doc-card">
-    <h3>Mob Equipment</h3>
-    <p>Give supported vanilla mobs helmets, armor, main-hand items, off-hand items, and drop chances.</p>
-  </div>
-  <div class="doc-card">
-    <h3>Tower Chains</h3>
-    <p>Connect dungeon templates with FIRST, MIDDLE, and LAST tower stages.</p>
-  </div>
-  <div class="doc-card">
-    <h3>Checkpoints</h3>
-    <p>Use gate or block triggers for ordered respawns, party teleports, and closing earlier gates.</p>
-  </div>
-  <div class="doc-card">
-    <h3>Dungeon Sounds</h3>
-    <p>Configure sounds in sounds.yml and preview them in the admin GUI.</p>
-  </div>
-  <div class="doc-card">
-    <h3>Validation</h3>
-    <p>Validation checks tower chains, checkpoint triggers, gate actions, mob equipment, enchantments, and item formats.</p>
-  </div>
+<div class="action-row">
+  <a class="btn btn-primary" href="getting-started.md">Getting Started</a>
+  <a class="btn btn-secondary" href="commands.md">Commands &amp; Admin GUI</a>
+  <a class="btn btn-secondary" href="complete-reference.md">Complete Reference</a>
 </div>
 
 ## Quick Start
 
-1. Install the plugin.
-2. Create a template world with `/dg world create` or the admin GUI.
-3. Create a dungeon with `/dungeon create` or the admin GUI.
-4. Set spawn, exit, and objective data in editor mode.
-5. Run `/dungeon validate <id>`.
-6. Let players open, join, and start a party.
+Create a void or flat template world via `/dg gui` (**Template Worlds**) or command, create a dungeon, set spawn/exit/objective points, and validate:
 
 ```text
-/dg world create dragon_template void
+/dg world create dragon_template void normal 500
 /dungeon create dragon_lair dragon_template boss
 /dungeon edit dragon_lair
 /dungeon setspawn
@@ -87,4 +28,18 @@ Create long tower chains, configure checkpoints and mob equipment, set custom ki
 /dungeon setboss
 /dungeon save
 /dungeon reload
+/dungeon validate dragon_lair
 ```
+
+## Documentation Overview
+
+| System | Description |
+| --- | --- |
+| [Getting Started &amp; Admin GUI](getting-started.md) | Set up template worlds (`void`, `flat`, `normal`), manage worlds in the **Template Worlds** browser, and configure dungeons through `/dg gui`. |
+| [Dungeon Config &amp; Cooldowns](configuration.md) | Configure party sizes, player/team lives, item restrictions, TNT behavior, timer bossbars, and per-dungeon or global player cooldowns. |
+| [Stages, Gates &amp; After-Open Logic](stages.md) | Build sequential or parallel stages with multi-target `KILL_MOBS`, `REGION` cuboids, after-open party teleports, gate closing, emergency return plates, and `/dg skip`. |
+| [Ordered Checkpoints](checkpoints.md) | Set respawn checkpoints triggered by opening a gate, pressing a button, or stepping on a pressure plate, with optional party teleports and gate closing. |
+| [Spawners, Bosses &amp; Equipment](spawners-and-mobs.md) | Configure Vanilla and MythicMobs spawners, boss stage requirements (`DISABLED`, `STAGE`, `ALL`), and full mob armor/weapon equipment with per-slot drop chances. |
+| [Loot, Keys &amp; Enchanted Gear](loot-and-rewards.md) | Distribute stage keys across multiple chests, preserve enchantments on vanilla gear in costs/loot/rewards, and customize reward delivery (`GROUND` / `INVENTORY`) and recipients. |
+| [Multi-Floor Towers](towers.md) | Chain unlimited dungeon floors (`FIRST -> MIDDLE -> ... -> LAST`) into a continuous run. |
+| [Dungeon Sounds &amp; Event Commands](sounds.md) | Customize per-dungeon sound profiles in `sounds.yml` and automate console/player actions in `commands.yml`. |
