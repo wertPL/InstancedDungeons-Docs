@@ -2,13 +2,6 @@
 
 InstancedDungeons runs isolated dungeon instances for solo players and parties on Paper servers. When a party starts a run, the plugin clones your configured template world into a temporary instance world, runs your stages, mob spawners, loot chests, and boss or trigger objectives, and deletes the temporary world when the run ends.
 
-<div class="meta-bar">
-  <span class="meta-pill"><strong>Server</strong> Paper 1.21.x &amp; 26.x (Universal JAR)</span>
-  <span class="meta-pill"><strong>Java</strong> 21+ (1.21.x) / 25+ (26.x)</span>
-  <span class="meta-pill"><strong>Config Format</strong> v2.0</span>
-  <span class="meta-pill"><strong>World Manager</strong> Built-in (<code>/dg world</code>)</span>
-</div>
-
 <div class="action-row">
   <a class="btn btn-primary" href="getting-started.md">Getting Started</a>
   <a class="btn btn-secondary" href="commands.md">Command Reference</a>

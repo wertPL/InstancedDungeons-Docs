@@ -2,13 +2,6 @@
 
 InstancedDungeons Pro is the full-featured dungeon engine for Paper 1.21.x and 26.x servers. Each party run clones a template world into an isolated instance with multi-stage progression, ordered checkpoints, custom mob equipment, multi-floor tower chains, custom sound profiles, and full in-game GUI management.
 
-<div class="meta-bar">
-  <span class="meta-pill"><strong>Server</strong> Paper 1.21.x &amp; 26.x (Universal JAR)</span>
-  <span class="meta-pill"><strong>Java</strong> 21+ (1.21.x) / 25+ (26.x)</span>
-  <span class="meta-pill"><strong>Config Format</strong> v2.0</span>
-  <span class="meta-pill"><strong>Admin Workflow</strong> CLI + Full In-Game GUI (<code>/dg gui</code>)</span>
-</div>
-
 <div class="action-row">
   <a class="btn btn-primary" href="getting-started.md">Getting Started</a>
   <a class="btn btn-secondary" href="commands.md">Commands &amp; Admin GUI</a>

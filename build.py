@@ -81,13 +81,6 @@ FREE_INDEX_MD = """# InstancedDungeons
 
 InstancedDungeons runs isolated dungeon instances for solo players and parties on Paper servers. When a party starts a run, the plugin clones your configured template world into a temporary instance world, runs your stages, mob spawners, loot chests, and boss or trigger objectives, and deletes the temporary world when the run ends.
 
-<div class="meta-bar">
-  <span class="meta-pill"><strong>Server</strong> Paper 1.21.x &amp; 26.x (Universal JAR)</span>
-  <span class="meta-pill"><strong>Java</strong> 21+ (1.21.x) / 25+ (26.x)</span>
-  <span class="meta-pill"><strong>Config Format</strong> v2.0</span>
-  <span class="meta-pill"><strong>World Manager</strong> Built-in (<code>/dg world</code>)</span>
-</div>
-
 <div class="action-row">
   <a class="btn btn-primary" href="getting-started.md">Getting Started</a>
   <a class="btn btn-secondary" href="commands.md">Command Reference</a>
@@ -155,13 +148,6 @@ plugins/InstancedDungeons/
 PRO_INDEX_MD = """# InstancedDungeons Pro
 
 InstancedDungeons Pro is the full-featured dungeon engine for Paper 1.21.x and 26.x servers. Each party run clones a template world into an isolated instance with multi-stage progression, ordered checkpoints, custom mob equipment, multi-floor tower chains, custom sound profiles, and full in-game GUI management.
-
-<div class="meta-bar">
-  <span class="meta-pill"><strong>Server</strong> Paper 1.21.x &amp; 26.x (Universal JAR)</span>
-  <span class="meta-pill"><strong>Java</strong> 21+ (1.21.x) / 25+ (26.x)</span>
-  <span class="meta-pill"><strong>Config Format</strong> v2.0</span>
-  <span class="meta-pill"><strong>Admin Workflow</strong> CLI + Full In-Game GUI (<code>/dg gui</code>)</span>
-</div>
 
 <div class="action-row">
   <a class="btn btn-primary" href="getting-started.md">Getting Started</a>
@@ -252,6 +238,61 @@ PRO_HELP_MD = """# Help Center
 - **Discord Support:** [discord.com/invite/sD4HvQh8P4](https://discord.com/invite/sD4HvQh8P4)
 """
 
+LICENSE_MD = """# Instanced Dungeons License Notice
+
+By downloading, installing, or using this product, you agree to the following terms, the EULA displayed on the Instanced Dungeons product page on BuiltByBit, and the applicable BuiltByBit rules. Mandatory laws of the relevant jurisdiction always take precedence.
+
+## 1. License Grant
+
+You receive a personal, non-transferable license to use this plugin on servers that you own or manage. This license does not transfer ownership of the plugin, source code, assets, or documentation.
+
+## 2. Restrictions
+
+You may not resell, redistribute, share, leak, sublicense, upload, or include this plugin in any public or private pack without written permission from the creator.
+
+You may not claim this product as your own, remove author credits, or use it to create a competing product.
+
+## 3. Modification
+
+Configuration files may be edited for use on your server. Decompiling, reverse engineering, modifying, or repackaging the plugin JAR is permitted only when allowed by the creator.
+
+## 4. Updates and Support
+
+Support and updates are provided according to the product page, the seller's current policy, the applicable BuiltByBit EULA, and BuiltByBit rules.
+
+Access to updates or support may require a valid purchase account.
+
+## 5. Bugs, Fixes, and Refunds
+
+This product is digital content. Where permitted by applicable law, beginning the download after providing the required consent may result in the loss of the statutory right of withdrawal.
+
+Before requesting a refund because of a bug or malfunction, the buyer must contact the creator and provide sufficient logs, error messages, reproduction steps, and other relevant materials.
+
+Support requests submitted within the first 30 days after purchase will receive a response from the creator within five days. The creator must then be given a reasonable opportunity to reproduce and fix the problem without undue delay.
+
+The repair period may be longer depending on the complexity of the issue or an agreement between both parties.
+
+Both parties are required to cooperate. The buyer must respond to messages, provide requested diagnostic information, and test reasonable fixes or new test builds. Delays caused by the buyer extend the repair period accordingly and are not considered delays caused by the creator.
+
+A refund may be due if the creator fails to provide a fix within a reasonable period or when required by the applicable BuiltByBit EULA.
+
+## 6. No Warranty
+
+The creator is not responsible for server damage, data loss, plugin conflicts, downtime, or problems caused by incorrect installation, configuration, or third-party software.
+
+This section does not exclude any rights that cannot legally be excluded.
+
+## 7. Violations
+
+A violation of these terms, the EULA displayed on the Instanced Dungeons product page on BuiltByBit, or applicable BuiltByBit rules may result in restricted access to support or updates, a report to BuiltByBit staff, and other actions permitted by BuiltByBit and applicable law.
+
+## 8. Changes to the Rules
+
+The BuiltByBit Terms of Service, rules, and applicable EULA may be updated periodically. To the extent permitted by applicable law, their current publicly available versions apply.
+
+Changes to this License do not retroactively remove rights acquired by the buyer at the time of purchase unless the change is accepted by both parties or required by BuiltByBit or mandatory law.
+"""
+
 
 def sync_docs_source():
     # Sync shared and edition overview markdown files inside docs/
@@ -261,6 +302,7 @@ def sync_docs_source():
     (DOCS_DIR / "pro" / "index.md").write_text(PRO_INDEX_MD, encoding="utf-8")
     (DOCS_DIR / "help.md").write_text(FREE_HELP_MD, encoding="utf-8")
     (DOCS_DIR / "pro" / "help.md").write_text(PRO_HELP_MD, encoding="utf-8")
+    (DOCS_DIR / "license.md").write_text(LICENSE_MD, encoding="utf-8")
 
     for pro_md in (DOCS_DIR / "pro").rglob("*.md"):
         content = pro_md.read_text(encoding="utf-8")
@@ -1020,6 +1062,15 @@ body {
   grid-template-columns: 16.5rem minmax(0, 1fr) 14.5rem;
   gap: 2.25rem;
   padding: 0 1.25rem;
+}
+
+.layout-shell.layout-standalone {
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 54rem;
+}
+
+.layout-shell.layout-standalone .doc-main {
+  max-width: 100%;
 }
 
 /* Left Sidebar */
@@ -2260,6 +2311,65 @@ def render_page_html(
 """
 
 
+def render_standalone_page_html(page_label, html_rel, article_html):
+    root_prefix = relative_href(html_rel, "index.html")
+    if root_prefix == "index.html":
+        root_dir_prefix = ""
+    else:
+        root_dir_prefix = root_prefix[:-10]
+
+    logo_href = f"{root_dir_prefix}assets/header-logo.png"
+    css_href = f"{root_dir_prefix}assets/style.css"
+    app_js_href = f"{root_dir_prefix}assets/app.js"
+    home_href = relative_href(html_rel, "index.html")
+
+    ext_links_html = (
+        '<a class="ext-pill" href="https://builtbybit.com/resources/instanceddungeons-pro.112271/" target="_blank" rel="noopener">BuiltByBit</a>'
+        '<a class="ext-pill" href="https://discord.com/invite/sD4HvQh8P4" target="_blank" rel="noopener">Discord</a>'
+    )
+
+    return f"""<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{html.escape(page_label)} | InstancedDungeons</title>
+  <link rel="icon" href="{logo_href}">
+  <link rel="stylesheet" href="{css_href}">
+</head>
+<body data-root="{root_dir_prefix}">
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-left">
+        <a class="brand" href="{home_href}">
+          <img src="{logo_href}" alt="InstancedDungeons">
+          <span>InstancedDungeons</span>
+        </a>
+      </div>
+
+      <div class="header-right">
+        <button type="button" class="icon-btn" id="theme-toggle" title="Toggle dark/light theme" aria-label="Toggle theme">&#9728;</button>
+        <div class="ext-links">
+          {ext_links_html}
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout-shell layout-standalone">
+    <main class="doc-main">
+      <article class="doc-article">
+        {article_html}
+      </article>
+    </main>
+  </div>
+
+  <script src="{app_js_href}"></script>
+</body>
+</html>
+"""
+
+
 def build_all():
     sync_docs_source()
 
@@ -2321,6 +2431,18 @@ def build_all():
                     "text": clean_text,
                     "url": url,
                 })
+
+    license_md = (DOCS_DIR / "license.md").read_text(encoding="utf-8")
+    license_html_rel = md_path_to_html_rel("license.md")
+    license_article_html, license_title, _ = parse_markdown(license_md, "license.md", license_html_rel)
+    license_full_html = render_standalone_page_html(
+        page_label=license_title,
+        html_rel=license_html_rel,
+        article_html=license_article_html,
+    )
+    license_out_dir = out_dir_for_html_rel(license_html_rel)
+    license_out_dir.mkdir(parents=True, exist_ok=True)
+    (ROOT / license_html_rel).write_text(license_full_html, encoding="utf-8")
 
     search_js = "window.ID_SEARCH_DATA = " + json.dumps(search_data, ensure_ascii=False) + ";\n"
     (ASSETS_OUT / "search-index.js").write_text(search_js, encoding="utf-8")

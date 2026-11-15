@@ -409,6 +409,15 @@ body {
   padding: 0 1.25rem;
 }
 
+.layout-shell.layout-standalone {
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 54rem;
+}
+
+.layout-shell.layout-standalone .doc-main {
+  max-width: 100%;
+}
+
 /* Left Sidebar */
 .sidebar-left {
   position: sticky;
